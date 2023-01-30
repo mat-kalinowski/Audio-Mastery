@@ -18,7 +18,6 @@ S_ref = np.abs(librosa.stft(y=y_ref))
 S_comp = np.abs(librosa.stft(y=y_comp))
 
 # calculate Mean Squared Error for both matrices
-print(S_ref)
 MSE = np.square(np.subtract(S_ref,S_comp)).mean()
 
 print(MSE)

@@ -1,0 +1,308 @@
+body {
+  overflow-y: hidden; }
+
+[eq] {
+  width: 100%;
+  margin: 0;
+  position: relative; }
+  [eq] [bypass-btn] {
+    cursor: pointer;
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    width: 36px;
+    height: 36px;
+    border-radius: 3px;
+    box-shadow: 0 0 2px 2px #000; }
+    [eq] [bypass-btn][state='on'] {
+      background: #555; }
+    [eq] [bypass-btn][state='off'] {
+      background: #ffff00; }
+  [eq][bypass="on"] [band][state="on"] [toggle-band] [toggle-band-btn] {
+    background: #555 !important; }
+  [eq][original="on"] {
+    -webkit-filter: blur(4px);
+    filter: blur(4px); }
+  [eq] [eq-header] {
+    position: relative;
+    height: 56px; }
+    [eq] [eq-header] [eq-title] {
+      position: absolute;
+      left: 15px;
+      top: 15px;
+      color: #b9b18e;
+      text-shadow: 0 0 5px black;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 20px;
+      font-family: 'Orbitron', sans-serif; }
+      [eq] [eq-header] [eq-title] sup {
+        color: #888;
+        font-size: 50%;
+        top: -1em;
+        text-transform: none;
+        font-family: 'Orbitron', sans-serif; }
+    [eq] [eq-header] [eq-powered] {
+      position: absolute;
+      right: 15px;
+      top: 15px; }
+      [eq] [eq-header] [eq-powered] a {
+        color: #888;
+        transition: all .2s ease;
+        text-shadow: 0 0 5px black;
+        font-weight: bold;
+        font-size: 14px; }
+        [eq] [eq-header] [eq-powered] a span {
+          font-size: 22px;
+          font-weight: normal;
+          vertical-align: text-bottom; }
+        [eq] [eq-header] [eq-powered] a:hover, [eq] [eq-header] [eq-powered] a:focus {
+          color: #eee; }
+  [eq] [screen] {
+    height: 350px;
+    padding: 45px 10px 5px;
+    box-shadow: 0 0 0 1px #000;
+    background: #111; }
+  [eq] [bands] {
+    font-size: 0;
+    text-align: center;
+    padding: 8px 0 5px; }
+    [eq] [bands] [band] {
+      font-size: 16px;
+      width: 105px;
+      height: 154px;
+      padding: 1px 3px;
+      display: inline-block; }
+      [eq] [bands] [band]:before, [eq] [bands] [band]:after {
+        content: " ";
+        display: table; }
+      [eq] [bands] [band]:after {
+        clear: both; }
+      [eq] [bands] [band][show="no"] {
+        display: none; }
+      [eq] [bands] [band][focus="on"] {
+        background: #222; }
+      [eq] [bands] [band] [toggle-band] {
+        margin: 0;
+        cursor: pointer;
+        text-align: center; }
+        [eq] [bands] [band] [toggle-band] [toggle-band-btn] {
+          width: 28px;
+          height: 28px;
+          border-radius: 3px;
+          display: inline-block;
+          margin: 5px auto; }
+        [eq] [bands] [band] [toggle-band] [toggle-band-img] {
+          vertical-align: top;
+          width: 40px;
+          margin-left: 18px; }
+      [eq] [bands] [band][state="off"] [toggle-band] [toggle-band-btn] {
+        background: #000 !important; }
+      [eq] [bands] [band][hint="yes"] {
+        box-shadow: 0 0 0 1px #D1D006; }
+      [eq] [bands] [band] .knob-panel, [eq] [bands] [band] [toggle-band] {
+        width: 100%;
+        height: 38px;
+        position: relative;
+        margin: 0;
+        cursor: pointer;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        outline: none !important;
+        color: #888;
+        background: #111;
+        box-shadow: 0 0 0 1px #070707; }
+        [eq] [bands] [band] .knob-panel::-webkit-selection, [eq] [bands] [band] [toggle-band]::-webkit-selection {
+          background: transparent; }
+        [eq] [bands] [band] .knob-panel::-moz-selection, [eq] [bands] [band] [toggle-band]::-moz-selection {
+          background: transparent; }
+        [eq] [bands] [band] .knob-panel::selection, [eq] [bands] [band] [toggle-band]::selection {
+          background: transparent; }
+        [eq] [bands] [band] .knob-panel:hover, [eq] [bands] [band] .knob-panel.inaction, [eq] [bands] [band] [toggle-band]:hover, [eq] [bands] [band] [toggle-band].inaction {
+          background: #353535;
+          color: #ccc; }
+        [eq] [bands] [band] .knob-panel .knob-controller, [eq] [bands] [band] [toggle-band] .knob-controller {
+          position: absolute;
+          top: 8px;
+          left: 5px;
+          border: 2px solid #888;
+          display: inline-block;
+          width: 22px;
+          height: 22px;
+          font-size: 6px;
+          cursor: pointer;
+          text-align: center;
+          border-radius: 100%; }
+          [eq] [bands] [band] .knob-panel .knob-controller[reach-limit="on"], [eq] [bands] [band] [toggle-band] .knob-controller[reach-limit="on"] {
+            animation: reachLimit 0.3s 1; }
+        [eq] [bands] [band] .knob-panel .knob-value, [eq] [bands] [band] [toggle-band] .knob-value {
+          position: absolute;
+          width: 42px;
+          top: 3px;
+          right: 0;
+          text-align: center;
+          font-size: 13px;
+          -webkit-touch-callout: none;
+          -webkit-user-select: none;
+          -khtml-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+          outline: none !important; }
+          [eq] [bands] [band] .knob-panel .knob-value::-webkit-selection, [eq] [bands] [band] [toggle-band] .knob-value::-webkit-selection {
+            background: transparent; }
+          [eq] [bands] [band] .knob-panel .knob-value::-moz-selection, [eq] [bands] [band] [toggle-band] .knob-value::-moz-selection {
+            background: transparent; }
+          [eq] [bands] [band] .knob-panel .knob-value::selection, [eq] [bands] [band] [toggle-band] .knob-value::selection {
+            background: transparent; }
+          [eq] [bands] [band] .knob-panel .knob-value[reach-limit="on"], [eq] [bands] [band] [toggle-band] .knob-value[reach-limit="on"] {
+            animation: reachLimit 0.3s 1; }
+        [eq] [bands] [band] .knob-panel .knob-label, [eq] [bands] [band] [toggle-band] .knob-label {
+          position: absolute;
+          width: 42px;
+          bottom: 3px;
+          right: 0;
+          text-align: center;
+          font-size: 10px;
+          color: #555; }
+      [eq] [bands] [band] .empty-knob-panel {
+        width: 100%;
+        height: 38px;
+        position: relative;
+        margin: 0;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        outline: none !important;
+        background: #111;
+        box-shadow: 0 0 0 1px #070707; }
+        [eq] [bands] [band] .empty-knob-panel::-webkit-selection {
+          background: transparent; }
+        [eq] [bands] [band] .empty-knob-panel::-moz-selection {
+          background: transparent; }
+        [eq] [bands] [band] .empty-knob-panel::selection {
+          background: transparent; }
+
+.yk-meter {
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  z-index: 1; }
+  .yk-meter[meter="midline"] {
+    left: 10px; }
+  .yk-meter[meter="knobs"] {
+    left: 120px; }
+  .yk-meter .meter-name {
+    font-size: 12px;
+    color: #666;
+    text-align: center; }
+
+.game-action-panel {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  text-align: center;
+  z-index: 1;
+  background: #050505;
+  height: 45px;
+  padding-top: 5px;
+  border-bottom-left-radius: 22px;
+  border-bottom-right-radius: 22px;
+  width: 220px;
+  margin-left: -110px; }
+  .game-action-panel.game-action-panel-lg {
+    width: 284px;
+    margin-left: -142px; }
+  .game-action-panel .compare-btn {
+    position: absolute;
+    top: 0;
+    left: 45px;
+    outline: none;
+    border: none;
+    background: #333;
+    border-radius: 13px;
+    font-size: 12px;
+    width: 160px; }
+    .game-action-panel .compare-btn:hover {
+      background: #555; }
+  .game-action-panel .bypass-btn {
+    position: absolute;
+    top: 1px;
+    left: 15px;
+    outline: none;
+    border: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #252525;
+    margin-right: 6px; }
+    .game-action-panel .bypass-btn[bypass="on"] {
+      background: #fceb88; }
+  .game-action-panel .hint-btn {
+    border: none;
+    background: #333;
+    padding: 0 8px;
+    color: #999;
+    line-height: 24px;
+    outline: none;
+    position: absolute;
+    right: 12px;
+    top: 0;
+    height: 24px;
+    width: 62px;
+    border-radius: 13px; }
+    .game-action-panel .hint-btn[active="yes"]:hover {
+      background: #555; }
+    .game-action-panel .hint-btn[active="no"] {
+      cursor: default;
+      opacity: .3; }
+    .game-action-panel .hint-btn[banned="yes"] {
+      animation: hint-banned .2s; }
+
+.spectrograms {
+  position: relative;
+  text-align: center; }
+  .spectrograms small {
+    color: #666;
+    font-size: 12px; }
+  .spectrograms .spectrograms-cover {
+    position: absolute;
+    text-align: center;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    line-height: 270px;
+    z-index: 1;
+    display: none; }
+  .spectrograms[loading="yes"] .spectrograms-cover {
+    display: block; }
+
+@media (max-height: 420px) {
+  [eq] [screen] {
+    height: 250px; } }
+@keyframes reachLimit {
+  0% {
+    color: #FFF; }
+  25% {
+    color: inherit; }
+  75% {
+    color: #FFF; }
+  100% {
+    color: inherit; } }
+@keyframes hint-banned {
+  0% {
+    background: #D94E49; }
+  100% {
+    background: #333; } }
+
+/*# sourceMappingURL=eq-module.css.map */
