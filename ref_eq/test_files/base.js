@@ -35,6 +35,8 @@ var triggerInterval;
 var gameMasterGain;
 var gameBypassGain;
 var gameUnpassGain;
+
+// main AudioContext object of the app
 var gameContext;
 var gameBuffer;
 var gameSound;
@@ -84,37 +86,41 @@ function getLoopValues() {
     end : end
   };
 }
-/**
- * @return {undefined}
- */
+
+// set up window.AudioContext
 function loadSprite() {
-  /** @type {function(string, ?): ?} */;
   console.log(pr)
+
+  // pr is set in test.html
   if (pr["sprite"] == null || isset(pr["sprite"]) && pr["sprite"]["length"] == 0) {
     /** @type {number} */
     gameBuffer = 0;
     return;
   }
+
   if (pr["sprite"]["method"] == "old") {
     gameContext = new (window["AudioContext"] || window["webkitAudioContext"]);
     gameMasterGain = gameContext["createGain"]();
+
     gameMasterGain["gain"]["setValueAtTime"](defaultGameVolume, gameContext["currentTime"]);
-    /** @type {!XMLHttpRequest} */
+    
+    // host="https://assets.soundgym.co"; 
+    // GET SOUNDS FROM SOUNDGYM MEDIA SERVER
     gameSound = new XMLHttpRequest;
+    // GET SOUND DUE TO GIVEN CONFIGURATION IN test.html - pr variable
     gameSound["open"]("GET", host + "/sounds/sprites/" + pr["sprite"]["id"] + "/" + (pr["sprite"]["stereo"] ? "stereo" : "mono") + "-128.mp3", !![]);
     gameSound["responseType"] = "arraybuffer";
-    /**
-     * @return {undefined}
-     */
+
+    // FUNCTION ON RECEIVE GET RESPONSE WITH AUDIO
     gameSound["onload"] = function() {
-      /** @type {function(string, ?): ?} */
-      gameContext["decodeAudioData"](gameSound["response"], function(canCreateDiscussions) {
-        /** @type {number} */
-        gameBuffer = canCreateDiscussions;
+      gameContext["decodeAudioData"](gameSound["response"], function(receivedBuffer) {
+        // FUNCTION TO BE INVOKED ON SUCCESSFUL DECODING
+        gameBuffer = receivedBuffer;
       });
     };
     gameSound["send"]();
   } else {
+  // CURRENTLY NOT USED
     var precUserLanguage = pr["sprite"]["name"];
     fetchJSONFile(host + "/sounds/sprite/" + precUserLanguage + "/main.json", function(canCreateDiscussions) {
       spriteMap = canCreateDiscussions["spritemap"];
@@ -131,7 +137,6 @@ function loadSprite() {
      * @return {undefined}
      */
     gameSound["onload"] = function() {
-      /** @type {function(string, ?): ?} */
       gameContext["decodeAudioData"](gameSound["response"], function(canCreateDiscussions) {
         /** @type {number} */
         gameBuffer = canCreateDiscussions;
@@ -140,10 +145,7 @@ function loadSprite() {
     gameSound["send"]();
   }
 }
-/**
- * @param {!Object} key
- * @return {undefined}
- */
+
 function playFx(key) {
   /** @type {function(string, ?): ?} */;
   var record = fxMap[key];
@@ -158,36 +160,33 @@ function playFx(key) {
   fxGain["connect"](fxContext["destination"]);
   fxPlayer["start"](0, record["start"], GET_AUTH_URL_TIMEOUT);
 }
-/**
- * @return {undefined}
- */
+
+// LOAD SOUND EFFECTS - whistles on right answeretc.
 function loadFxs() {
-  /** @type {function(string, ?): ?} */;
+
   fetchJSONFile(host + "/sounds/sprite/" + fxfolder + "/main.json", function(myPreferences) {
-    /** @type {function(string, ?): ?} */
     fxMap = myPreferences["spritemap"];
+    // console.log("fxMAP fxMAP fxMAP=")
+    // console.log(JSON.stringify(fxMap))
   });
+
   fxContext = new (window["AudioContext"] || window["webkitAudioContext"]);
-  /** @type {!XMLHttpRequest} */
+
   fxSound = new XMLHttpRequest;
   fxSound["open"]("GET", host + "/sounds/sprite/" + fxfolder + "/main.mp3", !![]);
+  console.log("GET", host + "/sounds/sprite/" + fxfolder + "/main.mp3")
   fxSound["responseType"] = "arraybuffer";
-  /**
-   * @return {undefined}
-   */
+
   fxSound["onload"] = function() {
-    /** @type {function(string, ?): ?} */
     fxContext["decodeAudioData"](fxSound["response"], function(canCreateDiscussions) {
       /** @type {number} */
       fxBuffer = canCreateDiscussions;
     });
   };
+
   fxSound["send"]();
 }
-/**
- * @param {?} elem
- * @return {undefined}
- */
+
 function muteGame(elem) {
   /** @type {function(string, ?): ?} */;
   var artistTrack = gameContext["currentTime"] + 0.6;
@@ -1265,14 +1264,11 @@ function randomBetweenInts(precision, scale) {
   /** @type {function(string, ?): ?} */;
   return Math["floor"](Math["random"]() * (scale - precision + 1) + precision);
 }
-/**
- * @return {undefined}
- */
+
 function loadingStatusCheck() {
-  /** @type {number} */
   triggerInterval = setInterval(function() {
-    /** @type {function(string, ?): ?} */;
     try {
+      // Audio files are loaded
       if (typeof gameBuffer !== "undefined" && typeof fxBuffer !== "undefined") {
         clearInterval(triggerInterval);
         $(".game-cover")["removeClass"]("active");
@@ -1327,57 +1323,55 @@ function endGame(playerOut) {
     }
   });
 }
-/**
- * @return {undefined}
- */
+
 function nextStage() {
-  /** @type {function(string, ?): ?} */;
   rangeLevel++;
   stage++;
-  /** @type {number} */
   step = 0;
-  /** @type {boolean} */
+
   var _0x4757c3 = ![];
   var el = Math["round"](bonus[rangeLevel] * getPointMultiplier());
+
   total = total + el + (stage == pr["model"]["stages"] ? extraLifeValue() : 0);
   $("#points")["text"](numberWithCommas(total));
+
   if (stage == pr["model"]["stages"]) {
     endGame(!![]);
     return;
   }
+
   $("#stage")["text"](stage + 1);
+
   if (stage == 2 || stage == 4) {
     pr["model"]["lives"]++;
     showLives();
     /** @type {boolean} */
     _0x4757c3 = !![];
   }
+
   var mirror = $("#game-stage");
   mirror["find"]("[stage] span")["html"](stage + 1);
   mirror["find"]("[range] span")["html"](rangeset[rangeLevel]);
   mirror["find"]("[points] span")["html"](el);
+
   if (_0x4757c3) {
     mirror["find"]("[life-bonus]")["show"]();
   } else {
     mirror["find"]("[life-bonus]")["hide"]();
   }
+
   mirror["addClass"]("active");
   setTimeout(function() {
     loadNext();
   }, waitForNext);
 }
-/**
- * @param {!Object} instancesTypes
- * @return {undefined}
- */
+
 function registerPlay(instancesTypes) {
-  /** @type {function(string, ?): ?} */;
   $["ajax"]({
     url : baseUrl + "/play/register",
     type : "POST",
     data : instancesTypes,
     success : function(a) {
-      /** @type {function(string, ?): ?} */
       var topPrice = getBaseURL;
       console[topPrice("0xb0")](a);
     },
@@ -1386,30 +1380,22 @@ function registerPlay(instancesTypes) {
     }
   });
 }
-/**
- * @return {undefined}
- */
+
 function loadJsons() {
-  /** @type {function(string, ?): ?} */;
   var alignContentAlignItem = "1.00";
   if (pr["model"]["json_tests"] == "1") {
     fetchJSONFile(host + "/play/jsons/tests/" + pr["model"]["id"] + ".json?v=" + alignContentAlignItem, function(solo) {
-      /** @type {number} */
       tests = solo;
     });
   }
   if (pr["model"]["json_diffs"] == "1") {
     fetchJSONFile(host + "/play/jsons/diffs/" + pr["model"]["id"] + ".json?v=" + alignContentAlignItem, function(abDiff) {
-      /** @type {number} */
       diff = abDiff;
     });
   }
 }
-/**
- * @return {undefined}
- */
+
 function showLives() {
-  /** @type {function(string, ?): ?} */;
   var _0x35734d;
   /** @type {string} */
   var html = "";
@@ -1436,18 +1422,22 @@ function switchSound(received_data) {
   var frontpageItems = getLoopValues();
   gamePlayer = gameContext["createBufferSource"]();
   gamePlayer["buffer"] = gameBuffer;
+
   if (key == "peak" || key == "cut" || key == "bass") {
     gamePlayer["connect"](gameBypassGain);
     gamePlayer["connect"](gameFilter);
   }
+
   if (key == "pan") {
     gamePlayer["connect"](gamePan);
     gamePan["connect"](gameMasterGain);
   }
+
   if (key == "db") {
     gamePlayer["connect"](sliderGain);
     sliderGain["connect"](gameContext["destination"]);
   }
+
   if (key == "delay") {
     gamePlayer["connect"](dryGain);
     dryGain["connect"](gameMasterGain);
@@ -1456,6 +1446,7 @@ function switchSound(received_data) {
     gameDelay["connect"](gameMasterGain);
     gameMasterGain["connect"](gameContext["destination"]);
   }
+
   if (key == "eq") {
     gamePlayer["connect"](gameBypassGain);
     gameBypassGain["connect"](gameMasterGain);
@@ -1463,28 +1454,28 @@ function switchSound(received_data) {
     var prop;
     /** @type {number} */
     prop = 0;
+
     for (; prop < bands["length"] - 1; prop++) {
       gameFilters[prop]["connect"](gameFilters[prop + 1]);
     }
+
     gameFilters[bands["length"] - 1]["connect"](gameUnpassGain);
     gameUnpassGain["connect"](gameMasterGain);
     gameMasterGain["connect"](gameContext["destination"]);
   }
+
   gameMasterGain["connect"](gameContext["destination"]);
-  /** @type {boolean} */
   gamePlayer["loop"] = !![];
   gamePlayer["loopStart"] = frontpageItems["start"];
   gamePlayer["loopEnd"] = frontpageItems["end"];
   gamePlayer["start"](0, frontpageItems["start"]);
 }
-/**
- * @return {undefined}
- */
+
 function switchStereoSound() {
-  /** @type {function(string, ?): ?} */;
   gamePlayerLeft["stop"](0);
   gamePlayerRight["stop"](0);
   var same = getStereoLoopValues();
+
   gamePlayerLeft = gameContext["createBufferSource"]();
   gamePlayerRight = gameContext["createBufferSource"]();
   gamePlayerLeft["buffer"] = gameBuffer;
@@ -1494,12 +1485,12 @@ function switchStereoSound() {
   gamePanLeft["connect"](gameMasterGain);
   gamePanRight["connect"](gameMasterGain);
   gameMasterGain["connect"](gameContext["destination"]);
-  /** @type {boolean} */
+  
   gamePlayerLeft["loop"] = !![];
   gamePlayerLeft["loopStart"] = same["left"]["start"];
   gamePlayerLeft["loopEnd"] = same["left"]["end"];
   gamePlayerLeft["start"](0, same["left"]["start"]);
-  /** @type {boolean} */
+
   gamePlayerRight["loop"] = !![];
   gamePlayerRight["loopStart"] = same["right"]["start"];
   gamePlayerRight["loopEnd"] = same["right"]["end"];
@@ -1540,20 +1531,26 @@ function startGame() {
   resetKeyboardKeys();
   activateKeyboardKeys("game-ready");
 }
-/**
- * @return {undefined}
- */
+
 function loadGame() {
   /** @type {function(string, ?): ?} */;
   $(".game-cover")["removeClass"]("active");
   $("#game-loading")["addClass"]("active");
+
+  // LOAD AudioContext and fetch main audio files - set them to buffer
   loadSprite();
+
+  // LOAD AudioContext and fetch effects audio - whistle on righ answer etc.
   loadFxs();
+
+  // set keyboard key mapping
   setKeyboardKeys();
+
   setTimeout(function() {
     loadingStatusCheck();
   }, 800);
 }
+
 /**
  * @param {?} state
  * @return {undefined}
