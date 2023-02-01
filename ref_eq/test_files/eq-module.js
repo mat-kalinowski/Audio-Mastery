@@ -67,7 +67,7 @@ var eq = {
     timegap : 10,
     count : 300
   },
-  activeFilter : _0x278f7d("0x3"),
+  activeFilter : 'original',
   filters : {
     lowpass : 0,
     highpass : 1,
@@ -97,18 +97,18 @@ var percentAccuracy = 40;
 /** @type {number} */
 var deviation = 1800;
 var short = {
-  LC : _0x278f7d("0x73"),
+  LC : 'highpass',
   LS : "lowshelf",
-  PK : _0x278f7d("0x26"),
+  PK : 'peaking',
   HS : "highshelf",
-  HC : _0x278f7d("0xc5")
+  HC : 'lowpass'
 };
 var dBands = {
   highpass : {
     id : 0,
     state : "off",
-    color : _0x278f7d("0x63"),
-    border : _0x278f7d("0x34"),
+    color : '211,47,47',
+    border : '244,129,129',
     filter_name : "highpass",
     filter_id : 1,
     freq : 30,
@@ -124,9 +124,9 @@ var dBands = {
   },
   lowshelf : {
     id : 1,
-    state : _0x278f7d("0xa3"),
-    color : _0x278f7d("0x6e"),
-    border : _0x278f7d("0xbe"),
+    state : 'off',
+    color : '194,24,91',
+    border : '247,111,163',
     filter_name : "lowshelf",
     filter_id : 5,
     freq : 140,
@@ -136,15 +136,15 @@ var dBands = {
     angle_freq : -139,
     angle_q : -118,
     angle_gain : 0,
-    knobs : [_0x278f7d("0x50"), "gain"],
+    knobs : ['freq', "gain"],
     chart : {},
     filter : {}
   },
   peaking1 : {
     id : 2,
-    state : _0x278f7d("0xa3"),
-    color : _0x278f7d("0x4"),
-    border : _0x278f7d("0x110"),
+    state : 'off',
+    color : '123,31,162',
+    border : '199,117,234',
     filter_name : "peaking",
     filter_id : 3,
     freq : 440,
@@ -154,16 +154,16 @@ var dBands = {
     angle_freq : -133,
     angle_q : -124,
     angle_gain : 0,
-    knobs : [_0x278f7d("0x50"), "gain", "q"],
+    knobs : ['freq', "gain", "q"],
     chart : {},
     filter : {}
   },
   peaking2 : {
     id : 3,
-    state : _0x278f7d("0xa3"),
+    state : 'off',
     color : "25,118,210",
-    border : _0x278f7d("0xf8"),
-    filter_name : _0x278f7d("0x26"),
+    border : '98,178,252',
+    filter_name : 'peaking',
     filter_id : 3,
     freq : 1E3,
     gain : 0,
@@ -172,16 +172,16 @@ var dBands = {
     angle_freq : -125,
     angle_q : -124,
     angle_gain : 140,
-    knobs : [_0x278f7d("0x50"), _0x278f7d("0x71"), "q"],
+    knobs : ['freq', 'gain', "q"],
     chart : {},
     filter : {}
   },
   peaking3 : {
     id : 4,
-    state : _0x278f7d("0xa3"),
-    color : _0x278f7d("0xb2"),
+    state : 'off',
+    color : '0,151,167',
     border : "32,215,232",
-    filter_name : _0x278f7d("0x26"),
+    filter_name : 'peaking',
     filter_id : 3,
     freq : 3500,
     gain : 0,
@@ -190,16 +190,16 @@ var dBands = {
     angle_freq : -88,
     angle_q : -124,
     angle_gain : 0,
-    knobs : [_0x278f7d("0x50"), _0x278f7d("0x71"), "q"],
+    knobs : ['freq', 'gain', "q"],
     chart : {},
     filter : {}
   },
   highshelf : {
     id : 5,
-    state : _0x278f7d("0xa3"),
-    color : _0x278f7d("0x104"),
-    border : _0x278f7d("0x5c"),
-    filter_name : _0x278f7d("0xfc"),
+    state : 'off',
+    color : '95,160,38',
+    border : '156,221,99',
+    filter_name : 'highshelf',
     filter_id : 6,
     freq : 9E3,
     gain : 0,
@@ -208,16 +208,16 @@ var dBands = {
     angle_freq : -8,
     angle_q : -118,
     angle_gain : 0,
-    knobs : [_0x278f7d("0x50"), _0x278f7d("0x71")],
+    knobs : ['freq', 'gain'],
     chart : {},
     filter : {}
   },
   lowpass : {
     id : 6,
-    state : _0x278f7d("0xa3"),
-    color : _0x278f7d("0x36"),
-    border : _0x278f7d("0x8a"),
-    filter_name : _0x278f7d("0xc5"),
+    state : 'off',
+    color : '247,140,69',
+    border : '255,184,137',
+    filter_name : 'lowpass',
     filter_id : 0,
     freq : 16E3,
     gain : 0,
@@ -2856,6 +2856,7 @@ function setGame() {;
   getNextBands();
 }
 ;
+
 
 
 
