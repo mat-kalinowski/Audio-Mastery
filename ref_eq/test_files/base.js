@@ -1,17 +1,5 @@
 'use strict';
 /** @type {!Array} */
-var data_arr = ["<i class=\"fa fa-user\"></i>","inactive","GET","type","percent","<small>Hz</small>","/sounds/sprite/","[key-id]","clientY","panning","POST","model","offset","stop","addClass","#range, #range-mirror","preventDefault","left","createGain","touchend","vals","compare","[set]","fadeOut","active","destination","pageX","negative","#game-panel","min","sub","keys","parents","append","<div class=\"min\">","width","#game-loading","stages","positive","touches","html","set","gain","text","#game-ready","accurate","play","space","wrong_long",".json?v=","exponentialRampToValueAtTime","log10","slice","clientX","decodeAudioData","zero","touchmove","extra_life_value"," [key-id]","custom","maxperfect","webkitAudioContext","push","[life-bonus]","cleared","round","[points] span","name","send","/sounds/sprites/","which","response","click","end","</div>","key-status","css","#stage","/main.json","#ranger","</small>","perfect","responseType","/play/register","setPosition","#handle-mirror","length","[range] span","stringify","ajax","#space-main, #value, #cartridge, #handle","[stage] span","loopEnd","multiplier_set","loopStart","wrong","removeClass","game-cleared","top","stereo","<small>left</small>","duration","off","abs","bass","val","bonus","none","attr","icon-","game-over","color","game-ready","mousemove","diff","#range-mirror","keydown"," <small>","auto","#range","pop","#game-over","1.00","minperfect","originalEvent","currentTime","max","point","hide","correct","<small>right</small>","middle","show","wait","right","#game-panel-body","find","[set][state=\"play\"] [answer-btn]","[bypass=\"on\"]","[answer]","floor","start","createBufferSource","sprite","now","spritemap","setValueAtTime","%\">",".game-cover","50%","connect","touchstart","<br />",".game-main-btns","random","state","yes","pow","error","each","#handle","toString","buffer","currentDifficulty","<div class=\"gridbox\"></div>","arraybuffer","#value","reset","open",".answer","json_tests","delay","onload","uid","json_diffs","loop","log","removeAttr","toFixed","game","#grid","sin","keyup","lives","height","#points","pageY","[bypass=\"off\"]"]
-
-/**
- * @param {string} i
- */
-var _0x37ce = function(i) {
-  i = i - 0;
-  var element = data_arr[i];
-  return element;
-};
-
-/** @type {!Array} */
 var answerslog = [];
 /** @type {!Array} */
 var accuracylog = [];
@@ -52,9 +40,7 @@ var gameBuffer;
 var gameSound;
 var gamePlayer;
 var spriteMap = {};
-/**
- * @return {?}
- */
+
 function getPointMultiplier() {
   /** @type {function(string, ?): ?} */;
   var keys = {
@@ -103,6 +89,7 @@ function getLoopValues() {
  */
 function loadSprite() {
   /** @type {function(string, ?): ?} */;
+  console.log(pr)
   if (pr["sprite"] == null || isset(pr["sprite"]) && pr["sprite"]["length"] == 0) {
     /** @type {number} */
     gameBuffer = 0;
@@ -230,9 +217,7 @@ function roundNumber(value) {
   /** @type {function(string, ?): ?} */;
   return Math["round"](value * 1E3) / 1E3;
 }
-/**
- * @return {?}
- */
+
 function extraLifeValue() {
   /** @type {function(string, ?): ?} */;
   return Math["round"](pr["model"]["lives"] * pr["model"]["extra_life_value"] * getPointMultiplier());
