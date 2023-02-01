@@ -1,3338 +1,2865 @@
-var _0x4ed4 = [
-  "%\x20accurate",
-  "show",
-  "rgb(0,\x200,\x200)",
-  "#go-next-btn",
-  "<div\x20toggle-band\x20onclick=\x22toggleBand(",
-  "95,160,38",
-  "\x22\x20state=\x22",
-  "rgba(150,150,150,.3)",
-  "#bypass-btn",
-  "gainMin",
-  "filter_id",
-  "mouseup",
-  "createElement",
-  "createAnalyser",
-  "rgba(200,200,200,.5)",
-  "\x22\x20y=\x220\x22\x20min=\x2220\x22\x20max=\x2219100\x22\x20base=\x22",
-  "html",
-  "199,117,234",
-  ".bypass-btn",
-  "\x22\x20start=\x22",
-  "BANDPASS",
-  "right",
-  "mousemove",
-  "\x22\x20value=\x22",
-  "f_lowpass",
-  "configure",
-  "round",
-  "frequencyBinCount",
-  "<div\x20class=\x22knob-controller\x22\x20style=\x22transform:\x20rotate(",
-  "attr",
-  "original",
-  "123,31,162",
-  "#main-canvas",
-  "[band=\x22",
-  ".needle",
-  "rgb(140,\x20140,\x20140)",
-  "#question",
-  "loop",
-  "/playground/eq/filter-50/",
-  "abs",
-  "mousedown",
-  "connect",
-  "canvas_ctx",
-  "rgba(0,0,0,0)",
-  "canvas",
-  "knobs",
-  "reset",
-  "clientX",
-  "PEAK",
-  "LOWPASS",
-  "sin",
-  "arc",
-  "fillStyle",
-  "getContext",
-  "originalFilters",
-  "gray",
-  "onaudioprocess",
-  ",1)",
-  "transform",
-  "preventDefault",
-  "band_id",
-  ",.6)",
-  "bandOnFocus",
-  "down",
-  "textAlign",
-  "peaking",
-  "\x22\x20ondblclick=\x22knobBase(this);\x22\x20onMouseDown=\x22knobActivate(this,\x20event);\x22>",
-  "allpass",
-  "checkClipping",
-  "rotate(180deg)",
-  "clientY",
-  "#000",
-  "gap",
-  "hide",
-  "color",
-  "css",
-  "end",
-  ".yk-meter",
-  "rgba(",
-  "244,129,129",
-  "touches",
-  "247,140,69",
-  "yourBands",
-  "now",
-  "clipping",
-  ".meter-correct",
-  "f_lowshelf",
-  "random",
-  "[eq]",
-  "rgba(55,132,55,.3)",
-  "your",
-  "#111",
-  "reconfigure",
-  "14px\x20Arial",
-  "averaging",
-  "toFixed",
-  "filter_name",
-  "<img\x20toggle-band-img\x20src=\x22",
-  "constants",
-  "originalBands",
-  "state",
-  "knob",
-  "chart",
-  "pow",
-  "gameOriginalGain",
-  "playbackTime",
-  ".meter-value",
-  "freq",
-  "parents",
-  "fill",
-  "f_peak",
-  "height",
-  "clipLevel",
-  "lineTo",
-  "inputBuffer",
-  "canvasWidth",
-  "pointerRadius",
-  "sqrt",
-  "center",
-  "156,221,99",
-  "band",
-  ".game-cover",
-  "f_highshelf",
-  "[diff-accuracy]",
-  "includes",
-  "frequency",
-  "211,47,47",
-  "banned",
-  "#confirm-settings",
-  "hint",
-  "offsetY",
-  "touchTwoFingerStartValue",
-  "loopEnd",
-  "rate",
-  "diff",
-  "push",
-  "offset",
-  "194,24,91",
-  "fillText",
-  "strokeWidth",
-  "gain",
-  ".game-compare-panel",
-  "highpass",
-  "[bands]",
-  "currentTime",
-  "clipLag",
-  "lastHz",
-  "count",
-  "[diff-cor]",
-  "#game-panel-body",
-  "game-panel-footer",
-  "each",
-  "filter",
-  "start",
-  "[meter=\x22",
-  "fontWeight",
-  "createBufferSource",
-  "f_highpass",
-  ".compare-btn",
-  "<div\x20toggle-band-btn\x20style=\x22background:\x20rgb(",
-  "touchmove",
-  "find",
-  "originalAnalyser",
-  "font",
-  "rgba(105,175,115,.5)",
-  "255,184,137",
-  "answerSubmitted",
-  "getByteFrequencyData",
-  "hsl(",
-  "text",
-  "createGain",
-  "floor",
-  "loading",
-  "[hints]",
-  "gameBypassGain",
-  "volume",
-  "normal\x2011px\x20Arial",
-  "timegap",
-  "draw",
-  "setValueAtTime",
-  "width",
-  "rgba(237,61,61,.3)",
-  "fillRect",
-  ".hint-btn",
-  "freqRunner",
-  "#777",
-  "<div\x20class=\x22knob-label\x22>GAIN</div>",
-  "loopStart",
-  "rotate(",
-  "PI2",
-  "off",
-  "lastMeterEvent",
-  ">\x22\x20value=\x22",
-  "side",
-  "<div\x20class=\x22knob-panel\x22\x20knob=\x22gain\x22\x20state=\x22inactive\x22\x20sensitivity=\x220.05\x22\x20y=\x220\x22\x20min=\x22-18\x22\x20max=\x2218\x22\x20base=\x22",
-  "removeClass",
-  "\x20kHz",
-  ".game-helper-panel",
-  "log",
-  "<div\x20class=\x22knob-panel\x22\x20knob=\x22freq\x22\x20state=\x22inactive\x22\x20sensitivity=\x22",
-  "play",
-  "deg)\x22><i\x20class=\x22fa\x20fa-circle\x22></i></div>",
-  "top",
-  "[timeline-spectrogram=\x22",
-  "Notch",
-  "0,151,167",
-  "lineWidth",
-  "activeFilter",
-  "left",
-  "deg)",
-  "<div\x20class=\x22knob-value\x22\x20contentEditable=\x22true\x22\x20onBlur=\x22knobValueBlur(this);\x22\x20onFocus=\x22knobValueFocus(this);\x22\x20onKeyDown=\x22knobKeydown(this,\x20event);\x22>",
-  "isDown",
-  "NOTCH",
-  "stroke",
-  "putImageData",
-  "clearRect",
-  "length",
-  "247,111,163",
-  "\x22ondblclick=\x22knobBase(this);\x22onMouseDown=\x22knobActivate(this,\x20event);\x22>",
-  "lastClip",
-  "<div\x20class=\x22empty-knob-panel\x22></div>",
-  ".png\x22/>",
-  "transparent",
-  "f_bandpass",
-  "lowpass",
-  "f_notch",
-  "functions",
-  "originalEvent",
-  "</div>",
-  "game-panel-body",
-  "createScriptProcessor",
-  "rgba(255,255,0,.8)",
-  "bypass",
-  "getChannelData",
-  "beginPath",
-  "touchend",
-  ".knob-panel",
-  "\x20Hz",
-  "setLineDash",
-  "gameYourGain",
-  "[band]",
-  "ceil",
-  "moveTo",
-  "performance",
-  "pointerDrag",
-  ".knob-value",
-  "yourAnalyser",
-  "type",
-  "gainDB",
-  "freqDataMap",
-  "strokeStyle",
-  "active",
-  "meterUpdate",
-  "\x20dB",
-  "rgba(70,119,115,.8)",
-  "addEventListener",
-  "yours",
-  "deltaY",
-  "#999",
-  "shutdown",
-  "result",
-  "value",
-  "yourFilters",
-  "stopPropagation",
-  "yes",
-  "touchstart",
-  "<div\x20band=\x22",
-  "HIGHSHELF",
-  "offsetX",
-  "angle_gain",
-  "closePath",
-  "sample_rate",
-  "create",
-  "border",
-  "log_result",
-  "98,178,252",
-  "canvasHeight",
-  "hsl(280,\x20100%,\x2010%)",
-  "wait",
-  "highshelf",
-  "samples",
-  "createBiquadFilter",
-];
-(function (_0xe4a410, _0x4ed4be) {
-  var _0x2fe6dc = function (_0x46f8cf) {
-    while (--_0x46f8cf) {
-      _0xe4a410["push"](_0xe4a410["shift"]());
-    }
-  };
-  _0x2fe6dc(++_0x4ed4be);
-})(_0x4ed4, 0x135);
-var _0x2fe6 = function (_0xe4a410, _0x4ed4be) {
-  _0xe4a410 = _0xe4a410 - 0x0;
-  var _0x2fe6dc = _0x4ed4[_0xe4a410];
-  return _0x2fe6dc;
+'use strict';
+/** @type {!Array} */
+var _0x4ed4 = ["frequencyBinCount", '<div class="knob-controller" style="transform: rotate(', "attr", "original", "123,31,162", "#main-canvas", '[band="', ".needle", "rgb(140, 140, 140)", "#question", "loop", "/playground/eq/filter-50/", "abs", "mousedown", "connect", "canvas_ctx", "rgba(0,0,0,0)", "canvas", "knobs", "reset", "clientX", "PEAK", "LOWPASS", "sin", "arc", "fillStyle", "getContext", "originalFilters", "gray", "onaudioprocess", ",1)", "transform", "preventDefault", "band_id", ",.6)", "bandOnFocus", 
+"down", "textAlign", "peaking", '" ondblclick="knobBase(this);" onMouseDown="knobActivate(this, event);">', "allpass", "checkClipping", "rotate(180deg)", "clientY", "#000", "gap", "hide", "color", "css", "end", ".yk-meter", "rgba(", "244,129,129", "touches", "247,140,69", "yourBands", "now", "clipping", ".meter-correct", "f_lowshelf", "random", "[eq]", "rgba(55,132,55,.3)", "your", "#111", "reconfigure", "14px Arial", "averaging", "toFixed", "filter_name", '<img toggle-band-img src="', "constants", 
+"originalBands", "state", "knob", "chart", "pow", "gameOriginalGain", "playbackTime", ".meter-value", "freq", "parents", "fill", "f_peak", "height", "clipLevel", "lineTo", "inputBuffer", "canvasWidth", "pointerRadius", "sqrt", "center", "156,221,99", "band", ".game-cover", "f_highshelf", "[diff-accuracy]", "includes", "frequency", "211,47,47", "banned", "#confirm-settings", "hint", "offsetY", "touchTwoFingerStartValue", "loopEnd", "rate", "diff", "push", "offset", "194,24,91", "fillText", "strokeWidth", 
+"gain", ".game-compare-panel", "highpass", "[bands]", "currentTime", "clipLag", "lastHz", "count", "[diff-cor]", "#game-panel-body", "game-panel-footer", "each", "filter", "start", '[meter="', "fontWeight", "createBufferSource", "f_highpass", ".compare-btn", '<div toggle-band-btn style="background: rgb(', "touchmove", "find", "originalAnalyser", "font", "rgba(105,175,115,.5)", "255,184,137", "answerSubmitted", "getByteFrequencyData", "hsl(", "text", "createGain", "floor", "loading", "[hints]", "gameBypassGain", 
+"volume", "normal 11px Arial", "timegap", "draw", "setValueAtTime", "width", "rgba(237,61,61,.3)", "fillRect", ".hint-btn", "freqRunner", "#777", '<div class="knob-label">GAIN</div>', "loopStart", "rotate(", "PI2", "off", "lastMeterEvent", '>" value="', "side", '<div class="knob-panel" knob="gain" state="inactive" sensitivity="0.05" y="0" min="-18" max="18" base="', "removeClass", " kHz", ".game-helper-panel", "log", '<div class="knob-panel" knob="freq" state="inactive" sensitivity="', "play", 'deg)"><i class="fa fa-circle"></i></div>', 
+"top", '[timeline-spectrogram="', "Notch", "0,151,167", "lineWidth", "activeFilter", "left", "deg)", '<div class="knob-value" contentEditable="true" onBlur="knobValueBlur(this);" onFocus="knobValueFocus(this);" onKeyDown="knobKeydown(this, event);">', "isDown", "NOTCH", "stroke", "putImageData", "clearRect", "length", "247,111,163", '"ondblclick="knobBase(this);"onMouseDown="knobActivate(this, event);">', "lastClip", '<div class="empty-knob-panel"></div>', '.png"/>', "transparent", "f_bandpass", 
+"lowpass", "f_notch", "functions", "originalEvent", "</div>", "game-panel-body", "createScriptProcessor", "rgba(255,255,0,.8)", "bypass", "getChannelData", "beginPath", "touchend", ".knob-panel", " Hz", "setLineDash", "gameYourGain", "[band]", "ceil", "moveTo", "performance", "pointerDrag", ".knob-value", "yourAnalyser", "type", "gainDB", "freqDataMap", "strokeStyle", "active", "meterUpdate", " dB", "rgba(70,119,115,.8)", "addEventListener", "yours", "deltaY", "#999", "shutdown", "result", "value", 
+"yourFilters", "stopPropagation", "yes", "touchstart", '<div band="', "HIGHSHELF", "offsetX", "angle_gain", "closePath", "sample_rate", "create", "border", "log_result", "98,178,252", "canvasHeight", "hsl(280, 100%, 10%)", "wait", "highshelf", "samples", "createBiquadFilter", "% accurate", "show", "rgb(0, 0, 0)", "#go-next-btn", '<div toggle-band onclick="toggleBand(', "95,160,38", '" state="', "rgba(150,150,150,.3)", "#bypass-btn", "gainMin", "filter_id", "mouseup", "createElement", "createAnalyser", 
+"rgba(200,200,200,.5)", '" y="0" min="20" max="19100" base="', "html", "199,117,234", ".bypass-btn", '" start="', "BANDPASS", "right", "mousemove", '" value="', "f_lowpass", "configure", "round"];
+
+/**
+ * @param {string} i
+ * @param {?} parameter1
+ * @return {?}
+ */
+var _0x2fe6 = function(i, parameter1) {
+  /** @type {number} */
+  i = i - 0;
+  var oembedView = _0x4ed4[i];
+  return oembedView;
 };
-var _0x278f7d = _0x2fe6,
-  eq = {
-    yourBands: [],
-    originalBands: [],
-    drawValues: [],
-    PI2: Math["PI"] * 0x2,
-    pointerRadius: 0xc,
-    pointerDrag: -0x1,
-    touchTwoFingerStartValue: -0x1,
-    qMin: 0.5,
-    qMax: 0x3,
-    gainMin: -0xc,
-    gainMax: 0xc,
-    gap: 0x0,
-    rate: 0x17700,
-    samples: 0x3e8,
-    lastHz: 0x55f0,
-    canvasWidth: 0x0,
-    canvasHeight: 0x0,
-    offsetX: 0x0,
-    offsetY: 0x0,
-    lastMeterEvent: 0x0,
-    bandOnFocus: 0x0,
-    meterUpdate: ![],
-    answerSubmitted: ![],
-    isDown: ![],
-    isTouchdown: ![],
-    firstLoad: !![],
-    bypass: !![],
-    yourFilters: {},
-    originalFilters: {},
-    gameYourGain: null,
-    gameOriginalGain: null,
-    gameBypassGain: null,
-    originalAnalyser: null,
-    yourAnalyser: null,
-    freqDataMap: { original: [], your: [], diff: [] },
-    freqRunner: { timegap: 0xa, count: 0x12c },
-    activeFilter: _0x278f7d("0x3"),
-    filters: {
-      lowpass: 0x0,
-      highpass: 0x1,
-      bandpass: 0x2,
-      peaking: 0x3,
-      notch: 0x4,
-      lowshelf: 0x5,
-      highshelf: 0x6,
-    },
+/** @type {function(string, ?): ?} */
+var _0x278f7d = _0x2fe6;
+var eq = {
+  yourBands : [],
+  originalBands : [],
+  drawValues : [],
+  PI2 : Math["PI"] * 2,
+  pointerRadius : 12,
+  pointerDrag : -1,
+  touchTwoFingerStartValue : -1,
+  qMin : 0.5,
+  qMax : 3,
+  gainMin : -12,
+  gainMax : 12,
+  gap : 0,
+  rate : 96E3,
+  samples : 1E3,
+  lastHz : 22E3,
+  canvasWidth : 0,
+  canvasHeight : 0,
+  offsetX : 0,
+  offsetY : 0,
+  lastMeterEvent : 0,
+  bandOnFocus : 0,
+  meterUpdate : ![],
+  answerSubmitted : ![],
+  isDown : ![],
+  isTouchdown : ![],
+  firstLoad : !![],
+  bypass : !![],
+  yourFilters : {},
+  originalFilters : {},
+  gameYourGain : null,
+  gameOriginalGain : null,
+  gameBypassGain : null,
+  originalAnalyser : null,
+  yourAnalyser : null,
+  freqDataMap : {
+    original : [],
+    your : [],
+    diff : []
   },
-  dbMax = 0x10,
-  minHZscale = 0x10,
-  totalOctavas = 10.5,
-  canvas,
-  ctx,
-  meter,
-  result,
-  totalSections = 0xc,
-  perfectPercent = 0x4b,
-  percentAccuracy = 0x28,
-  deviation = 0x708,
-  short = {
-    LC: _0x278f7d("0x73"),
-    LS: "lowshelf",
-    PK: _0x278f7d("0x26"),
-    HS: "highshelf",
-    HC: _0x278f7d("0xc5"),
+  freqRunner : {
+    timegap : 10,
+    count : 300
   },
-  dBands = {
-    highpass: {
-      id: 0x0,
-      state: "off",
-      color: _0x278f7d("0x63"),
-      border: _0x278f7d("0x34"),
-      filter_name: "highpass",
-      filter_id: 0x1,
-      freq: 0x1e,
-      gain: 0x0,
-      q: 0.7,
-      sensitivity_freq: 0x1,
-      angle_freq: -0x8b,
-      angle_q: -0x82,
-      angle_gain: 0x0,
-      knobs: ["freq"],
-      chart: {},
-      filter: {},
-    },
-    lowshelf: {
-      id: 0x1,
-      state: _0x278f7d("0xa3"),
-      color: _0x278f7d("0x6e"),
-      border: _0x278f7d("0xbe"),
-      filter_name: "lowshelf",
-      filter_id: 0x5,
-      freq: 0x8c,
-      gain: 0x0,
-      q: 0x1,
-      sensitivity_freq: 0x3,
-      angle_freq: -0x8b,
-      angle_q: -0x76,
-      angle_gain: 0x0,
-      knobs: [_0x278f7d("0x50"), "gain"],
-      chart: {},
-      filter: {},
-    },
-    peaking1: {
-      id: 0x2,
-      state: _0x278f7d("0xa3"),
-      color: _0x278f7d("0x4"),
-      border: _0x278f7d("0x110"),
-      filter_name: "peaking",
-      filter_id: 0x3,
-      freq: 0x1b8,
-      gain: 0x0,
-      q: 0x1,
-      sensitivity_freq: 0x4,
-      angle_freq: -0x85,
-      angle_q: -0x7c,
-      angle_gain: 0x0,
-      knobs: [_0x278f7d("0x50"), "gain", "q"],
-      chart: {},
-      filter: {},
-    },
-    peaking2: {
-      id: 0x3,
-      state: _0x278f7d("0xa3"),
-      color: "25,118,210",
-      border: _0x278f7d("0xf8"),
-      filter_name: _0x278f7d("0x26"),
-      filter_id: 0x3,
-      freq: 0x3e8,
-      gain: 0x0,
-      q: 0x1,
-      sensitivity_freq: 0x7,
-      angle_freq: -0x7d,
-      angle_q: -0x7c,
-      angle_gain: 0x8c,
-      knobs: [_0x278f7d("0x50"), _0x278f7d("0x71"), "q"],
-      chart: {},
-      filter: {},
-    },
-    peaking3: {
-      id: 0x4,
-      state: _0x278f7d("0xa3"),
-      color: _0x278f7d("0xb2"),
-      border: "32,215,232",
-      filter_name: _0x278f7d("0x26"),
-      filter_id: 0x3,
-      freq: 0xdac,
-      gain: 0x0,
-      q: 0x1,
-      sensitivity_freq: 0xa,
-      angle_freq: -0x58,
-      angle_q: -0x7c,
-      angle_gain: 0x0,
-      knobs: [_0x278f7d("0x50"), _0x278f7d("0x71"), "q"],
-      chart: {},
-      filter: {},
-    },
-    highshelf: {
-      id: 0x5,
-      state: _0x278f7d("0xa3"),
-      color: _0x278f7d("0x104"),
-      border: _0x278f7d("0x5c"),
-      filter_name: _0x278f7d("0xfc"),
-      filter_id: 0x6,
-      freq: 0x2328,
-      gain: 0x0,
-      q: 0x1,
-      sensitivity_freq: 0xd,
-      angle_freq: -0x8,
-      angle_q: -0x76,
-      angle_gain: 0x0,
-      knobs: [_0x278f7d("0x50"), _0x278f7d("0x71")],
-      chart: {},
-      filter: {},
-    },
-    lowpass: {
-      id: 0x6,
-      state: _0x278f7d("0xa3"),
-      color: _0x278f7d("0x36"),
-      border: _0x278f7d("0x8a"),
-      filter_name: _0x278f7d("0xc5"),
-      filter_id: 0x0,
-      freq: 0x3e80,
-      gain: 0x0,
-      q: 0.7,
-      sensitivity_freq: 0x10,
-      angle_freq: 0x6d,
-      angle_q: -0x8c,
-      angle_gain: 0x0,
-      knobs: ["freq"],
-      chart: {},
-      filter: {},
-    },
+  activeFilter : _0x278f7d("0x3"),
+  filters : {
+    lowpass : 0,
+    highpass : 1,
+    bandpass : 2,
+    peaking : 3,
+    notch : 4,
+    lowshelf : 5,
+    highshelf : 6
+  }
+};
+/** @type {number} */
+var dbMax = 16;
+/** @type {number} */
+var minHZscale = 16;
+/** @type {number} */
+var totalOctavas = 10.5;
+var canvas;
+var ctx;
+var meter;
+var result;
+/** @type {number} */
+var totalSections = 12;
+/** @type {number} */
+var perfectPercent = 75;
+/** @type {number} */
+var percentAccuracy = 40;
+/** @type {number} */
+var deviation = 1800;
+var short = {
+  LC : _0x278f7d("0x73"),
+  LS : "lowshelf",
+  PK : _0x278f7d("0x26"),
+  HS : "highshelf",
+  HC : _0x278f7d("0xc5")
+};
+var dBands = {
+  highpass : {
+    id : 0,
+    state : "off",
+    color : _0x278f7d("0x63"),
+    border : _0x278f7d("0x34"),
+    filter_name : "highpass",
+    filter_id : 1,
+    freq : 30,
+    gain : 0,
+    q : 0.7,
+    sensitivity_freq : 1,
+    angle_freq : -139,
+    angle_q : -130,
+    angle_gain : 0,
+    knobs : ["freq"],
+    chart : {},
+    filter : {}
   },
-  prototypes = {
-    "LC-N-N": {
-      deviation: 0x708,
-      options: {
-        1: [
-          {
-            filter_name: "LC",
-            freq: [0x96, 0x578],
-            q: [0.7, 0.7],
-            gain: [0x0, 0x0],
-          },
-        ],
-      },
-    },
-    "N-N-HC": {
-      deviation: 0x708,
-      options: {
-        1: [
-          {
-            filter_name: "HC",
-            freq: [0xbb8, 0x2328],
-            q: [0.7, 0.7],
-            gain: [0x0, 0x0],
-          },
-        ],
-      },
-    },
-    "LC-N-HC": {
-      deviation: 0x7d0,
-      options: {
-        1: [
-          {
-            filter_name: "LC",
-            freq: [0x96, 0x5dc],
-            q: [0.7, 0.7],
-            gain: [0x0, 0x0],
-          },
-          {
-            filter_name: "HC",
-            freq: [0x9c4, 0x2328],
-            q: [0.7, 0.7],
-            gain: [0x0, 0x0],
-          },
-        ],
-      },
-    },
-    "LS-N-N": {
-      deviation: 0x834,
-      options: {
-        1: [
-          {
-            filter_name: "LS",
-            freq: [0xaa, 0x258],
-            q: [0.7, 0.7],
-            gain: [-0xc, 0xc],
-          },
-        ],
-      },
-    },
-    "N-N-HS": {
-      deviation: 0x834,
-      options: {
-        1: [
-          {
-            filter_name: "HS",
-            freq: [0xfa0, 0x2328],
-            q: [0.7, 0.7],
-            gain: [-0xc, 0xc],
-          },
-        ],
-      },
-    },
-    "N-PK1-N": {
-      deviation: 0x834,
-      options: {
-        1: [
-          {
-            filter_name: "PK",
-            freq: [0xc8, 0x2134],
-            q: [0.7, 1.5],
-            gain: [0x8, 0xc],
-          },
-        ],
-        2: [
-          {
-            filter_name: "PK",
-            freq: [0xc8, 0x1f40],
-            q: [0.8, 1.25],
-            gain: [-0xc, -0x9],
-          },
-        ],
-      },
-    },
-    "LC-N-HS": {
-      deviation: 0x7d0,
-      options: {
-        1: [
-          {
-            filter_name: "LC",
-            freq: [0x96, 0x3e8],
-            q: [0.7, 0.7],
-            gain: [0x0, 0x0],
-          },
-          {
-            filter_name: "HS",
-            freq: [0xfa0, 0x2328],
-            q: [0.7, 0.7],
-            gain: [-0xc, 0xc],
-          },
-        ],
-      },
-    },
-    "LS-N-HC": {
-      deviation: 0x7d0,
-      options: {
-        1: [
-          {
-            filter_name: "LS",
-            freq: [0xc8, 0x28a],
-            q: [0.7, 0.7],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "HC",
-            freq: [0xbb8, 0x2328],
-            q: [0.7, 0.7],
-            gain: [0x0, 0x0],
-          },
-        ],
-      },
-    },
-    "LS-N-HS": {
-      deviation: 0x8fc,
-      options: {
-        1: [
-          {
-            filter_name: "LS",
-            freq: [0xc8, 0x28a],
-            q: [0.7, 0.7],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "HS",
-            freq: [0x1194, 0x2328],
-            q: [0.7, 0.7],
-            gain: [-0xc, 0xc],
-          },
-        ],
-      },
-    },
-    "LC-PK1-N": {
-      deviation: 0x834,
-      options: {
-        1: [
-          {
-            filter_name: "LC",
-            freq: [0x96, 0x28a],
-            q: [0.7, 0.7],
-            gain: [0x0, 0x0],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x320, 0x2328],
-            q: [0.7, 0x3],
-            gain: [0x9, 0xc],
-          },
-        ],
-        2: [
-          {
-            filter_name: "LC",
-            freq: [0x96, 0x226],
-            q: [0.7, 0.7],
-            gain: [0x0, 0x0],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x5dc, 0x2134],
-            q: [0.6, 1.5],
-            gain: [-0xc, -0xa],
-          },
-        ],
-      },
-    },
-    "N-PK1-HC": {
-      deviation: 0x834,
-      options: {
-        1: [
-          {
-            filter_name: "PK",
-            freq: [0xfa, 0xbb8],
-            q: [0.7, 2.5],
-            gain: [0xa, 0xc],
-          },
-          {
-            filter_name: "HC",
-            freq: [0xdac, 0x2328],
-            q: [0.7, 0.7],
-            gain: [0x0, 0x0],
-          },
-        ],
-        2: [
-          {
-            filter_name: "PK",
-            freq: [0xfa, 0xbb8],
-            q: [0.65, 1.5],
-            gain: [-0xc, -0x8],
-          },
-          {
-            filter_name: "HC",
-            freq: [0xfa0, 0x251c],
-            q: [0.7, 0.7],
-            gain: [0x0, 0x0],
-          },
-        ],
-      },
-    },
-    "LS-PK1-N": {
-      deviation: 0x960,
-      options: {
-        1: [
-          {
-            filter_name: "LS",
-            freq: [0x96, 0x226],
-            q: [0.7, 0.7],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x28a, 0x1f40],
-            q: [0.7, 1.5],
-            gain: [0x8, 0xc],
-          },
-        ],
-        2: [
-          {
-            filter_name: "LS",
-            freq: [0xc8, 0x258],
-            q: [0.7, 0.7],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x2bc, 0x2134],
-            q: [0.7, 1.5],
-            gain: [-0xc, -0x9],
-          },
-        ],
-      },
-    },
-    "N-PK1-HS": {
-      deviation: 0x960,
-      options: {
-        1: [
-          {
-            filter_name: "PK",
-            freq: [0xfa, 0xfa0],
-            q: [0.7, 1.5],
-            gain: [0x8, 0xc],
-          },
-          {
-            filter_name: "HS",
-            freq: [0x1194, 0x2328],
-            q: [0.7, 0.7],
-            gain: [-0xc, 0xc],
-          },
-        ],
-        2: [
-          {
-            filter_name: "PK",
-            freq: [0x15e, 0xe74],
-            q: [0.7, 1.5],
-            gain: [-0xc, -0xa],
-          },
-          {
-            filter_name: "HS",
-            freq: [0x1068, 0x251c],
-            q: [0.7, 0.7],
-            gain: [-0xc, 0xc],
-          },
-        ],
-      },
-    },
-    "LC-PK1-HC": {
-      deviation: 0x8fc,
-      options: {
-        1: [
-          {
-            filter_name: "LC",
-            freq: [0x96, 0x226],
-            q: [0.7, 0.7],
-            gain: [0x0, 0x0],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x28a, 0x1004],
-            q: [0.7, 1.5],
-            gain: [0x8, 0xc],
-          },
-          {
-            filter_name: "HC",
-            freq: [0x125c, 0x2328],
-            q: [0.7, 0.7],
-            gain: [0x0, 0x0],
-          },
-        ],
-        2: [
-          {
-            filter_name: "LC",
-            freq: [0x96, 0x1c2],
-            q: [0.7, 0.7],
-            gain: [0x0, 0x0],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x226, 0xbb8],
-            q: [0.7, 1.5],
-            gain: [-0xc, -0x9],
-          },
-          {
-            filter_name: "HC",
-            freq: [0xd48, 0x251c],
-            q: [0.7, 0.7],
-            gain: [0x0, 0x0],
-          },
-        ],
-      },
-    },
-    "N-PK2-N": {
-      deviation: 0xce4,
-      options: {
-        1: [
-          {
-            filter_name: "PK",
-            freq: [0x96, 0x4b0],
-            q: [0.7, 1.5],
-            gain: [0x8, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x5dc, 0x2328],
-            q: [0.75, 2.5],
-            gain: [0x8, 0xc],
-          },
-        ],
-        2: [
-          {
-            filter_name: "PK",
-            freq: [0xfa, 0x44c],
-            q: [0.7, 1.5],
-            gain: [-0xc, -0x9],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x5aa, 0x1f40],
-            q: [0.65, 1.5],
-            gain: [-0xc, -0x8],
-          },
-        ],
-        3: [
-          {
-            filter_name: "PK",
-            freq: [0x96, 0x4b0],
-            q: [0.7, 1.5],
-            gain: [0x8, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x5dc, 0x2328],
-            q: [0.75, 2.5],
-            gain: [-0xc, -0x8],
-          },
-        ],
-        4: [
-          {
-            filter_name: "PK",
-            freq: [0x1f4, 0x76c],
-            q: [0.7, 1.5],
-            gain: [-0xc, -0x9],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x834, 0x2328],
-            q: [0.65, 1.5],
-            gain: [0x8, 0xc],
-          },
-        ],
-        5: [
-          {
-            filter_name: "PK",
-            freq: [0x15e, 0x4b0],
-            q: [0.7, 1.5],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x60e, 0x2328],
-            q: [0.65, 1.5],
-            gain: [-0xc, 0xc],
-          },
-        ],
-      },
-    },
-    "LC-PK1-HS": {
-      deviation: 0xa8c,
-      options: {
-        1: [
-          {
-            filter_name: "LC",
-            freq: [0x96, 0x1f4],
-            q: [0.7, 0.7],
-            gain: [0x0, 0x0],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x258, 0x10cc],
-            q: [0.75, 1.5],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "HS",
-            freq: [0x12c0, 0x2328],
-            q: [0.7, 0.7],
-            gain: [-0xc, 0xc],
-          },
-        ],
-      },
-    },
-    "LS-PK1-HC": {
-      deviation: 0xa8c,
-      options: {
-        1: [
-          {
-            filter_name: "LS",
-            freq: [0xb4, 0x1f4],
-            q: [0.7, 0.7],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x258, 0xfa0],
-            q: [0.7, 1.5],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "HC",
-            freq: [0x1194, 0x2328],
-            q: [0.7, 0.7],
-            gain: [0x0, 0x0],
-          },
-        ],
-      },
-    },
-    "LS-PK1-HS": {
-      deviation: 0xd48,
-      options: {
-        1: [
-          {
-            filter_name: "LS",
-            freq: [0xbe, 0x258],
-            q: [0.7, 0.7],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x320, 0xfa0],
-            q: [0.6, 0x2],
-            gain: [0x7, 0xc],
-          },
-          {
-            filter_name: "HS",
-            freq: [0x1388, 0x2328],
-            q: [0.7, 0.7],
-            gain: [-0xc, 0xc],
-          },
-        ],
-        2: [
-          {
-            filter_name: "LS",
-            freq: [0x96, 0x1c2],
-            q: [0.7, 0.7],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x258, 0xfa0],
-            q: [0.75, 1.25],
-            gain: [-0xc, -0x9],
-          },
-          {
-            filter_name: "HS",
-            freq: [0x125c, 0x2328],
-            q: [0.7, 0.7],
-            gain: [-0xc, 0xc],
-          },
-        ],
-      },
-    },
-    "LC-PK2-N": {
-      deviation: 0xce4,
-      options: {
-        1: [
-          {
-            filter_name: "LC",
-            freq: [0x96, 0x1f4],
-            q: [0.7, 0.7],
-            gain: [0x0, 0x0],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x28a, 0x7d0],
-            q: [0.7, 1.5],
-            gain: [0x7, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x8fc, 0x2328],
-            q: [0.7, 1.75],
-            gain: [0x7, 0xc],
-          },
-        ],
-        2: [
-          {
-            filter_name: "LC",
-            freq: [0xc8, 0x1c2],
-            q: [0.7, 0.7],
-            gain: [0x0, 0x0],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x208, 0x9c4],
-            q: [0.7, 1.5],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0xbb8, 0x2134],
-            q: [0.7, 1.75],
-            gain: [0x8, 0xc],
-          },
-        ],
-      },
-    },
-    "N-PK2-HC": {
-      deviation: 0xce4,
-      options: {
-        1: [
-          {
-            filter_name: "PK",
-            freq: [0xc8, 0x3de],
-            q: [0.7, 1.5],
-            gain: [-0xc, -0x7],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x4b0, 0x1388],
-            q: [0.7, 1.5],
-            gain: [-0xc, -0x8],
-          },
-          {
-            filter_name: "HC",
-            freq: [0x157c, 0x2328],
-            q: [0.7, 0.7],
-            gain: [0x0, 0x0],
-          },
-        ],
-        2: [
-          {
-            filter_name: "PK",
-            freq: [0xbe, 0x2bc],
-            q: [0.7, 1.5],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x320, 0xc80],
-            q: [0.7, 1.5],
-            gain: [0xa, 0xc],
-          },
-          {
-            filter_name: "HC",
-            freq: [0xe10, 0x2328],
-            q: [0.7, 0.7],
-            gain: [0x0, 0x0],
-          },
-        ],
-      },
-    },
-    "LS-PK2-N": {
-      deviation: 0xdac,
-      options: {
-        1: [
-          {
-            filter_name: "LS",
-            freq: [0xaa, 0x190],
-            q: [0.7, 0.7],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x1f4, 0x834],
-            q: [0.5, 2.5],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x8fc, 0x2328],
-            q: [0.5, 2.5],
-            gain: [-0xc, 0xc],
-          },
-        ],
-        2: [
-          {
-            filter_name: "LS",
-            freq: [0xaa, 0x190],
-            q: [0.7, 0.7],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x1f4, 0x898],
-            q: [0.5, 2.5],
-            gain: [0x9, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x960, 0x1f40],
-            q: [0.5, 2.5],
-            gain: [-0xc, 0xc],
-          },
-        ],
-      },
-    },
-    "N-PK2-HS": {
-      deviation: 0xdac,
-      options: {
-        1: [
-          {
-            filter_name: "PK",
-            freq: [0xc8, 0x4b0],
-            q: [0.6, 0x2],
-            gain: [-0xc, -0x9],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x578, 0x1194],
-            q: [0.6, 1.5],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "HS",
-            freq: [0x1770, 0x2328],
-            q: [0.7, 0.7],
-            gain: [-0xc, 0xc],
-          },
-        ],
-        2: [
-          {
-            filter_name: "PK",
-            freq: [0xd2, 0x4b0],
-            q: [0.6, 0x2],
-            gain: [0x9, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x578, 0x1194],
-            q: [0.6, 1.5],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "HS",
-            freq: [0x1770, 0x2328],
-            q: [0.7, 0.7],
-            gain: [-0xc, 0xc],
-          },
-        ],
-      },
-    },
-    "LC-PK2-HC": {
-      deviation: 0xd48,
-      options: {
-        1: [
-          {
-            filter_name: "LC",
-            freq: [0x96, 0x12c],
-            q: [0.7, 0.7],
-            gain: [0x0, 0x0],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x190, 0x708],
-            q: [0.7, 1.5],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x7d0, 0x1388],
-            q: [0.7, 1.5],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "HC",
-            freq: [0x14b4, 0x2328],
-            q: [0.7, 0.7],
-            gain: [0x0, 0x0],
-          },
-        ],
-      },
-    },
-    "LC-PK2-HS": {
-      deviation: 0xe10,
-      options: {
-        1: [
-          {
-            filter_name: "LC",
-            freq: [0x96, 0x190],
-            q: [0.7, 0.7],
-            gain: [0x0, 0x0],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x1c2, 0x5dc],
-            q: [0.65, 1.5],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x6a4, 0xfa0],
-            q: [0.55, 1.5],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "HS",
-            freq: [0x1194, 0x2328],
-            q: [0.7, 0.7],
-            gain: [-0xc, 0xc],
-          },
-        ],
-      },
-    },
-    "LS-PK2-HC": {
-      deviation: 0xe10,
-      options: {
-        1: [
-          {
-            filter_name: "LS",
-            freq: [0xa0, 0x190],
-            q: [0.7, 0.7],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x1ae, 0x578],
-            q: [0.65, 1.5],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x5dc, 0x1194],
-            q: [0.75, 1.5],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "HC",
-            freq: [0x1388, 0x2328],
-            q: [0.7, 0.7],
-            gain: [0x0, 0x0],
-          },
-        ],
-      },
-    },
-    "LS-PK2-HS": {
-      deviation: 0xe74,
-      options: {
-        1: [
-          {
-            filter_name: "LS",
-            freq: [0xc8, 0x1f4],
-            q: [0.7, 0.7],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x226, 0x708],
-            q: [0.7, 1.7],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x7d0, 0x1964],
-            q: [0.6, 1.5],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "HS",
-            freq: [0x1b58, 0x2134],
-            q: [0.7, 0.7],
-            gain: [-0xc, 0xc],
-          },
-        ],
-      },
-    },
-    "N-PK3-N": {
-      deviation: 0xdac,
-      options: {
-        1: [
-          {
-            filter_name: "PK",
-            freq: [0xc8, 0x226],
-            q: [0.7, 1.5],
-            gain: [0x8, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x276, 0x898],
-            q: [0.7, 1.5],
-            gain: [-0xc, -0x8],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x9c4, 0x2328],
-            q: [0.7, 1.5],
-            gain: [0x7, 0xc],
-          },
-        ],
-        2: [
-          {
-            filter_name: "PK",
-            freq: [0xbe, 0x1f4],
-            q: [0.7, 1.5],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x258, 0xa8c],
-            q: [0.7, 1.5],
-            gain: [0x8, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0xc1c, 0x21fc],
-            q: [0.7, 1.5],
-            gain: [-0xc, 0xc],
-          },
-        ],
-        3: [
-          {
-            filter_name: "PK",
-            freq: [0xc8, 0x1f4],
-            q: [0.7, 1.5],
-            gain: [-0xc, -0x8],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x258, 0xa8c],
-            q: [0.7, 1.5],
-            gain: [0x8, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0xc1c, 0x251c],
-            q: [0.7, 1.5],
-            gain: [-0xc, 0xc],
-          },
-        ],
-      },
-    },
-    "LC-PK3-N": {
-      deviation: 0xdac,
-      options: {
-        1: [
-          {
-            filter_name: "LC",
-            freq: [0x96, 0x15e],
-            q: [0.7, 0.7],
-            gain: [0x0, 0x0],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x190, 0x4b0],
-            q: [0.6, 1.5],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x56e, 0xfa0],
-            q: [0.6, 1.5],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x1194, 0x2328],
-            q: [0.6, 1.5],
-            gain: [-0xc, 0xc],
-          },
-        ],
-      },
-    },
-    "LS-PK3-N": {
-      deviation: 0xed8,
-      options: {
-        1: [
-          {
-            filter_name: "LS",
-            freq: [0xbe, 0x15e],
-            q: [0.7, 0.7],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x190, 0x44c],
-            q: [0.5, 1.5],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x44c, 0xbb8],
-            q: [0.7, 1.75],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0xdac, 0x2328],
-            q: [0.6, 0x2],
-            gain: [-0xc, 0xc],
-          },
-        ],
-      },
-    },
-    "N-PK3-HC": {
-      deviation: 0xdac,
-      options: {
-        1: [
-          {
-            filter_name: "PK",
-            freq: [0xc8, 0x258],
-            q: [0.55, 1.5],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x28a, 0x708],
-            q: [0.65, 1.4],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x79e, 0x1388],
-            q: [0.65, 1.6],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "HC",
-            freq: [0x1388, 0x2328],
-            q: [0.7, 0.7],
-            gain: [0x0, 0x0],
-          },
-        ],
-      },
-    },
-    "N-PK3-HS": {
-      deviation: 0xfa0,
-      options: {
-        1: [
-          {
-            filter_name: "PK",
-            freq: [0xc8, 0x2bc],
-            q: [0.6, 1.5],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x307, 0x708],
-            q: [0.7, 1.5],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x79e, 0x1194],
-            q: [0.7, 1.5],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "HS",
-            freq: [0x1388, 0x2454],
-            q: [0.7, 0.7],
-            gain: [-0xc, 0xc],
-          },
-        ],
-      },
-    },
-    "LC-PK3-HC": {
-      deviation: 0xfa0,
-      options: {
-        1: [
-          {
-            filter_name: "LC",
-            freq: [0x96, 0x190],
-            q: [0.7, 0.7],
-            gain: [0x0, 0x0],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x1bd, 0x3e8],
-            q: [0.5, 1.5],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x44c, 0x898],
-            q: [0.5, 0x3],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x9c4, 0x1770],
-            q: [0.7, 0x3],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "HC",
-            freq: [0x1770, 0x2328],
-            q: [0.7, 0.7],
-            gain: [0x0, 0x0],
-          },
-        ],
-      },
-    },
-    "LS-PK3-HC": {
-      deviation: 0x1004,
-      options: {
-        1: [
-          {
-            filter_name: "LS",
-            freq: [0xb4, 0x15e],
-            q: [0.7, 0.7],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x190, 0x384],
-            q: [0.7, 1.5],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x3e8, 0xaf0],
-            q: [0.7, 0x3],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0xb54, 0x1450],
-            q: [0.7, 0x3],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "HC",
-            freq: [0x157c, 0x2710],
-            q: [0.7, 0.7],
-            gain: [0x0, 0x0],
-          },
-        ],
-      },
-    },
-    "LS-PK3-HS": {
-      deviation: 0x1068,
-      options: {
-        1: [
-          {
-            filter_name: "LS",
-            freq: [0xaa, 0x15e],
-            q: [0.7, 0.7],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x190, 0x47e],
-            q: [0.8, 1.5],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x514, 0xbb8],
-            q: [0.8, 2.5],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0xc80, 0x1d4c],
-            q: [0.8, 0x3],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "HS",
-            freq: [0x1f40, 0x2328],
-            q: [0.7, 0.7],
-            gain: [-0xc, 0xc],
-          },
-        ],
-      },
-    },
-    "LC-PK3-HS": {
-      deviation: 0x1004,
-      options: {
-        1: [
-          {
-            filter_name: "LC",
-            freq: [0x96, 0xc8],
-            q: [0.7, 0.7],
-            gain: [0x0, 0x0],
-          },
-          {
-            filter_name: "PK",
-            freq: [0xf5, 0x320],
-            q: [0.5, 1.5],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x384, 0x834],
-            q: [0.5, 0x3],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "PK",
-            freq: [0x8fc, 0x1770],
-            q: [0.7, 0x3],
-            gain: [-0xc, 0xc],
-          },
-          {
-            filter_name: "HS",
-            freq: [0x1b58, 0x2328],
-            q: [0.7, 0.7],
-            gain: [-0xc, 0xc],
-          },
-        ],
-      },
-    },
+  lowshelf : {
+    id : 1,
+    state : _0x278f7d("0xa3"),
+    color : _0x278f7d("0x6e"),
+    border : _0x278f7d("0xbe"),
+    filter_name : "lowshelf",
+    filter_id : 5,
+    freq : 140,
+    gain : 0,
+    q : 1,
+    sensitivity_freq : 3,
+    angle_freq : -139,
+    angle_q : -118,
+    angle_gain : 0,
+    knobs : [_0x278f7d("0x50"), "gain"],
+    chart : {},
+    filter : {}
+  },
+  peaking1 : {
+    id : 2,
+    state : _0x278f7d("0xa3"),
+    color : _0x278f7d("0x4"),
+    border : _0x278f7d("0x110"),
+    filter_name : "peaking",
+    filter_id : 3,
+    freq : 440,
+    gain : 0,
+    q : 1,
+    sensitivity_freq : 4,
+    angle_freq : -133,
+    angle_q : -124,
+    angle_gain : 0,
+    knobs : [_0x278f7d("0x50"), "gain", "q"],
+    chart : {},
+    filter : {}
+  },
+  peaking2 : {
+    id : 3,
+    state : _0x278f7d("0xa3"),
+    color : "25,118,210",
+    border : _0x278f7d("0xf8"),
+    filter_name : _0x278f7d("0x26"),
+    filter_id : 3,
+    freq : 1E3,
+    gain : 0,
+    q : 1,
+    sensitivity_freq : 7,
+    angle_freq : -125,
+    angle_q : -124,
+    angle_gain : 140,
+    knobs : [_0x278f7d("0x50"), _0x278f7d("0x71"), "q"],
+    chart : {},
+    filter : {}
+  },
+  peaking3 : {
+    id : 4,
+    state : _0x278f7d("0xa3"),
+    color : _0x278f7d("0xb2"),
+    border : "32,215,232",
+    filter_name : _0x278f7d("0x26"),
+    filter_id : 3,
+    freq : 3500,
+    gain : 0,
+    q : 1,
+    sensitivity_freq : 10,
+    angle_freq : -88,
+    angle_q : -124,
+    angle_gain : 0,
+    knobs : [_0x278f7d("0x50"), _0x278f7d("0x71"), "q"],
+    chart : {},
+    filter : {}
+  },
+  highshelf : {
+    id : 5,
+    state : _0x278f7d("0xa3"),
+    color : _0x278f7d("0x104"),
+    border : _0x278f7d("0x5c"),
+    filter_name : _0x278f7d("0xfc"),
+    filter_id : 6,
+    freq : 9E3,
+    gain : 0,
+    q : 1,
+    sensitivity_freq : 13,
+    angle_freq : -8,
+    angle_q : -118,
+    angle_gain : 0,
+    knobs : [_0x278f7d("0x50"), _0x278f7d("0x71")],
+    chart : {},
+    filter : {}
+  },
+  lowpass : {
+    id : 6,
+    state : _0x278f7d("0xa3"),
+    color : _0x278f7d("0x36"),
+    border : _0x278f7d("0x8a"),
+    filter_name : _0x278f7d("0xc5"),
+    filter_id : 0,
+    freq : 16E3,
+    gain : 0,
+    q : 0.7,
+    sensitivity_freq : 16,
+    angle_freq : 109,
+    angle_q : -140,
+    angle_gain : 0,
+    knobs : ["freq"],
+    chart : {},
+    filter : {}
+  }
+};
+var prototypes = {
+  "LC-N-N" : {
+    deviation : 1800,
+    options : {
+      1 : [{
+        filter_name : "LC",
+        freq : [150, 1400],
+        q : [0.7, 0.7],
+        gain : [0, 0]
+      }]
+    }
+  },
+  "N-N-HC" : {
+    deviation : 1800,
+    options : {
+      1 : [{
+        filter_name : "HC",
+        freq : [3E3, 9E3],
+        q : [0.7, 0.7],
+        gain : [0, 0]
+      }]
+    }
+  },
+  "LC-N-HC" : {
+    deviation : 2E3,
+    options : {
+      1 : [{
+        filter_name : "LC",
+        freq : [150, 1500],
+        q : [0.7, 0.7],
+        gain : [0, 0]
+      }, {
+        filter_name : "HC",
+        freq : [2500, 9E3],
+        q : [0.7, 0.7],
+        gain : [0, 0]
+      }]
+    }
+  },
+  "LS-N-N" : {
+    deviation : 2100,
+    options : {
+      1 : [{
+        filter_name : "LS",
+        freq : [170, 600],
+        q : [0.7, 0.7],
+        gain : [-12, 12]
+      }]
+    }
+  },
+  "N-N-HS" : {
+    deviation : 2100,
+    options : {
+      1 : [{
+        filter_name : "HS",
+        freq : [4E3, 9E3],
+        q : [0.7, 0.7],
+        gain : [-12, 12]
+      }]
+    }
+  },
+  "N-PK1-N" : {
+    deviation : 2100,
+    options : {
+      1 : [{
+        filter_name : "PK",
+        freq : [200, 8500],
+        q : [0.7, 1.5],
+        gain : [8, 12]
+      }],
+      2 : [{
+        filter_name : "PK",
+        freq : [200, 8E3],
+        q : [0.8, 1.25],
+        gain : [-12, -9]
+      }]
+    }
+  },
+  "LC-N-HS" : {
+    deviation : 2E3,
+    options : {
+      1 : [{
+        filter_name : "LC",
+        freq : [150, 1E3],
+        q : [0.7, 0.7],
+        gain : [0, 0]
+      }, {
+        filter_name : "HS",
+        freq : [4E3, 9E3],
+        q : [0.7, 0.7],
+        gain : [-12, 12]
+      }]
+    }
+  },
+  "LS-N-HC" : {
+    deviation : 2E3,
+    options : {
+      1 : [{
+        filter_name : "LS",
+        freq : [200, 650],
+        q : [0.7, 0.7],
+        gain : [-12, 12]
+      }, {
+        filter_name : "HC",
+        freq : [3E3, 9E3],
+        q : [0.7, 0.7],
+        gain : [0, 0]
+      }]
+    }
+  },
+  "LS-N-HS" : {
+    deviation : 2300,
+    options : {
+      1 : [{
+        filter_name : "LS",
+        freq : [200, 650],
+        q : [0.7, 0.7],
+        gain : [-12, 12]
+      }, {
+        filter_name : "HS",
+        freq : [4500, 9E3],
+        q : [0.7, 0.7],
+        gain : [-12, 12]
+      }]
+    }
+  },
+  "LC-PK1-N" : {
+    deviation : 2100,
+    options : {
+      1 : [{
+        filter_name : "LC",
+        freq : [150, 650],
+        q : [0.7, 0.7],
+        gain : [0, 0]
+      }, {
+        filter_name : "PK",
+        freq : [800, 9E3],
+        q : [0.7, 3],
+        gain : [9, 12]
+      }],
+      2 : [{
+        filter_name : "LC",
+        freq : [150, 550],
+        q : [0.7, 0.7],
+        gain : [0, 0]
+      }, {
+        filter_name : "PK",
+        freq : [1500, 8500],
+        q : [0.6, 1.5],
+        gain : [-12, -10]
+      }]
+    }
+  },
+  "N-PK1-HC" : {
+    deviation : 2100,
+    options : {
+      1 : [{
+        filter_name : "PK",
+        freq : [250, 3E3],
+        q : [0.7, 2.5],
+        gain : [10, 12]
+      }, {
+        filter_name : "HC",
+        freq : [3500, 9E3],
+        q : [0.7, 0.7],
+        gain : [0, 0]
+      }],
+      2 : [{
+        filter_name : "PK",
+        freq : [250, 3E3],
+        q : [0.65, 1.5],
+        gain : [-12, -8]
+      }, {
+        filter_name : "HC",
+        freq : [4E3, 9500],
+        q : [0.7, 0.7],
+        gain : [0, 0]
+      }]
+    }
+  },
+  "LS-PK1-N" : {
+    deviation : 2400,
+    options : {
+      1 : [{
+        filter_name : "LS",
+        freq : [150, 550],
+        q : [0.7, 0.7],
+        gain : [-12, 12]
+      }, {
+        filter_name : "PK",
+        freq : [650, 8E3],
+        q : [0.7, 1.5],
+        gain : [8, 12]
+      }],
+      2 : [{
+        filter_name : "LS",
+        freq : [200, 600],
+        q : [0.7, 0.7],
+        gain : [-12, 12]
+      }, {
+        filter_name : "PK",
+        freq : [700, 8500],
+        q : [0.7, 1.5],
+        gain : [-12, -9]
+      }]
+    }
+  },
+  "N-PK1-HS" : {
+    deviation : 2400,
+    options : {
+      1 : [{
+        filter_name : "PK",
+        freq : [250, 4E3],
+        q : [0.7, 1.5],
+        gain : [8, 12]
+      }, {
+        filter_name : "HS",
+        freq : [4500, 9E3],
+        q : [0.7, 0.7],
+        gain : [-12, 12]
+      }],
+      2 : [{
+        filter_name : "PK",
+        freq : [350, 3700],
+        q : [0.7, 1.5],
+        gain : [-12, -10]
+      }, {
+        filter_name : "HS",
+        freq : [4200, 9500],
+        q : [0.7, 0.7],
+        gain : [-12, 12]
+      }]
+    }
+  },
+  "LC-PK1-HC" : {
+    deviation : 2300,
+    options : {
+      1 : [{
+        filter_name : "LC",
+        freq : [150, 550],
+        q : [0.7, 0.7],
+        gain : [0, 0]
+      }, {
+        filter_name : "PK",
+        freq : [650, 4100],
+        q : [0.7, 1.5],
+        gain : [8, 12]
+      }, {
+        filter_name : "HC",
+        freq : [4700, 9E3],
+        q : [0.7, 0.7],
+        gain : [0, 0]
+      }],
+      2 : [{
+        filter_name : "LC",
+        freq : [150, 450],
+        q : [0.7, 0.7],
+        gain : [0, 0]
+      }, {
+        filter_name : "PK",
+        freq : [550, 3E3],
+        q : [0.7, 1.5],
+        gain : [-12, -9]
+      }, {
+        filter_name : "HC",
+        freq : [3400, 9500],
+        q : [0.7, 0.7],
+        gain : [0, 0]
+      }]
+    }
+  },
+  "N-PK2-N" : {
+    deviation : 3300,
+    options : {
+      1 : [{
+        filter_name : "PK",
+        freq : [150, 1200],
+        q : [0.7, 1.5],
+        gain : [8, 12]
+      }, {
+        filter_name : "PK",
+        freq : [1500, 9E3],
+        q : [0.75, 2.5],
+        gain : [8, 12]
+      }],
+      2 : [{
+        filter_name : "PK",
+        freq : [250, 1100],
+        q : [0.7, 1.5],
+        gain : [-12, -9]
+      }, {
+        filter_name : "PK",
+        freq : [1450, 8E3],
+        q : [0.65, 1.5],
+        gain : [-12, -8]
+      }],
+      3 : [{
+        filter_name : "PK",
+        freq : [150, 1200],
+        q : [0.7, 1.5],
+        gain : [8, 12]
+      }, {
+        filter_name : "PK",
+        freq : [1500, 9E3],
+        q : [0.75, 2.5],
+        gain : [-12, -8]
+      }],
+      4 : [{
+        filter_name : "PK",
+        freq : [500, 1900],
+        q : [0.7, 1.5],
+        gain : [-12, -9]
+      }, {
+        filter_name : "PK",
+        freq : [2100, 9E3],
+        q : [0.65, 1.5],
+        gain : [8, 12]
+      }],
+      5 : [{
+        filter_name : "PK",
+        freq : [350, 1200],
+        q : [0.7, 1.5],
+        gain : [-12, 12]
+      }, {
+        filter_name : "PK",
+        freq : [1550, 9E3],
+        q : [0.65, 1.5],
+        gain : [-12, 12]
+      }]
+    }
+  },
+  "LC-PK1-HS" : {
+    deviation : 2700,
+    options : {
+      1 : [{
+        filter_name : "LC",
+        freq : [150, 500],
+        q : [0.7, 0.7],
+        gain : [0, 0]
+      }, {
+        filter_name : "PK",
+        freq : [600, 4300],
+        q : [0.75, 1.5],
+        gain : [-12, 12]
+      }, {
+        filter_name : "HS",
+        freq : [4800, 9E3],
+        q : [0.7, 0.7],
+        gain : [-12, 12]
+      }]
+    }
+  },
+  "LS-PK1-HC" : {
+    deviation : 2700,
+    options : {
+      1 : [{
+        filter_name : "LS",
+        freq : [180, 500],
+        q : [0.7, 0.7],
+        gain : [-12, 12]
+      }, {
+        filter_name : "PK",
+        freq : [600, 4E3],
+        q : [0.7, 1.5],
+        gain : [-12, 12]
+      }, {
+        filter_name : "HC",
+        freq : [4500, 9E3],
+        q : [0.7, 0.7],
+        gain : [0, 0]
+      }]
+    }
+  },
+  "LS-PK1-HS" : {
+    deviation : 3400,
+    options : {
+      1 : [{
+        filter_name : "LS",
+        freq : [190, 600],
+        q : [0.7, 0.7],
+        gain : [-12, 12]
+      }, {
+        filter_name : "PK",
+        freq : [800, 4E3],
+        q : [0.6, 2],
+        gain : [7, 12]
+      }, {
+        filter_name : "HS",
+        freq : [5E3, 9E3],
+        q : [0.7, 0.7],
+        gain : [-12, 12]
+      }],
+      2 : [{
+        filter_name : "LS",
+        freq : [150, 450],
+        q : [0.7, 0.7],
+        gain : [-12, 12]
+      }, {
+        filter_name : "PK",
+        freq : [600, 4E3],
+        q : [0.75, 1.25],
+        gain : [-12, -9]
+      }, {
+        filter_name : "HS",
+        freq : [4700, 9E3],
+        q : [0.7, 0.7],
+        gain : [-12, 12]
+      }]
+    }
+  },
+  "LC-PK2-N" : {
+    deviation : 3300,
+    options : {
+      1 : [{
+        filter_name : "LC",
+        freq : [150, 500],
+        q : [0.7, 0.7],
+        gain : [0, 0]
+      }, {
+        filter_name : "PK",
+        freq : [650, 2E3],
+        q : [0.7, 1.5],
+        gain : [7, 12]
+      }, {
+        filter_name : "PK",
+        freq : [2300, 9E3],
+        q : [0.7, 1.75],
+        gain : [7, 12]
+      }],
+      2 : [{
+        filter_name : "LC",
+        freq : [200, 450],
+        q : [0.7, 0.7],
+        gain : [0, 0]
+      }, {
+        filter_name : "PK",
+        freq : [520, 2500],
+        q : [0.7, 1.5],
+        gain : [-12, 12]
+      }, {
+        filter_name : "PK",
+        freq : [3E3, 8500],
+        q : [0.7, 1.75],
+        gain : [8, 12]
+      }]
+    }
+  },
+  "N-PK2-HC" : {
+    deviation : 3300,
+    options : {
+      1 : [{
+        filter_name : "PK",
+        freq : [200, 990],
+        q : [0.7, 1.5],
+        gain : [-12, -7]
+      }, {
+        filter_name : "PK",
+        freq : [1200, 5E3],
+        q : [0.7, 1.5],
+        gain : [-12, -8]
+      }, {
+        filter_name : "HC",
+        freq : [5500, 9E3],
+        q : [0.7, 0.7],
+        gain : [0, 0]
+      }],
+      2 : [{
+        filter_name : "PK",
+        freq : [190, 700],
+        q : [0.7, 1.5],
+        gain : [-12, 12]
+      }, {
+        filter_name : "PK",
+        freq : [800, 3200],
+        q : [0.7, 1.5],
+        gain : [10, 12]
+      }, {
+        filter_name : "HC",
+        freq : [3600, 9E3],
+        q : [0.7, 0.7],
+        gain : [0, 0]
+      }]
+    }
+  },
+  "LS-PK2-N" : {
+    deviation : 3500,
+    options : {
+      1 : [{
+        filter_name : "LS",
+        freq : [170, 400],
+        q : [0.7, 0.7],
+        gain : [-12, 12]
+      }, {
+        filter_name : "PK",
+        freq : [500, 2100],
+        q : [0.5, 2.5],
+        gain : [-12, 12]
+      }, {
+        filter_name : "PK",
+        freq : [2300, 9E3],
+        q : [0.5, 2.5],
+        gain : [-12, 12]
+      }],
+      2 : [{
+        filter_name : "LS",
+        freq : [170, 400],
+        q : [0.7, 0.7],
+        gain : [-12, 12]
+      }, {
+        filter_name : "PK",
+        freq : [500, 2200],
+        q : [0.5, 2.5],
+        gain : [9, 12]
+      }, {
+        filter_name : "PK",
+        freq : [2400, 8E3],
+        q : [0.5, 2.5],
+        gain : [-12, 12]
+      }]
+    }
+  },
+  "N-PK2-HS" : {
+    deviation : 3500,
+    options : {
+      1 : [{
+        filter_name : "PK",
+        freq : [200, 1200],
+        q : [0.6, 2],
+        gain : [-12, -9]
+      }, {
+        filter_name : "PK",
+        freq : [1400, 4500],
+        q : [0.6, 1.5],
+        gain : [-12, 12]
+      }, {
+        filter_name : "HS",
+        freq : [6E3, 9E3],
+        q : [0.7, 0.7],
+        gain : [-12, 12]
+      }],
+      2 : [{
+        filter_name : "PK",
+        freq : [210, 1200],
+        q : [0.6, 2],
+        gain : [9, 12]
+      }, {
+        filter_name : "PK",
+        freq : [1400, 4500],
+        q : [0.6, 1.5],
+        gain : [-12, 12]
+      }, {
+        filter_name : "HS",
+        freq : [6E3, 9E3],
+        q : [0.7, 0.7],
+        gain : [-12, 12]
+      }]
+    }
+  },
+  "LC-PK2-HC" : {
+    deviation : 3400,
+    options : {
+      1 : [{
+        filter_name : "LC",
+        freq : [150, 300],
+        q : [0.7, 0.7],
+        gain : [0, 0]
+      }, {
+        filter_name : "PK",
+        freq : [400, 1800],
+        q : [0.7, 1.5],
+        gain : [-12, 12]
+      }, {
+        filter_name : "PK",
+        freq : [2E3, 5E3],
+        q : [0.7, 1.5],
+        gain : [-12, 12]
+      }, {
+        filter_name : "HC",
+        freq : [5300, 9E3],
+        q : [0.7, 0.7],
+        gain : [0, 0]
+      }]
+    }
+  },
+  "LC-PK2-HS" : {
+    deviation : 3600,
+    options : {
+      1 : [{
+        filter_name : "LC",
+        freq : [150, 400],
+        q : [0.7, 0.7],
+        gain : [0, 0]
+      }, {
+        filter_name : "PK",
+        freq : [450, 1500],
+        q : [0.65, 1.5],
+        gain : [-12, 12]
+      }, {
+        filter_name : "PK",
+        freq : [1700, 4E3],
+        q : [0.55, 1.5],
+        gain : [-12, 12]
+      }, {
+        filter_name : "HS",
+        freq : [4500, 9E3],
+        q : [0.7, 0.7],
+        gain : [-12, 12]
+      }]
+    }
+  },
+  "LS-PK2-HC" : {
+    deviation : 3600,
+    options : {
+      1 : [{
+        filter_name : "LS",
+        freq : [160, 400],
+        q : [0.7, 0.7],
+        gain : [-12, 12]
+      }, {
+        filter_name : "PK",
+        freq : [430, 1400],
+        q : [0.65, 1.5],
+        gain : [-12, 12]
+      }, {
+        filter_name : "PK",
+        freq : [1500, 4500],
+        q : [0.75, 1.5],
+        gain : [-12, 12]
+      }, {
+        filter_name : "HC",
+        freq : [5E3, 9E3],
+        q : [0.7, 0.7],
+        gain : [0, 0]
+      }]
+    }
+  },
+  "LS-PK2-HS" : {
+    deviation : 3700,
+    options : {
+      1 : [{
+        filter_name : "LS",
+        freq : [200, 500],
+        q : [0.7, 0.7],
+        gain : [-12, 12]
+      }, {
+        filter_name : "PK",
+        freq : [550, 1800],
+        q : [0.7, 1.7],
+        gain : [-12, 12]
+      }, {
+        filter_name : "PK",
+        freq : [2E3, 6500],
+        q : [0.6, 1.5],
+        gain : [-12, 12]
+      }, {
+        filter_name : "HS",
+        freq : [7E3, 8500],
+        q : [0.7, 0.7],
+        gain : [-12, 12]
+      }]
+    }
+  },
+  "N-PK3-N" : {
+    deviation : 3500,
+    options : {
+      1 : [{
+        filter_name : "PK",
+        freq : [200, 550],
+        q : [0.7, 1.5],
+        gain : [8, 12]
+      }, {
+        filter_name : "PK",
+        freq : [630, 2200],
+        q : [0.7, 1.5],
+        gain : [-12, -8]
+      }, {
+        filter_name : "PK",
+        freq : [2500, 9E3],
+        q : [0.7, 1.5],
+        gain : [7, 12]
+      }],
+      2 : [{
+        filter_name : "PK",
+        freq : [190, 500],
+        q : [0.7, 1.5],
+        gain : [-12, 12]
+      }, {
+        filter_name : "PK",
+        freq : [600, 2700],
+        q : [0.7, 1.5],
+        gain : [8, 12]
+      }, {
+        filter_name : "PK",
+        freq : [3100, 8700],
+        q : [0.7, 1.5],
+        gain : [-12, 12]
+      }],
+      3 : [{
+        filter_name : "PK",
+        freq : [200, 500],
+        q : [0.7, 1.5],
+        gain : [-12, -8]
+      }, {
+        filter_name : "PK",
+        freq : [600, 2700],
+        q : [0.7, 1.5],
+        gain : [8, 12]
+      }, {
+        filter_name : "PK",
+        freq : [3100, 9500],
+        q : [0.7, 1.5],
+        gain : [-12, 12]
+      }]
+    }
+  },
+  "LC-PK3-N" : {
+    deviation : 3500,
+    options : {
+      1 : [{
+        filter_name : "LC",
+        freq : [150, 350],
+        q : [0.7, 0.7],
+        gain : [0, 0]
+      }, {
+        filter_name : "PK",
+        freq : [400, 1200],
+        q : [0.6, 1.5],
+        gain : [-12, 12]
+      }, {
+        filter_name : "PK",
+        freq : [1390, 4E3],
+        q : [0.6, 1.5],
+        gain : [-12, 12]
+      }, {
+        filter_name : "PK",
+        freq : [4500, 9E3],
+        q : [0.6, 1.5],
+        gain : [-12, 12]
+      }]
+    }
+  },
+  "LS-PK3-N" : {
+    deviation : 3800,
+    options : {
+      1 : [{
+        filter_name : "LS",
+        freq : [190, 350],
+        q : [0.7, 0.7],
+        gain : [-12, 12]
+      }, {
+        filter_name : "PK",
+        freq : [400, 1100],
+        q : [0.5, 1.5],
+        gain : [-12, 12]
+      }, {
+        filter_name : "PK",
+        freq : [1100, 3E3],
+        q : [0.7, 1.75],
+        gain : [-12, 12]
+      }, {
+        filter_name : "PK",
+        freq : [3500, 9E3],
+        q : [0.6, 2],
+        gain : [-12, 12]
+      }]
+    }
+  },
+  "N-PK3-HC" : {
+    deviation : 3500,
+    options : {
+      1 : [{
+        filter_name : "PK",
+        freq : [200, 600],
+        q : [0.55, 1.5],
+        gain : [-12, 12]
+      }, {
+        filter_name : "PK",
+        freq : [650, 1800],
+        q : [0.65, 1.4],
+        gain : [-12, 12]
+      }, {
+        filter_name : "PK",
+        freq : [1950, 5E3],
+        q : [0.65, 1.6],
+        gain : [-12, 12]
+      }, {
+        filter_name : "HC",
+        freq : [5E3, 9E3],
+        q : [0.7, 0.7],
+        gain : [0, 0]
+      }]
+    }
+  },
+  "N-PK3-HS" : {
+    deviation : 4E3,
+    options : {
+      1 : [{
+        filter_name : "PK",
+        freq : [200, 700],
+        q : [0.6, 1.5],
+        gain : [-12, 12]
+      }, {
+        filter_name : "PK",
+        freq : [775, 1800],
+        q : [0.7, 1.5],
+        gain : [-12, 12]
+      }, {
+        filter_name : "PK",
+        freq : [1950, 4500],
+        q : [0.7, 1.5],
+        gain : [-12, 12]
+      }, {
+        filter_name : "HS",
+        freq : [5E3, 9300],
+        q : [0.7, 0.7],
+        gain : [-12, 12]
+      }]
+    }
+  },
+  "LC-PK3-HC" : {
+    deviation : 4E3,
+    options : {
+      1 : [{
+        filter_name : "LC",
+        freq : [150, 400],
+        q : [0.7, 0.7],
+        gain : [0, 0]
+      }, {
+        filter_name : "PK",
+        freq : [445, 1E3],
+        q : [0.5, 1.5],
+        gain : [-12, 12]
+      }, {
+        filter_name : "PK",
+        freq : [1100, 2200],
+        q : [0.5, 3],
+        gain : [-12, 12]
+      }, {
+        filter_name : "PK",
+        freq : [2500, 6E3],
+        q : [0.7, 3],
+        gain : [-12, 12]
+      }, {
+        filter_name : "HC",
+        freq : [6E3, 9E3],
+        q : [0.7, 0.7],
+        gain : [0, 0]
+      }]
+    }
+  },
+  "LS-PK3-HC" : {
+    deviation : 4100,
+    options : {
+      1 : [{
+        filter_name : "LS",
+        freq : [180, 350],
+        q : [0.7, 0.7],
+        gain : [-12, 12]
+      }, {
+        filter_name : "PK",
+        freq : [400, 900],
+        q : [0.7, 1.5],
+        gain : [-12, 12]
+      }, {
+        filter_name : "PK",
+        freq : [1E3, 2800],
+        q : [0.7, 3],
+        gain : [-12, 12]
+      }, {
+        filter_name : "PK",
+        freq : [2900, 5200],
+        q : [0.7, 3],
+        gain : [-12, 12]
+      }, {
+        filter_name : "HC",
+        freq : [5500, 1E4],
+        q : [0.7, 0.7],
+        gain : [0, 0]
+      }]
+    }
+  },
+  "LS-PK3-HS" : {
+    deviation : 4200,
+    options : {
+      1 : [{
+        filter_name : "LS",
+        freq : [170, 350],
+        q : [0.7, 0.7],
+        gain : [-12, 12]
+      }, {
+        filter_name : "PK",
+        freq : [400, 1150],
+        q : [0.8, 1.5],
+        gain : [-12, 12]
+      }, {
+        filter_name : "PK",
+        freq : [1300, 3E3],
+        q : [0.8, 2.5],
+        gain : [-12, 12]
+      }, {
+        filter_name : "PK",
+        freq : [3200, 7500],
+        q : [0.8, 3],
+        gain : [-12, 12]
+      }, {
+        filter_name : "HS",
+        freq : [8E3, 9E3],
+        q : [0.7, 0.7],
+        gain : [-12, 12]
+      }]
+    }
+  },
+  "LC-PK3-HS" : {
+    deviation : 4100,
+    options : {
+      1 : [{
+        filter_name : "LC",
+        freq : [150, 200],
+        q : [0.7, 0.7],
+        gain : [0, 0]
+      }, {
+        filter_name : "PK",
+        freq : [245, 800],
+        q : [0.5, 1.5],
+        gain : [-12, 12]
+      }, {
+        filter_name : "PK",
+        freq : [900, 2100],
+        q : [0.5, 3],
+        gain : [-12, 12]
+      }, {
+        filter_name : "PK",
+        freq : [2300, 6E3],
+        q : [0.7, 3],
+        gain : [-12, 12]
+      }, {
+        filter_name : "HS",
+        freq : [7E3, 9E3],
+        q : [0.7, 0.7],
+        gain : [-12, 12]
+      }]
+    }
+  }
+};
+/**
+ * @param {number} data
+ * @return {?}
+ */
+function yOnCanvas(data) {;
+  return eq["canvasHeight"] / 2 + data / dbMax * 0.5 * eq['canvasHeight'] * -1;
+}
+/**
+ * @param {number} value
+ * @return {?}
+ */
+function xOnCanvas(value) {;
+  return value == 0 ? eq['gap'] : eq["canvasWidth"] * (Math['log'](value / minHZscale) / Math['log'](Math['pow'](2, totalOctavas)) * 100) / 100 + eq['gap'];
+}
+/**
+ * @return {undefined}
+ */
+function drawYGrid() {;
+  ctx['beginPath']();
+  ctx['font'] = 'normal 11px Arial';
+  ctx['fillStyle'] = '#999';
+  ctx["textAlign"] = 'right';
+  /** @type {number} */
+  ctx['fontWeight'] = 100;
+  ctx['setLineDash']([]);
+  ctx['strokeStyle'] = '#777';
+  /** @type {number} */
+  ctx["lineWidth"] = 0.5;
+  /** @type {!Array} */
+  var which = [18, 12, 6, 0, -6, -12, -18];
+  $['each'](which, function(canCreateDiscussions, text) {
+    ctx["moveTo"](xOnCanvas(0), yOnCanvas(text));
+    ctx['lineTo'](eq["canvasWidth"] - 20, yOnCanvas(text));
+    ctx['fillText'](text, eq['canvasWidth'], yOnCanvas(text) + 3);
+  });
+  ctx["stroke"]();
+}
+/**
+ * @return {undefined}
+ */
+function drawXGrid() {;
+  ctx["beginPath"]();
+  ctx['font'] = 'normal 11px Arial';
+  ctx["fillStyle"] = mobile ? '#111' : "#999";
+  ctx['textAlign'] = 'center';
+  /** @type {number} */
+  ctx['fontWeight'] = 100;
+  ctx['setLineDash']([]);
+  /** @type {string} */
+  ctx['strokeStyle'] = "#333";
+  /** @type {number} */
+  ctx['lineWidth'] = 0.5;
+  var which = {
+    20 : !![],
+    50 : !![],
+    100 : !![],
+    200 : !![],
+    500 : !![],
+    1E3 : !![],
+    2E3 : !![],
+    5E3 : !![],
+    1E4 : !![],
+    2E4 : !![]
   };
-function yOnCanvas(_0x46f8cf) {
-  var _0x4e97c9 = _0x278f7d;
-  return (
-    eq["canvasHeight"] / 0x2 +
-    (_0x46f8cf / dbMax) * 0.5 * eq[_0x4e97c9("0xf9")] * -0x1
-  );
+  $['each'](which, function(left, canCreateDiscussions) {
+    var orig = eq['canvasWidth'] * hzToPosition(left) / 100 + eq['gap'];
+    if (canCreateDiscussions) {
+      ctx['fillText'](formatHzLabel(left), orig, eq["canvasHeight"] - 7);
+    }
+    ctx['moveTo'](orig, 20);
+    ctx['lineTo'](orig, eq['canvasHeight'] - 20);
+  });
+  ctx['stroke']();
 }
-function xOnCanvas(_0x4faacc) {
-  var _0x553c73 = _0x278f7d;
-  return _0x4faacc == 0x0
-    ? eq[_0x553c73("0x2d")]
-    : (eq["canvasWidth"] *
-        ((Math[_0x553c73("0xab")](_0x4faacc / minHZscale) /
-          Math[_0x553c73("0xab")](Math[_0x553c73("0x4c")](0x2, totalOctavas))) *
-          0x64)) /
-        0x64 +
-        eq[_0x553c73("0x2d")];
-}
-function drawYGrid() {
-  var _0x536f5c = _0x278f7d;
-  ctx[_0x536f5c("0xcf")](),
-    (ctx[_0x536f5c("0x88")] = _0x536f5c("0x95")),
-    (ctx[_0x536f5c("0x19")] = _0x536f5c("0xe7")),
-    (ctx["textAlign"] = _0x536f5c("0x114")),
-    (ctx[_0x536f5c("0x80")] = 0x64),
-    ctx[_0x536f5c("0xd3")]([]),
-    (ctx[_0x536f5c("0xdf")] = _0x536f5c("0x9e")),
-    (ctx["lineWidth"] = 0.5);
-  var _0x1359c8 = [0x12, 0xc, 0x6, 0x0, -0x6, -0xc, -0x12];
-  $[_0x536f5c("0x7c")](_0x1359c8, function (_0x308221, _0x41d02b) {
-    var _0x4a8a6d = _0x536f5c;
-    ctx["moveTo"](xOnCanvas(0x0), yOnCanvas(_0x41d02b)),
-      ctx[_0x4a8a6d("0x56")](eq["canvasWidth"] - 0x14, yOnCanvas(_0x41d02b)),
-      ctx[_0x4a8a6d("0x6f")](
-        _0x41d02b,
-        eq[_0x4a8a6d("0x58")],
-        yOnCanvas(_0x41d02b) + 0x3
-      );
-  }),
-    ctx["stroke"]();
-}
-function drawXGrid() {
-  var _0x5f088d = _0x278f7d;
-  ctx["beginPath"](),
-    (ctx[_0x5f088d("0x88")] = _0x5f088d("0x95")),
-    (ctx["fillStyle"] = mobile ? _0x5f088d("0x40") : "#999"),
-    (ctx[_0x5f088d("0x25")] = _0x5f088d("0x5b")),
-    (ctx[_0x5f088d("0x80")] = 0x64),
-    ctx[_0x5f088d("0xd3")]([]),
-    (ctx[_0x5f088d("0xdf")] = "#333"),
-    (ctx[_0x5f088d("0xb3")] = 0.5);
-  var _0x54860c = {
-    0x14: !![],
-    0x32: !![],
-    0x64: !![],
-    0xc8: !![],
-    0x1f4: !![],
-    0x3e8: !![],
-    0x7d0: !![],
-    0x1388: !![],
-    0x2710: !![],
-    0x4e20: !![],
+/**
+ * @param {!Object} filter
+ * @param {string} type
+ * @param {?} value
+ * @return {undefined}
+ */
+function drawFilter(filter, type, value) {;
+  var result = {
+    color : 'rgba(' + filter[type]['border'] + ',.6)',
+    wrong : 'rgba(237,61,61,.3)',
+    correct : 'rgba(55,132,55,.3)',
+    perfect : 'rgba(105,175,115,.5)',
+    gray : "rgba(200,200,200,.6)",
+    transparent : 'rgba(0,0,0,0)'
   };
-  $[_0x5f088d("0x7c")](_0x54860c, function (_0x3a23d9, _0x23fd2f) {
-    var _0x38af6a = _0x5f088d,
-      _0x5387ea =
-        (eq[_0x38af6a("0x58")] * hzToPosition(_0x3a23d9)) / 0x64 +
-        eq[_0x38af6a("0x2d")];
-    _0x23fd2f &&
-      ctx[_0x38af6a("0x6f")](
-        formatHzLabel(_0x3a23d9),
-        _0x5387ea,
-        eq["canvasHeight"] - 0x7
-      ),
-      ctx[_0x38af6a("0xd7")](_0x5387ea, 0x14),
-      ctx[_0x38af6a("0x56")](_0x5387ea, eq[_0x38af6a("0xf9")] - 0x14);
-  }),
-    ctx[_0x5f088d("0xba")]();
-}
-function drawFilter(_0x3b6608, _0x3eb7f6, _0x10de88) {
-  var _0x501423 = _0x278f7d,
-    _0x58a407 = {
-      color:
-        _0x501423("0x33") +
-        _0x3b6608[_0x3eb7f6][_0x501423("0xf6")] +
-        _0x501423("0x22"),
-      wrong: _0x501423("0x9a"),
-      correct: _0x501423("0x3e"),
-      perfect: _0x501423("0x89"),
-      gray: "rgba(200,200,200,.6)",
-      transparent: _0x501423("0x10"),
-    },
-    _0x4c2248 = {
-      color:
-        _0x501423("0x33") +
-        _0x3b6608[_0x3eb7f6][_0x501423("0x2f")] +
-        _0x501423("0x22"),
-      wrong: "rgba(252,83,83,.3)",
-      correct: "rgba(85,168,85,.3)",
-      perfect: _0x501423("0x89"),
-      gray: _0x501423("0x106"),
-      transparent: _0x501423("0x10"),
-    },
-    _0x5e6f84 = _0x3b6608[_0x3eb7f6][_0x501423("0x4b")],
-    _0x18c92e = xOnCanvas(eq["lastHz"]);
-  (_0x5e6f84["canvas_ctx"] = ctx),
-    _0x5e6f84[_0x501423("0xf")][_0x501423("0xd7")](
-      xOnCanvas(0x0),
-      yOnCanvas(0x0)
-    ),
-    (_0x5e6f84["draw"] = function () {
-      var _0x4f159f = _0x501423;
-      _0x5e6f84[_0x4f159f("0xf")][_0x4f159f("0xcf")](),
-        (_0x5e6f84[_0x4f159f("0xf")][_0x4f159f("0xb3")] = 0.5),
-        _0x5e6f84[_0x4f159f("0xf")]["setLineDash"]([]),
-        (_0x5e6f84[_0x4f159f("0xf")]["strokeStyle"] = _0x58a407[_0x10de88]),
-        (_0x5e6f84[_0x4f159f("0xf")][_0x4f159f("0x19")] = _0x4c2248[_0x10de88]),
-        _0x5e6f84["canvas_ctx"][_0x4f159f("0xd7")](0x0, yOnCanvas(0x0));
-      for (var _0x25bbc0 = 0x1; _0x25bbc0 <= eq["samples"]; _0x25bbc0++) {
-        var _0x3227ab = _0x25bbc0 / eq["samples"],
-          _0x4bbdc0 = positionToHz(_0x3227ab),
-          _0x3f5d9d = _0x3b6608[_0x3eb7f6]["filter"]["log_result"](_0x4bbdc0),
-          _0x192344 = yOnCanvas(_0x3f5d9d),
-          _0xf9a753 = xOnCanvas(_0x4bbdc0);
-        _0x5e6f84[_0x4f159f("0xf")][_0x4f159f("0x56")](_0xf9a753, _0x192344);
-        if (_0xf9a753 > _0x18c92e) {
-          _0x5e6f84[_0x4f159f("0xf")][_0x4f159f("0x56")](
-            _0xf9a753,
-            yOnCanvas(0x0)
-          );
-          break;
-        }
+  var params = {
+    color : 'rgba(' + filter[type]['color'] + ',.6)',
+    wrong : "rgba(252,83,83,.3)",
+    correct : "rgba(85,168,85,.3)",
+    perfect : 'rgba(105,175,115,.5)',
+    gray : 'rgba(150,150,150,.3)',
+    transparent : 'rgba(0,0,0,0)'
+  };
+  var same = filter[type]['chart'];
+  var pixel = xOnCanvas(eq["lastHz"]);
+  same["canvas_ctx"] = ctx;
+  same['canvas_ctx']['moveTo'](xOnCanvas(0), yOnCanvas(0));
+  /**
+   * @return {undefined}
+   */
+  same["draw"] = function() {
+    same['canvas_ctx']['beginPath']();
+    /** @type {number} */
+    same['canvas_ctx']['lineWidth'] = 0.5;
+    same['canvas_ctx']["setLineDash"]([]);
+    same['canvas_ctx']["strokeStyle"] = result[value];
+    same['canvas_ctx']['fillStyle'] = params[value];
+    same["canvas_ctx"]['moveTo'](0, yOnCanvas(0));
+    /** @type {number} */
+    var range = 1;
+    for (; range <= eq["samples"]; range++) {
+      /** @type {number} */
+      var sep = range / eq["samples"];
+      var controls = positionToHz(sep);
+      var itemData = filter[type]["filter"]["log_result"](controls);
+      var item = yOnCanvas(itemData);
+      var maxPixelValue = xOnCanvas(controls);
+      same['canvas_ctx']['lineTo'](maxPixelValue, item);
+      if (maxPixelValue > pixel) {
+        same['canvas_ctx']['lineTo'](maxPixelValue, yOnCanvas(0));
+        break;
       }
-      _0x5e6f84["canvas_ctx"][_0x4f159f("0xf3")](),
-        _0x5e6f84[_0x4f159f("0xf")][_0x4f159f("0xba")](),
-        _0x5e6f84[_0x4f159f("0xf")][_0x4f159f("0x52")]();
-    });
+    }
+    same["canvas_ctx"]['closePath']();
+    same['canvas_ctx']['stroke']();
+    same['canvas_ctx']['fill']();
+  };
 }
-function initFilter(_0x5e550d, _0x4b2da7) {
-  var _0x44c654 = _0x278f7d,
-    _0x6cd56f = _0x5e550d[_0x4b2da7][_0x44c654("0x7d")];
-  (_0x6cd56f[_0x44c654("0x16")] = 0x0),
-    (_0x6cd56f["HIGHPASS"] = 0x1),
-    (_0x6cd56f[_0x44c654("0x113")] = 0x2),
-    (_0x6cd56f[_0x44c654("0x15")] = 0x3),
-    (_0x6cd56f[_0x44c654("0xb9")] = 0x4),
-    (_0x6cd56f["LOWSHELF"] = 0x5),
-    (_0x6cd56f[_0x44c654("0xf0")] = 0x6),
-    (_0x6cd56f["a0"] = 0x0),
-    (_0x6cd56f["a1"] = 0x0),
-    (_0x6cd56f["a2"] = 0x0),
-    (_0x6cd56f["b0"] = 0x0),
-    (_0x6cd56f["b1"] = 0x0),
-    (_0x6cd56f["b2"] = 0x0),
-    (_0x6cd56f["x1"] = 0x0),
-    (_0x6cd56f["x2"] = 0x0),
-    (_0x6cd56f["y1"] = 0x0),
-    (_0x6cd56f["y2"] = 0x0),
-    (_0x6cd56f["type"] = _0x5e550d[_0x4b2da7][_0x44c654("0x109")]),
-    (_0x6cd56f[_0x44c654("0x50")] = _0x5e550d[_0x4b2da7]["freq"]),
-    (_0x6cd56f[_0x44c654("0xf4")] = eq[_0x44c654("0x6a")]),
-    (_0x6cd56f["Q"] = _0x5e550d[_0x4b2da7]["q"]),
-    (_0x6cd56f["gainDB"] = _0x5e550d[_0x4b2da7][_0x44c654("0x71")]),
-    (_0x6cd56f["create"] = function () {
-      var _0x386bbe = _0x44c654;
-      _0x6cd56f[_0x386bbe("0x118")](
-        _0x6cd56f[_0x386bbe("0xdc")],
-        _0x6cd56f["freq"],
-        _0x6cd56f[_0x386bbe("0xf4")],
-        _0x6cd56f["Q"],
-        _0x6cd56f[_0x386bbe("0xdd")]
-      );
-    }),
-    (_0x6cd56f[_0x44c654("0x13")] = function () {
-      _0x6cd56f["x1"] =
-        _0x6cd56f["x2"] =
-        _0x6cd56f["y1"] =
-        _0x6cd56f["y2"] =
-          0x0;
-    }),
-    (_0x6cd56f["frequency"] = function () {
-      var _0x5aa9d2 = _0x44c654;
-      return _0x6cd56f[_0x5aa9d2("0x50")];
-    }),
-    (_0x6cd56f[_0x44c654("0x118")] = function (
-      _0x1e04e7,
-      _0x33bc40,
-      _0x2fb9ad,
-      _0x24eeb2,
-      _0x391640
-    ) {
-      var _0x48db6a = _0x44c654;
-      (_0x6cd56f[_0x48db6a("0xc7")] = [
-        _0x6cd56f[_0x48db6a("0x117")],
-        _0x6cd56f[_0x48db6a("0x82")],
-        _0x6cd56f[_0x48db6a("0xc4")],
-        _0x6cd56f[_0x48db6a("0x53")],
-        _0x6cd56f[_0x48db6a("0xc6")],
-        _0x6cd56f[_0x48db6a("0x3b")],
-        _0x6cd56f[_0x48db6a("0x5f")],
-      ]),
-        _0x6cd56f[_0x48db6a("0x13")](),
-        (_0x6cd56f["Q"] = _0x24eeb2 == 0x0 ? 1e-9 : _0x24eeb2),
-        (_0x6cd56f["type"] = _0x1e04e7),
-        (_0x6cd56f[_0x48db6a("0xf4")] = _0x2fb9ad),
-        (_0x6cd56f["gainDB"] = _0x391640),
-        _0x6cd56f[_0x48db6a("0x41")](_0x33bc40);
-    }),
-    (_0x6cd56f[_0x44c654("0x41")] = function (_0x5a825d) {
-      var _0x39fae9 = _0x44c654;
-      _0x6cd56f[_0x39fae9("0x50")] = _0x5a825d;
-      var _0x34b3f4 = Math[_0x39fae9("0x4c")](0xa, _0x6cd56f["gainDB"] / 0x28),
-        _0x281724 =
-          (0x2 * Math["PI"] * _0x5a825d) / _0x6cd56f[_0x39fae9("0xf4")],
-        _0x320534 = Math["sin"](_0x281724),
-        _0x29b457 = Math["cos"](_0x281724),
-        _0x59559e = _0x320534 / (0x2 * _0x6cd56f["Q"]),
-        _0x45eb4c = Math[_0x39fae9("0x5a")](_0x34b3f4 + _0x34b3f4);
-      _0x6cd56f[_0x39fae9("0xc7")][_0x6cd56f[_0x39fae9("0xdc")]](
-        _0x34b3f4,
-        _0x281724,
-        _0x320534,
-        _0x29b457,
-        _0x59559e,
-        _0x45eb4c
-      ),
-        (_0x6cd56f["b0"] /= _0x6cd56f["a0"]),
-        (_0x6cd56f["b1"] /= _0x6cd56f["a0"]),
-        (_0x6cd56f["b2"] /= _0x6cd56f["a0"]),
-        (_0x6cd56f["a1"] /= _0x6cd56f["a0"]),
-        (_0x6cd56f["a2"] /= _0x6cd56f["a0"]);
-    }),
-    (_0x6cd56f["f_bandpass"] = function (
-      _0x5357c1,
-      _0x5e78dd,
-      _0xe72320,
-      _0x2afa90,
-      _0x387c5f,
-      _0x2e4648
-    ) {
-      (_0x6cd56f["b0"] = _0x387c5f),
-        (_0x6cd56f["b1"] = 0x0),
-        (_0x6cd56f["b2"] = -_0x387c5f),
-        (_0x6cd56f["a0"] = 0x1 + _0x387c5f),
-        (_0x6cd56f["a1"] = -0x2 * _0x2afa90),
-        (_0x6cd56f["a2"] = 0x1 - _0x387c5f);
-    }),
-    (_0x6cd56f[_0x44c654("0x117")] = function (
-      _0x24f037,
-      _0x197783,
-      _0x53e142,
-      _0x217edb,
-      _0x11fcab,
-      _0x3684fb
-    ) {
-      (_0x6cd56f["b0"] = (0x1 - _0x217edb) / 0x2),
-        (_0x6cd56f["b1"] = 0x1 - _0x217edb),
-        (_0x6cd56f["b2"] = (0x1 - _0x217edb) / 0x2),
-        (_0x6cd56f["a0"] = 0x1 + _0x11fcab),
-        (_0x6cd56f["a1"] = -0x2 * _0x217edb),
-        (_0x6cd56f["a2"] = 0x1 - _0x11fcab);
-    }),
-    (_0x6cd56f["f_highpass"] = function (
-      _0x15bb5a,
-      _0xde8ab1,
-      _0x32540f,
-      _0x236f08,
-      _0x4be5de,
-      _0x1e8b4b
-    ) {
-      (_0x6cd56f["b0"] = (0x1 + _0x236f08) / 0x2),
-        (_0x6cd56f["b1"] = -(0x1 + _0x236f08)),
-        (_0x6cd56f["b2"] = (0x1 + _0x236f08) / 0x2),
-        (_0x6cd56f["a0"] = 0x1 + _0x4be5de),
-        (_0x6cd56f["a1"] = -0x2 * _0x236f08),
-        (_0x6cd56f["a2"] = 0x1 - _0x4be5de);
-    }),
-    (_0x6cd56f["f_notch"] = function (
-      _0x47bc5e,
-      _0x1cf64c,
-      _0x4d07ad,
-      _0x5d2d80,
-      _0x247dc2,
-      _0x518b06
-    ) {
-      (_0x6cd56f["b0"] = 0x1),
-        (_0x6cd56f["b1"] = -0x2 * _0x5d2d80),
-        (_0x6cd56f["b2"] = 0x1),
-        (_0x6cd56f["a0"] = 0x1 + _0x247dc2),
-        (_0x6cd56f["a1"] = -0x2 * _0x5d2d80),
-        (_0x6cd56f["a2"] = 0x1 - _0x247dc2);
-    }),
-    (_0x6cd56f["f_peak"] = function (
-      _0x43fa8e,
-      _0x177ae7,
-      _0x480b4f,
-      _0x2f2a78,
-      _0x57001c,
-      _0x5a455d
-    ) {
-      (_0x6cd56f["b0"] = 0x1 + _0x57001c * _0x43fa8e),
-        (_0x6cd56f["b1"] = -0x2 * _0x2f2a78),
-        (_0x6cd56f["b2"] = 0x1 - _0x57001c * _0x43fa8e),
-        (_0x6cd56f["a0"] = 0x1 + _0x57001c / _0x43fa8e),
-        (_0x6cd56f["a1"] = -0x2 * _0x2f2a78),
-        (_0x6cd56f["a2"] = 0x1 - _0x57001c / _0x43fa8e);
-    }),
-    (_0x6cd56f[_0x44c654("0x3b")] = function (
-      _0x235f1d,
-      _0x4d2cd1,
-      _0x58908f,
-      _0x417c4e,
-      _0x134756,
-      _0x3616d6
-    ) {
-      (_0x6cd56f["b0"] =
-        _0x235f1d *
-        (_0x235f1d +
-          0x1 -
-          (_0x235f1d - 0x1) * _0x417c4e +
-          _0x3616d6 * _0x58908f)),
-        (_0x6cd56f["b1"] =
-          0x2 * _0x235f1d * (_0x235f1d - 0x1 - (_0x235f1d + 0x1) * _0x417c4e)),
-        (_0x6cd56f["b2"] =
-          _0x235f1d *
-          (_0x235f1d +
-            0x1 -
-            (_0x235f1d - 0x1) * _0x417c4e -
-            _0x3616d6 * _0x58908f)),
-        (_0x6cd56f["a0"] =
-          _0x235f1d +
-          0x1 +
-          (_0x235f1d - 0x1) * _0x417c4e +
-          _0x3616d6 * _0x58908f),
-        (_0x6cd56f["a1"] =
-          -0x2 * (_0x235f1d - 0x1 + (_0x235f1d + 0x1) * _0x417c4e)),
-        (_0x6cd56f["a2"] =
-          _0x235f1d +
-          0x1 +
-          (_0x235f1d - 0x1) * _0x417c4e -
-          _0x3616d6 * _0x58908f);
-    }),
-    (_0x6cd56f[_0x44c654("0x5f")] = function (
-      _0x32e618,
-      _0xe4b4d6,
-      _0x32d3da,
-      _0x596dc9,
-      _0x327e65,
-      _0x36976d
-    ) {
-      (_0x6cd56f["b0"] =
-        _0x32e618 *
-        (_0x32e618 +
-          0x1 +
-          (_0x32e618 - 0x1) * _0x596dc9 +
-          _0x36976d * _0x32d3da)),
-        (_0x6cd56f["b1"] =
-          -0x2 * _0x32e618 * (_0x32e618 - 0x1 + (_0x32e618 + 0x1) * _0x596dc9)),
-        (_0x6cd56f["b2"] =
-          _0x32e618 *
-          (_0x32e618 +
-            0x1 +
-            (_0x32e618 - 0x1) * _0x596dc9 -
-            _0x36976d * _0x32d3da)),
-        (_0x6cd56f["a0"] =
-          _0x32e618 +
-          0x1 -
-          (_0x32e618 - 0x1) * _0x596dc9 +
-          _0x36976d * _0x32d3da),
-        (_0x6cd56f["a1"] =
-          0x2 * (_0x32e618 - 0x1 - (_0x32e618 + 0x1) * _0x596dc9)),
-        (_0x6cd56f["a2"] =
-          _0x32e618 +
-          0x1 -
-          (_0x32e618 - 0x1) * _0x596dc9 -
-          _0x36976d * _0x32d3da);
-    }),
-    (_0x6cd56f[_0x44c654("0xe9")] = function (_0x2291fd) {
-      var _0x471285 = _0x44c654,
-        _0x3ac9ce = Math["pow"](
-          Math[_0x471285("0x17")](
-            (0x2 * Math["PI"] * _0x2291fd) /
-              (0x2 * _0x6cd56f[_0x471285("0xf4")])
-          ),
-          0x2
-        ),
-        _0x555a6d =
-          (Math[_0x471285("0x4c")](
-            _0x6cd56f["b0"] + _0x6cd56f["b1"] + _0x6cd56f["b2"],
-            0x2
-          ) -
-            0x4 *
-              (_0x6cd56f["b0"] * _0x6cd56f["b1"] +
-                0x4 * _0x6cd56f["b0"] * _0x6cd56f["b2"] +
-                _0x6cd56f["b1"] * _0x6cd56f["b2"]) *
-              _0x3ac9ce +
-            0x10 * _0x6cd56f["b0"] * _0x6cd56f["b2"] * _0x3ac9ce * _0x3ac9ce) /
-          (Math[_0x471285("0x4c")](
-            0x1 + _0x6cd56f["a1"] + _0x6cd56f["a2"],
-            0x2
-          ) -
-            0x4 *
-              (_0x6cd56f["a1"] +
-                0x4 * _0x6cd56f["a2"] +
-                _0x6cd56f["a1"] * _0x6cd56f["a2"]) *
-              _0x3ac9ce +
-            0x10 * _0x6cd56f["a2"] * _0x3ac9ce * _0x3ac9ce);
-      return (
-        (_0x555a6d = _0x555a6d < 0x0 ? 0x0 : _0x555a6d), Math["sqrt"](_0x555a6d)
-      );
-    }),
-    (_0x6cd56f[_0x44c654("0xf7")] = function (_0x492936) {
-      var _0x47e34f = _0x44c654,
-        _0x51ddf4;
-      try {
-        _0x51ddf4 =
-          0x14 * Math["log10"](_0x6cd56f[_0x47e34f("0xe9")](_0x492936));
-      } catch (_0x4a1b24) {
-        _0x51ddf4 = -0x64;
-      }
-      return (
-        (!isFinite(_0x51ddf4) || isNaN(_0x51ddf4)) && (_0x51ddf4 = -0x64),
-        _0x51ddf4
-      );
-    }),
-    (_0x6cd56f[_0x44c654("0x47")] = function () {
-      return [
-        _0x6cd56f["a1"],
-        _0x6cd56f["a2"],
-        _0x6cd56f["b0"],
-        _0x6cd56f["b1"],
-        _0x6cd56f["b2"],
-      ];
-    }),
-    (_0x6cd56f[_0x44c654("0x7d")] = function (_0x2804ed) {
-      var _0x1ec0c6 =
-        _0x6cd56f["b0"] * _0x2804ed +
-        _0x6cd56f["b1"] * _0x6cd56f["x1"] +
-        _0x6cd56f["b2"] * _0x6cd56f["x2"] -
-        _0x6cd56f["a1"] * _0x6cd56f["y1"] -
-        _0x6cd56f["a2"] * _0x6cd56f["y2"];
-      return (
-        (_0x6cd56f["x2"] = _0x6cd56f["x1"]),
-        (_0x6cd56f["x1"] = _0x6cd56f["x"]),
-        (_0x6cd56f["y2"] = _0x6cd56f["y1"]),
-        (_0x6cd56f["y1"] = _0x1ec0c6),
-        _0x1ec0c6
-      );
-    });
+/**
+ * @param {!Object} node
+ * @param {string} className
+ * @return {undefined}
+ */
+function initFilter(node, className) {;
+  var d = node[className]['filter'];
+  /** @type {number} */
+  d['LOWPASS'] = 0;
+  /** @type {number} */
+  d["HIGHPASS"] = 1;
+  /** @type {number} */
+  d['BANDPASS'] = 2;
+  /** @type {number} */
+  d['PEAK'] = 3;
+  /** @type {number} */
+  d['NOTCH'] = 4;
+  /** @type {number} */
+  d["LOWSHELF"] = 5;
+  /** @type {number} */
+  d['HIGHSHELF'] = 6;
+  /** @type {number} */
+  d["a0"] = 0;
+  /** @type {number} */
+  d["a1"] = 0;
+  /** @type {number} */
+  d["a2"] = 0;
+  /** @type {number} */
+  d["b0"] = 0;
+  /** @type {number} */
+  d["b1"] = 0;
+  /** @type {number} */
+  d["b2"] = 0;
+  /** @type {number} */
+  d["x1"] = 0;
+  /** @type {number} */
+  d["x2"] = 0;
+  /** @type {number} */
+  d["y1"] = 0;
+  /** @type {number} */
+  d["y2"] = 0;
+  d["type"] = node[className]['filter_id'];
+  d['freq'] = node[className]["freq"];
+  d['sample_rate'] = eq['rate'];
+  d["Q"] = node[className]["q"];
+  d["gainDB"] = node[className]['gain'];
+  /**
+   * @return {undefined}
+   */
+  d["create"] = function() {
+    d['configure'](d['type'], d["freq"], d['sample_rate'], d["Q"], d['gainDB']);
+  };
+  /**
+   * @return {undefined}
+   */
+  d['reset'] = function() {
+    /** @type {number} */
+    d["x1"] = d["x2"] = d["y1"] = d["y2"] = 0;
+  };
+  /**
+   * @return {?}
+   */
+  d["frequency"] = function() {
+    return d['freq'];
+  };
+  /**
+   * @param {?} y
+   * @param {?} a
+   * @param {?} fromModel
+   * @param {number} kw
+   * @param {?} mapping_val
+   * @return {undefined}
+   */
+  d['configure'] = function(y, a, fromModel, kw, mapping_val) {
+    /** @type {!Array} */
+    d['functions'] = [d['f_lowpass'], d['f_highpass'], d['f_bandpass'], d['f_peak'], d['f_notch'], d['f_lowshelf'], d['f_highshelf']];
+    d['reset']();
+    d["Q"] = kw == 0 ? 1e-9 : kw;
+    d["type"] = y;
+    d['sample_rate'] = fromModel;
+    d["gainDB"] = mapping_val;
+    d['reconfigure'](a);
+  };
+  /**
+   * @param {number} fromModel
+   * @return {undefined}
+   */
+  d['reconfigure'] = function(fromModel) {
+    /** @type {number} */
+    d['freq'] = fromModel;
+    var precision = Math['pow'](10, d["gainDB"] / 40);
+    /** @type {number} */
+    var value = 2 * Math["PI"] * fromModel / d['sample_rate'];
+    var items = Math["sin"](value);
+    var minyMin = Math["cos"](value);
+    /** @type {number} */
+    var expectedPageCount = items / (2 * d["Q"]);
+    var GET_AUTH_URL_TIMEOUT = Math['sqrt'](precision + precision);
+    d['functions'][d['type']](precision, value, items, minyMin, expectedPageCount, GET_AUTH_URL_TIMEOUT);
+    d["b0"] /= d["a0"];
+    d["b1"] /= d["a0"];
+    d["b2"] /= d["a0"];
+    d["a1"] /= d["a0"];
+    d["a2"] /= d["a0"];
+  };
+  /**
+   * @param {?} canCreateDiscussions
+   * @param {?} isSlidingUp
+   * @param {?} dontForceConstraints
+   * @param {number} green
+   * @param {number} diff
+   * @param {?} forceExecution
+   * @return {undefined}
+   */
+  d["f_bandpass"] = function(canCreateDiscussions, isSlidingUp, dontForceConstraints, green, diff, forceExecution) {
+    /** @type {number} */
+    d["b0"] = diff;
+    /** @type {number} */
+    d["b1"] = 0;
+    /** @type {number} */
+    d["b2"] = -diff;
+    d["a0"] = 1 + diff;
+    /** @type {number} */
+    d["a1"] = -2 * green;
+    /** @type {number} */
+    d["a2"] = 1 - diff;
+  };
+  /**
+   * @param {?} canCreateDiscussions
+   * @param {?} isSlidingUp
+   * @param {?} dontForceConstraints
+   * @param {number} diff
+   * @param {number} i
+   * @param {?} forceExecution
+   * @return {undefined}
+   */
+  d['f_lowpass'] = function(canCreateDiscussions, isSlidingUp, dontForceConstraints, diff, i, forceExecution) {
+    /** @type {number} */
+    d["b0"] = (1 - diff) / 2;
+    /** @type {number} */
+    d["b1"] = 1 - diff;
+    /** @type {number} */
+    d["b2"] = (1 - diff) / 2;
+    d["a0"] = 1 + i;
+    /** @type {number} */
+    d["a1"] = -2 * diff;
+    /** @type {number} */
+    d["a2"] = 1 - i;
+  };
+  /**
+   * @param {?} canCreateDiscussions
+   * @param {?} isSlidingUp
+   * @param {?} dontForceConstraints
+   * @param {number} green
+   * @param {number} diff
+   * @param {?} forceExecution
+   * @return {undefined}
+   */
+  d["f_highpass"] = function(canCreateDiscussions, isSlidingUp, dontForceConstraints, green, diff, forceExecution) {
+    /** @type {number} */
+    d["b0"] = (1 + green) / 2;
+    /** @type {number} */
+    d["b1"] = -(1 + green);
+    /** @type {number} */
+    d["b2"] = (1 + green) / 2;
+    d["a0"] = 1 + diff;
+    /** @type {number} */
+    d["a1"] = -2 * green;
+    /** @type {number} */
+    d["a2"] = 1 - diff;
+  };
+  /**
+   * @param {?} canCreateDiscussions
+   * @param {?} isSlidingUp
+   * @param {?} dontForceConstraints
+   * @param {number} green
+   * @param {number} diff
+   * @param {?} forceExecution
+   * @return {undefined}
+   */
+  d["f_notch"] = function(canCreateDiscussions, isSlidingUp, dontForceConstraints, green, diff, forceExecution) {
+    /** @type {number} */
+    d["b0"] = 1;
+    /** @type {number} */
+    d["b1"] = -2 * green;
+    /** @type {number} */
+    d["b2"] = 1;
+    d["a0"] = 1 + diff;
+    /** @type {number} */
+    d["a1"] = -2 * green;
+    /** @type {number} */
+    d["a2"] = 1 - diff;
+  };
+  /**
+   * @param {number} daysInterval
+   * @param {?} dontForceConstraints
+   * @param {?} forceExecution
+   * @param {number} green
+   * @param {number} mmCoreSecondsDay
+   * @param {?} mmCoreSecondsYear
+   * @return {undefined}
+   */
+  d["f_peak"] = function(daysInterval, dontForceConstraints, forceExecution, green, mmCoreSecondsDay, mmCoreSecondsYear) {
+    /** @type {number} */
+    d["b0"] = 1 + mmCoreSecondsDay * daysInterval;
+    /** @type {number} */
+    d["b1"] = -2 * green;
+    /** @type {number} */
+    d["b2"] = 1 - mmCoreSecondsDay * daysInterval;
+    /** @type {number} */
+    d["a0"] = 1 + mmCoreSecondsDay / daysInterval;
+    /** @type {number} */
+    d["a1"] = -2 * green;
+    /** @type {number} */
+    d["a2"] = 1 - mmCoreSecondsDay / daysInterval;
+  };
+  /**
+   * @param {number} lumB
+   * @param {?} isSlidingUp
+   * @param {number} daysInterval
+   * @param {number} sin
+   * @param {?} mmCoreSecondsYear
+   * @param {number} mmCoreSecondsDay
+   * @return {undefined}
+   */
+  d['f_lowshelf'] = function(lumB, isSlidingUp, daysInterval, sin, mmCoreSecondsYear, mmCoreSecondsDay) {
+    /** @type {number} */
+    d["b0"] = lumB * (lumB + 1 - (lumB - 1) * sin + mmCoreSecondsDay * daysInterval);
+    /** @type {number} */
+    d["b1"] = 2 * lumB * (lumB - 1 - (lumB + 1) * sin);
+    /** @type {number} */
+    d["b2"] = lumB * (lumB + 1 - (lumB - 1) * sin - mmCoreSecondsDay * daysInterval);
+    d["a0"] = lumB + 1 + (lumB - 1) * sin + mmCoreSecondsDay * daysInterval;
+    /** @type {number} */
+    d["a1"] = -2 * (lumB - 1 + (lumB + 1) * sin);
+    /** @type {number} */
+    d["a2"] = lumB + 1 + (lumB - 1) * sin - mmCoreSecondsDay * daysInterval;
+  };
+  /**
+   * @param {number} lumB
+   * @param {?} isSlidingUp
+   * @param {number} daysInterval
+   * @param {number} sin
+   * @param {?} mmCoreSecondsYear
+   * @param {number} mmCoreSecondsDay
+   * @return {undefined}
+   */
+  d['f_highshelf'] = function(lumB, isSlidingUp, daysInterval, sin, mmCoreSecondsYear, mmCoreSecondsDay) {
+    /** @type {number} */
+    d["b0"] = lumB * (lumB + 1 + (lumB - 1) * sin + mmCoreSecondsDay * daysInterval);
+    /** @type {number} */
+    d["b1"] = -2 * lumB * (lumB - 1 + (lumB + 1) * sin);
+    /** @type {number} */
+    d["b2"] = lumB * (lumB + 1 + (lumB - 1) * sin - mmCoreSecondsDay * daysInterval);
+    /** @type {number} */
+    d["a0"] = lumB + 1 - (lumB - 1) * sin + mmCoreSecondsDay * daysInterval;
+    /** @type {number} */
+    d["a1"] = 2 * (lumB - 1 - (lumB + 1) * sin);
+    /** @type {number} */
+    d["a2"] = lumB + 1 - (lumB - 1) * sin - mmCoreSecondsDay * daysInterval;
+  };
+  /**
+   * @param {number} canCreateDiscussions
+   * @return {?}
+   */
+  d['result'] = function(canCreateDiscussions) {
+    var _0x3ac9ce = Math["pow"](Math['sin'](2 * Math["PI"] * canCreateDiscussions / (2 * d['sample_rate'])), 2);
+    /** @type {number} */
+    var value = (Math['pow'](d["b0"] + d["b1"] + d["b2"], 2) - 4 * (d["b0"] * d["b1"] + 4 * d["b0"] * d["b2"] + d["b1"] * d["b2"]) * _0x3ac9ce + 16 * d["b0"] * d["b2"] * _0x3ac9ce * _0x3ac9ce) / (Math['pow'](1 + d["a1"] + d["a2"], 2) - 4 * (d["a1"] + 4 * d["a2"] + d["a1"] * d["a2"]) * _0x3ac9ce + 16 * d["a2"] * _0x3ac9ce * _0x3ac9ce);
+    return value = value < 0 ? 0 : value, Math["sqrt"](value);
+  };
+  /**
+   * @param {?} n
+   * @return {?}
+   */
+  d['log_result'] = function(n) {
+    var newFlex;
+    try {
+      /** @type {number} */
+      newFlex = 20 * Math["log10"](d['result'](n));
+    } catch (_0x4a1b24) {
+      /** @type {number} */
+      newFlex = -100;
+    }
+    return (!isFinite(newFlex) || isNaN(newFlex)) && (newFlex = -100), newFlex;
+  };
+  /**
+   * @return {?}
+   */
+  d['constants'] = function() {
+    return [d["a1"], d["a2"], d["b0"], d["b1"], d["b2"]];
+  };
+  /**
+   * @param {?} q
+   * @return {?}
+   */
+  d['filter'] = function(q) {
+    /** @type {number} */
+    var newMouse = d["b0"] * q + d["b1"] * d["x1"] + d["b2"] * d["x2"] - d["a1"] * d["y1"] - d["a2"] * d["y2"];
+    return d["x2"] = d["x1"], d["x1"] = d["x"], d["y2"] = d["y1"], d["y1"] = newMouse, newMouse;
+  };
 }
-function eqSetup(_0x43deab, _0x5a7323) {
-  var _0x16449b = _0x278f7d;
-  $[_0x16449b("0x7c")](_0x43deab, function (_0x47097e, _0x514fc3) {
-    var _0x4181b0 = _0x16449b;
-    _0x514fc3["state"] == "on" &&
-      (initFilter(_0x43deab, _0x514fc3["id"]),
-      _0x514fc3[_0x4181b0("0x7d")][_0x4181b0("0xf5")](),
-      drawFilter(_0x43deab, _0x514fc3["id"], _0x5a7323),
-      _0x514fc3["chart"][_0x4181b0("0x97")]());
+/**
+ * @param {undefined} filter
+ * @param {?} paramName
+ * @return {undefined}
+ */
+function eqSetup(filter, paramName) {;
+  $['each'](filter, function(canCreateDiscussions, obj) {
+    if (obj["state"] == "on") {
+      initFilter(filter, obj["id"]);
+      obj['filter']['create']();
+      drawFilter(filter, obj["id"], paramName);
+      obj["chart"]['draw']();
+    }
   });
 }
-function redrawGrid() {
-  var _0x51dfb7 = _0x278f7d;
-  ctx["clearRect"](0x0, 0x0, eq[_0x51dfb7("0x58")], eq[_0x51dfb7("0xf9")]),
-    drawYGrid(),
-    drawXGrid();
+/**
+ * @return {undefined}
+ */
+function redrawGrid() {;
+  ctx["clearRect"](0, 0, eq['canvasWidth'], eq['canvasHeight']);
+  drawYGrid();
+  drawXGrid();
 }
-function drawGrid() {
-  var _0x2ebc08 = _0x278f7d;
-  (canvas = document[_0x2ebc08("0x10b")](_0x2ebc08("0x11"))),
-    (eq[_0x2ebc08("0x58")] = $(_0x2ebc08("0x5"))[_0x2ebc08("0x99")]()),
-    (eq["canvasHeight"] = $(_0x2ebc08("0x5"))[_0x2ebc08("0x54")]()),
-    (canvas[_0x2ebc08("0x99")] = eq[_0x2ebc08("0x58")]),
-    (canvas[_0x2ebc08("0x54")] = eq[_0x2ebc08("0xf9")]),
-    (ctx = canvas[_0x2ebc08("0x1a")]("2d")),
-    ctx[_0x2ebc08("0xbc")](
-      0x0,
-      0x0,
-      eq[_0x2ebc08("0x58")],
-      eq[_0x2ebc08("0xf9")]
-    ),
-    canvas[_0x2ebc08("0xe4")]("wheel", handleMouseWheel),
-    $(canvas)[_0x2ebc08("0xd")](function (_0x5b34e9) {
-      var _0x250013 = _0x2ebc08;
-      handleMouseDown(
-        _0x5b34e9,
-        _0x5b34e9[_0x250013("0x14")],
-        _0x5b34e9[_0x250013("0x2b")]
-      );
-    }),
-    $(canvas)[_0x2ebc08("0x115")](function (_0x440030) {
-      var _0x4062bf = _0x2ebc08;
-      handleMouseMove(
-        _0x440030,
-        _0x440030[_0x4062bf("0x14")],
-        _0x440030["clientY"]
-      );
-    }),
-    $(canvas)[_0x2ebc08("0x10a")](function (_0x403dd0) {
-      handleMouseUp(_0x403dd0);
-    }),
-    $(canvas)["on"](_0x2ebc08("0xee"), function (_0x1ea724) {
-      var _0x386bdc = _0x2ebc08;
-      handleMouseDown(
-        _0x1ea724,
-        _0x1ea724[_0x386bdc("0xc8")][_0x386bdc("0x35")][0x0]["clientX"],
-        _0x1ea724[_0x386bdc("0xc8")][_0x386bdc("0x35")][0x0][_0x386bdc("0x2b")]
-      );
-    }),
-    $(canvas)["on"](_0x2ebc08("0x85"), function (_0x120361) {
-      var _0x81f7be = _0x2ebc08;
-      if (
-        _0x120361[_0x81f7be("0xc8")][_0x81f7be("0x35")][_0x81f7be("0xbd")] ==
-        0x2
-      ) {
-        var _0x39cd76 =
-          _0x120361[_0x81f7be("0xc8")][_0x81f7be("0x35")][0x1][
-            _0x81f7be("0x14")
-          ] - _0x120361[_0x81f7be("0xc8")][_0x81f7be("0x35")][0x0]["clientX"];
-        eq["touchTwoFingerStartValue"] == -0x1
-          ? (eq[_0x81f7be("0x68")] = _0x39cd76)
-          : _0x39cd76 <= eq[_0x81f7be("0x68")]
-          ? handleQ("up", 0.05)
-          : handleQ("down", 0.05);
-      } else handleMouseMove(_0x120361, _0x120361[_0x81f7be("0xc8")][_0x81f7be("0x35")][0x0][_0x81f7be("0x14")], _0x120361["originalEvent"][_0x81f7be("0x35")][0x0]["clientY"]);
-    }),
-    $(canvas)["on"](_0x2ebc08("0xd0"), function (_0x25cb17) {
-      (eq["touchTwoFingerStartValue"] = -0x1), handleMouseUp(_0x25cb17);
-    }),
-    drawYGrid(),
-    drawXGrid(),
-    $("#main-canvas")[_0x2ebc08("0x10f")](canvas),
-    (eq["offsetX"] = $(canvas)[_0x2ebc08("0x6d")]()[_0x2ebc08("0xb5")]),
-    (eq["offsetY"] = $(canvas)[_0x2ebc08("0x6d")]()[_0x2ebc08("0xaf")]);
+/**
+ * @return {undefined}
+ */
+function drawGrid() {;
+  canvas = document['createElement']('canvas');
+  eq['canvasWidth'] = $('#main-canvas')['width']();
+  eq["canvasHeight"] = $('#main-canvas')['height']();
+  canvas['width'] = eq['canvasWidth'];
+  canvas['height'] = eq['canvasHeight'];
+  ctx = canvas['getContext']("2d");
+  ctx['clearRect'](0, 0, eq['canvasWidth'], eq['canvasHeight']);
+  canvas['addEventListener']("wheel", handleMouseWheel);
+  $(canvas)['mousedown'](function(e) {
+    handleMouseDown(e, e['clientX'], e['clientY']);
+  });
+  $(canvas)['mousemove'](function(e) {
+    handleMouseMove(e, e['clientX'], e["clientY"]);
+  });
+  $(canvas)['mouseup'](function(event) {
+    handleMouseUp(event);
+  });
+  $(canvas)["on"]('touchstart', function(e) {
+    handleMouseDown(e, e['originalEvent']['touches'][0]["clientX"], e['originalEvent']['touches'][0]['clientY']);
+  });
+  $(canvas)["on"]('touchmove', function(event) {
+    if (event['originalEvent']['touches']['length'] == 2) {
+      /** @type {number} */
+      var value = event['originalEvent']['touches'][1]['clientX'] - event['originalEvent']['touches'][0]["clientX"];
+      if (eq["touchTwoFingerStartValue"] == -1) {
+        /** @type {number} */
+        eq['touchTwoFingerStartValue'] = value;
+      } else {
+        if (value <= eq['touchTwoFingerStartValue']) {
+          handleQ("up", 0.05);
+        } else {
+          handleQ("down", 0.05);
+        }
+      }
+    } else {
+      handleMouseMove(event, event['originalEvent']['touches'][0]['clientX'], event["originalEvent"]['touches'][0]["clientY"]);
+    }
+  });
+  $(canvas)["on"]('touchend', function(event) {
+    /** @type {number} */
+    eq["touchTwoFingerStartValue"] = -1;
+    handleMouseUp(event);
+  });
+  drawYGrid();
+  drawXGrid();
+  $("#main-canvas")['html'](canvas);
+  eq["offsetX"] = $(canvas)['offset']()['left'];
+  eq["offsetY"] = $(canvas)['offset']()['top'];
 }
-function drawZeroLine() {
-  var _0xeeb80e = _0x278f7d,
-    _0x304182 = xOnCanvas(eq["lastHz"]);
-  ctx[_0xeeb80e("0xcf")](),
-    (ctx[_0xeeb80e("0xb3")] = 0x1),
-    ctx[_0xeeb80e("0xd3")]([]),
-    (ctx["strokeStyle"] = _0xeeb80e("0x2c")),
-    ctx[_0xeeb80e("0xd7")](0x0, yOnCanvas(0x0)),
-    ctx[_0xeeb80e("0x56")](_0x304182, yOnCanvas(0x0)),
-    ctx[_0xeeb80e("0xf3")](),
-    ctx["stroke"]();
+/**
+ * @return {undefined}
+ */
+function drawZeroLine() {;
+  var orig = xOnCanvas(eq["lastHz"]);
+  ctx['beginPath']();
+  /** @type {number} */
+  ctx['lineWidth'] = 1;
+  ctx['setLineDash']([]);
+  ctx["strokeStyle"] = '#000';
+  ctx['moveTo'](0, yOnCanvas(0));
+  ctx['lineTo'](orig, yOnCanvas(0));
+  ctx['closePath']();
+  ctx["stroke"]();
 }
-function drawMidLine(_0x30b8dc, _0x3c4529) {
-  var _0x59ff27 = _0x278f7d,
-    _0x1320a9 = xOnCanvas(eq[_0x59ff27("0x77")]),
-    _0x3e0459 = {
-      color: _0x59ff27("0xcc"),
-      wrong: _0x59ff27("0x9a"),
-      correct: _0x59ff27("0x3e"),
-      perfect: _0x59ff27("0x89"),
-      gray: _0x59ff27("0x10d"),
-      transparent: _0x59ff27("0x10"),
-    };
-  ctx["beginPath"](),
-    (ctx[_0x59ff27("0xb3")] = 0x3),
-    ctx[_0x59ff27("0xd3")]([]),
-    (ctx[_0x59ff27("0xdf")] = _0x3e0459[_0x3c4529]);
-  for (var _0x2229e8 = 0x1; _0x2229e8 <= eq[_0x59ff27("0xfd")]; _0x2229e8++) {
-    var _0x150d20 = _0x2229e8 / eq[_0x59ff27("0xfd")],
-      _0x51f2d2 = positionToHz(_0x150d20),
-      _0x2501c5 = 0x0;
-    $[_0x59ff27("0x7c")](_0x30b8dc, function (_0x791c8, _0x200e58) {
-      var _0x23e278 = _0x59ff27;
-      _0x200e58[_0x23e278("0x49")] == "on" &&
-        (_0x2501c5 += _0x200e58["filter"]["log_result"](_0x51f2d2));
+/**
+ * @param {?} url
+ * @param {!Object} key
+ * @return {undefined}
+ */
+function drawMidLine(url, key) {;
+  var a1 = xOnCanvas(eq['lastHz']);
+  var params = {
+    color : 'rgba(255,255,0,.8)',
+    wrong : 'rgba(237,61,61,.3)',
+    correct : 'rgba(55,132,55,.3)',
+    perfect : 'rgba(105,175,115,.5)',
+    gray : 'rgba(200,200,200,.5)',
+    transparent : 'rgba(0,0,0,0)'
+  };
+  ctx["beginPath"]();
+  /** @type {number} */
+  ctx['lineWidth'] = 3;
+  ctx['setLineDash']([]);
+  ctx['strokeStyle'] = params[key];
+  /** @type {number} */
+  var area_sum = 1;
+  for (; area_sum <= eq['samples']; area_sum++) {
+    /** @type {number} */
+    var re_pba_css = area_sum / eq['samples'];
+    var d = positionToHz(re_pba_css);
+    /** @type {number} */
+    var x = 0;
+    $['each'](url, function(canCreateDiscussions, settings) {
+      if (settings['state'] == "on") {
+        x = x + settings["filter"]["log_result"](d);
+      }
     });
-    var _0x4db92a = yOnCanvas(_0x2501c5),
-      _0x49d03d = xOnCanvas(_0x51f2d2);
-    ctx["lineTo"](_0x49d03d, _0x4db92a);
-    if (_0x49d03d > _0x1320a9) break;
+    var x1 = yOnCanvas(x);
+    var x0 = xOnCanvas(d);
+    ctx["lineTo"](x0, x1);
+    if (x0 > a1) {
+      break;
+    }
   }
   ctx["stroke"]();
 }
-function drawMidBypass() {
-  var _0xa6d4b4 = _0x278f7d,
-    _0x3514e6 = xOnCanvas(eq["lastHz"]);
-  ctx["beginPath"](),
-    (ctx[_0xa6d4b4("0xb3")] = 0x3),
-    (ctx[_0xa6d4b4("0xdf")] = "#666"),
-    ctx[_0xa6d4b4("0xd7")](0x0, yOnCanvas(0x0)),
-    ctx[_0xa6d4b4("0x56")](_0x3514e6, yOnCanvas(0x0)),
-    ctx[_0xa6d4b4("0xf3")](),
-    ctx["stroke"]();
+/**
+ * @return {undefined}
+ */
+function drawMidBypass() {;
+  var orig = xOnCanvas(eq["lastHz"]);
+  ctx["beginPath"]();
+  /** @type {number} */
+  ctx['lineWidth'] = 3;
+  /** @type {string} */
+  ctx['strokeStyle'] = "#666";
+  ctx['moveTo'](0, yOnCanvas(0));
+  ctx['lineTo'](orig, yOnCanvas(0));
+  ctx['closePath']();
+  ctx["stroke"]();
 }
-function drawMidLineGap() {
-  var _0x208b47 = _0x278f7d,
-    _0xa9ca = xOnCanvas(eq[_0x208b47("0x77")]);
-  ctx[_0x208b47("0xcf")](),
-    (ctx[_0x208b47("0xb3")] = 0x3),
-    ctx[_0x208b47("0xd3")]([0x5, 0x3]),
-    (ctx[_0x208b47("0xdf")] = _0x208b47("0xe3"));
-  for (var _0x5579a6 = 0x1; _0x5579a6 <= eq["samples"]; _0x5579a6++) {
-    var _0x1dd301 = _0x5579a6 / eq[_0x208b47("0xfd")],
-      _0x11e20a = positionToHz(_0x1dd301),
-      _0x8f6b49 = 0x0,
-      _0x38bc00 = 0x0;
-    $[_0x208b47("0x7c")](
-      eq[_0x208b47("0x37")],
-      function (_0x1ddf32, _0x5bd2e6) {
-        var _0x45be37 = _0x208b47;
-        _0x5bd2e6["state"] == "on" &&
-          (_0x38bc00 += _0x5bd2e6["filter"][_0x45be37("0xf7")](_0x11e20a));
+/**
+ * @return {undefined}
+ */
+function drawMidLineGap() {;
+  var a1 = xOnCanvas(eq['lastHz']);
+  ctx['beginPath']();
+  /** @type {number} */
+  ctx['lineWidth'] = 3;
+  ctx['setLineDash']([5, 3]);
+  ctx['strokeStyle'] = 'rgba(70,119,115,.8)';
+  /** @type {number} */
+  var area_sum = 1;
+  for (; area_sum <= eq["samples"]; area_sum++) {
+    /** @type {number} */
+    var re_pba_css = area_sum / eq['samples'];
+    var d = positionToHz(re_pba_css);
+    /** @type {number} */
+    var b = 0;
+    /** @type {number} */
+    var r = 0;
+    $['each'](eq['yourBands'], function(canCreateDiscussions, data) {
+      if (data["state"] == "on") {
+        r = r + data["filter"]['log_result'](d);
       }
-    ),
-      $[_0x208b47("0x7c")](
-        eq[_0x208b47("0x48")],
-        function (_0x2f4422, _0x2e8ff4) {
-          var _0x549848 = _0x208b47;
-          _0x2e8ff4["state"] == "on" &&
-            (_0x8f6b49 +=
-              _0x2e8ff4[_0x549848("0x7d")][_0x549848("0xf7")](_0x11e20a));
-        }
-      );
-    var _0xbfd1c3 = _0x8f6b49 - _0x38bc00,
-      _0x5199e6 = yOnCanvas(_0xbfd1c3),
-      _0x172040 = xOnCanvas(_0x11e20a);
-    ctx["lineTo"](_0x172040, _0x5199e6);
-    if (_0x172040 > _0xa9ca) break;
+    });
+    $['each'](eq['originalBands'], function(canCreateDiscussions, data) {
+      if (data["state"] == "on") {
+        b = b + data['filter']['log_result'](d);
+      }
+    });
+    /** @type {number} */
+    var i = b - r;
+    var y = yOnCanvas(i);
+    var x0 = xOnCanvas(d);
+    ctx["lineTo"](x0, y);
+    if (x0 > a1) {
+      break;
+    }
   }
-  ctx[_0x208b47("0xba")]();
+  ctx['stroke']();
 }
-function drawBandValues(_0x1f723c) {
-  var _0x18b02a = _0x278f7d,
-    _0x2b70d7 = {
-      0x0: "HC",
-      0x1: "LC",
-      0x2: "Bandpass",
-      0x3: "PK",
-      0x4: _0x18b02a("0xb1"),
-      0x5: "LS",
-      0x6: "HS",
-    };
-  $[_0x18b02a("0x7c")](_0x1f723c, function (_0x4b5c82, _0x4179cb) {
-    var _0x391a65 = _0x18b02a;
-    if (_0x4179cb[_0x391a65("0x49")] == "on") {
-      var _0x416b05 = xOnCanvas(_0x4179cb["freq"]),
-        _0x30c0cd = yOnCanvas(_0x4179cb["gain"]),
-        _0x372b72 = formatHzLabel(_0x4179cb[_0x391a65("0x50")]),
-        _0x3d6216 =
-          Math["round"](_0x4179cb[_0x391a65("0x71")] * 0xa) / 0xa +
-          _0x391a65("0xe2"),
-        _0x17c293 = Math["round"](_0x4179cb["q"] * 0xa) / 0xa + "\x20Q",
-        _0x46d1aa = _0x2b70d7[_0x4179cb[_0x391a65("0x109")]];
-      (ctx[_0x391a65("0x19")] = "rgba(220,220,220,1)"),
-        (ctx[_0x391a65("0x88")] = _0x391a65("0x42")),
-        (ctx[_0x391a65("0x25")] = _0x391a65("0x114")),
-        ctx[_0x391a65("0x6f")](
-          _0x372b72,
-          _0x4179cb[_0x391a65("0x50")] >= 0x2ee0
-            ? _0x416b05 - 0x19
-            : _0x416b05 + 0x41,
-          _0x4179cb[_0x391a65("0x71")] >= 0x0
-            ? _0x30c0cd - 0xf
-            : _0x30c0cd + 0xf
-        ),
-        (_0x4179cb[_0x391a65("0x109")] == 0x3 ||
-          _0x4179cb[_0x391a65("0x109")] == 0x5 ||
-          _0x4179cb[_0x391a65("0x109")] == 0x6) &&
-          ctx[_0x391a65("0x6f")](
-            _0x3d6216,
-            _0x4179cb[_0x391a65("0x50")] >= 0x2ee0
-              ? _0x416b05 - 0x19
-              : _0x416b05 + 0x41,
-            _0x4179cb[_0x391a65("0x71")] >= 0x0 ? _0x30c0cd : _0x30c0cd + 0x1e
-          ),
-        _0x4179cb[_0x391a65("0x109")] == 0x3 &&
-          ctx[_0x391a65("0x6f")](
-            _0x17c293,
-            _0x4179cb[_0x391a65("0x50")] >= 0x2ee0
-              ? _0x416b05 - 0x19
-              : _0x416b05 + 0x41,
-            _0x4179cb[_0x391a65("0x71")] >= 0x0
-              ? _0x30c0cd + 0xf
-              : _0x30c0cd + 0x2d
-          );
+/**
+ * @param {?} elems
+ * @return {undefined}
+ */
+function drawBandValues(elems) {;
+  var hints = {
+    0 : "HC",
+    1 : "LC",
+    2 : "Bandpass",
+    3 : "PK",
+    4 : 'Notch',
+    5 : "LS",
+    6 : "HS"
+  };
+  $['each'](elems, function(canCreateDiscussions, params) {
+    if (params['state'] == "on") {
+      var _0x416b05 = xOnCanvas(params["freq"]);
+      var _0x30c0cd = yOnCanvas(params["gain"]);
+      var orig = formatHzLabel(params['freq']);
+      var plotWidth = Math["round"](params['gain'] * 10) / 10 + ' dB';
+      /** @type {string} */
+      var left = Math["round"](params["q"] * 10) / 10 + " Q";
+      var currentElement = hints[params['filter_id']];
+      /** @type {string} */
+      ctx['fillStyle'] = "rgba(220,220,220,1)";
+      ctx['font'] = '14px Arial';
+      ctx['textAlign'] = 'right';
+      ctx['fillText'](orig, params['freq'] >= 12E3 ? _0x416b05 - 25 : _0x416b05 + 65, params['gain'] >= 0 ? _0x30c0cd - 15 : _0x30c0cd + 15);
+      if (params['filter_id'] == 3 || params['filter_id'] == 5 || params['filter_id'] == 6) {
+        ctx['fillText'](plotWidth, params['freq'] >= 12E3 ? _0x416b05 - 25 : _0x416b05 + 65, params['gain'] >= 0 ? _0x30c0cd : _0x30c0cd + 30);
+      }
+      if (params['filter_id'] == 3) {
+        ctx['fillText'](left, params['freq'] >= 12E3 ? _0x416b05 - 25 : _0x416b05 + 65, params['gain'] >= 0 ? _0x30c0cd + 15 : _0x30c0cd + 45);
+      }
     }
   });
 }
-function SwitchEQ(_0x5028b0) {
-  var _0x3f8228 = _0x278f7d,
-    _0x3cfec8 = gameContext[_0x3f8228("0x75")];
-  gameMasterGain[_0x3f8228("0x71")][_0x3f8228("0x98")](0x1, _0x3cfec8),
-    $(_0x3f8228("0x9"))[_0x3f8228("0x2e")](),
-    _0x5028b0 == _0x3f8228("0x3") &&
-      ($(".bypass-btn")[_0x3f8228("0x2")](_0x3f8228("0xcd"), _0x3f8228("0xa3")),
-      $(_0x3f8228("0x83"))[_0x3f8228("0x2")](
-        _0x3f8228("0xa6"),
-        _0x3f8228("0xb5")
-      ),
-      $(".hint-btn")[_0x3f8228("0x2")]("active", "no"),
-      (eq[_0x3f8228("0xb4")] = "original"),
-      $(_0x3f8228("0x3d"))
-        [_0x3f8228("0x2")](_0x3f8228("0xcd"), _0x3f8228("0xa3"))
-        [_0x3f8228("0x2")](_0x3f8228("0x3"), "on"),
-      (eq[_0x3f8228("0xcd")] = ![]),
-      eq["gameOriginalGain"][_0x3f8228("0x71")][_0x3f8228("0x98")](
-        0x1,
-        _0x3cfec8
-      ),
-      eq["gameBypassGain"][_0x3f8228("0x71")]["setValueAtTime"](0x0, _0x3cfec8),
-      eq[_0x3f8228("0xd4")][_0x3f8228("0x71")]["setValueAtTime"](
-        0x0,
-        _0x3cfec8
-      ),
-      drawGrid(),
-      eqSetup(
-        eq["originalBands"],
-        eq[_0x3f8228("0x8b")] ? _0x3f8228("0x1c") : _0x3f8228("0xc3")
-      ),
-      drawZeroLine(),
-      drawMidLine(
-        eq[_0x3f8228("0x48")],
-        eq[_0x3f8228("0x8b")] ? _0x3f8228("0x1c") : "transparent"
-      ),
-      !eq["answerSubmitted"] && $(_0x3f8228("0x9"))[_0x3f8228("0x100")]()),
-    _0x5028b0 == _0x3f8228("0xcd") &&
-      ($(_0x3f8228("0x3d"))
-        [_0x3f8228("0x2")](_0x3f8228("0xcd"), "on")
-        [_0x3f8228("0x2")](_0x3f8228("0x3"), _0x3f8228("0xa3")),
-      $(_0x3f8228("0x9c"))[_0x3f8228("0x2")]("active", "no"),
-      (eq[_0x3f8228("0xcd")] = !![]),
-      eq[_0x3f8228("0x93")][_0x3f8228("0x71")][_0x3f8228("0x98")](
-        0x1,
-        _0x3cfec8
-      ),
-      eq[_0x3f8228("0xd4")][_0x3f8228("0x71")][_0x3f8228("0x98")](
-        0x0,
-        _0x3cfec8
-      ),
-      eq[_0x3f8228("0x4d")][_0x3f8228("0x71")][_0x3f8228("0x98")](
-        0x0,
-        _0x3cfec8
-      ),
-      drawGrid(),
-      drawMidBypass()),
-    _0x5028b0 == _0x3f8228("0xe5") &&
-      ($(_0x3f8228("0x111"))[_0x3f8228("0x2")]("bypass", _0x3f8228("0xa3")),
-      $(_0x3f8228("0x83"))["attr"](_0x3f8228("0xa6"), "right"),
-      $(".hint-btn")[_0x3f8228("0x2")]("active", _0x3f8228("0xed")),
-      (eq[_0x3f8228("0xb4")] = "yours"),
-      $(_0x3f8228("0x3d"))
-        ["attr"](_0x3f8228("0xcd"), _0x3f8228("0xa3"))
-        ["attr"](_0x3f8228("0x3"), _0x3f8228("0xa3")),
-      (eq[_0x3f8228("0xcd")] = ![]),
-      eq["gameYourGain"][_0x3f8228("0x71")][_0x3f8228("0x98")](0x1, _0x3cfec8),
-      eq[_0x3f8228("0x93")]["gain"][_0x3f8228("0x98")](0x0, _0x3cfec8),
-      eq[_0x3f8228("0x4d")][_0x3f8228("0x71")][_0x3f8228("0x98")](
-        0x0,
-        _0x3cfec8
-      ),
-      updateMultiband(),
-      redrawGrid(),
-      eqSetup(eq[_0x3f8228("0x37")], _0x3f8228("0x2f")),
-      drawZeroLine(),
-      drawMidLine(eq[_0x3f8228("0x37")], _0x3f8228("0x2f")),
-      drawPointers(eq[_0x3f8228("0x37")]),
-      drawBandValues(eq[_0x3f8228("0x37")]),
-      eq["answerSubmitted"] && (RevealOriginal(result), drawMidLineGap()));
-}
-function RevealOriginal(_0x268b87) {
-  var _0x9b8ba8 = _0x278f7d;
-  eqSetup(eq[_0x9b8ba8("0x48")], _0x268b87),
-    drawMidLine(eq[_0x9b8ba8("0x48")], _0x268b87);
-}
-function scaleBetween(_0x3e4c1e, _0x20fedc, _0x561846, _0xc29014, _0x3d9c30) {
-  var _0x45860d = _0x278f7d,
-    _0x45c56d =
-      ((_0x561846 - _0x20fedc) * (_0x3e4c1e - _0xc29014)) /
-        (_0x3d9c30 - _0xc29014) +
-      _0x20fedc;
-  return Math[_0x45860d("0x119")](_0x45c56d * 0x64) / 0x64;
-}
-function toggleBand(_0x37f24c) {
-  var _0x3cb1d2 = _0x278f7d;
-  (eq[_0x3cb1d2("0x23")] = _0x37f24c),
-    eq[_0x3cb1d2("0x37")][eq["bandOnFocus"]]["state"] == _0x3cb1d2("0xa3")
-      ? ($(_0x3cb1d2("0x6") + eq[_0x3cb1d2("0x23")] + "\x22]")["attr"](
-          _0x3cb1d2("0x49"),
-          "on"
-        ),
-        (eq["yourBands"][eq[_0x3cb1d2("0x23")]][_0x3cb1d2("0x49")] = "on"))
-      : ($(_0x3cb1d2("0x6") + eq[_0x3cb1d2("0x23")] + "\x22]")["attr"](
-          _0x3cb1d2("0x49"),
-          _0x3cb1d2("0xa3")
-        ),
-        (eq[_0x3cb1d2("0x37")][eq[_0x3cb1d2("0x23")]]["state"] =
-          _0x3cb1d2("0xa3"))),
-    updateMultiband(),
-    SwitchEQ(_0x3cb1d2("0xe5"));
-}
-function updateMultiband() {
-  var _0x18a5f0 = _0x278f7d,
-    _0x36a87e = gameContext[_0x18a5f0("0x75")];
-  $["each"](eq[_0x18a5f0("0x37")], function (_0x40bb3d, _0x4931e6) {
-    var _0x2ada35 = _0x18a5f0,
-      _0x1cf88f =
-        _0x4931e6[_0x2ada35("0x49")] == "on"
-          ? _0x4931e6[_0x2ada35("0x71")]
-          : 0x0,
-      _0xe4408e =
-        _0x4931e6[_0x2ada35("0x49")] == "on"
-          ? _0x4931e6[_0x2ada35("0x45")]
-          : _0x2ada35("0x28");
-    (eq["yourFilters"][_0x40bb3d][_0x2ada35("0xdc")] = _0xe4408e),
-      eq[_0x2ada35("0xeb")][_0x40bb3d][_0x2ada35("0x62")][_0x2ada35("0x98")](
-        _0x4931e6["freq"],
-        _0x36a87e
-      ),
-      eq[_0x2ada35("0xeb")][_0x40bb3d]["Q"][_0x2ada35("0x98")](
-        _0x4931e6["q"],
-        _0x36a87e
-      ),
-      eq[_0x2ada35("0xeb")][_0x40bb3d][_0x2ada35("0x71")][_0x2ada35("0x98")](
-        _0x1cf88f,
-        _0x36a87e
-      );
-  });
-}
-function buildSoundMap() {
-  var _0x431ce1 = _0x278f7d,
-    _0x7839d1 = getLoopValues(),
-    _0x2e3ea9 = gameContext["currentTime"];
-  gamePlayer = gameContext[_0x431ce1("0x81")]();
-  var _0x201d4d;
-  for (
-    _0x201d4d = 0x0;
-    _0x201d4d < eq[_0x431ce1("0x37")]["length"];
-    _0x201d4d++
-  ) {
-    (eq[_0x431ce1("0xeb")][_0x201d4d] = gameContext[_0x431ce1("0xfe")]()),
-      (eq[_0x431ce1("0xeb")][_0x201d4d][_0x431ce1("0xdc")] =
-        eq[_0x431ce1("0x37")][_0x201d4d]["state"] == "on"
-          ? eq[_0x431ce1("0x37")][_0x201d4d][_0x431ce1("0x45")]
-          : "allpass"),
-      eq[_0x431ce1("0xeb")][_0x201d4d][_0x431ce1("0x62")][_0x431ce1("0x98")](
-        eq["yourBands"][_0x201d4d][_0x431ce1("0x50")],
-        _0x2e3ea9
-      ),
-      eq[_0x431ce1("0xeb")][_0x201d4d]["Q"]["setValueAtTime"](
-        eq[_0x431ce1("0x37")][_0x201d4d]["q"],
-        _0x2e3ea9
-      ),
-      eq[_0x431ce1("0xeb")][_0x201d4d]["gain"][_0x431ce1("0x98")](
-        eq[_0x431ce1("0x37")][_0x201d4d]["gain"],
-        _0x2e3ea9
-      ),
-      (eq[_0x431ce1("0x1b")][_0x201d4d] = gameContext["createBiquadFilter"]()),
-      (eq[_0x431ce1("0x1b")][_0x201d4d]["type"] =
-        eq[_0x431ce1("0x48")][_0x201d4d][_0x431ce1("0x49")] == "on"
-          ? eq["originalBands"][_0x201d4d][_0x431ce1("0x45")]
-          : _0x431ce1("0x28")),
-      eq[_0x431ce1("0x1b")][_0x201d4d]["frequency"][_0x431ce1("0x98")](
-        eq["originalBands"][_0x201d4d]["freq"],
-        _0x2e3ea9
-      ),
-      eq[_0x431ce1("0x1b")][_0x201d4d]["Q"][_0x431ce1("0x98")](
-        eq["originalBands"][_0x201d4d]["q"],
-        _0x2e3ea9
-      ),
-      eq[_0x431ce1("0x1b")][_0x201d4d][_0x431ce1("0x71")][_0x431ce1("0x98")](
-        eq[_0x431ce1("0x48")][_0x201d4d][_0x431ce1("0x71")],
-        _0x2e3ea9
-      );
+/**
+ * @param {string} yours
+ * @return {undefined}
+ */
+function SwitchEQ(yours) {;
+  var artistTrack = gameContext['currentTime'];
+  gameMasterGain['gain']['setValueAtTime'](1, artistTrack);
+  $('#question')['hide']();
+  if (yours == 'original') {
+    $(".bypass-btn")['attr']('bypass', 'off');
+    $('.compare-btn')['attr']('side', 'left');
+    $(".hint-btn")['attr']("active", "no");
+    /** @type {string} */
+    eq['activeFilter'] = "original";
+    $('[eq]')['attr']('bypass', 'off')['attr']('original', "on");
+    /** @type {boolean} */
+    eq['bypass'] = ![];
+    eq["gameOriginalGain"]['gain']['setValueAtTime'](1, artistTrack);
+    eq["gameBypassGain"]['gain']["setValueAtTime"](0, artistTrack);
+    eq['gameYourGain']['gain']["setValueAtTime"](0, artistTrack);
+    drawGrid();
+    eqSetup(eq["originalBands"], eq['answerSubmitted'] ? 'gray' : 'transparent');
+    drawZeroLine();
+    drawMidLine(eq['originalBands'], eq['answerSubmitted'] ? 'gray' : "transparent");
+    if (!eq["answerSubmitted"]) {
+      $('#question')['show']();
+    }
   }
-  (gameMasterGain = gameContext["createGain"]()),
-    (eq["gameBypassGain"] = gameContext[_0x431ce1("0x8f")]()),
-    (eq[_0x431ce1("0xd4")] = gameContext[_0x431ce1("0x8f")]()),
-    (eq[_0x431ce1("0x4d")] = gameContext[_0x431ce1("0x8f")]()),
-    gameMasterGain[_0x431ce1("0x71")][_0x431ce1("0x98")](0x1, _0x2e3ea9),
-    eq[_0x431ce1("0x93")][_0x431ce1("0x71")]["setValueAtTime"](0x1, _0x2e3ea9),
-    eq[_0x431ce1("0xd4")][_0x431ce1("0x71")]["setValueAtTime"](0x0, _0x2e3ea9),
-    eq[_0x431ce1("0x4d")][_0x431ce1("0x71")][_0x431ce1("0x98")](0x0, _0x2e3ea9),
-    gamePlayer["connect"](eq[_0x431ce1("0x93")]),
-    eq[_0x431ce1("0x93")][_0x431ce1("0xe")](gameMasterGain),
-    gamePlayer[_0x431ce1("0xe")](eq[_0x431ce1("0xeb")][0x0]),
-    gamePlayer[_0x431ce1("0xe")](eq[_0x431ce1("0x1b")][0x0]);
-  var _0x207350;
-  for (
-    _0x207350 = 0x0;
-    _0x207350 < eq["yourBands"]["length"] - 0x1;
-    _0x207350++
-  ) {
-    eq[_0x431ce1("0xeb")][_0x207350]["connect"](
-      eq[_0x431ce1("0xeb")][_0x207350 + 0x1]
-    ),
-      eq["originalFilters"][_0x207350][_0x431ce1("0xe")](
-        eq[_0x431ce1("0x1b")][_0x207350 + 0x1]
-      );
-  }
-  eq[_0x431ce1("0xeb")][eq[_0x431ce1("0x37")]["length"] - 0x1][
-    _0x431ce1("0xe")
-  ](eq[_0x431ce1("0xd4")]),
-    eq["originalFilters"][eq[_0x431ce1("0x37")]["length"] - 0x1][
-      _0x431ce1("0xe")
-    ](eq[_0x431ce1("0x4d")]),
-    eq[_0x431ce1("0x4d")][_0x431ce1("0xe")](gameMasterGain),
-    eq[_0x431ce1("0xd4")][_0x431ce1("0xe")](gameMasterGain),
-    gameMasterGain[_0x431ce1("0xe")](gameContext["destination"]),
-    (gamePlayer["buffer"] = gameBuffer),
-    (gamePlayer[_0x431ce1("0xa")] = !![]),
-    (gamePlayer[_0x431ce1("0xa0")] = _0x7839d1[_0x431ce1("0x7e")]),
-    (gamePlayer[_0x431ce1("0x69")] = _0x7839d1[_0x431ce1("0x31")]),
-    gamePlayer[_0x431ce1("0x7e")](0x0, _0x7839d1[_0x431ce1("0x7e")]),
-    (eq[_0x431ce1("0xdb")] = gameContext[_0x431ce1("0x10c")]()),
-    eq[_0x431ce1("0xd4")]["connect"](eq[_0x431ce1("0xdb")]),
-    (eq[_0x431ce1("0x87")] = gameContext[_0x431ce1("0x10c")]()),
-    eq[_0x431ce1("0x4d")][_0x431ce1("0xe")](eq["originalAnalyser"]);
-}
-function formatHz(_0x3c9742) {
-  return Math["round"](_0x3c9742 * 0xa) / 0xa;
-}
-function formatHzLabel(_0x12e035) {
-  var _0x446df2 = _0x278f7d;
-  return _0x12e035 >= 0x3e8
-    ? Math[_0x446df2("0x119")]((_0x12e035 / 0x3e8) * 0xa) / 0xa +
-        _0x446df2("0xa9")
-    : Math["round"](_0x12e035 * 0xa) / 0xa + _0x446df2("0xd2");
-}
-function positionToDB(_0x483a07) {
-  return dbMax * 0x2 * (0.5 - _0x483a07);
-}
-function positionToHz(_0x447b85) {
-  var _0x170e12 = _0x278f7d;
-  return Math[_0x170e12("0x119")](
-    minHZscale * Math[_0x170e12("0x4c")](0x2, totalOctavas * _0x447b85)
-  );
-}
-function hzToPosition(_0x5baba5) {
-  var _0x3d05da = _0x278f7d;
-  return (
-    (Math[_0x3d05da("0xab")](_0x5baba5 / minHZscale) /
-      Math[_0x3d05da("0xab")](Math["pow"](0x2, totalOctavas))) *
-    0x64
-  );
-}
-function updateBandValue(_0x2883bc, _0x18c76f) {
-  var _0x12c891 = _0x278f7d,
-    _0x130de6 = $(_0x2883bc)[_0x12c891("0x2")]("knob"),
-    _0x3cfdb9 = 0x0,
-    _0x932504 = "";
-  if (_0x130de6 == _0x12c891("0x50"))
-    (_0x3cfdb9 = parseInt($(_0x2883bc)[_0x12c891("0x2")](_0x12c891("0xea")))),
-      (eq[_0x12c891("0x37")][eq[_0x12c891("0x23")]]["freq"] = _0x3cfdb9),
-      (_0x932504 = _0x3cfdb9[_0x12c891("0x44")](0x0));
-  else {
-    if (_0x130de6 == "gain")
-      (_0x3cfdb9 = scaleBetween(
-        _0x18c76f,
-        eq[_0x12c891("0x108")],
-        eq["gainMax"],
-        0x0,
-        0x64
-      )),
-        (eq[_0x12c891("0x37")][eq["bandOnFocus"]][_0x12c891("0x71")] =
-          _0x3cfdb9),
-        (_0x932504 = _0x3cfdb9[_0x12c891("0x44")](0x1));
-    else
-      _0x130de6 == "q" &&
-        ((_0x3cfdb9 = scaleBetween(
-          _0x18c76f,
-          eq["qMin"],
-          eq["qMax"],
-          0x0,
-          0x64
-        )),
-        (eq[_0x12c891("0x37")][eq[_0x12c891("0x23")]]["q"] = _0x3cfdb9),
-        (_0x932504 = _0x3cfdb9[_0x12c891("0x44")](0x1)));
-  }
-  $(_0x2883bc)
-    [_0x12c891("0x86")](_0x12c891("0xda"))
-    [_0x12c891("0x10f")](_0x932504),
-    SwitchEQ(_0x12c891("0xe5"));
-}
-function updateKnobValue(_0x1182c1, _0x1fa10a) {
-  var _0x839fb0 = _0x278f7d;
-  (eq[_0x839fb0("0x23")] = parseInt(
-    $(_0x1182c1)[_0x839fb0("0x51")](_0x839fb0("0xd5"))["attr"]("band")
-  )),
-    updateBandValue(_0x1182c1, _0x1fa10a);
-}
-function updateKnobValues() {
-  var _0x4cf4ea = _0x278f7d,
-    _0x108185 = {
-      0: { freq: 0x1e, gain: 0x0, q: 0.7 },
-      1: { freq: 0x8c, gain: 0x0, q: 0x1 },
-      2: { freq: 0x1b8, gain: 0x0, q: 0x1 },
-      3: { freq: 0x3e8, gain: 0x0, q: 0x1 },
-      4: { freq: 0xdac, gain: 0x0, q: 0x1 },
-      5: { freq: 0x2328, gain: 0x0, q: 0x1 },
-      6: { freq: 0x3e80, gain: 0x0, q: 0.7 },
-    };
-  $(_0x4cf4ea("0xd1"))[_0x4cf4ea("0x7c")](function () {
-    var _0x52d4a4 = _0x4cf4ea,
-      _0x59696a = $(this)
-        [_0x52d4a4("0x51")]("[band]")
-        [_0x52d4a4("0x2")](_0x52d4a4("0x5d")),
-      _0x80fb0f = $(this)[_0x52d4a4("0x2")](_0x52d4a4("0x4a")),
-      _0x313c12 = isset(eq[_0x52d4a4("0x37")][_0x59696a])
-        ? eq[_0x52d4a4("0x37")][_0x59696a][_0x80fb0f]
-        : _0x108185[_0x59696a][_0x80fb0f],
-      _0x596bac =
-        _0x80fb0f == _0x52d4a4("0x71") || _0x80fb0f == "q"
-          ? _0x313c12["toFixed"](0x1)
-          : _0x313c12[_0x52d4a4("0x44")](0x0);
-    $(this)["attr"]({ y: 0x0, start: _0x313c12, value: _0x313c12 }),
-      $(this)["find"](".knob-value")[_0x52d4a4("0x10f")](_0x596bac);
-  });
-}
-function drawPointers(_0x2d4aac) {
-  var _0x375a11 = _0x278f7d;
-  $[_0x375a11("0x7c")](_0x2d4aac, function (_0x213a77, _0x32a57c) {
-    var _0x5ece96 = _0x375a11,
-      _0x103421 = _0x5ece96("0x10"),
-      _0x115d95 = _0x5ece96("0x10");
-    _0x32a57c["state"] == "on" &&
-      ((_0x103421 =
-        _0x5ece96("0x33") + _0x32a57c[_0x5ece96("0x2f")] + _0x5ece96("0x1e")),
-      (_0x115d95 =
-        _0x5ece96("0x33") + _0x32a57c[_0x5ece96("0xf6")] + _0x5ece96("0x1e"))),
-      (_0x32a57c["x"] = xOnCanvas(_0x32a57c[_0x5ece96("0x50")])),
-      (_0x32a57c["y"] = yOnCanvas(_0x32a57c[_0x5ece96("0x71")])),
-      ctx["beginPath"](),
-      ctx[_0x5ece96("0x18")](
-        xOnCanvas(_0x32a57c[_0x5ece96("0x50")]),
-        yOnCanvas(_0x32a57c[_0x5ece96("0x71")]),
-        eq["pointerRadius"],
-        0x0,
-        eq[_0x5ece96("0xa2")]
-      ),
-      ctx["closePath"](),
-      (ctx["fillStyle"] = _0x103421),
-      ctx["fill"](),
-      (ctx[_0x5ece96("0xb3")] = 0x2),
-      (ctx[_0x5ece96("0xdf")] = _0x115d95),
-      ctx[_0x5ece96("0xba")]();
-  });
-}
-function handleMouseDown(_0x474f30, _0x3da1bf, _0x4ec535) {
-  var _0x8230dc = _0x278f7d;
-  _0x474f30["preventDefault"](), _0x474f30[_0x8230dc("0xec")]();
-  var _0x450bee = parseInt(_0x3da1bf - eq[_0x8230dc("0xf1")]),
-    _0x281cbd = parseInt(_0x4ec535 - eq[_0x8230dc("0x67")]),
-    _0x152306 = -0x1;
-  $["each"](eq["yourBands"], function (_0x1d2be7, _0x14c69e) {
-    var _0x4a20e6 = _0x8230dc;
-    if (
-      _0x450bee >= _0x14c69e["x"] - eq[_0x4a20e6("0x59")] &&
-      _0x450bee <= _0x14c69e["x"] + eq["pointerRadius"] &&
-      _0x281cbd >= _0x14c69e["y"] - eq[_0x4a20e6("0x59")] &&
-      _0x281cbd <= _0x14c69e["y"] + eq[_0x4a20e6("0x59")]
-    )
-      return (_0x152306 = _0x1d2be7), ![];
-  }),
-    _0x152306 >= 0x0 &&
-      ((eq[_0x8230dc("0xd9")] = _0x152306), (eq["isDown"] = !![]));
-}
-function handleMouseMove(_0x31381c, _0x5b160b, _0x447456) {
-  var _0x331468 = _0x278f7d;
-  if (!eq[_0x331468("0xb8")]) return;
-  _0x31381c[_0x331468("0x20")](), _0x31381c[_0x331468("0xec")]();
-  var _0x3e1fe9 = positionToHz(
-      parseInt(_0x5b160b - eq[_0x331468("0xf1")]) / eq[_0x331468("0x58")]
-    ),
-    _0x5f51dd = positionToDB(
-      parseInt(_0x447456 - eq[_0x331468("0x67")]) / eq[_0x331468("0xf9")]
-    );
-  _0x3e1fe9 > 0x14 &&
-    _0x3e1fe9 < 0x4c2c &&
-    (eq["yourBands"][eq[_0x331468("0xd9")]][_0x331468("0x50")] = _0x3e1fe9),
-    eq["yourBands"][eq[_0x331468("0xd9")]][_0x331468("0x45")] !=
-      _0x331468("0x73") &&
-      eq[_0x331468("0x37")][eq["pointerDrag"]][_0x331468("0x45")] !=
-        "lowpass" &&
-      _0x5f51dd < 12.5 &&
-      _0x5f51dd > -12.5 &&
-      (eq["yourBands"][eq[_0x331468("0xd9")]]["gain"] = _0x5f51dd),
-    SwitchEQ("yours"),
-    updateKnobValues();
-}
-function handleQ(_0x23091e, _0x2214e9) {
-  var _0x42800e = _0x278f7d;
-  if (
-    !eq[_0x42800e("0xb8")] ||
-    eq[_0x42800e("0x37")][eq[_0x42800e("0xd9")]][_0x42800e("0x21")] ==
-      _0x42800e("0x73") ||
-    eq[_0x42800e("0x37")][eq["pointerDrag"]]["band_id"] == _0x42800e("0xc5")
-  )
-    return;
-  _0x23091e == "up" &&
-    eq["yourBands"][eq["pointerDrag"]]["q"] < 5.9 &&
-    (eq["yourBands"][eq[_0x42800e("0xd9")]]["q"] += _0x2214e9),
-    _0x23091e == "down" &&
-      eq[_0x42800e("0x37")][eq[_0x42800e("0xd9")]]["q"] > 0.2 &&
-      (eq["yourBands"][eq[_0x42800e("0xd9")]]["q"] -= _0x2214e9),
-    SwitchEQ(_0x42800e("0xe5")),
-    updateKnobValues();
-}
-function handleMouseWheel(_0x5d649d) {
-  var _0x5131d6 = _0x278f7d;
-  _0x5d649d[_0x5131d6("0xe6")] >= 0x0
-    ? handleQ("up", 0.1)
-    : handleQ(_0x5131d6("0x24"), 0.1);
-}
-function handleMouseUp(_0x5bc7aa) {
-  var _0x2e5ffa = _0x278f7d;
-  _0x5bc7aa[_0x2e5ffa("0x20")](),
-    _0x5bc7aa[_0x2e5ffa("0xec")](),
-    (eq["isDown"] = ![]);
-}
-function buildBandKnobsOld(_0x13a59d) {
-  var _0x381070 = _0x278f7d;
-  $[_0x381070("0x7c")](_0x13a59d, function (_0x1dc893, _0x2607e6) {
-    var _0x4dba8a = _0x381070;
-    $(_0x4dba8a("0x6") + _0x2607e6["id"] + "\x22]")
-      [_0x4dba8a("0x2")](_0x4dba8a("0x49"), "on")
-      [_0x4dba8a("0x2")](_0x4dba8a("0x100"), _0x4dba8a("0xed"));
-  });
-}
-function buildBandKnobs(_0x196f1b) {
-  var _0x1d1440 = _0x278f7d;
-  $(_0x1d1440("0x74"))["html"](""),
-    $[_0x1d1440("0x7c")](_0x196f1b, function (_0x38d662, _0x573e03) {
-      var _0x3020fe = _0x1d1440,
-        _0x4bea73 = dBands[_0x573e03["band_id"]],
-        _0x462a96 = "",
-        _0x307d50 = _0x3020fe("0xc1"),
-        _0x3c316e = _0x3020fe("0xc1");
-      _0x462a96 =
-        _0x3020fe("0xac") +
-        _0x4bea73["sensitivity_freq"] +
-        _0x3020fe("0x10e") +
-        _0x4bea73[_0x3020fe("0x50")] +
-        _0x3020fe("0x112") +
-        _0x4bea73["freq"] +
-        _0x3020fe("0xa5") +
-        _0x4bea73[_0x3020fe("0x50")] +
-        _0x3020fe("0x27") +
-        "<div\x20class=\x22knob-controller\x22\x20style=\x22transform:\x20rotate(" +
-        _0x4bea73["angle_freq"] +
-        _0x3020fe("0xae") +
-        _0x3020fe("0xb7") +
-        _0x4bea73[_0x3020fe("0x50")] +
-        "</div>" +
-        "<div\x20class=\x22knob-label\x22>FREQ</div>" +
-        "</div>";
-      _0x4bea73[_0x3020fe("0x12")][_0x3020fe("0x61")](_0x3020fe("0x71")) &&
-        (_0x307d50 =
-          _0x3020fe("0xa7") +
-          _0x4bea73[_0x3020fe("0x71")] +
-          _0x3020fe("0x112") +
-          _0x4bea73[_0x3020fe("0x71")] +
-          _0x3020fe("0x116") +
-          _0x4bea73[_0x3020fe("0x71")] +
-          _0x3020fe("0xbf") +
-          _0x3020fe("0x1") +
-          _0x4bea73[_0x3020fe("0xf2")] +
-          "deg)\x22><i\x20class=\x22fa\x20fa-circle\x22></i></div>" +
-          _0x3020fe("0xb7") +
-          _0x4bea73[_0x3020fe("0x71")] +
-          _0x3020fe("0xc9") +
-          _0x3020fe("0x9f") +
-          _0x3020fe("0xc9"));
-      _0x4bea73[_0x3020fe("0x12")][_0x3020fe("0x61")]("q") &&
-        (_0x3c316e =
-          "<div\x20class=\x22knob-panel\x22\x20knob=\x22q\x22\x20state=\x22inactive\x22\x20sensitivity=\x220.2\x22\x20y=\x220\x22\x20min=\x220.5\x22\x20max=\x223\x22\x20base=\x22" +
-          _0x4bea73["q"] +
-          _0x3020fe("0x112") +
-          _0x4bea73["q"] +
-          _0x3020fe("0x116") +
-          _0x4bea73["q"] +
-          "\x22\x20ondblclick=\x22knobBase(this);\x22\x20onMouseDown=\x22knobActivate(this,\x20event);\x22>" +
-          _0x3020fe("0x1") +
-          _0x4bea73["angle_q"] +
-          _0x3020fe("0xae") +
-          _0x3020fe("0xb7") +
-          _0x4bea73["q"] +
-          _0x3020fe("0xc9") +
-          "<div\x20class=\x22knob-label\x22>Q</div>" +
-          _0x3020fe("0xc9"));
-      var _0x3273e =
-        _0x3020fe("0xef") +
-        _0x573e03["id"] +
-        _0x3020fe("0x105") +
-        _0x573e03[_0x3020fe("0x49")] +
-        "\x22>" +
-        _0x3020fe("0x103") +
-        _0x573e03["id"] +
-        ");\x22>" +
-        _0x3020fe("0x84") +
-        _0x4bea73["color"] +
-        ")\x22></div>" +
-        _0x3020fe("0x46") +
-        host +
-        _0x3020fe("0xb") +
-        _0x4bea73[_0x3020fe("0x45")] +
-        _0x3020fe("0xc2") +
-        "</div>" +
-        "<div\x20class=\x22controllers\x22>" +
-        _0x462a96 +
-        _0x307d50 +
-        _0x3c316e +
-        "</div>" +
-        _0x3020fe("0xc9");
-      $(_0x3020fe("0x74"))["append"](_0x3273e);
-    });
-}
-function getEQStats(_0x168fc2) {
-  var _0x25fd52 = _0x278f7d,
-    _0x4ad7ea = xOnCanvas(eq[_0x25fd52("0x77")]),
-    _0x2afa03 = [];
-  for (var _0xe00524 = 0x1; _0xe00524 <= eq[_0x25fd52("0xfd")]; _0xe00524++) {
-    var _0x43fdf4 = _0xe00524 / eq[_0x25fd52("0xfd")],
-      _0x3e077e = positionToHz(_0x43fdf4),
-      _0x52bb6f = 0x0;
-    $["each"](_0x168fc2, function (_0x1db9b8, _0x4e31c9) {
-      var _0x4f657b = _0x25fd52;
-      _0x4e31c9[_0x4f657b("0x49")] == "on" &&
-        (_0x52bb6f +=
-          _0x4e31c9[_0x4f657b("0x7d")][_0x4f657b("0xf7")](_0x3e077e));
-    });
-    var _0x4622f4 = yOnCanvas(_0x52bb6f),
-      _0x29b617 = xOnCanvas(_0x3e077e);
-    ctx[_0x25fd52("0x56")](_0x29b617, _0x4622f4);
-    if (_0x29b617 > _0x4ad7ea) break;
-    _0x2afa03["push"]({ hz: _0x3e077e, db: _0x52bb6f, y: _0x4622f4 });
-  }
-  return _0x2afa03;
-}
-function startEQ() {
-  var _0x57816a = _0x278f7d;
-  buildSoundMap(),
-    initKnobs(),
-    buildBandKnobs(eq[_0x57816a("0x37")]),
-    SwitchEQ("original"),
-    drawGrid(),
-    eqSetup(eq[_0x57816a("0x37")], _0x57816a("0xc3")),
-    eqSetup(eq[_0x57816a("0x48")], _0x57816a("0xc3")),
+  if (yours == 'bypass') {
+    $('[eq]')['attr']('bypass', "on")['attr']('original', 'off');
+    $('.hint-btn')['attr']("active", "no");
+    /** @type {boolean} */
+    eq['bypass'] = !![];
+    eq['gameBypassGain']['gain']['setValueAtTime'](1, artistTrack);
+    eq['gameYourGain']['gain']['setValueAtTime'](0, artistTrack);
+    eq['gameOriginalGain']['gain']['setValueAtTime'](0, artistTrack);
+    drawGrid();
     drawMidBypass();
-}
-function createAudioMeter(_0x256928, _0x45ecb2, _0x1ee09c, _0x202353) {
-  var _0x2063b3 = _0x278f7d,
-    _0x1774fd = _0x256928[_0x2063b3("0xcb")](0x100);
-  return (
-    (_0x1774fd[_0x2063b3("0x1d")] = volumeAudioProcess),
-    (_0x1774fd[_0x2063b3("0x39")] = ![]),
-    (_0x1774fd[_0x2063b3("0xc0")] = 0x0),
-    (_0x1774fd[_0x2063b3("0x94")] = 0x0),
-    (_0x1774fd[_0x2063b3("0x55")] = _0x45ecb2 || 0.98),
-    (_0x1774fd[_0x2063b3("0x43")] = _0x1ee09c || 0.95),
-    (_0x1774fd[_0x2063b3("0x76")] = _0x202353 || 0x2ee),
-    _0x1774fd["connect"](_0x256928["destination"]),
-    (_0x1774fd[_0x2063b3("0x29")] = function () {
-      var _0xfed3e5 = _0x2063b3;
-      if (!this[_0xfed3e5("0x39")]) return ![];
-      if (
-        this["lastClip"] + this[_0xfed3e5("0x76")] <
-        window["performance"][_0xfed3e5("0x38")]()
-      )
-        this["clipping"] = ![];
-      return this["clipping"];
-    }),
-    (_0x1774fd[_0x2063b3("0xe8")] = function () {
-      this["disconnect"](), (this["onaudioprocess"] = null);
-    }),
-    _0x1774fd
-  );
-}
-function volumeAudioProcess(_0x1703c6) {
-  var _0x390788 = _0x278f7d,
-    _0x205774 = _0x1703c6[_0x390788("0x57")][_0x390788("0xce")](0x0),
-    _0x1ac9aa = _0x205774[_0x390788("0xbd")],
-    _0x49d774 = 0x0,
-    _0x4171c6;
-  for (var _0x254c39 = 0x0; _0x254c39 < _0x1ac9aa; _0x254c39++) {
-    (_0x4171c6 = _0x205774[_0x254c39]),
-      Math[_0x390788("0xc")](_0x4171c6) >= this[_0x390788("0x55")] &&
-        ((this["clipping"] = !![]),
-        (this[_0x390788("0xc0")] =
-          window[_0x390788("0xd8")][_0x390788("0x38")]())),
-      (_0x49d774 += _0x4171c6 * _0x4171c6);
   }
-  var _0x5c7382 = Math[_0x390788("0x5a")](_0x49d774 / _0x1ac9aa);
-  this[_0x390788("0x94")] = Math["max"](
-    _0x5c7382,
-    this[_0x390788("0x94")] * this["averaging"]
-  );
-  eq["lastMeterEvent"] % 0x3 === 0x0
-    ? (eq[_0x390788("0xe1")] = !![])
-    : (eq[_0x390788("0xe1")] = ![]);
-  eq[_0x390788("0xa4")] = Math["floor"](_0x1703c6[_0x390788("0x4e")]);
-  if (eq[_0x390788("0xe1")]) {
-  }
-}
-function getSpectrogramResults() {
-  var _0x5447bb = _0x278f7d;
-  $("[spectrograms]")[_0x5447bb("0x2")]("loading", "yes");
-  var _0x2d5a27 = gameContext["currentTime"];
-  eq[_0x5447bb("0x4d")][_0x5447bb("0x71")]["setValueAtTime"](0x1, _0x2d5a27),
-    eq["gameYourGain"][_0x5447bb("0x71")][_0x5447bb("0x98")](0x1, _0x2d5a27),
-    gameMasterGain["gain"][_0x5447bb("0x98")](0x0, _0x2d5a27),
-    (eq["freqDataMap"] = { original: [], your: [], diff: [] });
-  let _0x4ac139 = 0x0,
-    _0x4e1b80 = setInterval(function () {
-      var _0x56678c = _0x5447bb;
-      _0x4ac139 == eq["freqRunner"]["count"] &&
-        (clearInterval(_0x4e1b80),
-        drawSpectrogramResults(),
-        $("[spectrograms]")[_0x56678c("0x2")](_0x56678c("0x91"), "no"));
-      let _0x21ef07 = new Uint8Array(eq[_0x56678c("0x87")][_0x56678c("0x0")]),
-        _0x36ff47 = new Uint8Array(eq[_0x56678c("0xdb")][_0x56678c("0x0")]);
-      eq[_0x56678c("0x87")][_0x56678c("0x8c")](_0x21ef07),
-        eq[_0x56678c("0xdb")][_0x56678c("0x8c")](_0x36ff47),
-        eq[_0x56678c("0xde")][_0x56678c("0x3")][_0x56678c("0x6c")](_0x21ef07),
-        eq["freqDataMap"][_0x56678c("0x3f")][_0x56678c("0x6c")](_0x36ff47);
-      let _0x46236c = [];
-      $[_0x56678c("0x7c")](_0x21ef07, function (_0x578e84, _0x4952a5) {
-        var _0x43632b = _0x56678c,
-          _0x291d3c = Math[_0x43632b("0xc")](
-            _0x21ef07[_0x578e84] - _0x36ff47[_0x578e84]
-          );
-        _0x46236c[_0x43632b("0x6c")](_0x291d3c);
-      }),
-        eq[_0x56678c("0xde")][_0x56678c("0x6b")][_0x56678c("0x6c")](_0x46236c),
-        _0x4ac139++;
-    }, eq[_0x5447bb("0x9d")][_0x5447bb("0x96")]);
-}
-function drawSpectrogramResults() {
-  var _0x334b54 = _0x278f7d;
-  drawTimelineSpectrogram(_0x334b54("0x3"), eq[_0x334b54("0xde")]["original"]),
-    drawAvgSpectrogram("original", eq[_0x334b54("0xde")][_0x334b54("0x3")]),
-    drawTimelineSpectrogram(
-      _0x334b54("0x3f"),
-      eq[_0x334b54("0xde")][_0x334b54("0x3f")]
-    ),
-    drawAvgSpectrogram(
-      _0x334b54("0x3f"),
-      eq[_0x334b54("0xde")][_0x334b54("0x3f")]
-    ),
-    drawTimelineSpectrogram(_0x334b54("0x6b"), eq[_0x334b54("0xde")]["diff"]),
-    drawAvgSpectrogram("diff", eq[_0x334b54("0xde")]["diff"]);
-  var _0x252af3 = getSpectrogramDiff(eq[_0x334b54("0xde")]["diff"]),
-    _0x4af906 = 0x14,
-    _0x238e31 =
-      _0x252af3 >= _0x4af906
-        ? 0x0
-        : ((_0x4af906 - _0x252af3) / _0x4af906) * 0x64;
-  $(_0x334b54("0x79"))["html"](_0x252af3[_0x334b54("0x44")](0x2)),
-    $(_0x334b54("0x60"))["html"](_0x238e31[_0x334b54("0x44")](0x0));
-}
-function drawTimelineSpectrogram(_0x23344b, _0x52bc42) {
-  var _0x98f5e2 = _0x278f7d;
-  let _0x1539dd = $(_0x98f5e2("0xb0") + _0x23344b + "\x22]")[0x0],
-    _0x5a612b = _0x1539dd[_0x98f5e2("0x1a")]("2d"),
-    _0x2644fe = _0x1539dd[_0x98f5e2("0x99")],
-    _0x4dbda2 = _0x1539dd[_0x98f5e2("0x54")],
-    _0x53d458 = (_0x4dbda2 / 0x400) * 1.5,
-    _0x1891a4 = _0x2644fe / eq["freqRunner"][_0x98f5e2("0x78")],
-    _0x430130 = _0x5a612b["getImageData"](0x1, 0x0, _0x2644fe - 0x1, _0x4dbda2);
-  (_0x5a612b[_0x98f5e2("0x19")] = _0x98f5e2("0xfa")),
-    _0x5a612b["clearRect"](0x0, 0x0, _0x2644fe, _0x4dbda2),
-    _0x5a612b[_0x98f5e2("0xbb")](_0x430130, 0x0, 0x0),
-    $[_0x98f5e2("0x7c")](_0x52bc42, function (_0xf7620b, _0x3fd98b) {
-      var _0x34a492 = _0x98f5e2;
-      let _0xdbbe9d = _0xf7620b * _0x1891a4;
-      $[_0x34a492("0x7c")](_0x3fd98b, function (_0x4931c2, _0xbe77f9) {
-        var _0x324488 = _0x34a492;
-        let _0x5282e7 = _0xbe77f9 / 0xff,
-          _0x58125e = Math[_0x324488("0x119")](
-            _0x5282e7 * 0x78 + (0x118 % 0x168)
-          ),
-          _0x43fffe = 0xa + 0x46 * _0x5282e7 + "%";
-        _0x5a612b["beginPath"](),
-          (_0x5a612b[_0x324488("0xdf")] =
-            _0x324488("0x8d") + _0x58125e + ",\x20100%,\x20" + _0x43fffe + ")"),
-          (_0x5a612b[_0x324488("0x70")] = _0x1891a4 + "px"),
-          _0x5a612b["moveTo"](_0xdbbe9d, _0x4dbda2 - _0x4931c2 * _0x53d458),
-          _0x5a612b[_0x324488("0x56")](
-            _0xdbbe9d,
-            _0x4dbda2 - (_0x4931c2 * _0x53d458 + _0x53d458)
-          ),
-          _0x5a612b[_0x324488("0xba")]();
-      });
-    });
-}
-function drawAvgSpectrogram(_0x5e9db4, _0x126922) {
-  var _0x30da69 = _0x278f7d;
-  let _0x209612 = $("[avg-spectrogram=\x22" + _0x5e9db4 + "\x22]")[0x0],
-    _0x375b13 = _0x209612[_0x30da69("0x1a")]("2d");
-  (_0x375b13[_0x30da69("0x19")] = _0x30da69("0x101")),
-    _0x375b13[_0x30da69("0x9b")](
-      0x0,
-      0x0,
-      _0x209612["width"],
-      _0x209612[_0x30da69("0x54")]
-    ),
-    (_0x375b13[_0x30da69("0xb3")] = 0x1),
-    (_0x375b13[_0x30da69("0xdf")] = _0x30da69("0x8")),
-    _0x375b13[_0x30da69("0xcf")]();
-  for (
-    var _0x565a99 = 0x0;
-    _0x565a99 < _0x126922[0x0][_0x30da69("0xbd")];
-    _0x565a99++
-  ) {
-    var _0x3f05c2 = 0x0;
-    for (var _0x126df5 = 0x0; _0x126df5 < _0x126922["length"]; _0x126df5++) {
-      _0x3f05c2 += _0x126922[_0x126df5][_0x565a99];
+  if (yours == 'yours') {
+    $('.bypass-btn')['attr']("bypass", 'off');
+    $('.compare-btn')["attr"]('side', "right");
+    $(".hint-btn")['attr']("active", 'yes');
+    /** @type {string} */
+    eq['activeFilter'] = "yours";
+    $('[eq]')["attr"]('bypass', 'off')["attr"]('original', 'off');
+    /** @type {boolean} */
+    eq['bypass'] = ![];
+    eq["gameYourGain"]['gain']['setValueAtTime'](1, artistTrack);
+    eq['gameBypassGain']["gain"]['setValueAtTime'](0, artistTrack);
+    eq['gameOriginalGain']['gain']['setValueAtTime'](0, artistTrack);
+    updateMultiband();
+    redrawGrid();
+    eqSetup(eq['yourBands'], 'color');
+    drawZeroLine();
+    drawMidLine(eq['yourBands'], 'color');
+    drawPointers(eq['yourBands']);
+    drawBandValues(eq['yourBands']);
+    if (eq["answerSubmitted"]) {
+      RevealOriginal(result);
+      drawMidLineGap();
     }
-    var _0x145c33 = _0x3f05c2 / _0x126922[_0x30da69("0xbd")],
-      _0x34667a = _0x145c33 / 0x80,
-      _0x53fc9d =
-        _0x209612[_0x30da69("0x54")] -
-        (_0x34667a * _0x209612[_0x30da69("0x54")]) / 0x2,
-      _0x14ca99 =
-        (_0x565a99 / _0x126922[0x0][_0x30da69("0xbd")]) *
-        _0x209612[_0x30da69("0x99")];
-    _0x565a99 === 0x0
-      ? _0x375b13[_0x30da69("0xd7")](_0x14ca99, _0x53fc9d)
-      : _0x375b13[_0x30da69("0x56")](_0x14ca99, _0x53fc9d);
-  }
-  _0x375b13[_0x30da69("0xba")]();
-}
-function getSpectrogramDiff(_0x32c90e) {
-  var _0x464f47 = _0x278f7d,
-    _0x16ac30 = 0xff * _0x32c90e[_0x464f47("0xbd")],
-    _0xf95c23 = 0x0;
-  return (
-    $[_0x464f47("0x7c")](_0x32c90e, function (_0x1fc69c, _0x5949e7) {
-      var _0x393900 = _0x464f47;
-      let _0x5e6463 = 0x0;
-      $["each"](_0x5949e7, function (_0x17b7cc, _0x2cc04b) {
-        _0x5e6463 += _0x2cc04b;
-      }),
-        (_0xf95c23 += _0x5e6463 / _0x32c90e[_0x393900("0xbd")]);
-    }),
-    (_0xf95c23 / _0x16ac30) * 0x64
-  );
-}
-function keyIsPressed(_0x24ce6d) {
-  var _0x246e19 = _0x278f7d;
-  _0x24ce6d == 0x20 && (!eq[_0x246e19("0x8b")] ? ConfirmSettings() : GoNext()),
-    _0x24ce6d == 0x26 && handleQ("down", 0.1),
-    _0x24ce6d == 0x28 && handleQ("up", 0.1),
-    _0x24ce6d == 0x25 && SwitchEQ(_0x246e19("0x3")),
-    _0x24ce6d == 0x27 && SwitchEQ("yours"),
-    _0x24ce6d == 0x42 && Bypass();
-}
-function getAccuracy() {
-  var _0x3eb28d = _0x278f7d,
-    _0x55a766 = 0x0,
-    _0x18c0bd = 0x4e20,
-    _0x32dd0f = 0x0,
-    _0x1b06a3 = 0x0;
-  for (var _0x4b5a28 = 0x1; _0x4b5a28 <= eq[_0x3eb28d("0xfd")]; _0x4b5a28++) {
-    var _0x1aeaf7 = _0x4b5a28 / eq[_0x3eb28d("0xfd")],
-      _0x3c867b = positionToHz(_0x1aeaf7),
-      _0x131fa9 = 0x0,
-      _0x48fd12 = 0x0;
-    _0x3c867b >= _0x55a766 &&
-      _0x3c867b <= _0x18c0bd &&
-      ($[_0x3eb28d("0x7c")](
-        eq[_0x3eb28d("0x37")],
-        function (_0x5500f6, _0x3a6b56) {
-          var _0x3667d0 = _0x3eb28d;
-          if (_0x3a6b56[_0x3667d0("0x49")] == "on") {
-            var _0x1172da = _0x3a6b56["filter"][_0x3667d0("0xf7")](_0x3c867b);
-            _0x1172da < -0x10 && (_0x1172da = -0x10),
-              _0x1172da > 0x10 && (_0x1172da = 0x10),
-              (_0x48fd12 += _0x1172da);
-          }
-        }
-      ),
-      $[_0x3eb28d("0x7c")](
-        eq[_0x3eb28d("0x48")],
-        function (_0xd9d338, _0x3f7523) {
-          var _0x23f5eb = _0x3eb28d;
-          if (_0x3f7523[_0x23f5eb("0x49")] == "on") {
-            var _0x1543cf = _0x3f7523["filter"][_0x23f5eb("0xf7")](_0x3c867b);
-            _0x1543cf < -0x10 && (_0x1543cf = -0x10),
-              _0x1543cf > 0x10 && (_0x1543cf = 0x10),
-              (_0x131fa9 += _0x1543cf);
-          }
-        }
-      ),
-      (_0x1b06a3 += Math["abs"](_0x131fa9 - _0x48fd12)));
-  }
-  return (
-    _0x1b06a3 < deviation &&
-      (_0x32dd0f = 0x64 - (_0x1b06a3 / deviation) * 0x64),
-    _0x32dd0f[_0x3eb28d("0x44")](0x0)
-  );
-}
-function updateMeter(_0x5e333f, _0x5ecc9c) {
-  var _0x485ad9 = _0x278f7d,
-    _0x488db5 = 0xb4 + (_0x5e333f * 0xb4) / 0x64;
-  $(_0x485ad9("0x7f") + _0x5ecc9c + "\x22]")
-    [_0x485ad9("0x86")](_0x485ad9("0x7"))
-    [_0x485ad9("0x30")](
-      "transform",
-      _0x485ad9("0xa1") + _0x488db5 + _0x485ad9("0xb6")
-    ),
-    $("[meter=\x22" + _0x5ecc9c + "\x22]")
-      [_0x485ad9("0x86")](_0x485ad9("0x4f"))
-      ["html"](_0x5e333f + _0x485ad9("0xff"));
-}
-function resetMeter() {
-  var _0x808e08 = _0x278f7d,
-    _0x3f943b = (percentAccuracy * 0xb4) / 0x64,
-    _0x11b003 = (perfectPercent * 0xb4) / 0x64;
-  $(".yk-meter")
-    [_0x808e08("0x86")](_0x808e08("0x7"))
-    [_0x808e08("0x30")]("transform", _0x808e08("0x2a")),
-    $(_0x808e08("0x32"))
-      ["find"](_0x808e08("0x3a"))
-      [_0x808e08("0x30")](
-        _0x808e08("0x1f"),
-        _0x808e08("0xa1") + _0x3f943b + _0x808e08("0xb6")
-      ),
-    $(_0x808e08("0x32"))
-      [_0x808e08("0x86")](".meter-perfect")
-      ["css"](
-        _0x808e08("0x1f"),
-        _0x808e08("0xa1") + _0x11b003 + _0x808e08("0xb6")
-      );
-}
-function CompareResult(_0x507871) {
-  var _0x494c28 = _0x278f7d;
-  $(_0x507871)[_0x494c28("0x2")](_0x494c28("0xa6")) == "left"
-    ? SwitchEQ(_0x494c28("0xe5"))
-    : SwitchEQ(_0x494c28("0x3"));
-}
-function Bypass() {
-  var _0x5f2311 = _0x278f7d;
-  $(_0x5f2311("0x107"))[_0x5f2311("0x2")](_0x5f2311("0xcd")) ==
-  _0x5f2311("0xa3")
-    ? (SwitchEQ(_0x5f2311("0xcd")),
-      $(_0x5f2311("0x107"))[_0x5f2311("0x2")](_0x5f2311("0xcd"), "on"))
-    : (SwitchEQ(eq["activeFilter"]),
-      $("#bypass-btn")[_0x5f2311("0x2")](_0x5f2311("0xcd"), _0x5f2311("0xa3")));
-}
-function UseHint(_0x52534c) {
-  var _0xd97f9f = _0x278f7d,
-    _0x17ba76 = [];
-  if (hints <= 0x0) {
-    $(".hint-btn")["attr"](_0xd97f9f("0xe0"), "no");
-    return;
-  }
-  $[_0xd97f9f("0x7c")](eq[_0xd97f9f("0x37")], function (_0x3bbb00, _0x377434) {
-    var _0x2ce41e = _0xd97f9f;
-    !_0x377434[_0x2ce41e("0x66")] && _0x17ba76["push"](_0x3bbb00);
-  });
-  if (_0x17ba76[_0xd97f9f("0xbd")] < 0x2)
-    $(_0x52534c)["attr"](_0xd97f9f("0x64"), "yes"),
-      setTimeout(function () {
-        var _0x3cc11b = _0xd97f9f;
-        $(_0x52534c)["attr"](_0x3cc11b("0x64"), "no");
-      }, 0xc8);
-  else {
-    var _0x32888a = getArrayRandomElements(_0x17ba76, 0x1)[0x0];
-    (eq[_0xd97f9f("0x37")][_0x32888a] = eq[_0xd97f9f("0x48")][_0x32888a]),
-      (eq[_0xd97f9f("0x37")][_0x32888a][_0xd97f9f("0x66")] = !![]),
-      SwitchEQ(_0xd97f9f("0xe5")),
-      updateKnobValues(),
-      $(_0xd97f9f("0x6") + _0x32888a + "\x22]")[_0xd97f9f("0x2")](
-        _0xd97f9f("0x66"),
-        _0xd97f9f("0xed")
-      ),
-      hints--,
-      $(_0xd97f9f("0x92"))[_0xd97f9f("0x8e")](hints),
-      hints <= 0x0 && $(_0x52534c)["attr"](_0xd97f9f("0xe0"), "no");
   }
 }
-function ConfirmSettings() {
-  var _0x50e1d2 = _0x278f7d;
-  if ($(_0x50e1d2("0x65"))[_0x50e1d2("0x2")](_0x50e1d2("0xe0")) == "no") return;
-  $(_0x50e1d2("0x65"))[_0x50e1d2("0x2")](_0x50e1d2("0xe0"), "no"),
-    $(_0x50e1d2("0x102"))[_0x50e1d2("0x2")](
-      _0x50e1d2("0xe0"),
-      _0x50e1d2("0xed")
-    ),
-    $(_0x50e1d2("0xaa"))[_0x50e1d2("0x2")](_0x50e1d2("0x100"), "no"),
-    $(_0x50e1d2("0x32"))[_0x50e1d2("0x100")](),
-    $(_0x50e1d2("0x72"))[_0x50e1d2("0x2")](_0x50e1d2("0x100"), "yes"),
-    $(_0x50e1d2("0x3d"))[_0x50e1d2("0x2")]("original", _0x50e1d2("0xa3"));
-  if ($("#game-panel-body")["attr"](_0x50e1d2("0x49")) === _0x50e1d2("0xfb"))
-    return;
-  $(_0x50e1d2("0x7a"))[_0x50e1d2("0x2")](_0x50e1d2("0x49"), _0x50e1d2("0xfb")),
-    (eq[_0x50e1d2("0x8b")] = !![]);
-  var _0x5f4acf = getAccuracy();
-  drawMidLineGap(), submitEqMirrorResult(_0x5f4acf);
+/**
+ * @param {!Object} cid
+ * @return {undefined}
+ */
+function RevealOriginal(cid) {;
+  eqSetup(eq['originalBands'], cid);
+  drawMidLine(eq['originalBands'], cid);
 }
-function GoNext() {
-  var _0x132c92 = _0x278f7d;
-  if ($(_0x132c92("0x102"))[_0x132c92("0x2")](_0x132c92("0xe0")) == "no")
-    return;
-  var _0x4c22be = gameContext[_0x132c92("0x75")];
-  eq[_0x132c92("0x4d")][_0x132c92("0x71")]["setValueAtTime"](0x0, _0x4c22be),
-    eq["gameBypassGain"][_0x132c92("0x71")][_0x132c92("0x98")](0x0, _0x4c22be),
-    eq[_0x132c92("0xd4")]["gain"]["setValueAtTime"](0x0, _0x4c22be),
-    CustomGoNext();
+/**
+ * @param {string} toTop
+ * @param {number} index
+ * @param {string} step
+ * @param {number} fromTop
+ * @param {number} type
+ * @return {?}
+ */
+function scaleBetween(toTop, index, step, fromTop, type) {;
+  var number = (step - index) * (toTop - fromTop) / (type - fromTop) + index;
+  return Math['round'](number * 100) / 100;
 }
-function getRandomFrequencyBetween(_0xf89251) {
-  var _0xffad56 = 0x0;
-  while (_0xffad56 < _0xf89251[0x0] || _0xffad56 > _0xf89251[0x1]) {
-    _0xffad56 = getRandomFrequency();
+/**
+ * @param {?} value
+ * @return {undefined}
+ */
+function toggleBand(value) {;
+  eq['bandOnFocus'] = value;
+  if (eq['yourBands'][eq["bandOnFocus"]]["state"] == 'off') {
+    $('[band="' + eq['bandOnFocus'] + '"]')["attr"]('state', "on");
+    /** @type {string} */
+    eq["yourBands"][eq['bandOnFocus']]['state'] = "on";
+  } else {
+    $('[band="' + eq['bandOnFocus'] + '"]')["attr"]('state', 'off');
+    eq['yourBands'][eq['bandOnFocus']]["state"] = 'off';
   }
-  return _0xffad56;
+  updateMultiband();
+  SwitchEQ('yours');
 }
-function getWholeBetween(_0xca309e) {
-  var _0x23d49d = _0x278f7d;
-  return (
-    Math[_0x23d49d("0x90")](
-      Math["random"]() *
-        (Math["floor"](_0xca309e[0x1]) - Math["ceil"](_0xca309e[0x0]) + 0x1)
-    ) + Math[_0x23d49d("0xd6")](_0xca309e[0x0])
-  );
-}
-function getFloatBetween(_0x4679d3) {
-  var _0x2d898a = _0x278f7d;
-  return parseFloat(
-    (Math[_0x2d898a("0x3c")]() * (_0x4679d3[0x1] - _0x4679d3[0x0]) +
-      _0x4679d3[0x0])[_0x2d898a("0x44")](0x1)
-  );
-}
-function createQuestion(_0x5143f0) {
-  var _0x112660 = _0x278f7d;
-  (eq[_0x112660("0x48")] = []), (eq["yourBands"] = []);
-  var _0x4222ad = 0x1;
-  $[_0x112660("0x7c")](_0x5143f0, function (_0x5ccc54, _0x583427) {
-    var _0x34cebd = _0x112660,
-      _0x32610e = short[_0x583427["filter_name"]],
-      _0x2c7973 =
-        _0x32610e == _0x34cebd("0x26")
-          ? _0x34cebd("0x26") + _0x4222ad
-          : _0x32610e,
-      _0x32009d = dBands[_0x2c7973],
-      _0x198537 = getRandomFrequencyBetween(_0x583427[_0x34cebd("0x50")]),
-      _0x5ce589 = getFloatBetween(_0x583427["q"]),
-      _0x19e82b = getFloatBetween(_0x583427[_0x34cebd("0x71")]);
-    eq[_0x34cebd("0x48")]["push"]({
-      id: _0x5ccc54,
-      band_id: _0x2c7973,
-      state: "on",
-      color: _0x32009d[_0x34cebd("0x2f")],
-      border: _0x32009d["border"],
-      filter_name: _0x32610e,
-      filter_id: _0x32009d["filter_id"],
-      freq: _0x198537,
-      gain: _0x19e82b,
-      q: _0x5ce589,
-      chart: {},
-      filter: {},
-      hint: ![],
-    }),
-      eq[_0x34cebd("0x37")]["push"]({
-        id: _0x5ccc54,
-        band_id: _0x2c7973,
-        state: "on",
-        color: _0x32009d[_0x34cebd("0x2f")],
-        border: _0x32009d["border"],
-        filter_name: _0x32610e,
-        filter_id: _0x32009d["filter_id"],
-        freq: _0x32009d["freq"],
-        gain: _0x32009d[_0x34cebd("0x71")],
-        q: _0x32009d["q"],
-        chart: {},
-        filter: {},
-        hint: ![],
-      }),
-      _0x32610e == "peaking" && _0x4222ad++;
+/**
+ * @return {undefined}
+ */
+function updateMultiband() {;
+  var artistTrack = gameContext['currentTime'];
+  $["each"](eq['yourBands'], function(key, params) {
+    var GET_AUTH_URL_TIMEOUT = params['state'] == "on" ? params['gain'] : 0;
+    var _0xe4408e = params['state'] == "on" ? params['filter_name'] : 'allpass';
+    eq["yourFilters"][key]['type'] = _0xe4408e;
+    eq['yourFilters'][key]['frequency']['setValueAtTime'](params["freq"], artistTrack);
+    eq['yourFilters'][key]["Q"]['setValueAtTime'](params["q"], artistTrack);
+    eq['yourFilters'][key]['gain']['setValueAtTime'](GET_AUTH_URL_TIMEOUT, artistTrack);
   });
 }
-function loadNext(_0x5337be) {
-  var _0x3faf0b = _0x278f7d;
-  (eq[_0x3faf0b("0x8b")] = ![]),
-    $(_0x3faf0b("0x5e"))[_0x3faf0b("0xa8")]("active"),
-    $(_0x3faf0b("0x7a"))[_0x3faf0b("0x2")](
-      _0x3faf0b("0x49"),
-      _0x3faf0b("0xad")
-    ),
-    resetMeter(),
-    createQuestion(_0x5337be),
-    updateKnobValues(),
-    $(_0x3faf0b("0x9"))["hide"](),
-    $("[band]")
-      ["attr"]("state", "off")
-      [_0x3faf0b("0x2")](_0x3faf0b("0x100"), "no"),
-    $(_0x3faf0b("0x32"))[_0x3faf0b("0x2e")](),
-    $(_0x3faf0b("0x102"))[_0x3faf0b("0x2")](_0x3faf0b("0xe0"), "no"),
-    $("#confirm-settings")[_0x3faf0b("0x2")](
-      _0x3faf0b("0xe0"),
-      _0x3faf0b("0xed")
-    ),
-    startEQ();
+/**
+ * @return {undefined}
+ */
+function buildSoundMap() {;
+  var attr2index = getLoopValues();
+  var funcsToRun = gameContext["currentTime"];
+  gamePlayer = gameContext['createBufferSource']();
+  var i;
+  /** @type {number} */
+  i = 0;
+  for (; i < eq['yourBands']["length"]; i++) {
+    eq['yourFilters'][i] = gameContext['createBiquadFilter']();
+    eq['yourFilters'][i]['type'] = eq['yourBands'][i]["state"] == "on" ? eq['yourBands'][i]['filter_name'] : "allpass";
+    eq['yourFilters'][i]['frequency']['setValueAtTime'](eq["yourBands"][i]['freq'], funcsToRun);
+    eq['yourFilters'][i]["Q"]["setValueAtTime"](eq['yourBands'][i]["q"], funcsToRun);
+    eq['yourFilters'][i]["gain"]['setValueAtTime'](eq['yourBands'][i]["gain"], funcsToRun);
+    eq['originalFilters'][i] = gameContext["createBiquadFilter"]();
+    eq['originalFilters'][i]["type"] = eq['originalBands'][i]['state'] == "on" ? eq["originalBands"][i]['filter_name'] : 'allpass';
+    eq['originalFilters'][i]["frequency"]['setValueAtTime'](eq["originalBands"][i]["freq"], funcsToRun);
+    eq['originalFilters'][i]["Q"]['setValueAtTime'](eq["originalBands"][i]["q"], funcsToRun);
+    eq['originalFilters'][i]['gain']['setValueAtTime'](eq['originalBands'][i]['gain'], funcsToRun);
+  }
+  gameMasterGain = gameContext["createGain"]();
+  eq["gameBypassGain"] = gameContext['createGain']();
+  eq['gameYourGain'] = gameContext['createGain']();
+  eq['gameOriginalGain'] = gameContext['createGain']();
+  gameMasterGain['gain']['setValueAtTime'](1, funcsToRun);
+  eq['gameBypassGain']['gain']["setValueAtTime"](1, funcsToRun);
+  eq['gameYourGain']['gain']["setValueAtTime"](0, funcsToRun);
+  eq['gameOriginalGain']['gain']['setValueAtTime'](0, funcsToRun);
+  gamePlayer["connect"](eq['gameBypassGain']);
+  eq['gameBypassGain']['connect'](gameMasterGain);
+  gamePlayer['connect'](eq['yourFilters'][0]);
+  gamePlayer['connect'](eq['originalFilters'][0]);
+  var indexLookupKey;
+  /** @type {number} */
+  indexLookupKey = 0;
+  for (; indexLookupKey < eq["yourBands"]["length"] - 1; indexLookupKey++) {
+    eq['yourFilters'][indexLookupKey]["connect"](eq['yourFilters'][indexLookupKey + 1]);
+    eq["originalFilters"][indexLookupKey]['connect'](eq['originalFilters'][indexLookupKey + 1]);
+  }
+  eq['yourFilters'][eq['yourBands']["length"] - 1]['connect'](eq['gameYourGain']);
+  eq["originalFilters"][eq['yourBands']["length"] - 1]['connect'](eq['gameOriginalGain']);
+  eq['gameOriginalGain']['connect'](gameMasterGain);
+  eq['gameYourGain']['connect'](gameMasterGain);
+  gameMasterGain['connect'](gameContext["destination"]);
+  gamePlayer["buffer"] = gameBuffer;
+  /** @type {boolean} */
+  gamePlayer['loop'] = !![];
+  gamePlayer['loopStart'] = attr2index['start'];
+  gamePlayer['loopEnd'] = attr2index['end'];
+  gamePlayer['start'](0, attr2index['start']);
+  eq['yourAnalyser'] = gameContext['createAnalyser']();
+  eq['gameYourGain']["connect"](eq['yourAnalyser']);
+  eq['originalAnalyser'] = gameContext['createAnalyser']();
+  eq['gameOriginalGain']['connect'](eq["originalAnalyser"]);
 }
-function setGame() {
-  var _0x18e50c = _0x278f7d;
-  resetKeyboardKeys(),
-    activateKeyboardKeys(_0x18e50c("0xca")),
-    activateKeyboardKeys(_0x18e50c("0x7b")),
-    showLives(),
-    getNextBands();
+/**
+ * @param {number} val
+ * @return {?}
+ */
+function formatHz(val) {
+  return Math["round"](val * 10) / 10;
 }
+/**
+ * @param {number} val
+ * @return {?}
+ */
+function formatHzLabel(val) {;
+  return val >= 1E3 ? Math['round'](val / 1E3 * 10) / 10 + ' kHz' : Math["round"](val * 10) / 10 + ' Hz';
+}
+/**
+ * @param {number} canCreateDiscussions
+ * @return {?}
+ */
+function positionToDB(canCreateDiscussions) {
+  return dbMax * 2 * (0.5 - canCreateDiscussions);
+}
+/**
+ * @param {number} regexp
+ * @return {?}
+ */
+function positionToHz(regexp) {;
+  return Math['round'](minHZscale * Math['pow'](2, totalOctavas * regexp));
+}
+/**
+ * @param {!Object} deltaX
+ * @return {?}
+ */
+function hzToPosition(deltaX) {;
+  return Math['log'](deltaX / minHZscale) / Math['log'](Math["pow"](2, totalOctavas)) * 100;
+}
+/**
+ * @param {?} name
+ * @param {string} s
+ * @return {undefined}
+ */
+function updateBandValue(name, s) {;
+  var _incorrectComparisonFunctionResult = $(name)['attr']("knob");
+  /** @type {number} */
+  var j = 0;
+  /** @type {string} */
+  var addedPathkey = "";
+  if (_incorrectComparisonFunctionResult == 'freq') {
+    /** @type {number} */
+    j = parseInt($(name)['attr']('value'));
+    /** @type {number} */
+    eq['yourBands'][eq['bandOnFocus']]["freq"] = j;
+    addedPathkey = j['toFixed'](0);
+  } else {
+    if (_incorrectComparisonFunctionResult == "gain") {
+      j = scaleBetween(s, eq['gainMin'], eq["gainMax"], 0, 100);
+      eq['yourBands'][eq["bandOnFocus"]]['gain'] = j;
+      addedPathkey = j['toFixed'](1);
+    } else {
+      if (_incorrectComparisonFunctionResult == "q") {
+        j = scaleBetween(s, eq["qMin"], eq["qMax"], 0, 100);
+        eq['yourBands'][eq['bandOnFocus']]["q"] = j;
+        addedPathkey = j['toFixed'](1);
+      }
+    }
+  }
+  $(name)['find']('.knob-value')['html'](addedPathkey);
+  SwitchEQ('yours');
+}
+/**
+ * @param {?} dayNames
+ * @param {string} switchTextDiv
+ * @return {undefined}
+ */
+function updateKnobValue(dayNames, switchTextDiv) {;
+  /** @type {number} */
+  eq['bandOnFocus'] = parseInt($(dayNames)['parents']('[band]')["attr"]("band"));
+  updateBandValue(dayNames, switchTextDiv);
+}
+/**
+ * @return {undefined}
+ */
+function updateKnobValues() {;
+  var reservedNamesMap = {
+    0 : {
+      freq : 30,
+      gain : 0,
+      q : 0.7
+    },
+    1 : {
+      freq : 140,
+      gain : 0,
+      q : 1
+    },
+    2 : {
+      freq : 440,
+      gain : 0,
+      q : 1
+    },
+    3 : {
+      freq : 1E3,
+      gain : 0,
+      q : 1
+    },
+    4 : {
+      freq : 3500,
+      gain : 0,
+      q : 1
+    },
+    5 : {
+      freq : 9E3,
+      gain : 0,
+      q : 1
+    },
+    6 : {
+      freq : 16E3,
+      gain : 0,
+      q : 0.7
+    }
+  };
+  $('.knob-panel')['each'](function() {
+    var name = $(this)['parents']("[band]")['attr']('band');
+    var i = $(this)['attr']('knob');
+    var variable = isset(eq['yourBands'][name]) ? eq['yourBands'][name][i] : reservedNamesMap[name][i];
+    var artistTrack = i == 'gain' || i == "q" ? variable["toFixed"](1) : variable['toFixed'](0);
+    $(this)["attr"]({
+      y : 0,
+      start : variable,
+      value : variable
+    });
+    $(this)["find"](".knob-value")['html'](artistTrack);
+  });
+}
+/**
+ * @param {?} elems
+ * @return {undefined}
+ */
+function drawPointers(elems) {;
+  $['each'](elems, function(canCreateDiscussions, values) {
+    var color = 'rgba(0,0,0,0)';
+    var newValue = 'rgba(0,0,0,0)';
+    if (values["state"] == "on") {
+      color = 'rgba(' + values['color'] + ',1)';
+      newValue = 'rgba(' + values['border'] + ',1)';
+    }
+    values["x"] = xOnCanvas(values['freq']);
+    values["y"] = yOnCanvas(values['gain']);
+    ctx["beginPath"]();
+    ctx['arc'](xOnCanvas(values['freq']), yOnCanvas(values['gain']), eq["pointerRadius"], 0, eq['PI2']);
+    ctx["closePath"]();
+    ctx["fillStyle"] = color;
+    ctx["fill"]();
+    /** @type {number} */
+    ctx['lineWidth'] = 2;
+    ctx['strokeStyle'] = newValue;
+    ctx['stroke']();
+  });
+}
+/**
+ * @param {!Object} e
+ * @param {?} oDD
+ * @param {?} sGroup
+ * @return {undefined}
+ */
+function handleMouseDown(e, oDD, sGroup) {;
+  e["preventDefault"]();
+  e['stopPropagation']();
+  /** @type {number} */
+  var whiteRating = parseInt(oDD - eq['offsetX']);
+  /** @type {number} */
+  var pageInd = parseInt(sGroup - eq['offsetY']);
+  /** @type {number} */
+  var value = -1;
+  $["each"](eq["yourBands"], function(Night, satellite_coords) {
+    if (whiteRating >= satellite_coords["x"] - eq['pointerRadius'] && whiteRating <= satellite_coords["x"] + eq["pointerRadius"] && pageInd >= satellite_coords["y"] - eq['pointerRadius'] && pageInd <= satellite_coords["y"] + eq['pointerRadius']) {
+      return value = Night, ![];
+    }
+  });
+  if (value >= 0) {
+    eq['pointerDrag'] = value;
+    /** @type {boolean} */
+    eq["isDown"] = !![];
+  }
+}
+/**
+ * @param {!Object} event
+ * @param {?} targetClass
+ * @param {?} initialX
+ * @return {undefined}
+ */
+function handleMouseMove(event, targetClass, initialX) {;
+  if (!eq['isDown']) {
+    return;
+  }
+  event['preventDefault']();
+  event['stopPropagation']();
+  var _0x3e1fe9 = positionToHz(parseInt(targetClass - eq['offsetX']) / eq['canvasWidth']);
+  var gain = positionToDB(parseInt(initialX - eq['offsetY']) / eq['canvasHeight']);
+  if (_0x3e1fe9 > 20 && _0x3e1fe9 < 19500) {
+    eq["yourBands"][eq['pointerDrag']]['freq'] = _0x3e1fe9;
+  }
+  if (eq["yourBands"][eq['pointerDrag']]['filter_name'] != 'highpass' && eq['yourBands'][eq["pointerDrag"]]['filter_name'] != "lowpass" && gain < 12.5 && gain > -12.5) {
+    eq["yourBands"][eq['pointerDrag']]["gain"] = gain;
+  }
+  SwitchEQ("yours");
+  updateKnobValues();
+}
+/**
+ * @param {string} directionCode
+ * @param {number} partKeys
+ * @return {undefined}
+ */
+function handleQ(directionCode, partKeys) {;
+  if (!eq['isDown'] || eq['yourBands'][eq['pointerDrag']]['band_id'] == 'highpass' || eq['yourBands'][eq["pointerDrag"]]["band_id"] == 'lowpass') {
+    return;
+  }
+  if (directionCode == "up" && eq["yourBands"][eq["pointerDrag"]]["q"] < 5.9) {
+    eq["yourBands"][eq['pointerDrag']]["q"] += partKeys;
+  }
+  if (directionCode == "down" && eq['yourBands'][eq['pointerDrag']]["q"] > 0.2) {
+    eq["yourBands"][eq['pointerDrag']]["q"] -= partKeys;
+  }
+  SwitchEQ('yours');
+  updateKnobValues();
+}
+/**
+ * @param {?} myPreferences
+ * @return {undefined}
+ */
+function handleMouseWheel(myPreferences) {;
+  if (myPreferences['deltaY'] >= 0) {
+    handleQ("up", 0.1);
+  } else {
+    handleQ('down', 0.1);
+  }
+}
+/**
+ * @param {?} event
+ * @return {undefined}
+ */
+function handleMouseUp(event) {;
+  event['preventDefault']();
+  event['stopPropagation']();
+  /** @type {boolean} */
+  eq["isDown"] = ![];
+}
+/**
+ * @param {?} elems
+ * @return {undefined}
+ */
+function buildBandKnobsOld(elems) {;
+  $['each'](elems, function(canCreateDiscussions, st) {
+    var addIndent = getResponsesAnalysisDataPrefixCacheKey;
+    $(addIndent("0x6") + st["id"] + '"]')[addIndent("0x2")](addIndent("0x49"), "on")[addIndent("0x2")](addIndent("0x100"), addIndent("0xed"));
+  });
+}
+/**
+ * @param {?} elems
+ * @return {undefined}
+ */
+function buildBandKnobs(elems) {;
+  $('[bands]')["html"]("");
+  $['each'](elems, function(canCreateDiscussions, sks) {
+    var params = dBands[sks["band_id"]];
+    /** @type {string} */
+    var escapedEmail = "";
+    var sitesusers = '<div class="empty-knob-panel"></div>';
+    var siteName = '<div class="empty-knob-panel"></div>';
+    /** @type {string} */
+    escapedEmail = '<div class="knob-panel" knob="freq" state="inactive" sensitivity="' + params["sensitivity_freq"] + '" y="0" min="20" max="19100" base="' + params['freq'] + '" start="' + params["freq"] + '>" value="' + params['freq'] + '" ondblclick="knobBase(this);" onMouseDown="knobActivate(this, event);">' + '<div class="knob-controller" style="transform: rotate(' + params["angle_freq"] + 'deg)"><i class="fa fa-circle"></i></div>' + '<div class="knob-value" contentEditable="true" onBlur="knobValueBlur(this);" onFocus="knobValueFocus(this);" onKeyDown="knobKeydown(this, event);">' + params['freq'] + "</div>" + '<div class="knob-label">FREQ</div>' + "</div>";
+    if (params['knobs']['includes']('gain')) {
+      sitesusers = '<div class="knob-panel" knob="gain" state="inactive" sensitivity="0.05" y="0" min="-18" max="18" base="' + params['gain'] + '" start="' + params['gain'] + '" value="' + params['gain'] + '"ondblclick="knobBase(this);"onMouseDown="knobActivate(this, event);">' + '<div class="knob-controller" style="transform: rotate(' + params['angle_gain'] + 'deg)"><i class="fa fa-circle"></i></div>' + '<div class="knob-value" contentEditable="true" onBlur="knobValueBlur(this);" onFocus="knobValueFocus(this);" onKeyDown="knobKeydown(this, event);">' + params['gain'] + '</div>' + '<div class="knob-label">GAIN</div>' + '</div>';
+    }
+    if (params['knobs']['includes']("q")) {
+      siteName = '<div class="knob-panel" knob="q" state="inactive" sensitivity="0.2" y="0" min="0.5" max="3" base="' + params["q"] + '" start="' + params["q"] + '" value="' + params["q"] + '" ondblclick="knobBase(this);" onMouseDown="knobActivate(this, event);">' + '<div class="knob-controller" style="transform: rotate(' + params["angle_q"] + 'deg)"><i class="fa fa-circle"></i></div>' + '<div class="knob-value" contentEditable="true" onBlur="knobValueBlur(this);" onFocus="knobValueFocus(this);" onKeyDown="knobKeydown(this, event);">' + params["q"] + '</div>' + '<div class="knob-label">Q</div>' + '</div>';
+    }
+    var scrollbarHelpers = '<div band="' + sks["id"] + '" state="' + sks['state'] + '">' + '<div toggle-band onclick="toggleBand(' + sks["id"] + ');">' + '<div toggle-band-btn style="background: rgb(' + params["color"] + ')"></div>' + '<img toggle-band-img src="' + host + '/playground/eq/filter-50/' + params['filter_name'] + '.png"/>' + "</div>" + '<div class="controllers">' + escapedEmail + sitesusers + siteName + "</div>" + '</div>';
+    $('[bands]')["append"](scrollbarHelpers);
+  });
+}
+/**
+ * @param {?} jArr
+ * @return {?}
+ */
+function getEQStats(jArr) {;
+  var MAXL10 = xOnCanvas(eq['lastHz']);
+  /** @type {!Array} */
+  var PL$86 = [];
+  /** @type {number} */
+  var secondsPerYear = 1;
+  for (; secondsPerYear <= eq['samples']; secondsPerYear++) {
+    /** @type {number} */
+    var interestEfold = secondsPerYear / eq['samples'];
+    var i = positionToHz(interestEfold);
+    /** @type {number} */
+    var url = 0;
+    $["each"](jArr, function(canCreateDiscussions, values) {
+      var parseInt = unsetPolling;
+      if (values['state'] == "on") {
+        url = url + values['filter']['log_result'](i);
+      }
+    });
+    var startY = yOnCanvas(url);
+    var x = xOnCanvas(i);
+    ctx['lineTo'](x, startY);
+    if (x > MAXL10) {
+      break;
+    }
+    PL$86["push"]({
+      hz : i,
+      db : url,
+      y : startY
+    });
+  }
+  return PL$86;
+}
+/**
+ * @return {undefined}
+ */
+function startEQ() {;
+  buildSoundMap();
+  initKnobs();
+  buildBandKnobs(eq['yourBands']);
+  SwitchEQ("original");
+  drawGrid();
+  eqSetup(eq['yourBands'], 'transparent');
+  eqSetup(eq['originalBands'], 'transparent');
+  drawMidBypass();
+}
+/**
+ * @param {!Object} audioContext
+ * @param {number} clipLevel
+ * @param {number} averaging
+ * @param {number} clipLag
+ * @return {?}
+ */
+function createAudioMeter(audioContext, clipLevel, averaging, clipLag) {;
+  var volume = audioContext['createScriptProcessor'](256);
+  return volume['onaudioprocess'] = volumeAudioProcess, volume['clipping'] = ![], volume['lastClip'] = 0, volume['volume'] = 0, volume['clipLevel'] = clipLevel || 0.98, volume['averaging'] = averaging || 0.95, volume['clipLag'] = clipLag || 750, volume["connect"](audioContext["destination"]), volume['checkClipping'] = function() {
+    var mat = now;
+    if (!this[mat("0x39")]) {
+      return ![];
+    }
+    if (this["lastClip"] + this[mat("0x76")] < window["performance"][mat("0x38")]()) {
+      /** @type {boolean} */
+      this["clipping"] = ![];
+    }
+    return this["clipping"];
+  }, volume['shutdown'] = function() {
+    this["disconnect"]();
+    /** @type {null} */
+    this["onaudioprocess"] = null;
+  }, volume;
+}
+/**
+ * @param {?} event
+ * @return {undefined}
+ */
+function volumeAudioProcess(event) {;
+  var window = event['inputBuffer']['getChannelData'](0);
+  var f = window['length'];
+  /** @type {number} */
+  var number = 0;
+  var value;
+  /** @type {number} */
+  var g = 0;
+  for (; g < f; g++) {
+    value = window[g];
+    if (Math['abs'](value) >= this['clipLevel']) {
+      /** @type {boolean} */
+      this["clipping"] = !![];
+      this['lastClip'] = window['performance']['now']();
+    }
+    /** @type {number} */
+    number = number + value * value;
+  }
+  var result = Math['sqrt'](number / f);
+  this['volume'] = Math["max"](result, this['volume'] * this["averaging"]);
+  if (eq["lastMeterEvent"] % 3 === 0) {
+    /** @type {boolean} */
+    eq['meterUpdate'] = !![];
+  } else {
+    /** @type {boolean} */
+    eq['meterUpdate'] = ![];
+  }
+  eq['lastMeterEvent'] = Math["floor"](event['playbackTime']);
+  if (eq['meterUpdate']) {
+  }
+}
+/**
+ * @return {undefined}
+ */
+function getSpectrogramResults() {;
+  $("[spectrograms]")['attr']("loading", "yes");
+  var funcsToRun = gameContext["currentTime"];
+  eq['gameOriginalGain']['gain']["setValueAtTime"](1, funcsToRun);
+  eq["gameYourGain"]['gain']['setValueAtTime'](1, funcsToRun);
+  gameMasterGain["gain"]['setValueAtTime'](0, funcsToRun);
+  eq["freqDataMap"] = {
+    original : [],
+    your : [],
+    diff : []
+  };
+  let count = 0;
+  let logIntervalId = setInterval(function() {
+    var height = bodyHeight;
+    if (count == eq["freqRunner"]["count"]) {
+      clearInterval(logIntervalId);
+      drawSpectrogramResults();
+      $("[spectrograms]")[height("0x2")](height("0x91"), "no");
+    }
+    let b = new Uint8Array(eq[height("0x87")][height("0x0")]);
+    let a = new Uint8Array(eq[height("0xdb")][height("0x0")]);
+    eq[height("0x87")][height("0x8c")](b);
+    eq[height("0xdb")][height("0x8c")](a);
+    eq[height("0xde")][height("0x3")][height("0x6c")](b);
+    eq["freqDataMap"][height("0x3f")][height("0x6c")](a);
+    let CustomTests = [];
+    $[height("0x7c")](b, function(key, canCreateDiscussions) {
+      var textHeight = height;
+      var element = Math[textHeight("0xc")](b[key] - a[key]);
+      CustomTests[textHeight("0x6c")](element);
+    });
+    eq[height("0xde")][height("0x6b")][height("0x6c")](CustomTests);
+    count++;
+  }, eq['freqRunner']['timegap']);
+}
+/**
+ * @return {undefined}
+ */
+function drawSpectrogramResults() {;
+  drawTimelineSpectrogram('original', eq['freqDataMap']["original"]);
+  drawAvgSpectrogram("original", eq['freqDataMap']['original']);
+  drawTimelineSpectrogram('your', eq['freqDataMap']['your']);
+  drawAvgSpectrogram('your', eq['freqDataMap']['your']);
+  drawTimelineSpectrogram('diff', eq['freqDataMap']["diff"]);
+  drawAvgSpectrogram("diff", eq['freqDataMap']["diff"]);
+  var beyondBoundsFlingDistance = getSpectrogramDiff(eq['freqDataMap']["diff"]);
+  /** @type {number} */
+  var flingDistance = 20;
+  /** @type {number} */
+  var rpm_traffic = beyondBoundsFlingDistance >= flingDistance ? 0 : (flingDistance - beyondBoundsFlingDistance) / flingDistance * 100;
+  $('[diff-cor]')["html"](beyondBoundsFlingDistance['toFixed'](2));
+  $('[diff-accuracy]')["html"](rpm_traffic['toFixed'](0));
+}
+/**
+ * @param {?} noResolveAction
+ * @param {?} showNotes
+ * @return {undefined}
+ */
+function drawTimelineSpectrogram(noResolveAction, showNotes) {;
+  let rpm_traffic = $('[timeline-spectrogram="' + noResolveAction + '"]')[0];
+  let ctx = rpm_traffic['getContext']("2d");
+  let sizeX = rpm_traffic['width'];
+  let sizeY = rpm_traffic['height'];
+  let mysecond_no = sizeY / 1024 * 1.5;
+  let size = sizeX / eq["freqRunner"]['count'];
+  let orig = ctx["getImageData"](1, 0, sizeX - 1, sizeY);
+  ctx['fillStyle'] = 'hsl(280, 100%, 10%)';
+  ctx["clearRect"](0, 0, sizeX, sizeY);
+  ctx['putImageData'](orig, 0, 0);
+  $['each'](showNotes, function(ry0, elems) {
+    var mat = now;
+    let x0 = ry0 * size;
+    $[mat("0x7c")](elems, function(myfirst_no, isSlidingUp) {
+      var getResponsesAnalysisDataPrefixCacheKey = mat;
+      let _0x5282e7 = isSlidingUp / 255;
+      let groupId = Math['round'](_0x5282e7 * 120 + 280 % 360);
+      let _0x43fffe = 10 + 70 * _0x5282e7 + "%";
+      ctx["beginPath"]();
+      /** @type {string} */
+      ctx['strokeStyle'] = 'hsl(' + groupId + ", 100%, " + _0x43fffe + ")";
+      ctx['strokeWidth'] = size + "px";
+      ctx["moveTo"](x0, sizeY - myfirst_no * mysecond_no);
+      ctx['lineTo'](x0, sizeY - (myfirst_no * mysecond_no + mysecond_no));
+      ctx['stroke']();
+    });
+  });
+}
+/**
+ * @param {string} string
+ * @param {!Object} values
+ * @return {undefined}
+ */
+function drawAvgSpectrogram(string, values) {;
+  let a = $('[avg-spectrogram="' + string + '"]')[0];
+  let options = a['getContext']("2d");
+  options['fillStyle'] = 'rgb(0, 0, 0)';
+  options['fillRect'](0, 0, a["width"], a['height']);
+  /** @type {number} */
+  options['lineWidth'] = 1;
+  options['strokeStyle'] = 'rgb(140, 140, 140)';
+  options['beginPath']();
+  /** @type {number} */
+  var j = 0;
+  for (; j < values[0]['length']; j++) {
+    /** @type {number} */
+    var diff = 0;
+    /** @type {number} */
+    var i = 0;
+    for (; i < values["length"]; i++) {
+      diff = diff + values[i][j];
+    }
+    /** @type {number} */
+    var backoffDelay = diff / values['length'];
+    /** @type {number} */
+    var backoffDelaySeconds = backoffDelay / 128;
+    /** @type {number} */
+    var xhr = a['height'] - backoffDelaySeconds * a['height'] / 2;
+    /** @type {number} */
+    var datum = j / values[0]['length'] * a['width'];
+    if (j === 0) {
+      options['moveTo'](datum, xhr);
+    } else {
+      options['lineTo'](datum, xhr);
+    }
+  }
+  options['stroke']();
+}
+/**
+ * @param {?} elems
+ * @return {?}
+ */
+function getSpectrogramDiff(elems) {;
+  /** @type {number} */
+  var articleArea = 255 * elems['length'];
+  /** @type {number} */
+  var childFloatArea = 0;
+  return $['each'](elems, function(canCreateDiscussions, jArr) {
+    var dv = childCount;
+    let nCatCount = 0;
+    $["each"](jArr, function(canCreateDiscussions, n) {
+      nCatCount = nCatCount + n;
+    });
+    childFloatArea = childFloatArea + nCatCount / elems[dv("0xbd")];
+  }), childFloatArea / articleArea * 100;
+}
+/**
+ * @param {number} canCreateDiscussions
+ * @return {undefined}
+ */
+function keyIsPressed(canCreateDiscussions) {;
+  if (canCreateDiscussions == 32) {
+    if (!eq['answerSubmitted']) {
+      ConfirmSettings();
+    } else {
+      GoNext();
+    }
+  }
+  if (canCreateDiscussions == 38) {
+    handleQ("down", 0.1);
+  }
+  if (canCreateDiscussions == 40) {
+    handleQ("up", 0.1);
+  }
+  if (canCreateDiscussions == 37) {
+    SwitchEQ('original');
+  }
+  if (canCreateDiscussions == 39) {
+    SwitchEQ("yours");
+  }
+  if (canCreateDiscussions == 66) {
+    Bypass();
+  }
+}
+/**
+ * @return {?}
+ */
+function getAccuracy() {;
+  /** @type {number} */
+  var __highlight_line_start = 0;
+  /** @type {number} */
+  var __highlight_line_end = 2E4;
+  /** @type {number} */
+  var symbolMatch = 0;
+  /** @type {number} */
+  var symbolOffset = 0;
+  /** @type {number} */
+  var secondsPerYear = 1;
+  for (; secondsPerYear <= eq['samples']; secondsPerYear++) {
+    /** @type {number} */
+    var interestEfold = secondsPerYear / eq['samples'];
+    var __line_number = positionToHz(interestEfold);
+    /** @type {number} */
+    var waitBeforeReconnect = 0;
+    /** @type {number} */
+    var daysLoaded = 0;
+    if (__line_number >= __highlight_line_start && __line_number <= __highlight_line_end) {
+      $['each'](eq['yourBands'], function(canCreateDiscussions, map) {
+        if (map['state'] == "on") {
+          var mmaCalendarDaysInterval = map["filter"]['log_result'](__line_number);
+          if (mmaCalendarDaysInterval < -16) {
+            /** @type {number} */
+            mmaCalendarDaysInterval = -16;
+          }
+          if (mmaCalendarDaysInterval > 16) {
+            /** @type {number} */
+            mmaCalendarDaysInterval = 16;
+          }
+          daysLoaded = daysLoaded + mmaCalendarDaysInterval;
+        }
+      });
+      $['each'](eq['originalBands'], function(canCreateDiscussions, map) {
+        if (map['state'] == "on") {
+          var reconnectTimeIncrease = map["filter"]['log_result'](__line_number);
+          if (reconnectTimeIncrease < -16) {
+            /** @type {number} */
+            reconnectTimeIncrease = -16;
+          }
+          if (reconnectTimeIncrease > 16) {
+            /** @type {number} */
+            reconnectTimeIncrease = 16;
+          }
+          waitBeforeReconnect = waitBeforeReconnect + reconnectTimeIncrease;
+        }
+      });
+      symbolOffset = symbolOffset + Math["abs"](waitBeforeReconnect - daysLoaded);
+    }
+  }
+  return symbolOffset < deviation && (symbolMatch = 100 - symbolOffset / deviation * 100), symbolMatch['toFixed'](0);
+}
+/**
+ * @param {number} meterInfo
+ * @param {string} json
+ * @return {undefined}
+ */
+function updateMeter(meterInfo, json) {;
+  /** @type {number} */
+  var _FOO_ = 180 + meterInfo * 180 / 100;
+  $('[meter="' + json + '"]')['find']('.needle')['css']("transform", 'rotate(' + _FOO_ + 'deg)');
+  $('[meter="' + json + '"]')['find']('.meter-value')["html"](meterInfo + '% accurate');
+}
+/**
+ * @return {undefined}
+ */
+function resetMeter() {;
+  /** @type {number} */
+  var nb_numbers = percentAccuracy * 180 / 100;
+  /** @type {number} */
+  var range = perfectPercent * 180 / 100;
+  $(".yk-meter")['find']('.needle')['css']("transform", 'rotate(180deg)');
+  $('.yk-meter')["find"]('.meter-correct')['css']('transform', 'rotate(' + nb_numbers + 'deg)');
+  $('.yk-meter')['find'](".meter-perfect")["css"]('transform', 'rotate(' + range + 'deg)');
+}
+/**
+ * @param {?} dayNames
+ * @return {undefined}
+ */
+function CompareResult(dayNames) {;
+  if ($(dayNames)['attr']('side') == "left") {
+    SwitchEQ('yours');
+  } else {
+    SwitchEQ('original');
+  }
+}
+/**
+ * @return {undefined}
+ */
+function Bypass() {;
+  if ($('#bypass-btn')['attr']('bypass') == 'off') {
+    SwitchEQ('bypass');
+    $('#bypass-btn')['attr']('bypass', "on");
+  } else {
+    SwitchEQ(eq["activeFilter"]);
+    $("#bypass-btn")['attr']('bypass', 'off');
+  }
+}
+/**
+ * @param {?} elem
+ * @return {undefined}
+ */
+function UseHint(elem) {;
+  /** @type {!Array} */
+  var PL$24 = [];
+  if (hints <= 0) {
+    $(".hint-btn")["attr"]('active', "no");
+    return;
+  }
+  $['each'](eq['yourBands'], function(PL$60, rpm_traffic) {
+    var now = target;
+    if (!rpm_traffic['hint']) {
+      PL$24["push"](PL$60);
+    }
+  });
+  if (PL$24['length'] < 2) {
+    $(elem)["attr"]('banned', "yes");
+    setTimeout(function() {
+      var now = target;
+      $(elem)["attr"]('banned', "no");
+    }, 200);
+  } else {
+    var currentParam = getArrayRandomElements(PL$24, 1)[0];
+    eq['yourBands'][currentParam] = eq['originalBands'][currentParam];
+    /** @type {boolean} */
+    eq['yourBands'][currentParam]['hint'] = !![];
+    SwitchEQ('yours');
+    updateKnobValues();
+    $('[band="' + currentParam + '"]')['attr']('hint', 'yes');
+    hints--;
+    $('[hints]')['text'](hints);
+    if (hints <= 0) {
+      $(elem)["attr"]('active', "no");
+    }
+  }
+}
+/**
+ * @return {undefined}
+ */
+function ConfirmSettings() {;
+  if ($('#confirm-settings')['attr']('active') == "no") {
+    return;
+  }
+  $('#confirm-settings')['attr']('active', "no");
+  $('#go-next-btn')['attr']('active', 'yes');
+  $('.game-helper-panel')['attr']('show', "no");
+  $('.yk-meter')['show']();
+  $('.game-compare-panel')['attr']('show', "yes");
+  $('[eq]')['attr']("original", 'off');
+  if ($("#game-panel-body")["attr"]('state') === 'wait') {
+    return;
+  }
+  $('#game-panel-body')['attr']('state', 'wait');
+  /** @type {boolean} */
+  eq['answerSubmitted'] = !![];
+  var artistTrack = getAccuracy();
+  drawMidLineGap();
+  submitEqMirrorResult(artistTrack);
+}
+/**
+ * @return {undefined}
+ */
+function GoNext() {;
+  if ($('#go-next-btn')['attr']('active') == "no") {
+    return;
+  }
+  var artistTrack = gameContext['currentTime'];
+  eq['gameOriginalGain']['gain']["setValueAtTime"](0, artistTrack);
+  eq["gameBypassGain"]['gain']['setValueAtTime'](0, artistTrack);
+  eq['gameYourGain']["gain"]["setValueAtTime"](0, artistTrack);
+  CustomGoNext();
+}
+/**
+ * @param {!Object} premium_info
+ * @return {?}
+ */
+function getRandomFrequencyBetween(premium_info) {
+  /** @type {number} */
+  var amount_in_currency_value = 0;
+  for (; amount_in_currency_value < premium_info[0] || amount_in_currency_value > premium_info[1];) {
+    amount_in_currency_value = getRandomFrequency();
+  }
+  return amount_in_currency_value;
+}
+/**
+ * @param {!Object} props
+ * @return {?}
+ */
+function getWholeBetween(props) {;
+  return Math['floor'](Math["random"]() * (Math["floor"](props[1]) - Math["ceil"](props[0]) + 1)) + Math['ceil'](props[0]);
+}
+/**
+ * @param {!Object} canCreateDiscussions
+ * @return {?}
+ */
+function getFloatBetween(canCreateDiscussions) {;
+  return parseFloat((Math['random']() * (canCreateDiscussions[1] - canCreateDiscussions[0]) + canCreateDiscussions[0])['toFixed'](1));
+}
+/**
+ * @param {?} prop
+ * @return {undefined}
+ */
+function createQuestion(prop) {;
+  /** @type {!Array} */
+  eq['originalBands'] = [];
+  /** @type {!Array} */
+  eq["yourBands"] = [];
+  /** @type {number} */
+  var length = 1;
+  $['each'](prop, function(newWayId, result) {
+    var name = short[result["filter_name"]];
+    var id = name == 'peaking' ? 'peaking' + length : name;
+    var data = dBands[id];
+    var sampleRate = getRandomFrequencyBetween(result['freq']);
+    var queryStr2 = getFloatBetween(result["q"]);
+    var gain = getFloatBetween(result['gain']);
+    eq['originalBands']["push"]({
+      id : newWayId,
+      band_id : id,
+      state : "on",
+      color : data['color'],
+      border : data["border"],
+      filter_name : name,
+      filter_id : data["filter_id"],
+      freq : sampleRate,
+      gain : gain,
+      q : queryStr2,
+      chart : {},
+      filter : {},
+      hint : ![]
+    });
+    eq['yourBands']["push"]({
+      id : newWayId,
+      band_id : id,
+      state : "on",
+      color : data['color'],
+      border : data["border"],
+      filter_name : name,
+      filter_id : data["filter_id"],
+      freq : data["freq"],
+      gain : data['gain'],
+      q : data["q"],
+      chart : {},
+      filter : {},
+      hint : ![]
+    });
+    if (name == "peaking") {
+      length++;
+    }
+  });
+}
+/**
+ * @param {?} mname
+ * @return {undefined}
+ */
+function loadNext(mname) {;
+  /** @type {boolean} */
+  eq['answerSubmitted'] = ![];
+  $('.game-cover')['removeClass']("active");
+  $('#game-panel-body')['attr']('state', 'play');
+  resetMeter();
+  createQuestion(mname);
+  updateKnobValues();
+  $('#question')["hide"]();
+  $("[band]")["attr"]("state", "off")['attr']('show', "no");
+  $('.yk-meter')['hide']();
+  $('#go-next-btn')['attr']('active', "no");
+  $("#confirm-settings")['attr']('active', 'yes');
+  startEQ();
+}
+/**
+ * @return {undefined}
+ */
+function setGame() {;
+  resetKeyboardKeys();
+  activateKeyboardKeys('game-panel-body');
+  activateKeyboardKeys('game-panel-footer');
+  showLives();
+  getNextBands();
+}
+;
+
+
+
+
+
+
+
