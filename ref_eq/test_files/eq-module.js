@@ -2040,7 +2040,7 @@ function handleMouseUp(event) {;
 }
 
 function buildBandKnobs(elems) {
-  $('[bands]')["html"]("");
+  // $('[bands]')["html"]("");
   $['each'](elems, function(key, sks) {
     var params = bands_definitions[sks["band_id"]];
     var escapedEmail = "";

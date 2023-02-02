@@ -190,20 +190,6 @@ body {
         [eq] [bands] [band] .empty-knob-panel::selection {
           background: transparent; }
 
-.yk-meter {
-  position: absolute;
-  top: 8px;
-  left: 10px;
-  z-index: 1; }
-  .yk-meter[meter="midline"] {
-    left: 10px; }
-  .yk-meter[meter="knobs"] {
-    left: 120px; }
-  .yk-meter .meter-name {
-    font-size: 12px;
-    color: #666;
-    text-align: center; }
-
 .game-action-panel {
   position: absolute;
   left: 50%;
@@ -266,27 +252,6 @@ body {
     .game-action-panel .hint-btn[banned="yes"] {
       animation: hint-banned .2s; }
 
-.spectrograms {
-  position: relative;
-  text-align: center; }
-  .spectrograms small {
-    color: #666;
-    font-size: 12px; }
-  .spectrograms .spectrograms-cover {
-    position: absolute;
-    text-align: center;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    line-height: 270px;
-    z-index: 1;
-    display: none; }
-  .spectrograms[loading="yes"] .spectrograms-cover {
-    display: block; }
-
 @media (max-height: 420px) {
   [eq] [screen] {
     height: 250px; } }
@@ -306,3 +271,29 @@ body {
     background: #333; } }
 
 /*# sourceMappingURL=eq-module.css.map */
+
+.bandAddTab {
+  border: 2px solid transparent;
+  margin-top: 8px;
+  margin-right: 5px;
+  font-size: 16px;
+  width: 105px;
+  height: 154px;
+  padding: 1px 3px;
+  display: inline-block; 
+  background: #111;
+  color: #555;
+
+}
+
+.bandAddTab:hover {
+  border: 2px solid #111;
+  background-color: rgb(51, 51, 51);
+  color: #111;
+}
+
+.addHeader {
+  margin-top: 10px;
+  text-align: center;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}

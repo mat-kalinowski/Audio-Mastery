@@ -535,160 +535,28 @@
               <div screen="" id="main-canvas">
                 <canvas width="1090" height="300"></canvas>
               </div>
-              <div bands="" class="hidden-xs hidden-sm">
-                <div band="0" state="on">
-                  <div toggle-band="" onclick="toggleBand(0);">
-                    <div
-                      toggle-band-btn=""
-                      style="background: rgb(211, 47, 47)"
-                    ></div>
-                    <img toggle-band-img="" src="./test_files/highpass.png" />
+              <div class="bandsContainer hidden-xs hidden-sm">
+              <div id="bandsAdd" class="bandLeftTab bandAddTab">
+                <div class="addHeader">ADD +</div>
+                <div style="display: flex; margin-top: 8px;">
+                  <div onclick="SelectBand();" class="bandButton selected" style="width: 50%; display: flex; justify-content: center;">
+                    <img style="width: 38px;" toggle-band-img="" src="https://assets.soundgym.co/playground/eq/filter-50/highpass.png">
                   </div>
-                  <div class="controllers">
-                    <div
-                      class="knob-panel"
-                      knob="freq"
-                      state="inactive"
-                      sensitivity="1"
-                      y="0"
-                      min="20"
-                      max="19100"
-                      base="30"
-                      start="30"
-                      value="30"
-                      ondblclick="knobBase(this);"
-                      onmousedown="knobActivate(this, event);"
-                    >
-                      <div
-                        class="knob-controller"
-                        style="transform: rotate(-139deg)"
-                      >
-                        <i class="fa fa-circle"></i>
-                      </div>
-                      <div
-                        class="knob-value"
-                        contenteditable="true"
-                        onblur="knobValueBlur(this);"
-                        onfocus="knobValueFocus(this);"
-                        onkeydown="knobKeydown(this, event);"
-                      >
-                        30
-                      </div>
-                      <div class="knob-label">FREQ</div>
-                    </div>
-                    <div class="empty-knob-panel"></div>
-                    <div class="empty-knob-panel"></div>
+                  <div onclick="SelectBand();" style="width:50%; display: flex; justify-content: center;">
+                    <img style="width: 38px;" toggle-band-img="" src="https://assets.soundgym.co/playground/eq/filter-50/highpass.png">
                   </div>
                 </div>
-                <div band="1" state="on">
-                  <div toggle-band="" onclick="toggleBand(1);">
-                    <div
-                      toggle-band-btn=""
-                      style="background: rgb(123, 31, 162)"
-                    ></div>
-                    <img toggle-band-img="" src="./test_files/peaking.png" />
+                <div style="display: flex; margin-top: 8px;">
+                  <div onclick="SelectBand();" class="bandButton" style="width: 50%; display: flex; justify-content: center;">
+                    <img style="width: 38px;" toggle-band-img="" src="https://assets.soundgym.co/playground/eq/filter-50/highpass.png">
                   </div>
-                  <div class="controllers">
-                    <div
-                      class="knob-panel"
-                      knob="freq"
-                      state="inactive"
-                      sensitivity="4"
-                      y="0"
-                      min="20"
-                      max="19100"
-                      base="440"
-                      start="867"
-                      value="867"
-                      ondblclick="knobBase(this);"
-                      onmousedown="knobActivate(this, event);"
-                    >
-                      <div
-                        class="knob-controller"
-                        style="transform: rotate(-133deg)"
-                      >
-                        <i class="fa fa-circle"></i>
-                      </div>
-                      <div
-                        class="knob-value"
-                        contenteditable="true"
-                        onblur="knobValueBlur(this);"
-                        onfocus="knobValueFocus(this);"
-                        onkeydown="knobKeydown(this, event);"
-                      >
-                        867
-                      </div>
-                      <div class="knob-label">FREQ</div>
-                    </div>
-                    <div
-                      class="knob-panel"
-                      knob="gain"
-                      state="active"
-                      sensitivity="0.05"
-                      y="559"
-                      min="-18"
-                      max="18"
-                      base="0"
-                      start="7.463333333333333"
-                      value="7.463333333333333"
-                      ondblclick="knobBase(this);"
-                      onmousedown="knobActivate(this, event);"
-                    >
-                      <div
-                        class="knob-controller"
-                        style="transform: rotate(58.0481deg)"
-                        reach-limit="off"
-                      >
-                        <i class="fa fa-circle"></i>
-                      </div>
-                      <div
-                        class="knob-value"
-                        contenteditable="true"
-                        onblur="knobValueBlur(this);"
-                        onfocus="knobValueFocus(this);"
-                        onkeydown="knobKeydown(this, event);"
-                        reach-limit="off"
-                      >
-                        5.0
-                      </div>
-                      <div class="knob-label">GAIN</div>
-                    </div>
-                    <div
-                      class="knob-panel"
-                      knob="q"
-                      state="active"
-                      sensitivity="0.2"
-                      y="597"
-                      min="0.5"
-                      max="3"
-                      base="1"
-                      start="1.8"
-                      value="1.8"
-                      ondblclick="knobBase(this);"
-                      onmousedown="knobActivate(this, event);"
-                    >
-                      <div
-                        class="knob-controller"
-                        style="transform: rotate(5.6deg)"
-                        reach-limit="off"
-                      >
-                        <i class="fa fa-circle"></i>
-                      </div>
-                      <div
-                        class="knob-value"
-                        contenteditable="true"
-                        onblur="knobValueBlur(this);"
-                        onfocus="knobValueFocus(this);"
-                        onkeydown="knobKeydown(this, event);"
-                        reach-limit="off"
-                      >
-                        1.8
-                      </div>
-                      <div class="knob-label">Q</div>
-                    </div>
+                  <div onclick="SelectBand();" style="width:50%; display: flex; justify-content: center;">
+                    <img style="width: 38px;" toggle-band-img="" src="https://assets.soundgym.co/playground/eq/filter-50/highpass.png">
                   </div>
                 </div>
               </div>
+              <div bands=""></div>
+              <div class="bandRightTab"></div>
             </div>
             <div class="game-action-panel">
               <div class="relative">
@@ -726,24 +594,6 @@
               </div>
             </div>
           </div>
-          <div id="game-panel-footer" class="game-panel-footer">
-            <div class="game-settings-btns hidden-xs">
-              <button
-                icon-on="&lt;i class=&#39;fa fa-volume-up&#39;&gt;&lt;/i&gt;"
-                icon-off="&lt;i class=&#39;fa fa-volume-off&#39;&gt;&lt;/i&gt;"
-                data-toggle="tooltip"
-                data-placement="top"
-                key-id="86"
-                key-event="click"
-                key-status="active"
-                title=""
-                state="on"
-                onclick="muteGame(this);"
-                data-original-title="Volume"
-              >
-                <i class="fa fa-volume-up"></i>
-              </button>
-            </div>
           </div>
         </div>
       </div>

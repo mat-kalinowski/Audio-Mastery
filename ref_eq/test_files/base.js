@@ -32,7 +32,6 @@ var audioElement;
 var track;
 
 function getPointMultiplier() {
-  /** @type {function(string, ?): ?} */;
   var keys = {
     1 : {
       diff : [1, 2, 4, 7, 13, 23, 41, 73, 130, 230, 370, 590, 950, 1500, 2250, 3150, 4150, 4800, 5400, 5900],
@@ -77,44 +76,17 @@ function loadSprite() {
     return;
   }
 
-  if (pr["sprite"]["method"] == "old") {
-    gameContext = new (window["AudioContext"] || window["webkitAudioContext"]);
-    gameMasterGain = gameContext["createGain"]();
-    // load some sound
-    audioElement = document.querySelector('#song1');
-    console.log(audioElement)
-    gameSourceNode = gameContext.createMediaElementSource(audioElement);
-    
-    gameMasterGain["gain"]["setValueAtTime"](defaultGameVolume, gameContext["currentTime"]);
-  } else {
-  // CURRENTLY NOT USED
-    var precUserLanguage = pr["sprite"]["name"];
-    fetchJSONFile(host + "/sounds/sprite/" + precUserLanguage + "/main.json", function(canCreateDiscussions) {
-      spriteMap = canCreateDiscussions["spritemap"];
-    });
-    gameContext = new (window["AudioContext"] || window["webkitAudioContext"]);
-    gameMasterGain = gameContext["createGain"]();
-    gameMasterGain["gain"]["setValueAtTime"](defaultGameVolume, gameContext["currentTime"]);
-    /** @type {!XMLHttpRequest} */
-    gameSound = new XMLHttpRequest;
-    gameSound["open"]("GET", host + "/sounds/sprite/" + precUserLanguage + "/main.mp3", !![]);
-    /** @type {string} */
-    gameSound["responseType"] = "arraybuffer";
-    /**
-     * @return {undefined}
-     */
-    gameSound["onload"] = function() {
-      gameContext["decodeAudioData"](gameSound["response"], function(canCreateDiscussions) {
-        /** @type {number} */
-        gameBuffer = canCreateDiscussions;
-      });
-    };
-    gameSound["send"]();
-  }
+  gameContext = new (window["AudioContext"] || window["webkitAudioContext"]);
+  gameMasterGain = gameContext["createGain"]();
+  // load some sound
+  audioElement = document.querySelector('#song1');
+  console.log(audioElement)
+  gameSourceNode = gameContext.createMediaElementSource(audioElement);
+  
+  gameMasterGain["gain"]["setValueAtTime"](defaultGameVolume, gameContext["currentTime"]);
 }
 
 function muteGame(elem) {
-  /** @type {function(string, ?): ?} */;
   var artistTrack = gameContext["currentTime"] + 0.6;
   var action = $(elem)["attr"]("state") == "off" ? "on" : "off";
   var previousState = "icon-" + action;
@@ -978,48 +950,6 @@ function endGame(playerOut) {
   });
 }
 
-function nextStage() {
-  rangeLevel++;
-  stage++;
-  step = 0;
-
-  var _0x4757c3 = ![];
-  var el = Math["round"](bonus[rangeLevel] * getPointMultiplier());
-
-  total = total + el + (stage == pr["model"]["stages"] ? extraLifeValue() : 0);
-  $("#points")["text"](numberWithCommas(total));
-
-  if (stage == pr["model"]["stages"]) {
-    endGame(!![]);
-    return;
-  }
-
-  $("#stage")["text"](stage + 1);
-
-  if (stage == 2 || stage == 4) {
-    pr["model"]["lives"]++;
-    showLives();
-    /** @type {boolean} */
-    _0x4757c3 = !![];
-  }
-
-  var mirror = $("#game-stage");
-  mirror["find"]("[stage] span")["html"](stage + 1);
-  mirror["find"]("[range] span")["html"](rangeset[rangeLevel]);
-  mirror["find"]("[points] span")["html"](el);
-
-  if (_0x4757c3) {
-    mirror["find"]("[life-bonus]")["show"]();
-  } else {
-    mirror["find"]("[life-bonus]")["hide"]();
-  }
-
-  mirror["addClass"]("active");
-  setTimeout(function() {
-    loadNext();
-  }, waitForNext);
-}
-
 function registerPlay(instancesTypes) {
   $["ajax"]({
     url : baseUrl + "/play/register",
@@ -1118,7 +1048,6 @@ function startGame() {
 }
 
 function loadGame() {
-  /** @type {function(string, ?): ?} */;
   $(".game-cover")["removeClass"]("active");
   $("#game-loading")["addClass"]("active");
 
@@ -1139,3 +1068,7 @@ function initGame(state) {
   }
   startGame();
 };
+
+function SelectBand() {
+  
+}
