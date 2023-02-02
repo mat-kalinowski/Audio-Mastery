@@ -2064,6 +2064,7 @@ function drawPointers(elems) {;
     }
     values["x"] = xOnCanvas(values['freq']);
     values["y"] = yOnCanvas(values['gain']);
+    
     ctx["beginPath"]();
     ctx['arc'](xOnCanvas(values['freq']), yOnCanvas(values['gain']), eq["pointerRadius"], 0, eq['PI2']);
     ctx["closePath"]();
@@ -2099,7 +2100,7 @@ function handleMouseDown(e, clientX, clientY) {;
   }
 }
 
-function handleMouseMove(event, targetClass, initialX) {
+function handleMouseMove(event, clientX, clientY) {
   // return if the mouse was not clicked before dragging
   if (!eq['isDown']) {
     return;
@@ -2108,15 +2109,15 @@ function handleMouseMove(event, targetClass, initialX) {
   event['preventDefault']();
   event['stopPropagation']();
 
-  var _0x3e1fe9 = positionToHz(parseInt(targetClass - eq['offsetX']) / eq['canvasWidth']);
-  var gain = positionToDB(parseInt(initialX - eq['offsetY']) / eq['canvasHeight']);
+  var axisX = positionToHz(parseInt(clientX - eq['offsetX']) / eq['canvasWidth']);
+  var axisY = positionToDB(parseInt(clientY - eq['offsetY']) / eq['canvasHeight']);
 
-  if (_0x3e1fe9 > 20 && _0x3e1fe9 < 19500) {
-    eq["yourBands"][eq['pointerDrag']]['freq'] = _0x3e1fe9;
+  if (axisX > 20 && axisX < 19500) {
+    eq["yourBands"][eq['pointerDrag']]['freq'] = axisX;
   }
 
-  if (eq["yourBands"][eq['pointerDrag']]['filter_name'] != 'highpass' && eq['yourBands'][eq["pointerDrag"]]['filter_name'] != "lowpass" && gain < 12.5 && gain > -12.5) {
-    eq["yourBands"][eq['pointerDrag']]["gain"] = gain;
+  if (eq["yourBands"][eq['pointerDrag']]['filter_name'] != 'highpass' && eq['yourBands'][eq["pointerDrag"]]['filter_name'] != "lowpass" && axisY < 12.5 && axisY > -12.5) {
+    eq["yourBands"][eq['pointerDrag']]["gain"] = axisY;
   }
 
   SwitchEQ("yours");
@@ -2164,7 +2165,7 @@ function buildBandKnobsOld(elems) {;
 
 function buildBandKnobs(elems) {;
   $('[bands]')["html"]("");
-  $['each'](elems, function(sks) {
+  $['each'](elems, function(key, sks) {
     var params = bands_definitions[sks["band_id"]];
     var escapedEmail = "";
     var sitesusers = '<div class="empty-knob-panel"></div>';
