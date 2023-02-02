@@ -1069,6 +1069,9 @@ function initGame(state) {
   startGame();
 };
 
-function SelectBand() {
-  
+function SelectBand(bandName, source) {
+  $(".selected", "#bandsAdd").removeClass("selected");
+  $(source).addClass("selected")
+
+  // TODO: create new band of given type
 }

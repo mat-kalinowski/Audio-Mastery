@@ -150,13 +150,6 @@
     background:#222;
     min-height:200px
 }
-.game-panel .game-panel-body #stepPoints{
-    position:absolute;
-    left:20px;
-    top:20px;
-    z-index:3;
-    font-size:15px
-}
 .game-panel .game-panel-body .game-continue-btns{
     position:absolute;
     left:50%;

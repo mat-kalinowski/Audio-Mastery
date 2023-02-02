@@ -520,17 +520,6 @@
             <audio id="song1"src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/858/outfoxing.mp3" crossorigin="anonymous" ></audio>
           </div>
           <div id="game-panel-body" class="game-panel-body" state="play">
-            <div
-              id="stepPoints"
-              class="bounceIn animated"
-              style="display: none"
-              perfect="Perfect!"
-              accurate="Accurate."
-              bonus="Bonus:"
-              life="+Life Bonus"
-              zero="No points"
-              dbgap="Gap:"
-            ></div>
             <div eq="" bypass="off" original="off">
               <div screen="" id="main-canvas">
                 <canvas width="1090" height="300"></canvas>
@@ -539,10 +528,10 @@
               <div id="bandsAdd" class="bandLeftTab bandAddTab">
                 <div class="addHeader">ADD +</div>
                 <div style="display: flex; margin-top: 8px;">
-                  <div onclick="SelectBand();" class="bandButton selected" style="width: 50%; display: flex; justify-content: center;">
+                  <div id="lowpass" onclick="SelectBand('lowcut', this);" class="bandButton selected" style="width: 50%; display: flex; justify-content: center;">
                     <img style="width: 38px;" toggle-band-img="" src="https://assets.soundgym.co/playground/eq/filter-50/highpass.png">
                   </div>
-                  <div onclick="SelectBand();" style="width:50%; display: flex; justify-content: center;">
+                  <div id="higpass" onclick="SelectBand('highpass', this);" style="width:50%; display: flex; justify-content: center;">
                     <img style="width: 38px;" toggle-band-img="" src="https://assets.soundgym.co/playground/eq/filter-50/highpass.png">
                   </div>
                 </div>
