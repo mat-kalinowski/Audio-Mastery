@@ -1181,7 +1181,7 @@ function drawYGrid() {;
   ctx["stroke"]();
 }
 
-function drawXGrid() {;
+function drawXGrid() {
   ctx["beginPath"]();
   ctx['font'] = 'normal 11px Arial';
   ctx["fillStyle"] = mobile ? '#111' : "#999";
@@ -1189,7 +1189,6 @@ function drawXGrid() {;
 
   ctx['fontWeight'] = 100;
   ctx['setLineDash']([]);
-  /** @type {string} */
   ctx['strokeStyle'] = "#333";
 
   ctx['lineWidth'] = 0.5;
@@ -1478,7 +1477,7 @@ function eqSetup(bands, paramName) {
   });
 }
 
-function redrawGrid() {;
+function redrawGrid() {
   ctx["clearRect"](0, 0, eq['canvasWidth'], eq['canvasHeight']);
   drawYGrid();
   drawXGrid();
@@ -1727,6 +1726,7 @@ function SwitchEQ(yours) {
     eq['gameBypassGain']["gain"]['setValueAtTime'](0, artistTrack);
     eq['gameOriginalGain']['gain']['setValueAtTime'](0, artistTrack);
 
+
     updateMultiband();
     redrawGrid();
     eqSetup(eq['yourBands'], 'color');
@@ -1734,18 +1734,9 @@ function SwitchEQ(yours) {
     drawMidLine(eq['yourBands'], 'color');
     drawPointers(eq['yourBands']);
     drawBandValues(eq['yourBands']);
-
-    if (eq["answerSubmitted"]) {
-      RevealOriginal(result);
-      drawMidLineGap();
-    }
   }
 }
 
-function RevealOriginal(cid) {;
-  eqSetup(eq['originalBands'], cid);
-  drawMidLine(eq['originalBands'], cid);
-}
 
 function scaleBetween(toTop, index, step, fromTop, type) {;
   var number = (step - index) * (toTop - fromTop) / (type - fromTop) + index;
@@ -1781,7 +1772,6 @@ function updateMultiband() {;
 function buildSoundMap() {
   var attr2index = getLoopValues();
   var currentTime = gameContext["currentTime"];
-  gamePlayer = gameContext['createBufferSource']();
   var i;
   i = 0;
 
@@ -1813,12 +1803,12 @@ function buildSoundMap() {
   eq['gameYourGain']['gain']["setValueAtTime"](0, currentTime);
   eq['gameOriginalGain']['gain']['setValueAtTime'](0, currentTime);
 
-  gamePlayer["connect"](eq['gameBypassGain']);
+  gameSourceNode["connect"](eq['gameBypassGain']);
 
   eq['gameBypassGain']['connect'](gameMasterGain);
 
-  gamePlayer['connect'](eq['yourFilters'][0]);
-  gamePlayer['connect'](eq['originalFilters'][0]);
+  gameSourceNode['connect'](eq['yourFilters'][0]);
+  gameSourceNode['connect'](eq['originalFilters'][0]);
 
   var indexLookupKey;
 
@@ -1834,11 +1824,11 @@ function buildSoundMap() {
 
   gameMasterGain['connect'](gameContext["destination"]);
 
-  gamePlayer["buffer"] = gameBuffer;
-  gamePlayer['loop'] = !![];
-  gamePlayer['loopStart'] = attr2index['start'];
-  gamePlayer['loopEnd'] = attr2index['end'];
-  gamePlayer['start'](0, attr2index['start']);
+  // gameSourceNode["buffer"] = gameBuffer;
+  gameSourceNode['loop'] = !![];
+  gameSourceNode['loopStart'] = attr2index['start'];
+  gameSourceNode['loopEnd'] = attr2index['end'];
+
   eq['yourAnalyser'] = gameContext['createAnalyser']();
   eq['gameYourGain']["connect"](eq['yourAnalyser']);
   eq['originalAnalyser'] = gameContext['createAnalyser']();
@@ -2049,13 +2039,6 @@ function handleMouseUp(event) {;
   eq["isDown"] = ![];
 }
 
-function buildBandKnobsOld(elems) {;
-  $['each'](elems, function(st) {
-    var addIndent = getResponsesAnalysisDataPrefixCacheKey;
-    $(addIndent("0x6") + st["id"] + '"]')[addIndent("0x2")](addIndent("0x49"), "on")[addIndent("0x2")](addIndent("0x100"), addIndent("0xed"));
-  });
-}
-
 function buildBandKnobs(elems) {
   $('[bands]')["html"]("");
   $['each'](elems, function(key, sks) {
@@ -2078,39 +2061,7 @@ function buildBandKnobs(elems) {
   });
 }
 
-function getEQStats(jArr) {;
-  var MAXL10 = xOnCanvas(eq['lastHz']);
-  var PL$86 = [];
-
-  var secondsPerYear = 1;
-  for (; secondsPerYear <= eq['samples']; secondsPerYear++) {
-  
-    var interestEfold = secondsPerYear / eq['samples'];
-    var i = positionToHz(interestEfold);
-  
-    var url = 0;
-    $["each"](jArr, function(canCreateDiscussions, values) {
-      var parseInt = unsetPolling;
-      if (values['state'] == "on") {
-        url = url + values['filter']['log_result'](i);
-      }
-    });
-    var startY = yOnCanvas(url);
-    var x = xOnCanvas(i);
-    ctx['lineTo'](x, startY);
-    if (x > MAXL10) {
-      break;
-    }
-    PL$86["push"]({
-      hz : i,
-      db : url,
-      y : startY
-    });
-  }
-  return PL$86;
-}
-
-function startEQ() {;
+function startEQ() {
   buildSoundMap();
 
   initKnobs();
@@ -2137,24 +2088,7 @@ function startEQ() {;
   eqSetup(eq['yourBands'], 'transparent');
   eqSetup(eq['originalBands'], 'transparent');
 
-  drawMidBypass();
-}
-
-function createAudioMeter(audioContext, clipLevel, averaging, clipLag) {
-  var volume = audioContext['createScriptProcessor'](256);
-  return volume['onaudioprocess'] = volumeAudioProcess, volume['clipping'] = ![], volume['lastClip'] = 0, volume['volume'] = 0, volume['clipLevel'] = clipLevel || 0.98, volume['averaging'] = averaging || 0.95, volume['clipLag'] = clipLag || 750, volume["connect"](audioContext["destination"]), volume['checkClipping'] = function() {
-    var mat = now;
-    if (!this[mat("0x39")]) {
-      return ![];
-    }
-    if (this["lastClip"] + this[mat("0x76")] < window["performance"][mat("0x38")]()) {
-      this["clipping"] = ![];
-    }
-    return this["clipping"];
-  }, volume['shutdown'] = function() {
-    this["disconnect"]();
-    this["onaudioprocess"] = null;
-  }, volume;
+  // drawMidBypass();
 }
 
 function volumeAudioProcess(event) {
@@ -2186,142 +2120,7 @@ function volumeAudioProcess(event) {
   }
 }
 
-function getSpectrogramResults() {;
-  $("[spectrograms]")['attr']("loading", "yes");
-  var currentTime = gameContext["currentTime"];
-  eq['gameOriginalGain']['gain']["setValueAtTime"](1, currentTime);
-  eq["gameYourGain"]['gain']['setValueAtTime'](1, currentTime);
-  gameMasterGain["gain"]['setValueAtTime'](0, currentTime);
-  eq["freqDataMap"] = {
-    original : [],
-    your : [],
-    diff : []
-  };
-  let count = 0;
-  let logIntervalId = setInterval(function() {
-    var height = bodyHeight;
-    if (count == eq["freqRunner"]["count"]) {
-      clearInterval(logIntervalId);
-      drawSpectrogramResults();
-      $("[spectrograms]")[height("0x2")](height("0x91"), "no");
-    }
-    let b = new Uint8Array(eq[height("0x87")][height("0x0")]);
-    let a = new Uint8Array(eq[height("0xdb")][height("0x0")]);
-    eq[height("0x87")][height("0x8c")](b);
-    eq[height("0xdb")][height("0x8c")](a);
-    eq[height("0xde")][height("0x3")][height("0x6c")](b);
-    eq["freqDataMap"][height("0x3f")][height("0x6c")](a);
-    let CustomTests = [];
-    $[height("0x7c")](b, function(key, canCreateDiscussions) {
-      var textHeight = height;
-      var element = Math[textHeight("0xc")](b[key] - a[key]);
-      CustomTests[textHeight("0x6c")](element);
-    });
-    eq[height("0xde")][height("0x6b")][height("0x6c")](CustomTests);
-    count++;
-  }, eq['freqRunner']['timegap']);
-}
-
-function drawSpectrogramResults() {;
-  drawTimelineSpectrogram('original', eq['freqDataMap']["original"]);
-  drawAvgSpectrogram("original", eq['freqDataMap']['original']);
-  drawTimelineSpectrogram('your', eq['freqDataMap']['your']);
-  drawAvgSpectrogram('your', eq['freqDataMap']['your']);
-  drawTimelineSpectrogram('diff', eq['freqDataMap']["diff"]);
-  drawAvgSpectrogram("diff", eq['freqDataMap']["diff"]);
-  var beyondBoundsFlingDistance = getSpectrogramDiff(eq['freqDataMap']["diff"]);
-
-  var flingDistance = 20;
-
-  var rpm_traffic = beyondBoundsFlingDistance >= flingDistance ? 0 : (flingDistance - beyondBoundsFlingDistance) / flingDistance * 100;
-  $('[diff-cor]')["html"](beyondBoundsFlingDistance['toFixed'](2));
-  $('[diff-accuracy]')["html"](rpm_traffic['toFixed'](0));
-}
-
-function drawTimelineSpectrogram(noResolveAction, showNotes) {;
-  let rpm_traffic = $('[timeline-spectrogram="' + noResolveAction + '"]')[0];
-  let ctx = rpm_traffic['getContext']("2d");
-  let sizeX = rpm_traffic['width'];
-  let sizeY = rpm_traffic['height'];
-  let mysecond_no = sizeY / 1024 * 1.5;
-  let size = sizeX / eq["freqRunner"]['count'];
-  let orig = ctx["getImageData"](1, 0, sizeX - 1, sizeY);
-  ctx['fillStyle'] = 'hsl(280, 100%, 10%)';
-  ctx["clearRect"](0, 0, sizeX, sizeY);
-  ctx['putImageData'](orig, 0, 0);
-  $['each'](showNotes, function(ry0, elems) {
-    var mat = now;
-    let x0 = ry0 * size;
-    $[mat("0x7c")](elems, function(myfirst_no, isSlidingUp) {
-      var getResponsesAnalysisDataPrefixCacheKey = mat;
-      let _0x5282e7 = isSlidingUp / 255;
-      let groupId = Math['round'](_0x5282e7 * 120 + 280 % 360);
-      let _0x43fffe = 10 + 70 * _0x5282e7 + "%";
-      ctx["beginPath"]();
-      ctx['strokeStyle'] = 'hsl(' + groupId + ", 100%, " + _0x43fffe + ")";
-      ctx['strokeWidth'] = size + "px";
-      ctx["moveTo"](x0, sizeY - myfirst_no * mysecond_no);
-      ctx['lineTo'](x0, sizeY - (myfirst_no * mysecond_no + mysecond_no));
-      ctx['stroke']();
-    });
-  });
-}
-
-function drawAvgSpectrogram(string, values) {;
-  let a = $('[avg-spectrogram="' + string + '"]')[0];
-  let options = a['getContext']("2d");
-
-  options['fillStyle'] = 'rgb(0, 0, 0)';
-  options['fillRect'](0, 0, a["width"], a['height']);
-  options['lineWidth'] = 1;
-  options['strokeStyle'] = 'rgb(140, 140, 140)';
-  options['beginPath']();
-
-  var j = 0;
-
-  for (; j < values[0]['length']; j++) {
-    var diff = 0;
-    var i = 0;
-
-    for (; i < values["length"]; i++) {
-      diff = diff + values[i][j];
-    }
-
-    var backoffDelay = diff / values['length'];
-    var backoffDelaySeconds = backoffDelay / 128;
-    var xhr = a['height'] - backoffDelaySeconds * a['height'] / 2;
-    var datum = j / values[0]['length'] * a['width'];
-
-    if (j === 0) {
-      options['moveTo'](datum, xhr);
-    } else {
-      options['lineTo'](datum, xhr);
-    }
-  }
-  options['stroke']();
-}
-
-function getSpectrogramDiff(elems) {;
-  var articleArea = 255 * elems['length'];
-  var childFloatArea = 0;
-  return $['each'](elems, function(canCreateDiscussions, jArr) {
-    var dv = childCount;
-    let nCatCount = 0;
-    $["each"](jArr, function(canCreateDiscussions, n) {
-      nCatCount = nCatCount + n;
-    });
-    childFloatArea = childFloatArea + nCatCount / elems[dv("0xbd")];
-  }), childFloatArea / articleArea * 100;
-}
-
 function keyIsPressed(canCreateDiscussions) {;
-  if (canCreateDiscussions == 32) {
-    if (!eq['answerSubmitted']) {
-      ConfirmSettings();
-    } else {
-      GoNext();
-    }
-  }
   if (canCreateDiscussions == 38) {
     handleQ("down", 0.1);
   }
@@ -2336,76 +2135,29 @@ function keyIsPressed(canCreateDiscussions) {;
   }
 }
 
-function getAccuracy() {;
-  var __highlight_line_start = 0;
-  var __highlight_line_end = 2E4;
-  var symbolMatch = 0;
-  var symbolOffset = 0;
-  var secondsPerYear = 1;
-
-  for (; secondsPerYear <= eq['samples']; secondsPerYear++) {
-    var interestEfold = secondsPerYear / eq['samples'];
-    var __line_number = positionToHz(interestEfold);
-    var waitBeforeReconnect = 0;
-    var daysLoaded = 0;
-
-    if (__line_number >= __highlight_line_start && __line_number <= __highlight_line_end) {
-      $['each'](eq['yourBands'], function(canCreateDiscussions, map) {
-        if (map['state'] == "on") {
-          var mmaCalendarDaysInterval = map["filter"]['log_result'](__line_number);
-          if (mmaCalendarDaysInterval < -16) {
-            mmaCalendarDaysInterval = -16;
-          }
-          if (mmaCalendarDaysInterval > 16) {  
-            mmaCalendarDaysInterval = 16;
-          }
-          daysLoaded = daysLoaded + mmaCalendarDaysInterval;
-        }
-      });
-      $['each'](eq['originalBands'], function(canCreateDiscussions, map) {
-        if (map['state'] == "on") {
-          var reconnectTimeIncrease = map["filter"]['log_result'](__line_number);
-          if (reconnectTimeIncrease < -16) {          
-            reconnectTimeIncrease = -16;
-          }
-          if (reconnectTimeIncrease > 16) {         
-            reconnectTimeIncrease = 16;
-          }
-          waitBeforeReconnect = waitBeforeReconnect + reconnectTimeIncrease;
-        }
-      });
-      symbolOffset = symbolOffset + Math["abs"](waitBeforeReconnect - daysLoaded);
-    }
+function AudioStart() {
+  if (typeof gameSourceNode == "undefined") {
+    loadGame();
   }
-  return symbolOffset < deviation && (symbolMatch = 100 - symbolOffset / deviation * 100), symbolMatch['toFixed'](0);
-}
 
-function updateMeter(meterInfo, json) {;
+  if (gameContext.state === 'suspended') {
+		gameContext.resume();
+	}
 
-  var _FOO_ = 180 + meterInfo * 180 / 100;
-  $('[meter="' + json + '"]')['find']('.needle')['css']("transform", 'rotate(' + _FOO_ + 'deg)');
-  $('[meter="' + json + '"]')['find']('.meter-value')["html"](meterInfo + '% accurate');
-}
-
-function resetMeter() {;
-
-  var nb_numbers = percentAccuracy * 180 / 100;
-
-  var range = perfectPercent * 180 / 100;
-  $(".yk-meter")['find']('.needle')['css']("transform", 'rotate(180deg)');
-  $('.yk-meter')["find"]('.meter-correct')['css']('transform', 'rotate(' + nb_numbers + 'deg)');
-  $('.yk-meter')['find'](".meter-perfect")["css"]('transform', 'rotate(' + range + 'deg)');
-}
-
-function CompareResult(dayNames) {;
-  if ($(dayNames)['attr']('side') == "left") {
-    SwitchEQ('yours');
-  } else {
-    SwitchEQ('original');
+  if (playing == false) {
+    audioElement.play();
+    playing=true;  
   }
 }
 
-function Bypass() {;
+function AudioStop() {
+  if (playing == true) {
+    audioElement.pause();
+    playing=false;  
+  }
+}
+
+function Bypass() {
   if ($('#bypass-btn')['attr']('bypass') == 'off') {
     SwitchEQ('bypass');
     $('#bypass-btn')['attr']('bypass', "on");
@@ -2413,37 +2165,6 @@ function Bypass() {;
     SwitchEQ(eq["activeFilter"]);
     $("#bypass-btn")['attr']('bypass', 'off');
   }
-}
-
-function ConfirmSettings() {;
-  if ($('#confirm-settings')['attr']('active') == "no") {
-    return;
-  }
-  $('#confirm-settings')['attr']('active', "no");
-  $('#go-next-btn')['attr']('active', 'yes');
-  $('.game-helper-panel')['attr']('show', "no");
-  $('.yk-meter')['show']();
-  $('.game-compare-panel')['attr']('show', "yes");
-  $('[eq]')['attr']("original", 'off');
-  if ($("#game-panel-body")["attr"]('state') === 'wait') {
-    return;
-  }
-  $('#game-panel-body')['attr']('state', 'wait');
-  eq['answerSubmitted'] = !![];
-  var artistTrack = getAccuracy();
-  drawMidLineGap();
-  submitEqMirrorResult(artistTrack);
-}
-
-function GoNext() {;
-  if ($('#go-next-btn')['attr']('active') == "no") {
-    return;
-  }
-  var artistTrack = gameContext['currentTime'];
-  eq['gameOriginalGain']['gain']["setValueAtTime"](0, artistTrack);
-  eq["gameBypassGain"]['gain']['setValueAtTime'](0, artistTrack);
-  eq['gameYourGain']["gain"]["setValueAtTime"](0, artistTrack);
-  CustomGoNext();
 }
 
 function getRandomFrequencyBetween(premium_info) {
@@ -2558,7 +2279,6 @@ function loadNext(scenario) {
   $('.game-cover')['removeClass']("active");
   $('#game-panel-body')['attr']('state', 'play');
 
-  resetMeter();
   // setup eq bands/filters and its parameters in the global eq variable
   createQuestion(scenario);
   updateKnobValues();

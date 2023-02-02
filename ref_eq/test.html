@@ -196,10 +196,7 @@
     "
   >
     <script type="text/javascript" src="./test_files/nouislider.js"></script>
-    <script type="text/javascript" src="./test_files/base.js"></script>
-    <script type="text/javascript" src="./test_files/eq.js"></script>
-    <script type="text/javascript" src="./test_files/eq-test.js"></script>
-    <script>loadGame();</script>
+
     <div class="playground">
       <div class="container">
         <div id="game-panel" class="game-panel">
@@ -520,60 +517,7 @@
                 </div>
               </div>
             </div>
-            <div id="game-compare" class="game-cover">
-              <div>
-                <img src="./test_files/cleared.png" />
-                <div class="game-panel-text">
-                  You are better than
-                  <span better-then="" style="font-size: 200%">0</span>% of
-                  users.
-                </div>
-                <div class="game-panel-cover-btn">
-                  <a
-                    class="btn btn-danger"
-                    monitor="eq-playground-signup"
-                    monitor-prop='{"type":"btn-1"}'
-                    key-id="13"
-                    key-event="click"
-                    key-status="inactive"
-                    href="https://www.soundgym.co/user/registration?lp=eq"
-                    >Sign-up to continue training</a
-                  >
-                </div>
-              </div>
-            </div>
-            <div id="game-cleared" class="game-cover">
-              <div>
-                <img src="./test_files/cleared.png" />
-                <div class="game-panel-text">Perfect training!</div>
-                <div class="game-panel-cover-btn">
-                  <a
-                    class="btn btn-danger"
-                    key-id="13"
-                    key-event="click"
-                    key-status="inactive"
-                    href="https://www.soundgym.co/playground/eq"
-                    >Continue</a
-                  >
-                </div>
-              </div>
-            </div>
-            <div id="game-over" class="game-cover">
-              <div>
-                <img src="./test_files/over.png" />
-                <div class="game-panel-text">Good practice</div>
-                <div class="game-panel-cover-btn">
-                  <a
-                    class="btn btn-danger"
-                    key-id="13"
-                    key-event="click"
-                    key-status="inactive"
-                    href="https://www.soundgym.co/playground/eq"
-                    >Continue</a
-                  >
-                </div>
-              </div>
-            </div>
+            <audio id="song1"src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/858/outfoxing.mp3" crossorigin="anonymous" ></audio>
           </div>
           <div id="game-panel-body" class="game-panel-body" state="play">
             <div
@@ -749,20 +693,33 @@
             <div class="game-action-panel">
               <div class="relative">
                 <button
-                  class="game-compare-panel-btn compare-btn"
-                  side="right"
-                  onclick="CompareResult(this);"
-                >
-                  <span left="">Question</span><span right="">Yours</span>
-                </button>
-                <button
                   class="bypass-btn"
                   id="bypass-btn"
                   onclick="Bypass();"
                   bypass="off"
                   data-toggle="tooltip"
                   data-html="true"
-                  data-placement="top"
+                  title=""
+                  data-original-title="Bypass"
+                ></button>
+              </div>
+              <div>
+                <button
+                  onclick="AudioStart();"
+                  id="controls-play"
+                  bypass="off"
+                  data-toggle="tooltip"
+                  data-html="true"
+                  title=""
+                  data-original-title="Bypass"
+                ></button>
+              </div>
+              <div>
+                <button
+                  onclick="AudioStop();"
+                  bypass="off"
+                  data-toggle="tooltip"
+                  data-html="true"
                   title=""
                   data-original-title="Bypass"
                 ></button>
@@ -787,28 +744,14 @@
                 <i class="fa fa-volume-up"></i>
               </button>
             </div>
-            <div class="text-center">
-              <button
-                id="confirm-settings"
-                class="btn-confirm"
-                onclick="ConfirmSettings();"
-                active="yes"
-              >
-                <i class="fa fa-check"></i> Confirm
-              </button>
-              <button
-                id="go-next-btn"
-                class="btn-confirm"
-                onclick="GoNext();"
-                active="no"
-              >
-                Continue <i class="fa fa-angle-right"></i>
-              </button>
-            </div>
           </div>
         </div>
       </div>
     </div>
+    <script type="text/javascript" src="./test_files/base.js"></script>
+    <script type="text/javascript" src="./test_files/eq.js"></script>
+    <script type="text/javascript" src="./test_files/eq-test.js"></script>
+    <script></script>
     <script type="text/javascript" src="./test_files/eq-module.js"></script>
     <script type="text/javascript">
       /*<![CDATA[*/

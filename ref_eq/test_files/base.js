@@ -1,28 +1,18 @@
 'use strict';
-/** @type {!Array} */
+
 var answerslog = [];
-/** @type {!Array} */
 var accuracylog = [];
 var tests;
 var diff;
-/** @type {number} */
 var defaultGameVolume = 0.6;
-/** @type {number} */
 var pointsMultiplication;
 var timeoutNext;
-/** @type {boolean} */
 var compareBtnPressed = ![];
-/** @type {boolean} */
 var canWait = ![];
-/** @type {boolean} */
 var canContinue = ![];
-/** @type {number} */
 var waitForNext = 1400;
-/** @type {boolean} */
 var ctrlIsPressed = ![];
-/** @type {boolean} */
 var altIsPressed = ![];
-/** @type {!Array} */
 var bonus = [5, 10, 20, 35, 50, 80, 130];
 var triggerInterval;
 var gameMasterGain;
@@ -32,9 +22,14 @@ var gameUnpassGain;
 // main AudioContext object of the app
 var gameContext;
 var gameBuffer;
+var gameSourceNode;
 var gameSound;
 var gamePlayer;
 var spriteMap = {};
+var playing = false;
+
+var audioElement;
+var track;
 
 function getPointMultiplier() {
   /** @type {function(string, ?): ?} */;
@@ -52,20 +47,14 @@ function getPointMultiplier() {
   };
   return pr["currentDifficulty"] < 21 ? keys[pr["model"]["multiplier_set"]]["diff"][pr["currentDifficulty"] - 1] : (pr["currentDifficulty"] - 20) * keys[pr["model"]["multiplier_set"]]["point"] + keys[pr["model"]["multiplier_set"]]["max"];
 }
-/**
- * @return {?}
- */
+
 function getLoopValues() {
-  /** @type {function(string, ?): ?} */;
   var i = Math["floor"](Math["random"]() * pr["sprite"]["vals"]["length"])["toString"]();
-  /** @type {number} */
   var collectionID = 0;
-  /** @type {number} */
   var end = 0;
+
   if (pr["sprite"]["vals"]["length"] > 0) {
-    /** @type {number} */
     collectionID = parseInt(pr["sprite"]["vals"][i]["start"]) / 1E3;
-    /** @type {number} */
     end = (parseInt(pr["sprite"]["vals"][i]["start"]) + parseInt(pr["sprite"]["vals"][i]["duration"])) / 1E3;
   } else {
     var number = Object["keys"](spriteMap)["length"];
@@ -91,24 +80,12 @@ function loadSprite() {
   if (pr["sprite"]["method"] == "old") {
     gameContext = new (window["AudioContext"] || window["webkitAudioContext"]);
     gameMasterGain = gameContext["createGain"]();
-
-    gameMasterGain["gain"]["setValueAtTime"](defaultGameVolume, gameContext["currentTime"]);
+    // load some sound
+    audioElement = document.querySelector('#song1');
+    console.log(audioElement)
+    gameSourceNode = gameContext.createMediaElementSource(audioElement);
     
-    // host="https://assets.soundgym.co"; 
-    // GET SOUNDS FROM SOUNDGYM MEDIA SERVER
-    gameSound = new XMLHttpRequest;
-    // GET SOUND DUE TO GIVEN CONFIGURATION IN test.html - pr variable
-    gameSound["open"]("GET", host + "/sounds/sprites/" + pr["sprite"]["id"] + "/" + (pr["sprite"]["stereo"] ? "stereo" : "mono") + "-128.mp3", !![]);
-    gameSound["responseType"] = "arraybuffer";
-
-    // FUNCTION ON RECEIVE GET RESPONSE WITH AUDIO
-    gameSound["onload"] = function() {
-      gameContext["decodeAudioData"](gameSound["response"], function(receivedBuffer) {
-        // FUNCTION TO BE INVOKED ON SUCCESSFUL DECODING
-        gameBuffer = receivedBuffer;
-      });
-    };
-    gameSound["send"]();
+    gameMasterGain["gain"]["setValueAtTime"](defaultGameVolume, gameContext["currentTime"]);
   } else {
   // CURRENTLY NOT USED
     var precUserLanguage = pr["sprite"]["name"];
@@ -278,15 +255,8 @@ function setupGrid(domNode, grid) {
     result["preventDefault"]();
   });
 }
-/**
- * @param {string} condition
- * @param {boolean} key
- * @param {number} validation
- * @param {number} position
- * @return {undefined}
- */
+
 function moveRangerByType(condition, key, validation, position) {
-  /** @type {function(string, ?): ?} */;
   if (condition == "eq") {
     var value = positionToHz(position);
     var x = getSectionRange("eq", value, key ? 2 : rangeset[rangeLevel]);
@@ -517,11 +487,7 @@ function getGridSections(name) {
   }
   return params;
 }
-/**
- * @param {string} comparator
- * @param {undefined} left
- * @return {undefined}
- */
+
 function setGridRangePosition(comparator, left) {
   /** @type {function(string, ?): ?} */;
   if (comparator == "eq") {
@@ -564,11 +530,7 @@ function setGridRangePosition(comparator, left) {
     });
   }
 }
-/**
- * @param {string} type
- * @param {undefined} i
- * @return {undefined}
- */
+
 function setGridRangeWidth(type, i) {
   /** @type {function(string, ?): ?} */;
   if (type == "eq") {
@@ -582,91 +544,53 @@ function setGridRangeWidth(type, i) {
   }
   $("#range")["width"](idx["width"]);
 }
-/**
- * @param {(!Function|string)} name
- * @param {number} x
- * @param {number} i
- * @return {?}
- */
+
 function getSectionRange(name, x, i) {
-  /** @type {function(string, ?): ?} */;
   if (name == "eq") {
     var data = {};
-    /** @type {number} */
     var r = i / 2;
     return data["min"] = x * Math["pow"](2, -r), data["max"] = x * Math["pow"](2, r), data["middle"] = x, data["minperfect"] = x * Math["pow"](2, -0.125), data["maxperfect"] = x * Math["pow"](2, 0.125), data["width"] = $("#ranger")["width"]() / totalSections * i, data;
   }
   if (name == "panning" || name == "space") {
-    /** @type {number} */
     var legend_width = 0.1;
     data = {};
-    /** @type {number} */
     r = rangeset[rangeLevel] / 2;
     return data["min"] = roundNumber(x - legend_width * 2 * r), data["max"] = roundNumber(x + legend_width * 2 * r), data["middle"] = roundNumber(x), data["minperfect"] = roundNumber(x - legend_width / 2), data["maxperfect"] = roundNumber(x + legend_width / 2), data["width"] = $("#ranger")["width"]() / totalSections * rangeset[rangeLevel], data;
   }
   if (name == "custom") {
     data = {};
-    /** @type {number} */
     r = rangeset[rangeLevel] / 2;
     return data["min"] = roundNumber(x - gridScale * 2 * r), data["max"] = roundNumber(x + gridScale * 2 * r), data["middle"] = roundNumber(x), data["minperfect"] = roundNumber(x - gridScale / 2), data["maxperfect"] = roundNumber(x + gridScale / 2), data["width"] = $("#ranger")["width"]() / totalSections * rangeset[rangeLevel], data;
   }
 }
-/**
- * @param {number} name
- * @return {?}
- */
+
 function positionToHz(name) {
-  /** @type {function(string, ?): ?} */;
   return Math["round"](minHZscale * Math["pow"](2, totalSections * name));
 }
-/**
- * @param {?} deltaX
- * @return {?}
- */
+
 function hzToPosition(deltaX) {
-  /** @type {function(string, ?): ?} */;
   return Math["log"](deltaX / minHZscale) / Math["log"](Math["pow"](2, totalSections)) * 100;
 }
-/**
- * @param {number} value
- * @return {?}
- */
+
 function getKeyByHz(value) {
-  /** @type {function(string, ?): ?} */;
   return roundNumber(12 * Math["log10"](value / 440) / Math["log10"](2) + 69);
 }
-/**
- * @param {?} value
- * @return {?}
- */
+
 function volumeToDB(value) {
-  /** @type {function(string, ?): ?} */;
   return Math["log"](value) / Math["log"](10) * 20;
 }
-/**
- * @param {number} height
- * @return {?}
- */
+
 function dbToVolume(height) {
   return Math["pow"](10, height / 20);
 }
-/**
- * @param {string} val
- * @param {number} key
- * @param {number} value
- * @return {?}
- */
+
 function getGridAccurancyPoints(val, key, value) {
-  /** @type {function(string, ?): ?} */;
   if (val == "eq") {
-    /** @type {number} */
     var number = 2 * getPointMultiplier();
     return Math["abs"](Math["round"]((21 - Math["abs"](getKeyByHz(key) - getKeyByHz(value))) * number));
   }
   if (val == "panning") {
-    /** @type {number} */
     var minFluct = 0;
-    /** @type {number} */
     number = 15 * getPointMultiplier();
     return key > 0 && value > 0 || key < 0 && value < 0 ? minFluct = Math["abs"](value - key) * 10 : minFluct = (Math["abs"](value) + Math["abs"](key)) * 10, Math["round"](number * (3 - minFluct));
   }
@@ -1006,7 +930,7 @@ function loadingStatusCheck() {
   triggerInterval = setInterval(function() {
     try {
       // Audio files are loaded
-      if (typeof gameBuffer !== "undefined") {
+      if (typeof gameSourceNode !== "undefined") {
         clearInterval(triggerInterval);
         $(".game-cover")["removeClass"]("active");
         setGame();
@@ -1137,69 +1061,6 @@ function showLives() {
   }
   $("#lives")["html"](html);
 }
-/**
- * @param {?} received_data
- * @return {undefined}
- */
-function switchSound(received_data) {
-  /** @type {function(string, ?): ?} */;
-  var key = $(received_data)["attr"]("stype");
-  if (key == "stereo") {
-    switchStereoSound();
-    return;
-  }
-  gamePlayer["stop"](0);
-  var frontpageItems = getLoopValues();
-  gamePlayer = gameContext["createBufferSource"]();
-  gamePlayer["buffer"] = gameBuffer;
-
-  if (key == "peak" || key == "cut" || key == "bass") {
-    gamePlayer["connect"](gameBypassGain);
-    gamePlayer["connect"](gameFilter);
-  }
-
-  if (key == "pan") {
-    gamePlayer["connect"](gamePan);
-    gamePan["connect"](gameMasterGain);
-  }
-
-  if (key == "db") {
-    gamePlayer["connect"](sliderGain);
-    sliderGain["connect"](gameContext["destination"]);
-  }
-
-  if (key == "delay") {
-    gamePlayer["connect"](dryGain);
-    dryGain["connect"](gameMasterGain);
-    gameMasterGain["connect"](gameContext["destination"]);
-    gamePlayer["connect"](gameDelay);
-    gameDelay["connect"](gameMasterGain);
-    gameMasterGain["connect"](gameContext["destination"]);
-  }
-
-  if (key == "eq") {
-    gamePlayer["connect"](gameBypassGain);
-    gameBypassGain["connect"](gameMasterGain);
-    gamePlayer["connect"](gameFilters[0]);
-    var prop;
-    /** @type {number} */
-    prop = 0;
-
-    for (; prop < bands["length"] - 1; prop++) {
-      gameFilters[prop]["connect"](gameFilters[prop + 1]);
-    }
-
-    gameFilters[bands["length"] - 1]["connect"](gameUnpassGain);
-    gameUnpassGain["connect"](gameMasterGain);
-    gameMasterGain["connect"](gameContext["destination"]);
-  }
-
-  gameMasterGain["connect"](gameContext["destination"]);
-  gamePlayer["loop"] = !![];
-  gamePlayer["loopStart"] = frontpageItems["start"];
-  gamePlayer["loopEnd"] = frontpageItems["end"];
-  gamePlayer["start"](0, frontpageItems["start"]);
-}
 
 function switchStereoSound() {
   gamePlayerLeft["stop"](0);
@@ -1226,18 +1087,12 @@ function switchStereoSound() {
   gamePlayerRight["loopEnd"] = same["right"]["end"];
   gamePlayerRight["start"](0, same["right"]["start"]);
 }
-/**
- * @param {?} row
- * @return {undefined}
- */
+
 function updateFrequency(row) {
   /** @type {function(string, ?): ?} */;
   gameFilter["frequency"]["setValueAtTime"](row, gameContext["currentTime"]);
 }
-/**
- * @param {!Array} lng
- * @return {undefined}
- */
+
 function updatePan(lng) {
   /** @type {function(string, ?): ?} */;
   gamePan["setPosition"](lng[0], lng[1], lng[2]);
