@@ -93,13 +93,12 @@
       host = "https://assets.soundgym.co";
       thumbs = "https://thumbs-assets.soundgym.co";
       pr = JSON.parse(
-        '{"type":"practice","sub":"none","uid":0,"sprite":{"id":"8","stereo":true,"name":null,"method":"old","vals":[{"start":"0","duration":"7249"},{"start":"7250","duration":"6400"},{"start":"13700","duration":"8000"},{"start":"21750","duration":"9482"},{"start":"31250","duration":"7875"},{"start":"39150","duration":"5470"},{"start":"44650","duration":"4184"},{"start":"48850","duration":"8286"},{"start":"57150","duration":"8000"},{"start":"65200","duration":"7964"}],"channels":["0"]},"fxfolder":"fx_game","fxs":"on","model":{"id":"eq-test","stages":3},"goto":"playground\/eq"}'
+        '{"type":"practice","sub":"none","uid":0,"sprite":{"id":"8","stereo":true,"name":null,"method":"old","vals":[{"start":"0","duration":"7249"},{"start":"7250","duration":"6400"},{"start":"13700","duration":"8000"},{"start":"21750","duration":"9482"},{"start":"31250","duration":"7875"},{"start":"39150","duration":"5470"},{"start":"44650","duration":"4184"},{"start":"48850","duration":"8286"},{"start":"57150","duration":"8000"},{"start":"65200","duration":"7964"}],"channels":["0"]},"model":{"id":"eq-test","stages":3},"goto":"playground\/eq"}'
       );
       sp = JSON.parse(
         '{"id":"8","stereo":true,"name":null,"method":"old","vals":[{"start":"0","duration":"7249"},{"start":"7250","duration":"6400"},{"start":"13700","duration":"8000"},{"start":"21750","duration":"9482"},{"start":"31250","duration":"7875"},{"start":"39150","duration":"5470"},{"start":"44650","duration":"4184"},{"start":"48850","duration":"8286"},{"start":"57150","duration":"8000"},{"start":"65200","duration":"7964"}],"channels":["0"]}'
       );
       mobile = false;
-      fxfolder = "fx_game";
       /*]]>*/
     </script>
     <style type="text/css" id="notify-bootstrap">
@@ -200,6 +199,7 @@
     <script type="text/javascript" src="./test_files/base.js"></script>
     <script type="text/javascript" src="./test_files/eq.js"></script>
     <script type="text/javascript" src="./test_files/eq-test.js"></script>
+    <script>loadGame();</script>
     <div class="playground">
       <div class="container">
         <div id="game-panel" class="game-panel">
@@ -520,28 +520,6 @@
                 </div>
               </div>
             </div>
-            <div id="game-ready" class="game-cover">
-              <div>
-                <div class="game-panel-title">
-                  Set the EQ parameters to recreate the sound
-                </div>
-                <div class="game-panel-text">
-                  Complete 3 stages for perfect training
-                </div>
-                <div
-                  class="game-panel-cover-btn"
-                  key-id="13"
-                  key-event="click"
-                  key-status="inactive"
-                  onclick=" loadGame();"
-                >
-                  <img src="./test_files/ready.png" />
-                </div>
-                <div class="game-panel-small">
-                  Are you ready? Click to start!
-                </div>
-              </div>
-            </div>
             <div id="game-compare" class="game-cover">
               <div>
                 <img src="./test_files/cleared.png" />
@@ -597,68 +575,7 @@
               </div>
             </div>
           </div>
-          <div id="game-panel-header" class="game-panel-header">
-            <div
-              id="game-panel-points"
-              class="game-panel-points game-panel-header-element"
-            >
-              <span id="points">81</span>
-              <div style="text-transform: uppercase">Score</div>
-            </div>
-            <div
-              id="stageFeedback"
-              class="stageFeedback game-panel-header-element"
-            >
-              <img src="./test_files/eq.png" width="100" />
-            </div>
-            <div
-              id="game-panel-lives"
-              class="game-panel-lives game-panel-header-element"
-            >
-              <span id="stage">2</span> / 3
-              <div style="text-transform: uppercase">Stage</div>
-            </div>
-          </div>
           <div id="game-panel-body" class="game-panel-body" state="play">
-            <div
-              class="yk-meter game-compare-panel-meter"
-              meter="midline"
-              style="display: none"
-            >
-              <div class="meter-clock">
-                <div class="meter-wrapper">
-                  <div class="meter-box meter-wrong">
-                    <div class="meter-half">
-                      <div class="meter-half">
-                        <div class="pie"></div>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="meter-box meter-correct"
-                    style="transform: rotate(72deg)"
-                  >
-                    <div class="meter-half">
-                      <div class="meter-half">
-                        <div class="pie"></div>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="meter-box meter-perfect"
-                    style="transform: rotate(135deg)"
-                  >
-                    <div class="meter-half">
-                      <div class="meter-half">
-                        <div class="pie"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="needle" style="transform: rotate(180deg)"></div>
-              </div>
-              <div class="meter-value">81% accurate</div>
-            </div>
             <div
               id="stepPoints"
               class="bounceIn animated"
@@ -854,21 +771,6 @@
           </div>
           <div id="game-panel-footer" class="game-panel-footer">
             <div class="game-settings-btns hidden-xs">
-              <button
-                icon-on="&lt;i class=&#39;fa fa-bell&#39;&gt;&lt;/i&gt;"
-                icon-off="&lt;i class=&#39;fa fa-bell-slash&#39;&gt;&lt;/i&gt;"
-                data-toggle="tooltip"
-                data-placement="top"
-                key-id="70"
-                key-event="click"
-                key-status="active"
-                title=""
-                state="on"
-                onclick="muteFX(this);"
-                data-original-title="FXs"
-              >
-                <i class="fa fa-bell"></i>
-              </button>
               <button
                 icon-on="&lt;i class=&#39;fa fa-volume-up&#39;&gt;&lt;/i&gt;"
                 icon-off="&lt;i class=&#39;fa fa-volume-off&#39;&gt;&lt;/i&gt;"

@@ -32,7 +32,6 @@ function finishTest() {
     }
   }
   $("[better-then]")['text'](artistTrack);
-  playFx('cleared');
   $(".game-cover")['removeClass']('active');
   $("#game-compare")['addClass']('active');
   resetKeyboardKeys();
@@ -64,7 +63,6 @@ function submitEqMirrorResult(id_local) {
   totalPoints = totalPoints + parseInt(id_local);
   step++;
   $('#points')['text'](totalPoints);
-  playFx(result);
   RevealOriginal(result);
 }
 

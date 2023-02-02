@@ -8,7 +8,6 @@ var diff;
 /** @type {number} */
 var defaultGameVolume = 0.6;
 /** @type {number} */
-var defaultFXVolume = 0.45;
 var pointsMultiplication;
 var timeoutNext;
 /** @type {boolean} */
@@ -25,12 +24,6 @@ var ctrlIsPressed = ![];
 var altIsPressed = ![];
 /** @type {!Array} */
 var bonus = [5, 10, 20, 35, 50, 80, 130];
-var fxMap;
-var fxContext;
-var fxPlayer;
-var fxSound;
-var fxBuffer;
-var fxGain;
 var triggerInterval;
 var gameMasterGain;
 var gameBypassGain;
@@ -89,11 +82,8 @@ function getLoopValues() {
 
 // set up window.AudioContext
 function loadSprite() {
-  console.log(pr)
-
   // pr is set in test.html
   if (pr["sprite"] == null || isset(pr["sprite"]) && pr["sprite"]["length"] == 0) {
-    /** @type {number} */
     gameBuffer = 0;
     return;
   }
@@ -146,47 +136,6 @@ function loadSprite() {
   }
 }
 
-function playFx(key) {
-  /** @type {function(string, ?): ?} */;
-  var record = fxMap[key];
-  var artistTrack = fxContext["currentTime"];
-  /** @type {number} */
-  var GET_AUTH_URL_TIMEOUT = fxMap[key]["end"] - fxMap[key]["start"];
-  fxGain = fxContext["createGain"]();
-  fxGain["gain"]["setValueAtTime"](pr["fxs"] == "on" ? defaultFXVolume : 0, artistTrack);
-  fxPlayer = fxContext["createBufferSource"]();
-  fxPlayer["buffer"] = fxBuffer;
-  fxPlayer["connect"](fxGain);
-  fxGain["connect"](fxContext["destination"]);
-  fxPlayer["start"](0, record["start"], GET_AUTH_URL_TIMEOUT);
-}
-
-// LOAD SOUND EFFECTS - whistles on right answeretc.
-function loadFxs() {
-
-  fetchJSONFile(host + "/sounds/sprite/" + fxfolder + "/main.json", function(myPreferences) {
-    fxMap = myPreferences["spritemap"];
-    // console.log("fxMAP fxMAP fxMAP=")
-    // console.log(JSON.stringify(fxMap))
-  });
-
-  fxContext = new (window["AudioContext"] || window["webkitAudioContext"]);
-
-  fxSound = new XMLHttpRequest;
-  fxSound["open"]("GET", host + "/sounds/sprite/" + fxfolder + "/main.mp3", !![]);
-  console.log("GET", host + "/sounds/sprite/" + fxfolder + "/main.mp3")
-  fxSound["responseType"] = "arraybuffer";
-
-  fxSound["onload"] = function() {
-    fxContext["decodeAudioData"](fxSound["response"], function(canCreateDiscussions) {
-      /** @type {number} */
-      fxBuffer = canCreateDiscussions;
-    });
-  };
-
-  fxSound["send"]();
-}
-
 function muteGame(elem) {
   /** @type {function(string, ?): ?} */;
   var artistTrack = gameContext["currentTime"] + 0.6;
@@ -196,212 +145,18 @@ function muteGame(elem) {
   $(elem)["attr"]("state", action)["html"](beforeValue);
   gameMasterGain["gain"]["exponentialRampToValueAtTime"](action == "on" ? defaultGameVolume : 0.000001, artistTrack);
 }
-/**
- * @param {?} elem
- * @return {undefined}
- */
-function muteFX(elem) {
-  /** @type {function(string, ?): ?} */;
-  var groupId = $(elem)["attr"]("state") == "off" ? "on" : "off";
-  var url = "icon-" + groupId;
-  var html = $(elem)["attr"](url);
-  $(elem)["attr"]("state", groupId)["html"](html);
-  pr["fxs"] = groupId;
-}
-/**
- * @param {number} value
- * @return {?}
- */
+
 function roundNumber(value) {
-  /** @type {function(string, ?): ?} */;
   return Math["round"](value * 1E3) / 1E3;
 }
 
 function extraLifeValue() {
-  /** @type {function(string, ?): ?} */;
   return Math["round"](pr["model"]["lives"] * pr["model"]["extra_life_value"] * getPointMultiplier());
 }
-/**
- * @param {!Object} name
- * @param {?} oneofIndex
- * @return {undefined}
- */
-function gameAnswer(name, oneofIndex) {
-  /** @type {function(string, ?): ?} */;
-  if (pr["model"]["compare"] == "1" && compareBtnPressed) {
-    AnswerCompare(name);
-    return;
-  }
-  if ($("#game-panel-body")["attr"]("state") === "wait") {
-    return;
-  }
-  $("#game-panel-body")["attr"]("state", "wait");
-  var value;
-  if (oneofIndex) {
-    value = "correct";
-    var total_tax = Math["round"](50 * getPointMultiplier());
-    step++;
-    total = total + total_tax + (step == pr["model"]["stages"] ? extraLifeValue() : 0);
-  } else {
-    /** @type {string} */
-    value = "wrong";
-    pr["model"]["lives"]--;
-    if (step >= 1) {
-      /** @type {number} */
-      step = step - 1;
-    }
-  }
-  name["attr"]("state", value);
-  $("#points")["text"](numberWithCommas(total));
-  showLives();
-  answerslog["push"]({
-    e : value,
-    t : Date["now"](),
-    p : total
-  });
-  playFx(value);
-  /** @type {boolean} */
-  canWait = !![];
-  /** @type {number} */
-  timeoutNext = setTimeout(function() {
-    /** @type {function(string, ?): ?} */
-    var r = require;
-    gamePlayer[r("0xd")](0);
-    if (pr["model"]["lives"] === 0) {
-      endGame(![]);
-      return;
-    } else {
-      if (step == pr[r("0xb")][r("0x25")]) {
-        endGame(!![]);
-        return;
-      } else {
-        loadNext();
-        $("#stage")["text"](step + 1);
-      }
-    }
-    /** @type {boolean} */
-    canWait = ![];
-  }, waitForNext);
-}
-/**
- * @param {string} v
- * @param {!Object} data
- * @param {?} left
- * @return {?}
- */
-function gridAnswer(v, data, left) {
-  /** @type {function(string, ?): ?} */;
-  var name;
-  var options = $("#stepPoints");
-  /** @type {string} */
-  var html = "";
-  var result;
-  if (left >= data["minperfect"] && left <= data["maxperfect"]) {
-    /** @type {string} */
-    name = "perfect";
-    /** @type {string} */
-    result = "perfect";
-    var value = Math["round"](100 * getPointMultiplier());
-    total = total + value;
-    html = options["attr"]("perfect") + " +" + numberWithCommas(value);
-    step++;
-  } else {
-    if (left >= data["min"] && left <= data["max"]) {
-      name = "correct";
-      result = "correct";
-      value = getGridAccurancyPoints(v, data["middle"], left);
-      var type = Math["round"](bonus[rangeLevel] * getPointMultiplier());
-      total = Math["round"](total + value + type);
-      html = options["attr"]("accurate") + " +" + numberWithCommas(value) + "<br />" + options["attr"]("bonus") + " +" + numberWithCommas(type);
-      step++;
-    } else {
-      /** @type {string} */
-      name = "wrong";
-      result = "wrong";
-      html = options["attr"]("zero");
-      pr["model"]["lives"]--;
-    }
-  }
-  return answerslog["push"]({
-    e : name,
-    t : Date["now"](),
-    p : total
-  }), v == "eq" && accuracylog["push"]({
-    selected : data["middle"],
-    actual : left,
-    gap : Math["round"](Math["abs"](hzToPosition(data["middle"]) - hzToPosition(left)))
-  }), v == "panning" && accuracylog["push"]({
-    selected : data["middle"],
-    actual : left,
-    gap : Math["round"](Math["abs"](panToPosition(data["middle"]) - panToPosition(left)))
-  }), options["removeClass"](name == "wrong" ? "positive" : "negative")["addClass"](name == "wrong" ? "negative" : "positive")["html"](html)["show"]()["fadeOut"](waitForNext), $("#points")["text"](numberWithCommas(total)), playFx(result), $("#ranger")["attr"]("color", name), showLives(), setTimeout(function() {
-    /** @type {function(string, ?): ?} */
-    var titletemplate = String;
-    $("#ranger")["attr"]("color", "none");
-  }, 200), name;
-}
-/**
- * @param {!Object} range
- * @param {?} value
- * @return {?}
- */
-function gridAnswerCheetah(range, value) {
-  /** @type {function(string, ?): ?} */;
-  var S;
-  var HelloMethod;
-  if (value >= range["min"] && value <= range["max"]) {
-    S = "correct";
-    HelloMethod = "correct";
-    var total_tax = Math["round"](30 * getPointMultiplier());
-    total = total + total_tax;
-    step++;
-  } else {
-    S = "wrong";
-    HelloMethod = "wrong_long";
-  }
-  return answerslog["push"]({
-    e : S,
-    t : Date["now"](),
-    p : total
-  }), $("#points")["text"](numberWithCommas(total)), playFx(HelloMethod), $("#ranger")["attr"]("color", S), setTimeout(function() {
-    /** @type {function(string, ?): ?} */
-    var e = require;
-    $(e("0x4f"))[e("0x6c")](e("0x6f"), e("0x6b"));
-  }, 200), S;
-}
-/**
- * @param {?} obj
- * @return {undefined}
- */
-function hoverSet(obj) {
-  /** @type {function(string, ?): ?} */;
-  var RULES = $(obj)["parents"]("[answer]");
-  $("[answer]")["attr"]("state", "reset");
-  RULES["attr"]("state", "hover");
-}
-/**
- * @param {!Object} tasks
- * @return {undefined}
- */
-function AnswerCompare(tasks) {
-  /** @type {function(string, ?): ?} */;
-  var funcsToRun = gameContext["currentTime"];
-  switchGainA["gain"]["setValueAtTime"](tasks["attr"]("set") == "A" ? 1 : 0, funcsToRun);
-  switchGainB["gain"]["setValueAtTime"](tasks["attr"]("set") == "B" ? 1 : 0, funcsToRun);
-  gameUnpassGain["gain"]["setValueAtTime"](1, funcsToRun);
-  $(".answer")["removeAttr"]("compare");
-  tasks["attr"]("compare", "play");
-}
-/**
- * @param {?} exp
- * @return {undefined}
- */
+
 function moveGridByDirectionKeys(exp) {
-  /** @type {function(string, ?): ?} */;
-  /** @type {number} */
   var _0x3aa118 = 0.01;
   if (exp == "left") {
-    /** @type {number} */
     rangerKeys["percent"] = rangerKeys["percent"] - _0x3aa118;
   }
   if (exp == "right") {
@@ -409,26 +164,16 @@ function moveGridByDirectionKeys(exp) {
   }
   moveRangerByType(rangerKeys["type"], ![], $("#ranger")["width"]() * rangerKeys["percent"], rangerKeys["percent"]);
 }
-/**
- * @param {number} canCreateDiscussions
- * @return {undefined}
- */
+
 function moveGridBySectionKeys(canCreateDiscussions) {
-  /** @type {function(string, ?): ?} */;
-  /** @type {number} */
   rangerKeys["percent"] = (canCreateDiscussions * (100 / 9) - 100 / 18) / 100;
   moveRangerByType(rangerKeys["type"], ![], $("#ranger")["width"]() * rangerKeys["percent"], rangerKeys["percent"]);
 }
-/**
- * @param {string} name
- * @return {undefined}
- */
+
 function initGrid(name) {
-  /** @type {number} */
   var _0x427f15 = 0;
   var which = getGridSections(name);
   $["each"](which, function(canCreateDiscussions, items) {
-    /** @type {function(string, ?): ?} */;
     if (name == "eq") {
       var marginTop = _0x427f15 === 0 ? "&nbsp;" : items["min"] + "<small>Hz</small>";
       var activeTabWidth = items["middle"] + "<small>Hz</small>";
@@ -441,28 +186,20 @@ function initGrid(name) {
     _0x427f15++;
   });
 }
-/**
- * @param {string} m
- * @param {boolean} s
- * @return {undefined}
- */
+
 function setupGridOld(m, s) {
-  /** @type {function(string, ?): ?} */;
   var window = mobile ? "touchmove" : "mousemove";
   var eventType = mobile ? "touchend" : "click";
   if (mobile) {
     $("#ranger")["on"]("touchstart", function(message) {
-      /** @type {function(string, ?): ?} */
       var c = cut;
       message[c("0x10")]();
     });
   }
   $("#ranger")["on"](window, function(colData) {
-    /** @type {function(string, ?): ?} */
     var parseInt = cut;
     if (m == "stereo") {
       var focusTilePosY = $("#ranger")["offset"]()["top"];
-      /** @type {number} */
       var childValidation = mobile ? colData["originalEvent"]["touches"][0]["pageY"] ? colData["originalEvent"]["touches"][0]["pageY"] - focusTilePosY : colData["originalEvent"]["touches"][0]["clientY"] - focusTilePosY : colData["pageY"] - focusTilePosY;
       /** @type {number} */
       var scrollbarIdx = (childValidation - 20) / ($(this)["height"]() - 40);
@@ -1269,7 +1006,7 @@ function loadingStatusCheck() {
   triggerInterval = setInterval(function() {
     try {
       // Audio files are loaded
-      if (typeof gameBuffer !== "undefined" && typeof fxBuffer !== "undefined") {
+      if (typeof gameBuffer !== "undefined") {
         clearInterval(triggerInterval);
         $(".game-cover")["removeClass"]("active");
         setGame();
@@ -1279,15 +1016,8 @@ function loadingStatusCheck() {
     }
   }, 300);
 }
-/**
- * @param {boolean} playerOut
- * @return {undefined}
- */
+
 function endGame(playerOut) {
-  /** @type {function(string, ?): ?} */;
-  if (playerOut) {
-    playFx("cleared");
-  }
   var data = {
     type : pr["type"],
     sub : pr["sub"],
@@ -1540,9 +1270,6 @@ function loadGame() {
   // LOAD AudioContext and fetch main audio files - set them to buffer
   loadSprite();
 
-  // LOAD AudioContext and fetch effects audio - whistle on righ answer etc.
-  loadFxs();
-
   // set keyboard key mapping
   setKeyboardKeys();
 
@@ -1551,16 +1278,9 @@ function loadGame() {
   }, 800);
 }
 
-/**
- * @param {?} state
- * @return {undefined}
- */
 function initGame(state) {
   if (state) {
     loadJsons();
   }
   startGame();
-}
-;
-
-
+};

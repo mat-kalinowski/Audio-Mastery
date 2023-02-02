@@ -2116,9 +2116,9 @@ function startEQ() {;
   initKnobs();
   buildBandKnobs(eq['yourBands']);
 
-  SwitchEQ("original");
   drawGrid();
-
+  SwitchEQ('yours');
+ 
   // eq['yourBands']["push"]({
   //   id : PK,
   //   band_id : peaking,
@@ -2328,9 +2328,6 @@ function keyIsPressed(canCreateDiscussions) {;
   if (canCreateDiscussions == 40) {
     handleQ("up", 0.1);
   }
-  if (canCreateDiscussions == 37) {
-    SwitchEQ('original');
-  }
   if (canCreateDiscussions == 39) {
     SwitchEQ("yours");
   }
@@ -2415,39 +2412,6 @@ function Bypass() {;
   } else {
     SwitchEQ(eq["activeFilter"]);
     $("#bypass-btn")['attr']('bypass', 'off');
-  }
-}
-
-function UseHint(elem) {;
-  var PL$24 = [];
-  if (hints <= 0) {
-    $(".hint-btn")["attr"]('active', "no");
-    return;
-  }
-  $['each'](eq['yourBands'], function(PL$60, rpm_traffic) {
-    var now = target;
-    if (!rpm_traffic['hint']) {
-      PL$24["push"](PL$60);
-    }
-  });
-  if (PL$24['length'] < 2) {
-    $(elem)["attr"]('banned', "yes");
-    setTimeout(function() {
-      var now = target;
-      $(elem)["attr"]('banned', "no");
-    }, 200);
-  } else {
-    var currentParam = getArrayRandomElements(PL$24, 1)[0];
-    eq['yourBands'][currentParam] = eq['originalBands'][currentParam];
-    eq['yourBands'][currentParam]['hint'] = !![];
-    SwitchEQ('yours');
-    updateKnobValues();
-    $('[band="' + currentParam + '"]')['attr']('hint', 'yes');
-    hints--;
-    $('[hints]')['text'](hints);
-    if (hints <= 0) {
-      $(elem)["attr"]('active', "no");
-    }
   }
 }
 
