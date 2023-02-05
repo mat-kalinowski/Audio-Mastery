@@ -526,12 +526,12 @@
               </div>
               <div class="bandsContainer hidden-xs hidden-sm">
               <div id="bandsAdd" class="bandLeftTab bandAddTab">
-                <div class="addHeader">ADD +</div>
+                <div class="addHeader" onclick="addEqBand();">ADD +</div>
                 <div style="display: flex; margin-top: 8px;">
-                  <div id="lowpass" onclick="SelectBand('lowcut', this);" class="bandButton selected" style="width: 50%; display: flex; justify-content: center;">
+                  <div id="lowpass" onclick="SelectBand('highpass', this);" class="bandButton selected" style="width: 50%; display: flex; justify-content: center;">
                     <img style="width: 38px;" toggle-band-img="" src="https://assets.soundgym.co/playground/eq/filter-50/highpass.png">
                   </div>
-                  <div id="higpass" onclick="SelectBand('highpass', this);" style="width:50%; display: flex; justify-content: center;">
+                  <div id="higpass" onclick="SelectBand('peaking', this);" style="width:50%; display: flex; justify-content: center;">
                     <img style="width: 38px;" toggle-band-img="" src="https://assets.soundgym.co/playground/eq/filter-50/highpass.png">
                   </div>
                 </div>

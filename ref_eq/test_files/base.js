@@ -27,6 +27,7 @@ var gameSound;
 var gamePlayer;
 var spriteMap = {};
 var playing = false;
+var currentlySelectedBand = 'highpass';
 
 var audioElement;
 var track;
@@ -1072,6 +1073,7 @@ function initGame(state) {
 function SelectBand(bandName, source) {
   $(".selected", "#bandsAdd").removeClass("selected");
   $(source).addClass("selected")
+  currentlySelectedBand = bandName
 
   // TODO: create new band of given type
 }
