@@ -1808,9 +1808,11 @@ function buildSoundMap() {
   gameSourceNode["connect"](eq['gameBypassGain']);
 
   eq['gameBypassGain']['connect'](gameMasterGain);
+  
 
   // Check if there are filters added already
   if(Object.keys(eq['yourFilters']).length !== 0) {
+    // Connect first filter to audio Node
     gameSourceNode['connect'](eq['yourFilters'][0]);
     for (var i = 0; i < eq["yourBands"]["length"] - 1; i++) {
       // Connect every filter to the next filter
