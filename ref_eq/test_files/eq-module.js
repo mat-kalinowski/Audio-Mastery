@@ -24,7 +24,6 @@ var eq = {
   lastMeterEvent : 0,
   bandOnFocus : 0,
   meterUpdate : ![],
-  answerSubmitted : ![],
   isDown : ![],
   isTouchdown : ![],
   firstLoad : !![],
@@ -33,7 +32,6 @@ var eq = {
   originalFilters : {},
   gameYourGain : null,
   gameOriginalGain : null,
-  gameBypassGain : null,
   originalAnalyser : null,
   yourAnalyser : null,
   freqDataMap : {
@@ -45,7 +43,6 @@ var eq = {
     timegap : 10,
     count : 300
   },
-  activeFilter : 'original',
   filters : {
     lowpass : 0,
     highpass : 1,
@@ -1682,62 +1679,23 @@ function drawBandValues(elems) {;
   });
 }
 
-function SwitchEQ(yours) {
+function SwitchEQ() {
   var artistTrack = gameContext['currentTime'];
   gameMasterGain['gain']['setValueAtTime'](1, artistTrack);
   $('#question')['hide']();
 
-  if (yours == 'original') {
-    $(".bypass-btn")['attr']('bypass', 'off');
-    $('.compare-btn')['attr']('side', 'left');
-    $(".hint-btn")['attr']("active", "no");
-    eq['activeFilter'] = "original";
-    $('[eq]')['attr']('bypass', 'off')['attr']('original', "on");
-    eq['bypass'] = ![];
-    eq["gameOriginalGain"]['gain']['setValueAtTime'](1, artistTrack);
-    eq["gameBypassGain"]['gain']["setValueAtTime"](0, artistTrack);
-    eq['gameYourGain']['gain']["setValueAtTime"](0, artistTrack);
+  $('.bypass-btn')['attr']("bypass", 'off');
+  $('.compare-btn')["attr"]('side', "right");
+  $('[eq]')["attr"]('bypass', 'off')["attr"]('original', 'off');
+  eq["gameYourGain"]['gain']['setValueAtTime'](1, artistTrack);
 
-    drawGrid();
-    eqSetup(eq["originalBands"], eq['answerSubmitted'] ? 'gray' : 'transparent');
-    drawZeroLine();
-    drawMidLine(eq['originalBands'], eq['answerSubmitted'] ? 'gray' : "transparent");
-
-    if (!eq["answerSubmitted"]) {
-      $('#question')['show']();
-    }
-  }
-
-  if (yours == 'bypass') {
-    $('[eq]')['attr']('bypass', "on")['attr']('original', 'off');
-    $('.hint-btn')['attr']("active", "no");
-
-    eq['bypass'] = !![];
-    eq['gameBypassGain']['gain']['setValueAtTime'](1, artistTrack);
-    eq['gameYourGain']['gain']['setValueAtTime'](0, artistTrack);
-
-    drawGrid();
-    drawMidBypass();
-  }
-
-  if (yours == 'yours') {
-    $('.bypass-btn')['attr']("bypass", 'off');
-    $('.compare-btn')["attr"]('side', "right");
-    $(".hint-btn")['attr']("active", 'yes');
-    eq['activeFilter'] = "yours";
-    $('[eq]')["attr"]('bypass', 'off')["attr"]('original', 'off');
-    eq['bypass'] = ![];
-    eq["gameYourGain"]['gain']['setValueAtTime'](1, artistTrack);
-    eq['gameBypassGain']["gain"]['setValueAtTime'](0, artistTrack);
-
-    updateMultiband();
-    redrawGrid();
-    eqSetup(eq['yourBands'], 'color');
-    drawZeroLine();
-    drawMidLine(eq['yourBands'], 'color');
-    drawPointers(eq['yourBands']);
-    drawBandValues(eq['yourBands']);
-  }
+  updateMultiband();
+  redrawGrid();
+  eqSetup(eq['yourBands'], 'color');
+  drawZeroLine();
+  drawMidLine(eq['yourBands'], 'color');
+  drawPointers(eq['yourBands']);
+  drawBandValues(eq['yourBands']);
 }
 
 
@@ -1788,28 +1746,7 @@ function createFilters() {
   
 }
 
-// Create equalizers in AudioContext
-function buildSoundMap() {
-  var attr2index = getLoopValues();
-  var currentTime = gameContext["currentTime"];
-
-  createFilters();
-
-  gameMasterGain = gameContext["createGain"]();
-
-  eq["gameBypassGain"] = gameContext['createGain']();
-  eq['gameYourGain'] = gameContext['createGain']();
-
-  gameMasterGain['gain']['setValueAtTime'](1, currentTime);
-
-  eq['gameBypassGain']['gain']["setValueAtTime"](1, currentTime);
-  eq['gameYourGain']['gain']["setValueAtTime"](0, currentTime);
-
-  gameSourceNode["connect"](eq['gameBypassGain']);
-
-  eq['gameBypassGain']['connect'](gameMasterGain);
-  
-
+function connectFilters() {
   // Check if there are filters added already
   if(Object.keys(eq['yourFilters']).length !== 0) {
     // Connect first filter to audio Node
@@ -1821,6 +1758,24 @@ function buildSoundMap() {
     // Connect last filter to your gain
     eq['yourFilters'][eq['yourBands']["length"] - 1]['connect'](eq['gameYourGain']);
   }
+}
+
+// Create equalizers in AudioContext
+function buildSoundMap() {
+  var attr2index = getLoopValues();
+  var currentTime = gameContext["currentTime"];
+
+  createFilters();
+
+  gameMasterGain = gameContext["createGain"]();
+
+  eq['gameYourGain'] = gameContext['createGain']();
+
+  gameMasterGain['gain']['setValueAtTime'](1, currentTime);
+  eq['gameYourGain']['gain']["setValueAtTime"](1, currentTime);
+  gameSourceNode["connect"](eq['gameYourGain']);
+  
+  connectFilters();
 
   eq['gameYourGain']['connect'](gameMasterGain);
 
@@ -2070,7 +2025,6 @@ function buildBandKnobs(elems) {
 function addEqBand() { 
   console.log("Adding band")
   var bandName =  currentlySelectedBand;
-  eq["yourBands"] = [];
 
   // iterate over prototypes scenario array, for example:
   // "LC-N-N" : {
@@ -2132,37 +2086,15 @@ function addEqBand() {
     peakingLength++;
   }
 
-  createFilters()
-  SwitchEQ('yours');
-}
 
-function startEQ() {
-  buildSoundMap();
+  createFilters();
+  // TODO: creats bugs - need to change
+  // buildSoundMap();
+  connectFilters();
 
-  initKnobs();
   buildBandKnobs(eq['yourBands']);
 
-  console.log("drawing grid")
-  drawGrid();
   SwitchEQ('yours');
- 
-  // eq['yourBands']["push"]({
-  //   id : PK,
-  //   band_id : peaking,
-  //   state : "on",
-  //   color : data['color'],
-  //   border : data["border"],
-  //   filter_name : name,
-  //   filter_id : data["filter_id"],
-  //   freq : data["freq"],
-  //   gain : data['gain'],
-  //   q : data["q"],
-  //   chart : {},
-  //   filter : {},
-  //   hint : ![]
-  // });
-  eqSetup(eq['yourBands'], 'transparent');
-  // drawMidBypass();
 }
 
 function volumeAudioProcess(event) {
@@ -2204,9 +2136,6 @@ function keyIsPressed(canCreateDiscussions) {;
   if (canCreateDiscussions == 39) {
     SwitchEQ("yours");
   }
-  if (canCreateDiscussions == 66) {
-    Bypass();
-  }
 }
 
 function AudioStart() {
@@ -2228,16 +2157,6 @@ function AudioStop() {
   if (playing == true) {
     audioElement.pause();
     playing=false;  
-  }
-}
-
-function Bypass() {
-  if ($('#bypass-btn')['attr']('bypass') == 'off') {
-    SwitchEQ('bypass');
-    $('#bypass-btn')['attr']('bypass', "on");
-  } else {
-    SwitchEQ(eq["activeFilter"]);
-    $("#bypass-btn")['attr']('bypass', 'off');
   }
 }
 
@@ -2348,33 +2267,46 @@ function getFloatBetween(canCreateDiscussions) {;
 //   });
 // }
 
-function loadNext(scenario) {
-  eq['answerSubmitted'] = ![];
+function setupEqPlugin() {
   $('.game-cover')['removeClass']("active");
-  $('#game-panel-body')['attr']('state', 'play');
-
+  eq["yourBands"] = [];
   // setup eq bands/filters and its parameters in the global eq variable
   // createQuestion(scenario);
-  updateKnobValues();
+  
+  
+  // TEMPORARY COMMENTED - DO WE NEED THIS ?
+  // updateKnobValues();
 
-  $('#question')["hide"]();
-  $("[band]")["attr"]("state", "off")['attr']('show', "no");
-  $('.yk-meter')['hide']();
-  $('#go-next-btn')['attr']('active', "no");
   $("#confirm-settings")['attr']('active', 'yes');
 
   // draw eq
-  startEQ();
+
+  buildSoundMap();
+
+  initKnobs();
+
+  // Add html for knobs in the lower pane
+  buildBandKnobs(eq['yourBands']);
+
+  console.log("drawing grid")
+
+  drawGrid();
+  SwitchEQ('yours');
+ 
+  // eq['yourBands']["push"]({
+  //   id : PK,
+  //   band_id : peaking,
+  //   state : "on",
+  //   color : data['color'],
+  //   border : data["border"],
+  //   filter_name : name,
+  //   filter_id : data["filter_id"],
+  //   freq : data["freq"],
+  //   gain : data['gain'],
+  //   q : data["q"],
+  //   chart : {},
+  //   filter : {},
+  //   hint : ![]
+  // });
+  eqSetup(eq['yourBands'], 'transparent');
 }
-
-// INITIAL FUNCTION
-function setGame() {
-  resetKeyboardKeys();
-  activateKeyboardKeys('game-panel-body');
-  activateKeyboardKeys('game-panel-footer');
-
-  showLives();
-
-  // GET NEXT EQ BANDS - function in eq-test.js
-  getNextBands();
-};

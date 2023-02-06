@@ -759,7 +759,6 @@ function setKeyboardKeys() {
       }
     }
     $[a("0x9f")](next, function(canCreateDiscussions, obj) {
-      /** @type {function(string, ?): ?} */
       var k = a;
       if ($(obj)[k("0x6c")]("key-status") == k("0x18")) {
         obj[k("0x48")]();
@@ -767,100 +766,31 @@ function setKeyboardKeys() {
     });
   });
   $(document)["keyup"](function(result) {
-    /** @type {function(string, ?): ?} */
     if (result["which"] == 17 || result[key("0x46")] == 91 || result[key("0x46")] == 93) {
-      /** @type {boolean} */
       ctrlIsPressed = ![];
     }
     if (result[key("0x46")] == 18) {
-      /** @type {boolean} */
       altIsPressed = ![];
     }
   });
 }
-/**
- * @return {undefined}
- */
-function GameCompare() {
-  /** @type {function(string, ?): ?} */;
-  if (pr["model"]["compare"] == "1") {
-    if (compareBtnPressed) {
-      /** @type {boolean} */
-      compareBtnPressed = ![];
-      $("#game-panel")["attr"]("compare", "off");
-      $(".game-main-btns")["show"]();
-      GameContinue();
-    } else {
-      /** @type {boolean} */
-      compareBtnPressed = !![];
-      $("#game-panel")["attr"]("compare", "on");
-      $(".game-main-btns")["hide"]();
-      GameWait();
-    }
-  }
-}
-/**
- * @return {undefined}
- */
-function GameWait() {
-  if (canWait) {
-    clearTimeout(timeoutNext);
-    /** @type {boolean} */
-    canContinue = !![];
-  }
-}
-/**
- * @return {undefined}
- */
-function GameContinue() {
-  /** @type {function(string, ?): ?} */;
-  if (canWait) {
-    gamePlayer["stop"](0);
-    $(".answer")["removeAttr"]("compare");
-    if (pr["model"]["lives"] === 0) {
-      endGame(![]);
-      return;
-    } else {
-      if (step == pr["model"]["stages"]) {
-        endGame(!![]);
-        return;
-      } else {
-        /** @type {boolean} */
-        canContinue = ![];
-        /** @type {boolean} */
-        canWait = ![];
-        setGame();
-        $("#stage")["text"](step + 1);
-      }
-    }
-  }
-}
-/**
- * @return {undefined}
- */
+
 function bypassOn() {
-  /** @type {function(string, ?): ?} */;
   $("[bypass=\"off\"]")["attr"]("active", "no");
   $("[bypass=\"on\"]")["attr"]("active", "yes");
   var artistTrack = gameContext["currentTime"];
   gameBypassGain["gain"]["setValueAtTime"](1, artistTrack);
   gameUnpassGain["gain"]["setValueAtTime"](0, artistTrack);
 }
-/**
- * @return {undefined}
- */
+
 function bypassOff() {
-  /** @type {function(string, ?): ?} */;
   $('[bypass="off"]')["attr"]("active", "yes");
   $("[bypass=\"on\"]")["attr"]("active", "no");
   var funcsToRun = gameContext["currentTime"];
   gameUnpassGain["gain"]["setValueAtTime"](1, funcsToRun);
   gameBypassGain["gain"]["setValueAtTime"](0, funcsToRun);
 }
-/**
- * @param {!Object} tempstick
- * @return {undefined}
- */
+
 function setBypass(tempstick) {
   if (tempstick == "on") {
     bypassOn();
@@ -868,9 +798,7 @@ function setBypass(tempstick) {
     bypassOff();
   }
 }
-/**
- * @return {undefined}
- */
+
 function selectAnswer() {
   /** @type {function(string, ?): ?} */;
   if ($("[set]")["length"] < 0) {
@@ -905,8 +833,8 @@ function loadingStatusCheck() {
       // Audio files are loaded
       if (typeof gameSourceNode !== "undefined") {
         clearInterval(triggerInterval);
-        $(".game-cover")["removeClass"]("active");
-        setGame();
+        // setGame();
+        setupEqPlugin();
       }
     } catch (previousState) {
       console["error"](previousState);
