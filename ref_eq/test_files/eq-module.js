@@ -267,23 +267,23 @@ function drawXGrid() {
   ctx['stroke']();
 }
 
-  // eq['yourBands']["push"]({
-  //   id : PK,
-  //   band_id : peaking,
-  //   state : "on",
-  //   color : data['color'],
-  //   border : data["border"],
-  //   filter_name : name,
-  //   filter_id : data["filter_id"],
-  //   freq : data["freq"],
-  //   gain : data['gain'],
-  //   q : data["q"],
-  //   chart : {},
-  //   filter : {},
-  //   hint : ![]
-  // });
-  //
-  // DRAWING ACTUAL EQ CURVE
+// eq['yourBands']["push"]({
+//   id : PK,
+//   band_id : peaking,
+//   state : "on",
+//   color : data['color'],
+//   border : data["border"],
+//   filter_name : name,
+//   filter_id : data["filter_id"],
+//   freq : data["freq"],
+//   gain : data['gain'],
+//   q : data["q"],
+//   chart : {},
+//   filter : {},
+//   hint : ![]
+// });
+//
+// DRAWING ACTUAL EQ CURVE
 function drawFilter(bands, bandId, paramName) {
   var strokeColors = {
     color : 'rgba(' + bands[bandId]['border'] + ',.6)',
@@ -504,21 +504,21 @@ function initFilter(bands, bandIndex) {;
 
 // paramName, ex : transparent
 function eqSetup(bands, paramName) {
-    // eq['yourBands']["push"]({
-    //   id : PK,
-    //   band_id : peaking,
-    //   state : "on",
-    //   color : data['color'],
-    //   border : data["border"],
-    //   filter_name : name,
-    //   filter_id : data["filter_id"],
-    //   freq : data["freq"],
-    //   gain : data['gain'],
-    //   q : data["q"],
-    //   chart : {},
-    //   filter : {},
-    //   hint : ![]
-    // });
+  // eq['yourBands']["push"]({
+  //   id : PK,
+  //   band_id : peaking,
+  //   state : "on",
+  //   color : data['color'],
+  //   border : data["border"],
+  //   filter_name : name,
+  //   filter_id : data["filter_id"],
+  //   freq : data["freq"],
+  //   gain : data['gain'],
+  //   q : data["q"],
+  //   chart : {},
+  //   filter : {},
+  //   hint : ![]
+  // });
   $['each'](bands, function(key, value) {
     if (value["state"] == "on") {
       // initialize mathematical equations for given band
@@ -802,6 +802,8 @@ function createFilters() {
 function connectFilters() {
   // Check if there are filters added already
   if(Object.keys(eq['yourFilters']).length !== 0) {
+
+    gameSourceNode['disconnect']()
     // Connect first filter to audio Node
     gameSourceNode['connect'](eq['yourFilters'][0]);
     for (var i = 0; i < eq["yourBands"]["length"] - 1; i++) {
@@ -811,7 +813,12 @@ function connectFilters() {
     // Connect last filter to your gain
     eq['yourFilters'][eq['yourBands']["length"] - 1]['connect'](eq['gameYourGain']);
   }
+  else {
+    gameSourceNode["connect"](eq['gameYourGain']);
+  }
 }
+
+// gameSourceNode -> filters... -> gameYourGain -> gameMasterGain -> destination
 
 // Create equalizers in AudioContext
 function buildSoundMap() {
@@ -826,7 +833,6 @@ function buildSoundMap() {
 
   gameMasterGain['gain']['setValueAtTime'](1, currentTime);
   eq['gameYourGain']['gain']["setValueAtTime"](1, currentTime);
-  gameSourceNode["connect"](eq['gameYourGain']);
   
   connectFilters();
 
@@ -834,7 +840,6 @@ function buildSoundMap() {
 
   gameMasterGain['connect'](gameContext["destination"]);
 
-  // gameSourceNode["buffer"] = gameBuffer;
   gameSourceNode['loop'] = !![];
   gameSourceNode['loopStart'] = attr2index['start'];
   gameSourceNode['loopEnd'] = attr2index['end'];
@@ -1052,7 +1057,7 @@ function handleMouseUp(event) {;
 }
 
 function buildBandKnobs(elems) {
-  // $('[bands]')["html"]("");
+  $('[bands]')["html"]("");
   $['each'](elems, function(key, sks) {
     var params = bands_definitions[sks["band_id"]];
     var escapedEmail = "";
@@ -1229,96 +1234,6 @@ function getWholeBetween(props) {;
 function getFloatBetween(canCreateDiscussions) {;
   return parseFloat((Math['random']() * (canCreateDiscussions[1] - canCreateDiscussions[0]) + canCreateDiscussions[0])['toFixed'](1));
 }
-
-// function createQuestion(scenario) {
-//   eq['originalBands'] = [];
-//   eq["yourBands"] = [];
-//   var peakingLength = 1;
-
-//   // iterate over prototypes scenario array, for example:
-//   // "LC-N-N" : {
-//   //   deviation : 1800,
-//   //   options : {
-//   //     1 : [{
-//   //       filter_name : "LC",
-//   //       freq : [150, 1400],
-//   //       q : [0.7, 0.7],
-//   //       gain : [0, 0]
-//   //     }]
-//   //   }
-//   // },
-//   $['each'](scenario, function(band_code, value) {
-//     // get full band name from short name : LC - lowcut
-//     var name = full_band_name[value["filter_name"]];
-//     // we can have few peaking bands
-//     var band_name = name == 'peaking' ? 'peaking' + peakingLength : name;
-
-//     // GET BANDS DEFINITIONS, FOR EXAMPLE:
-//     // var bands_definitions = {
-//     //   highpass : {
-//     //     id : 0,
-//     //     state : "off",
-//     //     color : '211,47,47',
-//     //     border : '244,129,129',
-//     //     filter_name : "highpass",
-//     //     filter_id : 1,
-//     //     freq : 30,
-//     //     gain : 0,
-//     //     q : 0.7,
-//     //     sensitivity_freq : 1,
-//     //     angle_freq : -139,
-//     //     angle_q : -130,
-//     //     angle_gain : 0,
-//     //     knobs : ["freq"],
-//     //     chart : {},
-//     //     filter : {}
-//     //   },
-//     var data = bands_definitions[band_name];
-
-//     // get starting parameters values for given band
-//     var sampleRate = getRandomFrequencyBetween(value['freq']);
-//     var queryStr2 = getFloatBetween(value["q"]);
-//     var gain = getFloatBetween(value['gain']);
-  
-//     // bands added to reference track
-//     eq['originalBands']["push"]({
-//       id : band_code,
-//       band_id : band_name,
-//       state : "on",
-//       color : data['color'],
-//       border : data["border"],
-//       filter_name : name,
-//       filter_id : data["filter_id"],
-//       freq : sampleRate,
-//       gain : gain,
-//       q : queryStr2,
-//       chart : {},
-//       filter : {},
-//       hint : ![]
-//     });
-  
-//     // clear bands for user to modify
-//     eq['yourBands']["push"]({
-//       id : band_code,
-//       band_id : band_name,
-//       state : "on",
-//       color : data['color'],
-//       border : data["border"],
-//       filter_name : name,
-//       filter_id : data["filter_id"],
-//       freq : data["freq"],
-//       gain : data['gain'],
-//       q : data["q"],
-//       chart : {},
-//       filter : {},
-//       hint : ![]
-//     });
-  
-//     if (name == "peaking") {
-//       peakingLength++;
-//     }
-//   });
-// }
 
 function setupEqPlugin() {
   $('.game-cover')['removeClass']("active");
