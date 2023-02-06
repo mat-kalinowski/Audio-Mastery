@@ -945,6 +945,7 @@ function updateKnobValues() {
     var name = $(this)['parents']("[band]")['attr']('band');
     var i = $(this)['attr']('knob');
     console.log(reservedNamesMap)
+    console.log(name)
 
     console.log(reservedNamesMap[name])
     var variable = isset(eq['yourBands'][name]) ? eq['yourBands'][name][i] : reservedNamesMap[name][i];
@@ -1058,6 +1059,9 @@ function handleMouseUp(event) {;
 
 function buildBandKnobs(elems) {
   $('[bands]')["html"]("");
+  console.log("ELEMS")
+  console.log(elems)
+  console.log("ELEMS")
   $['each'](elems, function(key, sks) {
     var params = bands_definitions[sks["band_id"]];
     var escapedEmail = "";
@@ -1126,6 +1130,7 @@ function addEqBand() {
 
   // clear bands for user to modify
   eq['yourBands']["push"]({
+    id: data['id'],
     band_id : fullBandName,
     state : "on",
     color : data['color'],
