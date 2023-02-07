@@ -827,7 +827,6 @@ function connectFilters() {
 
 // Create equalizers in AudioContext
 function buildSoundMap() {
-  var attr2index = getLoopValues();
   var currentTime = gameContext["currentTime"];
 
   createFilters();
@@ -844,10 +843,6 @@ function buildSoundMap() {
   eq['gameYourGain']['connect'](gameMasterGain);
 
   gameMasterGain['connect'](gameContext["destination"]);
-
-  gameSourceNode['loop'] = !![];
-  gameSourceNode['loopStart'] = attr2index['start'];
-  gameSourceNode['loopEnd'] = attr2index['end'];
 
   eq['yourAnalyser'] = gameContext['createAnalyser']();
   eq['gameYourGain']["connect"](eq['yourAnalyser']);
