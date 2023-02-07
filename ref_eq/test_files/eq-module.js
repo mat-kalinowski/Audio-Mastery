@@ -757,7 +757,12 @@ function scaleBetween(toTop, index, step, fromTop, type) {;
   return Math['round'](number * 100) / 100;
 }
 
-function toggleBand(value) {;
+function toggleBand(value) {
+  console.log("bandOnFocus")
+  console.log(value)
+  console.log("bandOnFocus")
+  console.log(eq['yourBands'])
+
   eq['bandOnFocus'] = value;
   if (eq['yourBands'][eq["bandOnFocus"]]["state"] == 'off') {
     $('[band="' + eq['bandOnFocus'] + '"]')["attr"]('state', "on");
@@ -1076,8 +1081,7 @@ function buildBandKnobs(elems) {
     if (params['knobs']['includes']("q")) {
       siteName = '<div class="knob-panel" knob="q" state="inactive" sensitivity="0.2" y="0" min="0.5" max="3" base="' + params["q"] + '" start="' + params["q"] + '" value="' + params["q"] + '" ondblclick="knobBase(this);" onMouseDown="knobActivate(this, event);">' + '<div class="knob-controller" style="transform: rotate(' + params["angle_q"] + 'deg)"><i class="fa fa-circle"></i></div>' + '<div class="knob-value" contentEditable="true" onBlur="knobValueBlur(this);" onFocus="knobValueFocus(this);" onKeyDown="knobKeydown(this, event);">' + params["q"] + '</div>' + '<div class="knob-label">Q</div>' + '</div>';
     }
-
-    var scrollbarHelpers = '<div band="' + sks["id"] + '" state="' + sks['state'] + '">' + '<div toggle-band onclick="toggleBand(' + sks["id"] + ');">' + '<div toggle-band-btn style="background: rgb(' + params["color"] + ')"></div>' + '<img toggle-band-img src="' + host + '/playground/eq/filter-50/' + params['filter_name'] + '.png"/>' + "</div>" + '<div class="controllers">' + escapedEmail + sitesusers + siteName + "</div>" + '</div>';
+    var scrollbarHelpers = '<div band="' + sks["id"] + '" state="' + sks['state'] + '">' + '<div toggle-band onclick="toggleBand(' + key + ');">' + '<div toggle-band-btn style="background: rgb(' + params["color"] + ')"></div>' + '<img toggle-band-img src="' + host + '/playground/eq/filter-50/' + params['filter_name'] + '.png"/>' + "</div>" + '<div class="controllers">' + escapedEmail + sitesusers + siteName + "</div>" + '</div>';
     $('[bands]')["append"](scrollbarHelpers);
   });
 }
