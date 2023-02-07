@@ -3,7 +3,6 @@
 // MAIN EQ VARIABLE
 var eq = {
   yourBands : [],
-  originalBands : [],
   drawValues : [],
   PI2 : Math["PI"] * 2,
   pointerRadius : 12,
@@ -21,7 +20,6 @@ var eq = {
   canvasHeight : 0,
   offsetX : 0,
   offsetY : 0,
-  lastMeterEvent : 0,
   bandOnFocus : 0,
   meterUpdate : ![],
   isDown : ![],
@@ -29,13 +27,9 @@ var eq = {
   firstLoad : !![],
   bypass : !![],
   yourFilters : {},
-  originalFilters : {},
   gameYourGain : null,
-  gameOriginalGain : null,
-  originalAnalyser : null,
   yourAnalyser : null,
   freqDataMap : {
-    original : [],
     your : [],
     diff : []
   },
@@ -62,9 +56,6 @@ var ctx;
 var meter;
 var result;
 var totalSections = 12;
-var perfectPercent = 75;
-var percentAccuracy = 40;
-var deviation = 1800;
 var peakingLength = 1;
 
 var full_band_name = {
@@ -735,22 +726,19 @@ function drawBandValues(elems) {;
 function SwitchEQ() {
   var artistTrack = gameContext['currentTime'];
   gameMasterGain['gain']['setValueAtTime'](1, artistTrack);
-  $('#question')['hide']();
 
-  $('.bypass-btn')['attr']("bypass", 'off');
-  $('.compare-btn')["attr"]('side', "right");
   $('[eq]')["attr"]('bypass', 'off')["attr"]('original', 'off');
   eq["gameYourGain"]['gain']['setValueAtTime'](1, artistTrack);
 
   updateMultiband();
   redrawGrid();
   eqSetup(eq['yourBands'], 'color');
+
   drawZeroLine();
   drawMidLine(eq['yourBands'], 'color');
   drawPointers(eq['yourBands']);
   drawBandValues(eq['yourBands']);
 }
-
 
 function scaleBetween(toTop, index, step, fromTop, type) {;
   var number = (step - index) * (toTop - fromTop) / (type - fromTop) + index;
@@ -846,7 +834,6 @@ function buildSoundMap() {
 
   eq['yourAnalyser'] = gameContext['createAnalyser']();
   eq['gameYourGain']["connect"](eq['yourAnalyser']);
-  eq['originalAnalyser'] = gameContext['createAnalyser']();
 }
 
 function formatHz(val) {
@@ -1148,56 +1135,11 @@ function addEqBand() {
     peakingLength++;
   }
 
-
   createFilters();
-  // TODO: creats bugs - need to change
-  // buildSoundMap();
   connectFilters();
 
   buildBandKnobs(eq['yourBands']);
-
   SwitchEQ('yours');
-}
-
-function volumeAudioProcess(event) {
-  var window = event['inputBuffer']['getChannelData'](0);
-  var f = window['length'];
-
-  var number = 0;
-  var value;
-
-  var g = 0;
-  for (; g < f; g++) {
-    value = window[g];
-    if (Math['abs'](value) >= this['clipLevel']) {
-      this["clipping"] = !![];
-      this['lastClip'] = window['performance']['now']();
-    }
-  
-    number = number + value * value;
-  }
-  var result = Math['sqrt'](number / f);
-  this['volume'] = Math["max"](result, this['volume'] * this["averaging"]);
-  if (eq["lastMeterEvent"] % 3 === 0) {
-    eq['meterUpdate'] = !![];
-  } else {
-    eq['meterUpdate'] = ![];
-  }
-  eq['lastMeterEvent'] = Math["floor"](event['playbackTime']);
-  if (eq['meterUpdate']) {
-  }
-}
-
-function keyIsPressed(canCreateDiscussions) {;
-  if (canCreateDiscussions == 38) {
-    handleQ("down", 0.1);
-  }
-  if (canCreateDiscussions == 40) {
-    handleQ("up", 0.1);
-  }
-  if (canCreateDiscussions == 39) {
-    SwitchEQ("yours");
-  }
 }
 
 function AudioStart() {

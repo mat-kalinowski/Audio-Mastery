@@ -5,19 +5,6 @@ body {
   width: 100%;
   margin: 0;
   position: relative; }
-  [eq] [bypass-btn] {
-    cursor: pointer;
-    position: absolute;
-    top: 16px;
-    left: 16px;
-    width: 36px;
-    height: 36px;
-    border-radius: 3px;
-    box-shadow: 0 0 2px 2px #000; }
-    [eq] [bypass-btn][state='on'] {
-      background: #555; }
-    [eq] [bypass-btn][state='off'] {
-      background: #ffff00; }
   [eq][bypass="on"] [band][state="on"] [toggle-band] [toggle-band-btn] {
     background: #555 !important; }
   [eq][original="on"] {
@@ -206,31 +193,6 @@ body {
   .game-action-panel.game-action-panel-lg {
     width: 284px;
     margin-left: -142px; }
-  .game-action-panel .compare-btn {
-    position: absolute;
-    top: 0;
-    left: 45px;
-    outline: none;
-    border: none;
-    background: #333;
-    border-radius: 13px;
-    font-size: 12px;
-    width: 160px; }
-    .game-action-panel .compare-btn:hover {
-      background: #555; }
-  .game-action-panel .bypass-btn {
-    position: absolute;
-    top: 1px;
-    left: 15px;
-    outline: none;
-    border: none;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: #252525;
-    margin-right: 6px; }
-    .game-action-panel .bypass-btn[bypass="on"] {
-      background: #fceb88; }
   .game-action-panel .hint-btn {
     border: none;
     background: #333;
