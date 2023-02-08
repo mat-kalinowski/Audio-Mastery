@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="AudioMastery" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <link rel="stylesheet" type="text/css" href="./css/main.css" />
     <title>AUDIO MASTERY</title>
 </head>
@@ -16,4 +24,97 @@
         </div>
     </div>
 </body>
+</html>
+
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <script src="https://kit.fontawesome.com/47c687ffa5.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="./test_files/base.css" />
+    <link rel="stylesheet" type="text/css" href="./test_files/eq-module.css" />
+    <script type="text/javascript" src="./test_files/jquery.min.js"></script>
+    <script type="text/javascript" src="./test_files/yknob.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <script type="text/javascript">
+      baseUrl = "";
+      host = "https://assets.soundgym.co";
+      mobile = false;
+    </script>
+  </head>
+  <body
+    style="
+      background: url(https://assets.soundgym.co/home/bg1.jpg) no-repeat center
+        center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    "
+  >
+    <div class="playground">
+      <div class="container">
+        <div id="game-panel" class="game-panel">
+          <div id="game-loading" class="game-cover">
+           </div>
+          <audio id="song1"src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/858/outfoxing.mp3" crossorigin="anonymous" ></audio>
+          <div id="game-panel-body" class="game-panel-body" state="play">
+            <div eq="" >
+              <div screen="" id="main-canvas">
+                <canvas width="1090" height="300"></canvas>
+              </div>
+              <div class="bandsContainer hidden-xs hidden-sm">
+              <div id="bandsAdd" class="bandLeftTab bandAddTab">
+                <div class="addHeader" onclick="addEqBand();">ADD +</div>
+                <div style="display: flex; margin-top: 8px;">
+                  <div id="lowpass" onclick="SelectBand('highpass', this);" class="bandButton selected" style="width: 50%; display: flex; justify-content: center;">
+                    <img style="width: 38px;" toggle-band-img="" src="https://assets.soundgym.co/playground/eq/filter-50/highpass.png">
+                  </div>
+                  <div id="higpass" onclick="SelectBand('peaking', this);" style="width:50%; display: flex; justify-content: center;">
+                    <img style="width: 38px;" toggle-band-img="" src="https://assets.soundgym.co/playground/eq/filter-50/highpass.png">
+                  </div>
+                </div>
+                <div style="display: flex; margin-top: 8px;">
+                  <div onclick="SelectBand();" class="bandButton" style="width: 50%; display: flex; justify-content: center;">
+                    <img style="width: 38px;" toggle-band-img="" src="https://assets.soundgym.co/playground/eq/filter-50/highpass.png">
+                  </div>
+                  <div onclick="SelectBand();" style="width:50%; display: flex; justify-content: center;">
+                    <img style="width: 38px;" toggle-band-img="" src="https://assets.soundgym.co/playground/eq/filter-50/highpass.png">
+                  </div>
+                </div>
+              </div>
+              <div bands=""></div>
+              <div class="bandRightTab"></div>
+            </div>
+            <div class="game-action-panel">
+              <div>
+                <button
+                  onclick="AudioStart();"
+                  id="controls-play"
+                  data-toggle="tooltip"
+                  data-html="true"
+                  title=""
+                ></button>
+              </div>
+              <div>
+                <button
+                  onclick="AudioStop();"
+                  data-toggle="tooltip"
+                  data-html="true"
+                  title=""
+                ></button>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="./test_files/base.js"></script>
+    <script type="text/javascript" src="./test_files/eq-module.js"></script>
+    <script type="text/javascript">
+      loadGame();
+    </script>
+  </body>
 </html>

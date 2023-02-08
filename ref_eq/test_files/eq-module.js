@@ -734,7 +734,6 @@ function SwitchEQ() {
   redrawGrid();
   eqSetup(eq['yourBands'], 'color');
 
-  drawZeroLine();
   drawMidLine(eq['yourBands'], 'color');
   drawPointers(eq['yourBands']);
   drawBandValues(eq['yourBands']);
@@ -766,14 +765,14 @@ function toggleBand(value) {
 function updateMultiband() {
   console.log("Updating multiband")
   console.log(eq["yourFilters"])
-  var artistTrack = gameContext['currentTime'];
+  var currentTime = gameContext['currentTime'];
   $["each"](eq['yourBands'], function(key, params) {
-    var GET_AUTH_URL_TIMEOUT = params['state'] == "on" ? params['gain'] : 0;
-    var _0xe4408e = params['state'] == "on" ? params['filter_name'] : 'allpass';
-    eq["yourFilters"][key]['type'] = _0xe4408e;
-    eq['yourFilters'][key]['frequency']['setValueAtTime'](params["freq"], artistTrack);
-    eq['yourFilters'][key]["Q"]['setValueAtTime'](params["q"], artistTrack);
-    eq['yourFilters'][key]['gain']['setValueAtTime'](GET_AUTH_URL_TIMEOUT, artistTrack);
+    var newGain = params['state'] == "on" ? params['gain'] : 0;
+    var filterType = params['state'] == "on" ? params['filter_name'] : 'allpass';
+    eq["yourFilters"][key]['type'] = filterType;
+    eq['yourFilters'][key]['frequency']['setValueAtTime'](params["freq"], currentTime);
+    eq['yourFilters'][key]["Q"]['setValueAtTime'](params["q"], currentTime);
+    eq['yourFilters'][key]['gain']['setValueAtTime'](newGain, currentTime);
   });
 }
 
@@ -931,12 +930,10 @@ function updateKnobValues() {
   $('.knob-panel')['each'](function() {
     var name = $(this)['parents']("[band]")['attr']('band');
     var i = $(this)['attr']('knob');
-    console.log(reservedNamesMap)
-    console.log(name)
 
-    console.log(reservedNamesMap[name])
     var variable = isset(eq['yourBands'][name]) ? eq['yourBands'][name][i] : reservedNamesMap[name][i];
     var artistTrack = i == 'gain' || i == "q" ? variable["toFixed"](1) : variable['toFixed'](0);
+
     $(this)["attr"]({
       y : 0,
       start : variable,
@@ -1046,9 +1043,7 @@ function handleMouseUp(event) {;
 
 function buildBandKnobs(elems) {
   $('[bands]')["html"]("");
-  console.log("ELEMS")
-  console.log(elems)
-  console.log("ELEMS")
+
   $['each'](elems, function(key, sks) {
     var params = bands_definitions[sks["band_id"]];
     var escapedEmail = "";
@@ -1071,7 +1066,6 @@ function buildBandKnobs(elems) {
 
 // Pass filterCode - short code LC, HS etc...
 function addEqBand() { 
-  console.log("Adding band")
   var bandName =  currentlySelectedBand;
 
   // iterate over prototypes scenario array, for example:
@@ -1087,9 +1081,8 @@ function addEqBand() {
   //   }
   // },
 
-  // we can have few peaking bands
+  // We can have few peaking bands
   var fullBandName = bandName == 'peaking' ? 'peaking' + peakingLength : bandName;
-  console.log("hey adding band")
   var data = bands_definitions[bandName];
 
   // GET BANDS DEFINITIONS, FOR EXAMPLE:
@@ -1114,7 +1107,7 @@ function addEqBand() {
   //   },
   var data = bands_definitions[fullBandName];
 
-  // clear bands for user to modify
+  // Clear bands for user to modify
   eq['yourBands']["push"]({
     id: data['id'],
     band_id : fullBandName,
@@ -1184,12 +1177,7 @@ function getFloatBetween(canCreateDiscussions) {;
 function setupEqPlugin() {
   $('.game-cover')['removeClass']("active");
   eq["yourBands"] = [];
-  // setup eq bands/filters and its parameters in the global eq variable
-  // createQuestion(scenario);
   
-  
-  // TEMPORARY COMMENTED - DO WE NEED THIS ?
-  // updateKnobValues();
 
   $("#confirm-settings")['attr']('active', 'yes');
 

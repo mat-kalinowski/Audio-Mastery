@@ -29,22 +29,6 @@ body {
         top: -1em;
         text-transform: none;
         font-family: 'Orbitron', sans-serif; }
-    [eq] [eq-header] [eq-powered] {
-      position: absolute;
-      right: 15px;
-      top: 15px; }
-      [eq] [eq-header] [eq-powered] a {
-        color: #888;
-        transition: all .2s ease;
-        text-shadow: 0 0 5px black;
-        font-weight: bold;
-        font-size: 14px; }
-        [eq] [eq-header] [eq-powered] a span {
-          font-size: 22px;
-          font-weight: normal;
-          vertical-align: text-bottom; }
-        [eq] [eq-header] [eq-powered] a:hover, [eq] [eq-header] [eq-powered] a:focus {
-          color: #eee; }
   [eq] [screen] {
     height: 350px;
     padding: 45px 10px 5px;
@@ -193,26 +177,6 @@ body {
   .game-action-panel.game-action-panel-lg {
     width: 284px;
     margin-left: -142px; }
-  .game-action-panel .hint-btn {
-    border: none;
-    background: #333;
-    padding: 0 8px;
-    color: #999;
-    line-height: 24px;
-    outline: none;
-    position: absolute;
-    right: 12px;
-    top: 0;
-    height: 24px;
-    width: 62px;
-    border-radius: 13px; }
-    .game-action-panel .hint-btn[active="yes"]:hover {
-      background: #555; }
-    .game-action-panel .hint-btn[active="no"] {
-      cursor: default;
-      opacity: .3; }
-    .game-action-panel .hint-btn[banned="yes"] {
-      animation: hint-banned .2s; }
 
 @media (max-height: 420px) {
   [eq] [screen] {
@@ -231,8 +195,6 @@ body {
     background: #D94E49; }
   100% {
     background: #333; } }
-
-/*# sourceMappingURL=eq-module.css.map */
 
 .bandAddTab {
   border: 2px solid transparent;
