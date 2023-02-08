@@ -1,22 +1,23 @@
 body {
-    background: linear-gradient(113.03deg, #473838 0.78%, rgba(148, 31, 31, 0.74) 99.19%);
+  background: linear-gradient(113.03deg, #473838 0.78%, rgba(148, 31, 31, 0.74) 99.19%);
+  overflow-y: hidden; 
 }
 
 .header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .playground {
-    position: relative;
-    z-index: 0;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-  }
+  position: relative;
+  z-index: 0;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
   
-  .playground small {
-    color: inherit;
-  }
+.playground small {
+  color: inherit;
+}
