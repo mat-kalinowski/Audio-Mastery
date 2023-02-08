@@ -84,13 +84,13 @@ function loadingStatusCheck() {
 }
 
 function startGame() {
-  $(".game-cover")["removeClass"]("active");
+  $(".eqCover")["removeClass"]("active");
   $("#game-ready")["addClass"]("active");
 }
 
-function loadGame() {
-  $(".game-cover")["removeClass"]("active");
-  $("#game-loading")["addClass"]("active");
+function loadEqPlugin() {
+  $(".eqCover").removeClass("active");
+  $("#eqLoader").addClass("active");
 
   // LOAD AudioContext and fetch main audio files - set them to buffer
   loadSprite();
@@ -100,10 +100,13 @@ function loadGame() {
   }, 800);
 }
 
+// Add new band of given type
 function SelectBand(bandName, source) {
+  $(".selected", "#bandsAdd").children().attr("src",`../eq-plugin/img/icons/figma-icons/${currentlySelectedBand}.svg`);
   $(".selected", "#bandsAdd").removeClass("selected");
-  $(source).addClass("selected")
-  currentlySelectedBand = bandName
 
-  // TODO: create new band of given type
+  $(source).addClass("selected")
+  $(source).children().attr("src",`../eq-plugin/img/icons/figma-icons/${bandName}-active.svg`);
+
+  currentlySelectedBand = bandName
 }

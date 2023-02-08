@@ -2,7 +2,7 @@
 
 // MAIN EQ VARIABLE
 var eq = {
-  yourBands : [],
+  bandsArray : [],
   drawValues : [],
   PI2 : Math["PI"] * 2,
   pointerRadius : 12,
@@ -16,8 +16,8 @@ var eq = {
   rate : 96E3,
   samples : 1E3,
   lastHz : 22E3,
-  canvasWidth : 0,
-  canvasHeight : 0,
+  canvasWidth : 1050,
+  canvasHeight : 500,
   offsetX : 0,
   offsetY : 0,
   bandOnFocus : 0,
@@ -48,7 +48,7 @@ var eq = {
   }
 };
 
-var dbMax = 16;
+var dbMax = 22;
 var minHZscale = 16;
 var totalOctavas = 10.5;
 var canvas;
@@ -57,6 +57,9 @@ var meter;
 var result;
 var totalSections = 12;
 var peakingLength = 1;
+
+var canvasHeight = 400;
+var canvasWidth = 1100;
 
 var full_band_name = {
   LC : 'highpass',
@@ -216,9 +219,10 @@ function drawYGrid() {;
 
   ctx["lineWidth"] = 0.5;
   var which = [18, 12, 6, 0, -6, -12, -18];
-  $['each'](which, function(canCreateDiscussions, text) {
+  $['each'](which, function(key, text) {
     ctx["moveTo"](xOnCanvas(0), yOnCanvas(text));
     ctx['lineTo'](eq["canvasWidth"] - 20, yOnCanvas(text));
+    console.log(text)
     ctx['fillText'](text, eq['canvasWidth'], yOnCanvas(text) + 3);
   });
   ctx["stroke"]();
@@ -247,9 +251,9 @@ function drawXGrid() {
     1E4 : !![],
     2E4 : !![]
   };
-  $['each'](which, function(left, canCreateDiscussions) {
+  $['each'](which, function(left, key) {
     var orig = eq['canvasWidth'] * hzToPosition(left) / 100 + eq['gap'];
-    if (canCreateDiscussions) {
+    if (key) {
       ctx['fillText'](formatHzLabel(left), orig, eq["canvasHeight"] - 7);
     }
     ctx['moveTo'](orig, 20);
@@ -258,7 +262,7 @@ function drawXGrid() {
   ctx['stroke']();
 }
 
-// eq['yourBands']["push"]({
+// eq['bandsArray']["push"]({
 //   id : PK,
 //   band_id : peaking,
 //   state : "on",
@@ -332,10 +336,6 @@ function drawFilter(bands, bandId, paramName) {
 
 // bandId, for example: transparent
 function initFilter(bands, bandIndex) {;
-  // ex: d = bands['PK']['filter']
-  console.log(bandIndex)
-  console.log(bandIndex)
-
   var d = bands[bandIndex]['filter'];
   d['LOWPASS'] = 0;
   d["HIGHPASS"] = 1;
@@ -372,28 +372,28 @@ function initFilter(bands, bandIndex) {;
     return d['freq'];
   };
 
-  d['configure'] = function(y, a, fromModel, kw, mapping_val) {
+  d['configure'] = function(type, frequency, sampleRate, quality, gainDB) {
     d['functions'] = [d['f_lowpass'], d['f_highpass'], d['f_bandpass'], d['f_peak'], d['f_notch'], d['f_lowshelf'], d['f_highshelf']];
     d['reset']();
-    d["Q"] = kw == 0 ? 1e-9 : kw;
-    d["type"] = y;
-    d['sample_rate'] = fromModel;
-    d["gainDB"] = mapping_val;
-    d['reconfigure'](a);
+    d["Q"] = quality == 0 ? 1e-9 : quality;
+    d["type"] = type;
+    d['sample_rate'] = sampleRate;
+    d["gainDB"] = gainDB;
+    d['reconfigure'](frequency);
   };
 
-  d['reconfigure'] = function(fromModel) {
+  d['reconfigure'] = function(frequency) {
   
-    d['freq'] = fromModel;
-    var precision = Math['pow'](10, d["gainDB"] / 40);
+    d['freq'] = frequency;
+    var gainPow = Math['pow'](10, d["gainDB"] / 40);
   
-    var value = 2 * Math["PI"] * fromModel / d['sample_rate'];
-    var items = Math["sin"](value);
-    var minyMin = Math["cos"](value);
+    var sampleRatio = 2 * Math["PI"] * frequency / d['sample_rate'];
+    var sine = Math["sin"](sampleRatio);
+    var cosine = Math["cos"](sampleRatio);
   
-    var expectedPageCount = items / (2 * d["Q"]);
-    var GET_AUTH_URL_TIMEOUT = Math['sqrt'](precision + precision);
-    d['functions'][d['type']](precision, value, items, minyMin, expectedPageCount, GET_AUTH_URL_TIMEOUT);
+    var quality = sine / (2 * d["Q"]);
+    var gainSqrt = Math['sqrt'](gainPow + gainPow);
+    d['functions'][d['type']](gainPow, sampleRatio, sine, cosine, quality, gainSqrt);
     d["b0"] /= d["a0"];
     d["b1"] /= d["a0"];
     d["b2"] /= d["a0"];
@@ -401,86 +401,86 @@ function initFilter(bands, bandIndex) {;
     d["a2"] /= d["a0"];
   };
 
-  d["f_bandpass"] = function(canCreateDiscussions, isSlidingUp, dontForceConstraints, green, diff, forceExecution) {
-    d["b0"] = diff;
+  d["f_bandpass"] = function(gainPow, sampleRatio, sine, cosine, quality, gainSqrt) {
+    d["b0"] = quality;
     d["b1"] = 0;
-    d["b2"] = -diff;
-    d["a0"] = 1 + diff;
-    d["a1"] = -2 * green;
-    d["a2"] = 1 - diff;
+    d["b2"] = -quality;
+    d["a0"] = 1 + quality;
+    d["a1"] = -2 * cosine;
+    d["a2"] = 1 - quality;
   };
 
-  d['f_lowpass'] = function(canCreateDiscussions, isSlidingUp, dontForceConstraints, diff, i, forceExecution) {
-    d["b0"] = (1 - diff) / 2;
-    d["b1"] = 1 - diff;
-    d["b2"] = (1 - diff) / 2;
-    d["a0"] = 1 + i;
-    d["a1"] = -2 * diff;
-    d["a2"] = 1 - i;
+  d['f_lowpass'] = function(gainPow, sampleRatio, sine, cosine, quality, gainSqrt) {
+    d["b0"] = (1 - cosine) / 2;
+    d["b1"] = 1 - cosine;
+    d["b2"] = (1 - cosine) / 2;
+    d["a0"] = 1 + quality;
+    d["a1"] = -2 * cosine;
+    d["a2"] = 1 - quality;
   };
 
-  d["f_highpass"] = function(canCreateDiscussions, isSlidingUp, dontForceConstraints, green, diff, forceExecution) {
-    d["b0"] = (1 + green) / 2;
-    d["b1"] = -(1 + green);
-    d["b2"] = (1 + green) / 2;
-    d["a0"] = 1 + diff;
-    d["a1"] = -2 * green;
-    d["a2"] = 1 - diff;
+  d["f_highpass"] = function(gainPow, sampleRatio, sine, cosine, quality, gainSqrt) {
+    d["b0"] = (1 + cosine) / 2;
+    d["b1"] = -(1 + cosine);
+    d["b2"] = (1 + cosine) / 2;
+    d["a0"] = 1 + quality;
+    d["a1"] = -2 * cosine;
+    d["a2"] = 1 - quality;
   };
 
-  d["f_notch"] = function(canCreateDiscussions, isSlidingUp, dontForceConstraints, green, diff, forceExecution) {
+  d["f_notch"] = function(gainPow, sampleRatio, sine, cosine, quality, gainSqrt) {
     d["b0"] = 1;
-    d["b1"] = -2 * green;
+    d["b1"] = -2 * cosine;
     d["b2"] = 1;
-    d["a0"] = 1 + diff;
-    d["a1"] = -2 * green;
-    d["a2"] = 1 - diff;
+    d["a0"] = 1 + quality;
+    d["a1"] = -2 * cosine;
+    d["a2"] = 1 - quality;
   };
 
-  d["f_peak"] = function(daysInterval, dontForceConstraints, forceExecution, green, mmCoreSecondsDay, mmCoreSecondsYear) {
-    d["b0"] = 1 + mmCoreSecondsDay * daysInterval;
-    d["b1"] = -2 * green;
-    d["b2"] = 1 - mmCoreSecondsDay * daysInterval;
-    d["a0"] = 1 + mmCoreSecondsDay / daysInterval;
-    d["a1"] = -2 * green;
-    d["a2"] = 1 - mmCoreSecondsDay / daysInterval;
+  d["f_peak"] = function(gainPow, sampleRatio, sine, cosine, quality, gainSqrt) {
+    d["b0"] = 1 + quality * gainPow;
+    d["b1"] = -2 * cosine;
+    d["b2"] = 1 - quality * gainPow;
+    d["a0"] = 1 + quality / gainPow;
+    d["a1"] = -2 * cosine;
+    d["a2"] = 1 - quality / gainPow;
   };
 
-  d['f_lowshelf'] = function(lumB, isSlidingUp, daysInterval, sin, mmCoreSecondsYear, mmCoreSecondsDay) {
-    d["b0"] = lumB * (lumB + 1 - (lumB - 1) * sin + mmCoreSecondsDay * daysInterval);
-    d["b1"] = 2 * lumB * (lumB - 1 - (lumB + 1) * sin);
-    d["b2"] = lumB * (lumB + 1 - (lumB - 1) * sin - mmCoreSecondsDay * daysInterval);
-    d["a0"] = lumB + 1 + (lumB - 1) * sin + mmCoreSecondsDay * daysInterval;
-    d["a1"] = -2 * (lumB - 1 + (lumB + 1) * sin);
-    d["a2"] = lumB + 1 + (lumB - 1) * sin - mmCoreSecondsDay * daysInterval;
+  d['f_lowshelf'] = function(gainPow, sampleRatio, sine, cosine, quality, gainSqrt) {
+    d["b0"] = gainPow * (gainPow + 1 - (gainPow - 1) * cosine + gainSqrt * sine);
+    d["b1"] = 2 * gainPow * (gainPow - 1 - (gainPow + 1) * cosine);
+    d["b2"] = gainPow * (gainPow + 1 - (gainPow - 1) * cosine - gainSqrt * sine);
+    d["a0"] = gainPow + 1 + (gainPow - 1) * cosine + gainSqrt * sine;
+    d["a1"] = -2 * (gainPow - 1 + (gainPow + 1) * cosine);
+    d["a2"] = gainPow + 1 + (gainPow - 1) * cosine - gainSqrt * sine;
   };
 
-  d['f_highshelf'] = function(lumB, isSlidingUp, daysInterval, sin, mmCoreSecondsYear, mmCoreSecondsDay) {
-    d["b0"] = lumB * (lumB + 1 + (lumB - 1) * sin + mmCoreSecondsDay * daysInterval);
-    d["b1"] = -2 * lumB * (lumB - 1 + (lumB + 1) * sin);
-    d["b2"] = lumB * (lumB + 1 + (lumB - 1) * sin - mmCoreSecondsDay * daysInterval);
-    d["a0"] = lumB + 1 - (lumB - 1) * sin + mmCoreSecondsDay * daysInterval;
-    d["a1"] = 2 * (lumB - 1 - (lumB + 1) * sin);
-    d["a2"] = lumB + 1 - (lumB - 1) * sin - mmCoreSecondsDay * daysInterval;
+  d['f_highshelf'] = function(gainPow, sampleRatio, sine, cosine, quality, gainSqrt) {
+    d["b0"] = gainPow * (gainPow + 1 + (gainPow - 1) * cosine + gainSqrt * sine);
+    d["b1"] = -2 * gainPow * (gainPow - 1 + (gainPow + 1) * cosine);
+    d["b2"] = gainPow * (gainPow + 1 + (gainPow - 1) * cosine - gainSqrt * sine);
+    d["a0"] = gainPow + 1 - (gainPow - 1) * cosine + gainSqrt * sine;
+    d["a1"] = 2 * (gainPow - 1 - (gainPow + 1) * cosine);
+    d["a2"] = gainPow + 1 - (gainPow - 1) * cosine - gainSqrt * sine;
   };
  
-  d['result'] = function(canCreateDiscussions) {
-    var _0x3ac9ce = Math["pow"](Math['sin'](2 * Math["PI"] * canCreateDiscussions / (2 * d['sample_rate'])), 2);
+  d['result'] = function(key) {
+    var powResult = Math["pow"](Math['sin'](2 * Math["PI"] * key / (2 * d['sample_rate'])), 2);
   
-    var value = (Math['pow'](d["b0"] + d["b1"] + d["b2"], 2) - 4 * (d["b0"] * d["b1"] + 4 * d["b0"] * d["b2"] + d["b1"] * d["b2"]) * _0x3ac9ce + 16 * d["b0"] * d["b2"] * _0x3ac9ce * _0x3ac9ce) / (Math['pow'](1 + d["a1"] + d["a2"], 2) - 4 * (d["a1"] + 4 * d["a2"] + d["a1"] * d["a2"]) * _0x3ac9ce + 16 * d["a2"] * _0x3ac9ce * _0x3ac9ce);
+    var value = (Math['pow'](d["b0"] + d["b1"] + d["b2"], 2) - 4 * (d["b0"] * d["b1"] + 4 * d["b0"] * d["b2"] + d["b1"] * d["b2"]) * powResult + 16 * d["b0"] * d["b2"] * powResult * powResult) / (Math['pow'](1 + d["a1"] + d["a2"], 2) - 4 * (d["a1"] + 4 * d["a2"] + d["a1"] * d["a2"]) * powResult + 16 * d["a2"] * powResult * powResult);
     return value = value < 0 ? 0 : value, Math["sqrt"](value);
   };
 
   d['log_result'] = function(n) {
-    var newFlex;
+    var logResult;
     try {
     
-      newFlex = 20 * Math["log10"](d['result'](n));
+      logResult = 20 * Math["log10"](d['result'](n));
     } catch (_0x4a1b24) {
     
-      newFlex = -100;
+      logResult = -100;
     }
-    return (!isFinite(newFlex) || isNaN(newFlex)) && (newFlex = -100), newFlex;
+    return (!isFinite(logResult) || isNaN(logResult)) && (logResult = -100), logResult;
   };
 
   d['constants'] = function() {
@@ -488,14 +488,14 @@ function initFilter(bands, bandIndex) {;
   };
   d['filter'] = function(q) {
   
-    var newMouse = d["b0"] * q + d["b1"] * d["x1"] + d["b2"] * d["x2"] - d["a1"] * d["y1"] - d["a2"] * d["y2"];
-    return d["x2"] = d["x1"], d["x1"] = d["x"], d["y2"] = d["y1"], d["y1"] = newMouse, newMouse;
+    var result = d["b0"] * q + d["b1"] * d["x1"] + d["b2"] * d["x2"] - d["a1"] * d["y1"] - d["a2"] * d["y2"];
+    return d["x2"] = d["x1"], d["x1"] = d["x"], d["y2"] = d["y1"], d["y1"] = result, result;
   };
 }
 
 // paramName, ex : transparent
 function eqSetup(bands, paramName) {
-  // eq['yourBands']["push"]({
+  // eq['bandsArray']["push"]({
   //   id : PK,
   //   band_id : peaking,
   //   state : "on",
@@ -532,9 +532,12 @@ function redrawGrid() {
 
 // setup mouse click handler functions
 function drawGrid() {
+
   canvas = document['createElement']('canvas');
-  eq['canvasWidth'] = $('#main-canvas')['width']();
-  eq["canvasHeight"] = $('#main-canvas')['height']();
+
+  eq['canvasWidth'] = canvasWidth;
+  eq["canvasHeight"] = canvasHeight;
+
   canvas['width'] = eq['canvasWidth'];
   canvas['height'] = eq['canvasHeight'];
 
@@ -583,22 +586,9 @@ function drawGrid() {
   drawYGrid();
   drawXGrid();
 
-  $("#main-canvas")['html'](canvas);
+  $("#eqCanvas")['html'](canvas);
   eq["offsetX"] = $(canvas)['offset']()['left'];
   eq["offsetY"] = $(canvas)['offset']()['top'];
-}
-
-function drawZeroLine() {;
-  var orig = xOnCanvas(eq["lastHz"]);
-  ctx['beginPath']();
-
-  ctx['lineWidth'] = 1;
-  ctx['setLineDash']([]);
-  ctx["strokeStyle"] = '#000';
-  ctx['moveTo'](0, yOnCanvas(0));
-  ctx['lineTo'](orig, yOnCanvas(0));
-  ctx['closePath']();
-  ctx["stroke"]();
 }
 
 function drawMidLine(url, key) {;
@@ -624,7 +614,7 @@ function drawMidLine(url, key) {;
     var d = positionToHz(re_pba_css);
   
     var x = 0;
-    $['each'](url, function(canCreateDiscussions, settings) {
+    $['each'](url, function(key, settings) {
       if (settings['state'] == "on") {
         x = x + settings["filter"]["log_result"](d);
       }
@@ -669,12 +659,12 @@ function drawMidLineGap() {;
     var b = 0;
   
     var r = 0;
-    $['each'](eq['yourBands'], function(canCreateDiscussions, data) {
+    $['each'](eq['bandsArray'], function(key, data) {
       if (data["state"] == "on") {
         r = r + data["filter"]['log_result'](d);
       }
     });
-    $['each'](eq['originalBands'], function(canCreateDiscussions, data) {
+    $['each'](eq['originalBands'], function(key, data) {
       if (data["state"] == "on") {
         b = b + data['filter']['log_result'](d);
       }
@@ -692,23 +682,13 @@ function drawMidLineGap() {;
 }
 
 function drawBandValues(elems) {;
-  var hints = {
-    0 : "HC",
-    1 : "LC",
-    2 : "Bandpass",
-    3 : "PK",
-    4 : 'Notch',
-    5 : "LS",
-    6 : "HS"
-  };
-  $['each'](elems, function(canCreateDiscussions, params) {
+  $['each'](elems, function(key, params) {
     if (params['state'] == "on") {
       var _0x416b05 = xOnCanvas(params["freq"]);
       var _0x30c0cd = yOnCanvas(params["gain"]);
       var orig = formatHzLabel(params['freq']);
       var plotWidth = Math["round"](params['gain'] * 10) / 10 + ' dB';
       var left = Math["round"](params["q"] * 10) / 10 + " Q";
-      var currentElement = hints[params['filter_id']];
       ctx['fillStyle'] = "rgba(220,220,220,1)";
       ctx['font'] = '14px Arial';
       ctx['textAlign'] = 'right';
@@ -732,11 +712,11 @@ function SwitchEQ() {
 
   updateMultiband();
   redrawGrid();
-  eqSetup(eq['yourBands'], 'color');
+  eqSetup(eq['bandsArray'], 'color');
 
-  drawMidLine(eq['yourBands'], 'color');
-  drawPointers(eq['yourBands']);
-  drawBandValues(eq['yourBands']);
+  drawMidLine(eq['bandsArray'], 'color');
+  drawPointers(eq['bandsArray']);
+  drawBandValues(eq['bandsArray']);
 }
 
 function scaleBetween(toTop, index, step, fromTop, type) {;
@@ -748,15 +728,15 @@ function toggleBand(value) {
   console.log("bandOnFocus")
   console.log(value)
   console.log("bandOnFocus")
-  console.log(eq['yourBands'])
+  console.log(eq['bandsArray'])
 
   eq['bandOnFocus'] = value;
-  if (eq['yourBands'][eq["bandOnFocus"]]["state"] == 'off') {
+  if (eq['bandsArray'][eq["bandOnFocus"]]["state"] == 'off') {
     $('[band="' + eq['bandOnFocus'] + '"]')["attr"]('state', "on");
-    eq["yourBands"][eq['bandOnFocus']]['state'] = "on";
+    eq["bandsArray"][eq['bandOnFocus']]['state'] = "on";
   } else {
     $('[band="' + eq['bandOnFocus'] + '"]')["attr"]('state', 'off');
-    eq['yourBands'][eq['bandOnFocus']]["state"] = 'off';
+    eq['bandsArray'][eq['bandOnFocus']]["state"] = 'off';
   }
   updateMultiband();
   SwitchEQ('yours');
@@ -766,7 +746,7 @@ function updateMultiband() {
   console.log("Updating multiband")
   console.log(eq["yourFilters"])
   var currentTime = gameContext['currentTime'];
-  $["each"](eq['yourBands'], function(key, params) {
+  $["each"](eq['bandsArray'], function(key, params) {
     var newGain = params['state'] == "on" ? params['gain'] : 0;
     var filterType = params['state'] == "on" ? params['filter_name'] : 'allpass';
     eq["yourFilters"][key]['type'] = filterType;
@@ -780,13 +760,13 @@ function createFilters() {
   var currentTime = gameContext["currentTime"];
 
     // Go through array of bands
-    for (var i = 0; i < eq['yourBands']["length"]; i++) {
+    for (var i = 0; i < eq['bandsArray']["length"]; i++) {
       // set up AudioContext equalizer
       eq['yourFilters'][i] = gameContext['createBiquadFilter']();
-      eq['yourFilters'][i]['type'] = eq['yourBands'][i]["state"] == "on" ? eq['yourBands'][i]['filter_name'] : "allpass";
-      eq['yourFilters'][i]['frequency']['setValueAtTime'](eq["yourBands"][i]['freq'], currentTime);
-      eq['yourFilters'][i]["Q"]["setValueAtTime"](eq['yourBands'][i]["q"], currentTime);
-      eq['yourFilters'][i]["gain"]['setValueAtTime'](eq['yourBands'][i]["gain"], currentTime);
+      eq['yourFilters'][i]['type'] = eq['bandsArray'][i]["state"] == "on" ? eq['bandsArray'][i]['filter_name'] : "allpass";
+      eq['yourFilters'][i]['frequency']['setValueAtTime'](eq["bandsArray"][i]['freq'], currentTime);
+      eq['yourFilters'][i]["Q"]["setValueAtTime"](eq['bandsArray'][i]["q"], currentTime);
+      eq['yourFilters'][i]["gain"]['setValueAtTime'](eq['bandsArray'][i]["gain"], currentTime);
     }
   
 }
@@ -798,12 +778,12 @@ function connectFilters() {
     gameSourceNode['disconnect']()
     // Connect first filter to audio Node
     gameSourceNode['connect'](eq['yourFilters'][0]);
-    for (var i = 0; i < eq["yourBands"]["length"] - 1; i++) {
+    for (var i = 0; i < eq["bandsArray"]["length"] - 1; i++) {
       // Connect every filter to the next filter
       eq['yourFilters'][i]["connect"](eq['yourFilters'][i + 1]);
     }
     // Connect last filter to your gain
-    eq['yourFilters'][eq['yourBands']["length"] - 1]['connect'](eq['gameYourGain']);
+    eq['yourFilters'][eq['bandsArray']["length"] - 1]['connect'](eq['gameYourGain']);
   }
   else {
     gameSourceNode["connect"](eq['gameYourGain']);
@@ -843,8 +823,8 @@ function formatHzLabel(val) {;
   return val >= 1E3 ? Math['round'](val / 1E3 * 10) / 10 + ' kHz' : Math["round"](val * 10) / 10 + ' Hz';
 }
 
-function positionToDB(canCreateDiscussions) {
-  return dbMax * 2 * (0.5 - canCreateDiscussions);
+function positionToDB(key) {
+  return dbMax * 2 * (0.5 - key);
 }
 
 function positionToHz(regexp) {;
@@ -864,17 +844,17 @@ function updateBandValue(name, s) {;
   
     j = parseInt($(name)['attr']('value'));
   
-    eq['yourBands'][eq['bandOnFocus']]["freq"] = j;
+    eq['bandsArray'][eq['bandOnFocus']]["freq"] = j;
     addedPathkey = j['toFixed'](0);
   } else {
     if (_incorrectComparisonFunctionResult == "gain") {
       j = scaleBetween(s, eq['gainMin'], eq["gainMax"], 0, 100);
-      eq['yourBands'][eq["bandOnFocus"]]['gain'] = j;
+      eq['bandsArray'][eq["bandOnFocus"]]['gain'] = j;
       addedPathkey = j['toFixed'](1);
     } else {
       if (_incorrectComparisonFunctionResult == "q") {
         j = scaleBetween(s, eq["qMin"], eq["qMax"], 0, 100);
-        eq['yourBands'][eq['bandOnFocus']]["q"] = j;
+        eq['bandsArray'][eq['bandOnFocus']]["q"] = j;
         addedPathkey = j['toFixed'](1);
       }
     }
@@ -931,7 +911,7 @@ function updateKnobValues() {
     var name = $(this)['parents']("[band]")['attr']('band');
     var i = $(this)['attr']('knob');
 
-    var variable = isset(eq['yourBands'][name]) ? eq['yourBands'][name][i] : reservedNamesMap[name][i];
+    var variable = isset(eq['bandsArray'][name]) ? eq['bandsArray'][name][i] : reservedNamesMap[name][i];
     var artistTrack = i == 'gain' || i == "q" ? variable["toFixed"](1) : variable['toFixed'](0);
 
     $(this)["attr"]({
@@ -944,7 +924,7 @@ function updateKnobValues() {
 }
 
 function drawPointers(elems) {;
-  $['each'](elems, function(canCreateDiscussions, values) {
+  $['each'](elems, function(key, values) {
     var color = 'rgba(0,0,0,0)';
     var newValue = 'rgba(0,0,0,0)';
     if (values["state"] == "on") {
@@ -975,7 +955,7 @@ function handleMouseDown(e, clientX, clientY) {;
   var value = -1;
 
   // check if eq was clicked on some eq band circle
-  $["each"](eq["yourBands"], function(key, band_value) {
+  $["each"](eq["bandsArray"], function(key, band_value) {
     if (clientX_border >= band_value["x"] - eq['pointerRadius'] && clientX_border <= band_value["x"] + eq["pointerRadius"] && clientY_border >= band_value["y"] - eq['pointerRadius'] && clientY_border <= band_value["y"] + eq['pointerRadius']) {
       return value = key, ![];
     }
@@ -1002,11 +982,11 @@ function handleMouseMove(event, clientX, clientY) {
   var axisY = positionToDB(parseInt(clientY - eq['offsetY']) / eq['canvasHeight']);
 
   if (axisX > 20 && axisX < 19500) {
-    eq["yourBands"][eq['pointerDrag']]['freq'] = axisX;
+    eq["bandsArray"][eq['pointerDrag']]['freq'] = axisX;
   }
 
-  if (eq["yourBands"][eq['pointerDrag']]['filter_name'] != 'highpass' && eq['yourBands'][eq["pointerDrag"]]['filter_name'] != "lowpass" && axisY < 12.5 && axisY > -12.5) {
-    eq["yourBands"][eq['pointerDrag']]["gain"] = axisY;
+  if (eq["bandsArray"][eq['pointerDrag']]['filter_name'] != 'highpass' && eq['bandsArray'][eq["pointerDrag"]]['filter_name'] != "lowpass" && axisY < 12.5 && axisY > -12.5) {
+    eq["bandsArray"][eq['pointerDrag']]["gain"] = axisY;
   }
 
   SwitchEQ("yours");
@@ -1014,14 +994,14 @@ function handleMouseMove(event, clientX, clientY) {
 }
 
 function handleQ(directionCode, partKeys) {;
-  if (!eq['isDown'] || eq['yourBands'][eq['pointerDrag']]['band_id'] == 'highpass' || eq['yourBands'][eq["pointerDrag"]]["band_id"] == 'lowpass') {
+  if (!eq['isDown'] || eq['bandsArray'][eq['pointerDrag']]['band_id'] == 'highpass' || eq['bandsArray'][eq["pointerDrag"]]["band_id"] == 'lowpass') {
     return;
   }
-  if (directionCode == "up" && eq["yourBands"][eq["pointerDrag"]]["q"] < 5.9) {
-    eq["yourBands"][eq['pointerDrag']]["q"] += partKeys;
+  if (directionCode == "up" && eq["bandsArray"][eq["pointerDrag"]]["q"] < 5.9) {
+    eq["bandsArray"][eq['pointerDrag']]["q"] += partKeys;
   }
-  if (directionCode == "down" && eq['yourBands'][eq['pointerDrag']]["q"] > 0.2) {
-    eq["yourBands"][eq['pointerDrag']]["q"] -= partKeys;
+  if (directionCode == "down" && eq['bandsArray'][eq['pointerDrag']]["q"] > 0.2) {
+    eq["bandsArray"][eq['pointerDrag']]["q"] -= partKeys;
   }
   SwitchEQ('yours');
   updateKnobValues();
@@ -1058,7 +1038,7 @@ function buildBandKnobs(elems) {
     if (params['knobs']['includes']("q")) {
       siteName = '<div class="knob-panel" knob="q" state="inactive" sensitivity="0.2" y="0" min="0.5" max="3" base="' + params["q"] + '" start="' + params["q"] + '" value="' + params["q"] + '" ondblclick="knobBase(this);" onMouseDown="knobActivate(this, event);">' + '<div class="knob-controller" style="transform: rotate(' + params["angle_q"] + 'deg)"><i class="fa fa-circle"></i></div>' + '<div class="knob-value" contentEditable="true" onBlur="knobValueBlur(this);" onFocus="knobValueFocus(this);" onKeyDown="knobKeydown(this, event);">' + params["q"] + '</div>' + '<div class="knob-label">Q</div>' + '</div>';
     }
-    var scrollbarHelpers = '<div band="' + key + '" state="' + sks['state'] + '">' + '<div toggle-band onclick="toggleBand(' + key + ');">' + '<div toggle-band-btn style="background: rgb(' + params["color"] + ')"></div>' + '<img toggle-band-img src="' + host + '/playground/eq/filter-50/' + params['filter_name'] + '.png"/>' + "</div>" + '<div class="controllers">' + escapedEmail + sitesusers + siteName + "</div>" + '</div>';
+    var scrollbarHelpers = '<div band="' + key + '" state="' + sks['state'] + '">' + '<div toggle-band onclick="toggleBand(' + key + ');">' + '<div toggle-band-btn style="background: rgb(' + params["color"] + ')"></div>' + '<img toggle-band-img src="../eq-plugin/img/icons/figma-icons/' + params['filter_name'] + '.svg"/>' + "</div>" + '<div class="controllers">' + escapedEmail + sitesusers + siteName + "</div>" + '</div>';
     $('[bands]')["append"](scrollbarHelpers);
   });
 }
@@ -1108,7 +1088,7 @@ function addEqBand() {
   var data = bands_definitions[fullBandName];
 
   // Clear bands for user to modify
-  eq['yourBands']["push"]({
+  eq['bandsArray']["push"]({
     id: data['id'],
     band_id : fullBandName,
     state : "on",
@@ -1131,13 +1111,13 @@ function addEqBand() {
   createFilters();
   connectFilters();
 
-  buildBandKnobs(eq['yourBands']);
+  buildBandKnobs(eq['bandsArray']);
   SwitchEQ('yours');
 }
 
 function AudioStart() {
   if (typeof gameSourceNode == "undefined") {
-    loadGame();
+    loadEqPlugin();
   }
 
   if (gameContext.state === 'suspended') {
@@ -1170,13 +1150,13 @@ function getWholeBetween(props) {;
   return Math['floor'](Math["random"]() * (Math["floor"](props[1]) - Math["ceil"](props[0]) + 1)) + Math['ceil'](props[0]);
 }
 
-function getFloatBetween(canCreateDiscussions) {;
-  return parseFloat((Math['random']() * (canCreateDiscussions[1] - canCreateDiscussions[0]) + canCreateDiscussions[0])['toFixed'](1));
+function getFloatBetween(key) {;
+  return parseFloat((Math['random']() * (key[1] - key[0]) + key[0])['toFixed'](1));
 }
 
 function setupEqPlugin() {
-  $('.game-cover')['removeClass']("active");
-  eq["yourBands"] = [];
+  $('.eqCover')['removeClass']("active");
+  eq["bandsArray"] = [];
   
 
   $("#confirm-settings")['attr']('active', 'yes');
@@ -1188,14 +1168,14 @@ function setupEqPlugin() {
   initKnobs();
 
   // Add html for knobs in the lower pane
-  buildBandKnobs(eq['yourBands']);
+  buildBandKnobs(eq['bandsArray']);
 
   console.log("drawing grid")
 
   drawGrid();
   SwitchEQ('yours');
  
-  // eq['yourBands']["push"]({
+  // eq['bandsArray']["push"]({
   //   id : PK,
   //   band_id : peaking,
   //   state : "on",
@@ -1210,5 +1190,5 @@ function setupEqPlugin() {
   //   filter : {},
   //   hint : ![]
   // });
-  eqSetup(eq['yourBands'], 'transparent');
+  eqSetup(eq['bandsArray'], 'transparent');
 }
