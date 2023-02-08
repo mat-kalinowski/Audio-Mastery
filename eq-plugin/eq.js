@@ -4,7 +4,7 @@ var eqHandleLineWidth = 1.5;
 var gridFontStyle = 'normal 11px Arial';
 
 var canvasHeight = 400;
-var canvasWidth = 1050;
+var canvasWidth = 1090;
 
 var playing = false;
 var currentlySelectedBand = 'lowpass';
