@@ -1,4 +1,4 @@
-.game-panel{
+.eqPanel{
     position:relative;
     margin:20px 0 0;
     padding:15px;
@@ -8,13 +8,13 @@
     overflow:hidden
 }
 
-.game-panel .game-panel-body{
+.eqPanel .eqMainContainer{
     position:relative;
     background:#222;
     min-height:200px
 }
 
-.game-panel .game-cover{
+.eqPanel .eqCover{
     display:none;
     background:#050505;
     position:absolute;
@@ -27,15 +27,15 @@
     text-align:center;
     padding:15px
 }
-.game-panel .game-cover.active{
+.eqPanel .eqCover.active{
     display:block
 }
-.game-panel .game-cover>div{
+.eqPanel .eqCover>div{
     padding-top:50px;
     position:relative
 }
 /* here end */
-.game-panel .game-panel-inactive{
+.eqPanel .eqPanel-inactive{
     display:none;
     background:0 0;
     position:absolute;
@@ -45,7 +45,7 @@
     height:100%;
     z-index:3
 }
-.game-panel .game-panel-inactive.active{
+.eqPanel .eqPanel-inactive.active{
     display:table
 }
 
@@ -57,63 +57,6 @@
 body{
     background:#eee;
     padding-top:0!important
-}
-.bg-practice{
-    background:#333
-}
-.bg-contest{
-    background:#111
-}
-.bg-db{
-    background:#439cba
-}
-.bg-501,.bg-502,.bg-503{
-    background:#000
-}
-.bg-101{
-    background:#fcca83
-}
-.bg-102{
-    background:#ed7867
-}
-.bg-103{
-    background:#9bd0ca
-}
-.bg-104{
-    background:#a3c19b
-}
-.bg-105{
-    background:#69af73
-}
-.bg-106{
-    background:#439cba
-}
-.bg-107{
-    background:#ffb48a
-}
-.bg-108{
-    background:#d9504a
-}
-.bg-109{
-    background:#999
-}
-.bg-110{
-    background:#eee
-}
-.bg-111{
-    background:#47b4af
-}
-.bg-112{
-    background:#8a839e
-}
-.bg-113{
-    background:#41525a
-}
-.bg-114{
-    background:#775d3d
-}
-.bg-115{
-    background:#5b709d
 }
 
 .bandsContainer {
@@ -129,13 +72,4 @@ body{
 .bandRightTab {
     margin-left: auto;
     visibility: hidden;
-}
-
-.selected {
-    border: 1px solid yellow;
-    border-radius: 4px;
-}
-
-.bandButton {
-
 }

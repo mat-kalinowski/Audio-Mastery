@@ -30,7 +30,7 @@ body {
         text-transform: none;
         font-family: 'Orbitron', sans-serif; }
   [eq] [screen] {
-    height: 350px;
+    height: 450px;
     padding: 45px 10px 5px;
     box-shadow: 0 0 0 1px #000;
     background: #111; }
@@ -65,6 +65,7 @@ body {
           margin: 5px auto; }
         [eq] [bands] [band] [toggle-band] [toggle-band-img] {
           vertical-align: top;
+          margin-top: 5px;
           width: 40px;
           margin-left: 18px; }
       [eq] [bands] [band][state="off"] [toggle-band] [toggle-band-btn] {
@@ -161,8 +162,11 @@ body {
         [eq] [bands] [band] .empty-knob-panel::selection {
           background: transparent; }
 
-.game-action-panel {
+.eqPlaybackControls {
   position: absolute;
+  display: flex;
+  justify-items: center;
+  align-items: center;
   left: 50%;
   top: 0;
   text-align: center;
@@ -174,27 +178,6 @@ body {
   border-bottom-right-radius: 22px;
   width: 220px;
   margin-left: -110px; }
-  .game-action-panel.game-action-panel-lg {
-    width: 284px;
-    margin-left: -142px; }
-
-@media (max-height: 420px) {
-  [eq] [screen] {
-    height: 250px; } }
-@keyframes reachLimit {
-  0% {
-    color: #FFF; }
-  25% {
-    color: inherit; }
-  75% {
-    color: #FFF; }
-  100% {
-    color: inherit; } }
-@keyframes hint-banned {
-  0% {
-    background: #D94E49; }
-  100% {
-    background: #333; } }
 
 .bandAddTab {
   border: 2px solid transparent;
@@ -207,7 +190,6 @@ body {
   display: inline-block; 
   background: #111;
   color: #555;
-
 }
 
 .bandAddTab:hover {
