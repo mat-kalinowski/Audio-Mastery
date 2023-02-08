@@ -1,17 +1,21 @@
 
-[eq] {
-width: 100%;
-margin: 0;
-position: relative; }
-[eq][bypass="on"] [band][state="on"] [toggle-band] [toggle-band-btn] {
+.bandsContainer {
+    width: 100%;
+    margin: 0;
+    position: relative; }
+
+.bandsContainer [bypass="on"] [band][state="on"] [toggle-band] [toggle-band-btn] {
     background: #555 !important; }
-[eq][original="on"] {
+
+.bandsContainer[original="on"] {
     -webkit-filter: blur(4px);
     filter: blur(4px); }
-[eq] [eq-header] {
+
+.bandsContainer [eq-header] {
     position: relative;
     height: 56px; }
-    [eq] [eq-header] [eq-title] {
+
+.bandsContainer [eq-header] [eq-title] {
     position: absolute;
     left: 15px;
     top: 15px;
@@ -21,157 +25,178 @@ position: relative; }
     font-weight: bold;
     font-size: 20px;
     font-family: 'Orbitron', sans-serif; }
-    [eq] [eq-header] [eq-title] sup {
-        color: #888;
-        font-size: 50%;
-        top: -1em;
-        text-transform: none;
-        font-family: 'Orbitron', sans-serif; }
-[eq] [screen] {
+
+.bandsContainer [eq-header] [eq-title] sup {
+    color: #888;
+    font-size: 50%;
+    top: -1em;
+    text-transform: none;
+    font-family: 'Orbitron', sans-serif; }
+
+.bandsContainer [screen] {
     height: 450px;
     padding: 45px 10px 5px;
     box-shadow: 0 0 0 1px #000;
     background: #111; }
-[eq] [bands] {
+
+.bandsContainer [bands] {
     font-size: 0;
     text-align: center;
     padding: 8px 0 5px; }
-    [eq] [bands] [band] {
+
+.bandsContainer [bands] [band] {
     font-size: 16px;
     width: 105px;
     height: 154px;
     padding: 1px 3px;
     display: inline-block; }
-    [eq] [bands] [band]:before, [eq] [bands] [band]:after {
-        content: " ";
-        display: table; }
-    [eq] [bands] [band]:after {
-        clear: both; }
-    [eq] [bands] [band][show="no"] {
-        display: none; }
-    [eq] [bands] [band][focus="on"] {
-        background: #222; }
-    [eq] [bands] [band] [toggle-band] {
-        margin: 0;
-        cursor: pointer;
-        text-align: center; }
-        [eq] [bands] [band] [toggle-band] [toggle-band-btn] {
-        width: 28px;
-        height: 28px;
-        border-radius: 3px;
-        display: inline-block;
-        margin: 5px auto; }
-        [eq] [bands] [band] [toggle-band] [toggle-band-img] {
-        vertical-align: top;
-        width: 40px;
-        margin-left: 18px; }
-    [eq] [bands] [band][state="off"] [toggle-band] [toggle-band-btn] {
-        background: #000 !important; }
-    [eq] [bands] [band][hint="yes"] {
-        box-shadow: 0 0 0 1px #D1D006; }
-    [eq] [bands] [band] .knob-panel, [eq] [bands] [band] [toggle-band] {
-        width: 100%;
-        height: 38px;
-        position: relative;
-        margin: 0;
-        cursor: pointer;
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -khtml-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        outline: none !important;
-        color: #888;
-        background: #111;
-        box-shadow: 0 0 0 1px #070707; }
-        [eq] [bands] [band] .knob-panel::-webkit-selection, [eq] [bands] [band] [toggle-band]::-webkit-selection {
-        background: transparent; }
-        [eq] [bands] [band] .knob-panel::-moz-selection, [eq] [bands] [band] [toggle-band]::-moz-selection {
-        background: transparent; }
-        [eq] [bands] [band] .knob-panel::selection, [eq] [bands] [band] [toggle-band]::selection {
-        background: transparent; }
-        [eq] [bands] [band] .knob-panel:hover, [eq] [bands] [band] .knob-panel.inaction, [eq] [bands] [band] [toggle-band]:hover, [eq] [bands] [band] [toggle-band].inaction {
-        background: #353535;
-        color: #ccc; }
-        [eq] [bands] [band] .knob-panel .knob-controller, [eq] [bands] [band] [toggle-band] .knob-controller {
-        position: absolute;
-        top: 8px;
-        left: 5px;
-        border: 2px solid #888;
-        display: inline-block;
-        width: 22px;
-        height: 22px;
-        font-size: 6px;
-        cursor: pointer;
-        text-align: center;
-        border-radius: 100%; }
-        [eq] [bands] [band] .knob-panel .knob-controller[reach-limit="on"], [eq] [bands] [band] [toggle-band] .knob-controller[reach-limit="on"] {
-            animation: reachLimit 0.3s 1; }
-        [eq] [bands] [band] .knob-panel .knob-value, [eq] [bands] [band] [toggle-band] .knob-value {
-        position: absolute;
-        width: 42px;
-        top: 3px;
-        right: 0;
-        text-align: center;
-        font-size: 13px;
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -khtml-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        outline: none !important; }
-        [eq] [bands] [band] .knob-panel .knob-value::-webkit-selection, [eq] [bands] [band] [toggle-band] .knob-value::-webkit-selection {
-            background: transparent; }
-        [eq] [bands] [band] .knob-panel .knob-value::-moz-selection, [eq] [bands] [band] [toggle-band] .knob-value::-moz-selection {
-            background: transparent; }
-        [eq] [bands] [band] .knob-panel .knob-value::selection, [eq] [bands] [band] [toggle-band] .knob-value::selection {
-            background: transparent; }
-        [eq] [bands] [band] .knob-panel .knob-value[reach-limit="on"], [eq] [bands] [band] [toggle-band] .knob-value[reach-limit="on"] {
-            animation: reachLimit 0.3s 1; }
-        [eq] [bands] [band] .knob-panel .knob-label, [eq] [bands] [band] [toggle-band] .knob-label {
-        position: absolute;
-        width: 42px;
-        bottom: 3px;
-        right: 0;
-        text-align: center;
-        font-size: 10px;
-        color: #555; }
-    [eq] [bands] [band] .empty-knob-panel {
-        width: 100%;
-        height: 38px;
-        position: relative;
-        margin: 0;
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -khtml-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        outline: none !important;
-        background: #111;
-        box-shadow: 0 0 0 1px #070707; }
-        [eq] [bands] [band] .empty-knob-panel::-webkit-selection {
-        background: transparent; }
-        [eq] [bands] [band] .empty-knob-panel::-moz-selection {
-        background: transparent; }
-        [eq] [bands] [band] .empty-knob-panel::selection {
-        background: transparent; }
+
+.bandsContainer [bands] [band]:before, [eq] [bands] [band]:after {
+    content: " ";
+    display: table; }
+
+.bandsContainer [bands] [band]:after {
+    clear: both; }
+
+.bandsContainer [bands] [band][show="no"] {
+    display: none; }
+
+.bandsContainer [bands] [band][focus="on"] {
+    background: #222; }
+
+.bandsContainer [bands] [band] [toggle-band] {
+    margin: 0;
+    cursor: pointer;
+    text-align: center; }
+
+.bandsContainer [bands] [band] [toggle-band] [toggle-band-btn] {
+    width: 28px;
+    height: 28px;
+    border-radius: 3px;
+    display: inline-block;
+    margin: 5px auto; }
+
+.bandsContainer [bands] [band] [toggle-band] [toggle-band-img] {
+    vertical-align: top;
+    width: 40px;
+    margin-left: 18px; }
+
+.bandsContainer [bands] [band][state="off"] [toggle-band] [toggle-band-btn] {
+    background: #000 !important; }
+        
+.bandsContainer [bands] [band] .knob-panel, .bandsContainer [bands] [band] [toggle-band] {
+    width: 100%;
+    height: 38px;
+    position: relative;
+    margin: 0;
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    outline: none !important;
+    color: #888;
+    background: #111;
+    box-shadow: 0 0 0 1px #070707; }
+
+.bandsContainer [bands] [band] .knob-panel::-webkit-selection, .bandsContainer [bands] [band] [toggle-band]::-webkit-selection {
+    background: transparent; }
+
+.bandsContainer [bands] [band] .knob-panel::-moz-selection, .bandsContainer [bands] [band] [toggle-band]::-moz-selection {
+    background: transparent; }
+.bandsContainer [bands] [band] .knob-panel::selection, .bandsContainer [bands] [band] [toggle-band]::selection {
+    background: transparent; }
+.bandsContainer [bands] [band] .knob-panel:hover, .bandsContainer [bands] [band] .knob-panel.inaction, .bandsContainer [bands] [band] [toggle-band]:hover, .bandsContainer [bands] [band] [toggle-band].inaction {
+    background: #353535;
+    color: #ccc; }
+.bandsContainer [bands] [band] .knob-panel .knob-controller, .bandsContainer [bands] [band] [toggle-band] .knob-controller {
+    position: absolute;
+    top: 8px;
+    left: 5px;
+    border: 2px solid #888;
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    font-size: 6px;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 100%; }
+
+.bandsContainer [bands] [band] .knob-panel .knob-controller[reach-limit="on"], .bandsContainer [bands] [band] [toggle-band] .knob-controller[reach-limit="on"] {
+    animation: reachLimit 0.3s 1; }
+
+.bandsContainer [bands] [band] .knob-panel .knob-value, .bandsContainer [bands] [band] [toggle-band] .knob-value {
+    position: absolute;
+    width: 42px;
+    top: 3px;
+    right: 0;
+    text-align: center;
+    font-size: 13px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    outline: none !important; }
+
+.bandsContainer [bands] [band] .knob-panel .knob-value::-webkit-selection, .bandsContainer [bands] [band] [toggle-band] .knob-value::-webkit-selection {
+    background: transparent; }
+.bandsContainer [bands] [band] .knob-panel .knob-value::-moz-selection, .bandsContainer [bands] [band] [toggle-band] .knob-value::-moz-selection {
+    background: transparent; }
+.bandsContainer [bands] [band] .knob-panel .knob-value::selection, .bandsContainer [bands] [band] [toggle-band] .knob-value::selection {
+    background: transparent; }
+.bandsContainer [bands] [band] .knob-panel .knob-value[reach-limit="on"], .bandsContainer [bands] [band] [toggle-band] .knob-value[reach-limit="on"] {
+    animation: reachLimit 0.3s 1; }
+.bandsContainer [bands] [band] .knob-panel .knob-label, .bandsContainer [bands] [band] [toggle-band] .knob-label {
+    position: absolute;
+    width: 42px;
+    bottom: 3px;
+    right: 0;
+    text-align: center;
+    font-size: 10px;
+    color: #555; }
+
+.bandsContainer [bands] [band] .empty-knob-panel {
+    width: 100%;
+    height: 38px;
+    position: relative;
+    margin: 0;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    outline: none !important;
+    background: #111;
+    box-shadow: 0 0 0 1px #070707; }
+
+.bandsContainer [bands] [band] .empty-knob-panel::-webkit-selection {
+    background: transparent; }
+.bandsContainer [bands] [band] .empty-knob-panel::-moz-selection {
+    background: transparent; }
+.bandsContainer [bands] [band] .empty-knob-panel::selection {
+    background: transparent; }
 
 .eqPlaybackControls {
     position: absolute;
+    display: flex;
+    justify-items: center;
+    align-items: center;
     left: 50%;
     top: 0;
     text-align: center;
     z-index: 1;
-    background: #050505;
+    background: #312222;
     height: 45px;
-    padding-top: 5px;
     border-bottom-left-radius: 22px;
     border-bottom-right-radius: 22px;
     width: 220px;
     margin-left: -110px; }
+          
 
 .bandAddTab {
     border: 2px solid transparent;
@@ -196,12 +221,12 @@ position: relative; }
 
 .eqPanel{
     position:relative;
-    margin:20px 0 0;
-    padding:15px;
-    border-radius:5px;
-    background:#050505;
-    color:#fff;
-    overflow:hidden
+    margin: 30px 0 0;
+    padding: 25px;
+    border-radius: 15px;
+    background: #312222;
+    color: #fff;
+    overflow: hidden
 }
 
 .eqPanel .eqMainContainer{
@@ -225,9 +250,11 @@ position: relative; }
 }
 .eqPanel .eqCover.active{
     display:block; }
-.eqPanel .eqCover>div{
+
+.eqPanel .eqCover > div{
     padding-top:50px;
     position:relative; }
+
 .eqPanel .eqPanel-inactive{
     display:none;
     background:0 0;
@@ -237,6 +264,7 @@ position: relative; }
     width:100%;
     height:100%;
     z-index:3; }
+
 .eqPanel .eqPanel-inactive.active{
     display:table; }
 

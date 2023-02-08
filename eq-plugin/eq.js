@@ -4,7 +4,7 @@ var eqHandleLineWidth = 1.5;
 var gridFontStyle = 'normal 11px Arial';
 
 var canvasHeight = 400;
-var canvasWidth = 1100;
+var canvasWidth = 1050;
 
 var playing = false;
 var currentlySelectedBand = 'lowpass';
@@ -200,6 +200,24 @@ var bands_definitions = {
     filter : {}
   }
 };
+
+// Bootstrap utility function
+function isset() {
+  var a = arguments,
+    l = a.length,
+    i = 0,
+    undef;
+  if (l === 0) {
+    throw new Error("Empty isset");
+  }
+  while (i !== l) {
+    if (a[i] === undef || a[i] === null) {
+      return false;
+    }
+    i++;
+  }
+  return true;
+}
 
 function AudioStart() {
   if (typeof gameSourceNode == "undefined") {
@@ -693,7 +711,7 @@ function handleMouseMove(event, clientX, clientY) {
   }
 
   updateEQ();
-  updateKnobValues();
+  updateKnobs();
 }
 
 function handleMouseUp(event) {;
@@ -721,7 +739,7 @@ function handleQ(directionCode, partKeys) {;
     eq["bandsArray"][eq['pointerDrag']]["q"] -= partKeys;
   }
   updateEQ();
-  updateKnobValues();
+  updateKnobs();
 }
 
 // setup mouse click handler functions
@@ -783,6 +801,39 @@ function drawGrid() {
   $("#eqCanvas").html(canvas);
   eq["offsetX"] = $(canvas).offset()['left'];
   eq["offsetY"] = $(canvas).offset()['top'];
+}
+
+function updateBand(name, s) {
+  var knobElem = $(name).attr("knob");
+
+  var j = 0;
+  var knobHTML = "";
+  if (knobElem == 'freq') {
+  
+    j = parseInt($(name).attr('value'));
+  
+    eq['bandsArray'][eq['bandOnFocus']]["freq"] = j;
+    knobHTML = j.toFixed(0);
+  } else {
+    if (knobElem == "gain") {
+      j = scaleBetween(s, eq['gainMin'], eq["gainMax"], 0, 100);
+      eq['bandsArray'][eq["bandOnFocus"]]['gain'] = j;
+      knobHTML = j.toFixed(1);
+    } else {
+      if (knobElem == "q") {
+        j = scaleBetween(s, eq["qMin"], eq["qMax"], 0, 100);
+        eq['bandsArray'][eq['bandOnFocus']]["q"] = j;
+        knobHTML = j.toFixed(1);
+      }
+    }
+  }
+  $(name).find('.knob-value').html(knobHTML);
+  updateEQ();
+}
+
+function scaleBetween(toTop, index, step, fromTop, type) {
+  var number = (step - index) * (toTop - fromTop) / (type - fromTop) + index;
+  return Math.round(number * 100) / 100;
 }
 
 function updateAllBands() {
