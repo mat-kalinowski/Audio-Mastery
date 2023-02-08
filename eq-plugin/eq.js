@@ -1,4 +1,16 @@
 // MAIN EQ VARIABLE
+var gridLinesColor = "#85694b";
+var gridLineWidth = 0.75;
+var gridFontStyle = 'normal 11px Arial';
+
+var dbMax = 16;
+var minHZscale = 16;
+var totalOctavas = 10.5;
+var canvas;
+var ctx;
+var totalSections = 12;
+var peakingLength = 1;
+
 var eq = {
     bandsArray : [],
     drawValues : [],
@@ -22,7 +34,7 @@ var eq = {
     isDown : ![],
     isTouchdown : ![],
     filtersArray : {},
-    gameYourGain : null,
+    eqGain : null,
     yourAnalyser : null,
     freqDataMap : {
       your : [],
@@ -42,16 +54,6 @@ var eq = {
       highshelf : 6
     }
 };
-
-var dbMax = 16;
-var minHZscale = 16;
-var totalOctavas = 10.5;
-var canvas;
-var ctx;
-var meter;
-var result;
-var totalSections = 12;
-var peakingLength = 1;
 
 var full_band_name = {
   LC : 'highpass',
@@ -191,10 +193,6 @@ var bands_definitions = {
   }
 };
 
-var gridLinesColor = "#85694b";
-var gridLineWidth = 0.75;
-var gridFontStyle = 'normal 11px Arial';
-
 function AudioStart() {
   if (typeof gameSourceNode == "undefined") {
     loadEqPlugin();
@@ -242,10 +240,10 @@ function connectFilters() {
       eq['filtersArray'][i].connect(eq['filtersArray'][i + 1]);
     }
     // Connect last filter to gain
-    eq['filtersArray'][eq['bandsArray']["length"] - 1].connect(eq['gameYourGain']);
+    eq['filtersArray'][eq['bandsArray']["length"] - 1].connect(eq['eqGain']);
   }
   else {
-    gameSourceNode.connect(eq['gameYourGain']);
+    gameSourceNode.connect(eq['eqGain']);
   }
 }
 
@@ -269,19 +267,19 @@ function connectAudioNodes() {
 
   gameMasterGain = gameContext.createGain();
 
-  eq['gameYourGain'] = gameContext.createGain();
+  eq['eqGain'] = gameContext.createGain();
 
   gameMasterGain['gain'].setValueAtTime(1, currentTime);
-  eq['gameYourGain']['gain'].setValueAtTime(1, currentTime);
+  eq['eqGain']['gain'].setValueAtTime(1, currentTime);
   
   connectFilters();
 
-  eq['gameYourGain'].connect(gameMasterGain);
+  eq['eqGain'].connect(gameMasterGain);
 
   gameMasterGain.connect(gameContext["destination"]);
 
   eq['yourAnalyser'] = gameContext.createAnalyser();
-  eq['gameYourGain'].connect(eq['yourAnalyser']);
+  eq['eqGain'].connect(eq['yourAnalyser']);
 }
 
 function buildKnobs(bands) {
@@ -412,7 +410,7 @@ function handleMouseMove(event, clientX, clientY) {
     eq["bandsArray"][eq['pointerDrag']]["gain"] = axisY;
   }
 
-  SwitchEQ("yours");
+  updateEQ();
   updateKnobValues();
 }
 
@@ -420,6 +418,14 @@ function handleMouseUp(event) {;
   event.preventDefault();
   event.stopPropagation();
   eq["isDown"] = ![];
+}
+
+function handleMouseWheel(qDiff) {;
+  if (qDiff['deltaY'] >= 0) {
+    handleQ("up", 0.1);
+  } else {
+    handleQ('down', 0.1);
+  }
 }
 
 function handleQ(directionCode, partKeys) {;
@@ -432,7 +438,7 @@ function handleQ(directionCode, partKeys) {;
   if (directionCode == "down" && eq['bandsArray'][eq['pointerDrag']]["q"] > 0.2) {
     eq["bandsArray"][eq['pointerDrag']]["q"] -= partKeys;
   }
-  SwitchEQ('yours');
+  updateEQ();
   updateKnobValues();
 }
 
@@ -497,6 +503,22 @@ function drawGrid() {
   eq["offsetY"] = $(canvas).offset()['top'];
 }
 
+function updateAllBands() {
+  console.log("Updating multiband")
+  console.log(eq["filtersArray"])
+  var currentTime = gameContext['currentTime'];
+  
+  $.each(eq['bandsArray'], function(key, params) {
+    var newGain = params['state'] == "on" ? params['gain'] : 0;
+    var filterType = params['state'] == "on" ? params['filter_name'] : 'allpass';
+
+    eq["filtersArray"][key]['type'] = filterType;
+    eq['filtersArray'][key]['frequency'].setValueAtTime(params["freq"], currentTime);
+    eq['filtersArray'][key]["Q"].setValueAtTime(params["q"], currentTime);
+    eq['filtersArray'][key]['gain'].setValueAtTime(newGain, currentTime);
+  });
+}
+
 function setupEqPlugin() {
   $('.eqCover').removeClass("active");
   eq["bandsArray"] = [];
@@ -511,7 +533,7 @@ function setupEqPlugin() {
   buildKnobs(eq['bandsArray']);
 
   drawGrid();
-  SwitchEQ('yours');
+  updateEQ();
  
   // eq['bandsArray']["push"]({
   //   id : PK,
@@ -529,6 +551,40 @@ function setupEqPlugin() {
   //   hint : ![]
   // });
   eqSetup(eq['bandsArray'], 'transparent');
+}
+
+function updateEQ() {
+  var currentTime = gameContext['currentTime'];
+  gameMasterGain['gain'].setValueAtTime(1, currentTime);
+
+  $('[eq]').attr('bypass', 'off').attr('original', 'off');
+  eq["eqGain"]['gain'].setValueAtTime(1, currentTime);
+
+  updateAllBands();
+  redrawGrid();
+  eqSetup(eq['bandsArray'], 'color');
+
+  drawMidLine(eq['bandsArray'], 'color');
+  drawPointers(eq['bandsArray']);
+  drawBandValues(eq['bandsArray']);
+}
+
+function toggleBand(value) {
+  console.log("bandOnFocus")
+  console.log(value)
+  console.log("bandOnFocus")
+  console.log(eq['bandsArray'])
+
+  eq['bandOnFocus'] = value;
+  if (eq['bandsArray'][eq["bandOnFocus"]]["state"] == 'off') {
+    $('[band="' + eq['bandOnFocus'] + '"]').attr('state', "on");
+    eq["bandsArray"][eq['bandOnFocus']]['state'] = "on";
+  } else {
+    $('[band="' + eq['bandOnFocus'] + '"]').attr('state', 'off');
+    eq['bandsArray'][eq['bandOnFocus']]["state"] = 'off';
+  }
+  updateAllBands();
+  updateEQ();
 }
 
 function waitForStatus() {
