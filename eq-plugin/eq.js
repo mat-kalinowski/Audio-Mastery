@@ -44,14 +44,6 @@ var eq = {
     filtersArray : {},
     eqGain : null,
     yourAnalyser : null,
-    freqDataMap : {
-      your : [],
-      diff : []
-    },
-    freqRunner : {
-      timegap : 10,
-      count : 300
-    },
     filters : {
       lowpass : 0,
       highpass : 1,

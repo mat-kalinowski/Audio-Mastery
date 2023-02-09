@@ -92,7 +92,7 @@
     background: transparent; }
 .bandsContainer [bands] [band] .knob-panel::selection, .bandsContainer [bands] [band] [toggle-band]::selection {
     background: transparent; }
-.bandsContainer [bands] [band] .knob-panel:hover, .bandsContainer [bands] [band] .knob-panel.inaction, .bandsContainer [bands] [band] [toggle-band]:hover, .bandsContainer [bands] [band] [toggle-band].inaction {
+.bandsContainer [bands] [band] [toggle-band]:hover, .bandsContainer [bands] [band] [toggle-band].inaction {
     background: #946565;
     color: #ccc; }
 .bandsContainer [bands] [band] [toggle-band]:first-of-type:hover {
