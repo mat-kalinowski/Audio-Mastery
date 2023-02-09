@@ -1,6 +1,14 @@
 body {
   background: linear-gradient(113.03deg, #473838 0.78%, rgba(148, 31, 31, 0.74) 99.19%);
-  overflow-y: hidden; 
+  overflow-y: hidden;
+
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+}
+
+html {
+  height: 100%;
 }
 
 .header {
