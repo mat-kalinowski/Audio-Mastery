@@ -4,7 +4,7 @@
     margin: 0;
     position: relative;
     background-color: #312222;
-    padding: 15px;    
+    padding: 12px;    
     margin-top: 15px;
     border-radius: 15px;
 }
@@ -15,28 +15,6 @@
 .bandsContainer[original="on"] {
     -webkit-filter: blur(4px);
     filter: blur(4px); }
-
-.bandsContainer [eq-header] {
-    position: relative;
-    height: 56px; }
-
-.bandsContainer [eq-header] [eq-title] {
-    position: absolute;
-    left: 15px;
-    top: 15px;
-    color: #b9b18e;
-    text-shadow: 0 0 5px black;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 20px;
-    font-family: 'Orbitron', sans-serif; }
-
-.bandsContainer [eq-header] [eq-title] sup {
-    color: #888;
-    font-size: 50%;
-    top: -1em;
-    text-transform: none;
-    font-family: 'Orbitron', sans-serif; }
 
 .bandsContainer [screen] {
     height: 450px;
@@ -55,13 +33,6 @@
     padding: 1px 3px;
     display: inline-block;
     background-color:#312222; }
-
-.bandsContainer [bands] [band]:before, [eq] [bands] [band]:after {
-    content: " ";
-    display: table; }
-
-.bandsContainer [bands] [band]:after {
-    clear: both; }
 
 .bandsContainer [bands] [band][show="no"] {
     display: none; }
@@ -215,7 +186,12 @@
     color: #555; 
     border: 2px solid #3E2626}
 
+.bandAddTab div div:hover {
+    cursor: pointer;
+}
+
 .addHeader {
+    cursor: pointer;
     background: linear-gradient(95.07deg, #825454 34.76%, #5B3C3C 98.18%);
     border-radius: 15px 15px 0px 0px;
     padding: 8px;
@@ -228,8 +204,8 @@
 
 .eqPanel{
     position:relative;
-    margin: 30px 0 0;
-    padding: 25px;
+    margin: 20px 0 0;
+    padding: 20px;
     border-radius: 15px;
     background: #312222;
     color: #fff;
@@ -289,3 +265,8 @@
 .bandRightTab {
     margin-left: auto;
     visibility: hidden; }
+
+.eqPlaybackControls div img:hover {
+    filter: brightness(78%);
+    cursor: pointer;
+}
