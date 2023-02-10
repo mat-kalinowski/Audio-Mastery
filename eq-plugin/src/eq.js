@@ -1,10 +1,12 @@
+import * as noUiSlider from '../node_modules/nouislider/dist/nouislider.min.js';
+
 var gridLinesColor = "#85694b";
 var gridLineWidth = 0.75;
-var eqHandleLineWidth = 1.5;
 var gridFontStyle = 'normal 11px Arial';
+var eqHandleLineWidth = 0.75;
 
 var canvasHeight = 400;
-var canvasWidth = 1090;
+var canvasWidth = 1080;
 
 var playing = false;
 var currentlySelectedBand = 'lowpass';
@@ -16,7 +18,12 @@ var minHZscale = 16;
 var totalOctavas = 10.5;
 var canvas;
 var ctx;
-var totalSections = 12;
+
+var gameContext;
+var gameMasterGain;
+var audioElement;
+var gameSourceNode;
+var triggerInterval;
 
 // MAIN EQ VARIABLE
 var eq = {
@@ -53,14 +60,6 @@ var eq = {
       lowshelf : 5,
       highshelf : 6
     }
-};
-
-var full_band_name = {
-  LC : 'highpass',
-  LS : "lowshelf",
-  PK : 'peaking',
-  HS : "highshelf",
-  HC : 'lowpass'
 };
 
 // Bands default parameters
@@ -193,24 +192,6 @@ var bands_definitions = {
   }
 };
 
-// Bootstrap utility function
-function isset() {
-  var a = arguments,
-    l = a.length,
-    i = 0,
-    undef;
-  if (l === 0) {
-    throw new Error("Empty isset");
-  }
-  while (i !== l) {
-    if (a[i] === undef || a[i] === null) {
-      return false;
-    }
-    i++;
-  }
-  return true;
-}
-
 function AudioStart() {
   if (typeof gameSourceNode == "undefined") {
     loadEqPlugin();
@@ -233,8 +214,213 @@ function AudioStop() {
   }
 }
 
+
+var
+    mouseY = 0,
+    allowMouseMoveOnExternalElements = true,
+    mouseKnob = null;
+
+function updateKnobValue(bandElem, switchTextDiv) {;
+    eq['bandOnFocus'] = parseInt($(bandElem)['parents']('[band]').attr("band"));
+    updateBand(bandElem, switchTextDiv);
+}
+
+// Bootstrap utility function
+function isset() {
+    var a = arguments,
+      l = a.length,
+      i = 0,
+      undef;
+    if (l === 0) {
+      throw new Error("Empty isset");
+    }
+    while (i !== l) {
+      if (a[i] === undef || a[i] === null) {
+        return false;
+      }
+      i++;
+    }
+    return true;
+  }
+
+function knobValueBlur(ele) {
+    var
+        v = ele.innerHTML,
+        knob = $(ele).parents('[knob]');
+
+    if (v == '' || isNaN(v)) {
+        v = parseInt(knob.attr('value'));
+    } else if (parseInt(v) < parseInt(knob.attr('min'))) {
+        v = parseInt(knob.attr('min'));
+    } else if (parseInt(v) > parseInt(knob.attr('max'))) {
+        v = parseInt(knob.attr('max'));
+    } else {
+        v = parseInt(v);
+    }
+
+    ele.innerHTML = v;
+    knob.attr('value', v);
+    knobUpdate(knob, 'keyboard');
+}
+
+function knobValueFocus(ele) {
+    ele.innerHTML = '';
+}
+
+function knobKeydown(ele, event) {
+    if (event.key == 'Enter') {
+        $(ele).blur();
+        knobValueBlur(ele);
+    }
+}
+
+function initKnobs() {
+    $(window)
+        .mousemove(function (e) {
+            e.preventDefault();
+            mouseY = e.pageY;
+            if (mouseKnob != null) {
+                knobUpdate(mouseKnob, 'mouse');
+                $(mouseKnob).addClass('inaction');
+            }
+            if (Math.abs($(mouseKnob).attr('y') - mouseY) > 160) {
+                $(mouseKnob).attr('start', $(mouseKnob).attr('value'));
+                $(mouseKnob).find('.knob-value').attr('reach-limit', 'off');
+                mouseKnob = null;
+                allowMouseMoveOnExternalElements = true;
+                $('.inaction').removeClass('inaction');
+            }
+        })
+        .mousedown(function (e) {
+            mouseY = e.pageY;
+        })
+        .mouseup(function () {
+            if (mouseKnob != null) {
+                $(mouseKnob).attr('start', $(mouseKnob).attr('value'));
+                $(mouseKnob).find('.knob-value').attr('reach-limit', 'off');
+            }
+            mouseKnob = null;
+            allowMouseMoveOnExternalElements = true;
+            $('.inaction').removeClass('inaction');
+        });
+}
+
+function knobBase(ele) {
+    if ($(ele).attr('state') != 'disabled') {
+        mouseKnob = null;
+        $(ele).attr('state', 'inactive');
+        $(ele).attr('value', $(ele).attr('base'));
+        knobUpdate(ele, 'keyboard');
+    }
+}
+
+function knobActivate(ele, e) {
+    if ($(ele).attr('state') != 'disabled') {
+        mouseKnob = ele;
+        allowMouseMoveOnExternalElements = false;
+        $(ele).attr('state', 'active');
+        $(ele).attr('y', mouseY);
+    }
+}
+
+function knobUpdate(ele, device) {
+    var
+        angleRange = 280,
+        sensitivity = parseFloat($(ele).attr('sensitivity')),
+        value = parseFloat($(ele).attr('value')),
+        start = parseFloat($(ele).attr('start')),
+        min = parseFloat($(ele).attr('min')),
+        max = parseFloat($(ele).attr('max')),
+        knobValue = $(ele).find('.knob-value'),
+        knobController = $(ele).find('.knob-controller');
+
+    knobValue.attr('reach-limit', 'off');
+    knobController.attr('reach-limit', 'off');
+    if ($(ele).attr('state') == 'active' && device == 'mouse') {
+        var
+            diffY = ($(ele).attr('y') - mouseY) * sensitivity,
+            changedValue = start + diffY;
+        if (changedValue <= min) {
+            value = min;
+        } else if (changedValue >= max) {
+            value = max;
+        } else {
+            value = changedValue;
+        }
+        if (value == min || value == max) {
+            knobValue.attr('reach-limit', 'on');
+            knobController.attr('reach-limit', 'on');
+        }
+    }
+
+    var
+        percent = 100 - (max - value) / (max - min) * 100,
+        deg = percent * angleRange / 100 - 140;
+
+    $(ele).find('.knob-controller').css('transform', "rotate(" + deg + "deg)");
+    $(ele).attr('value', value);
+    updateKnobValue(ele, percent);
+}
+
+
+function updateKnobs() {
+    var reservedNamesMap = {
+      0 : {
+        freq : 30,
+        gain : 0,
+        q : 0.7
+      },
+      1 : {
+        freq : 140,
+        gain : 0,
+        q : 1
+      },
+      2 : {
+        freq : 440,
+        gain : 0,
+        q : 1
+      },
+      3 : {
+        freq : 1E3,
+        gain : 0,
+        q : 1
+      },
+      4 : {
+        freq : 3500,
+        gain : 0,
+        q : 1
+      },
+      5 : {
+        freq : 9E3,
+        gain : 0,
+        q : 1
+      },
+      6 : {
+        freq : 16E3,
+        gain : 0,
+        q : 0.7
+      }
+    };
+    $('.knob-panel').each(function() {
+      var name = $(this)['parents']("[band]").attr('band');
+      var i = $(this).attr('knob');
+  
+      var variable = isset(eq['bandsArray'][name]) ? eq['bandsArray'][name][i] : reservedNamesMap[name][i];
+      var artistTrack = i == 'gain' || i == "q" ? variable["toFixed"](1) : variable.toFixed(0);
+  
+      $(this).attr({
+        y : 0,
+        start : variable,
+        value : variable
+      });
+      $(this)["find"](".knob-value").html(artistTrack);
+    });
+  }
+  
+
 // set up window.AudioContext
 function loadAudioContext() {
+  console.log("SETTING UP GAME CONTEXT")
   gameContext = new (window["AudioContext"] || window["webkitAudioContext"]);
   gameMasterGain = gameContext.createGain();
 
@@ -322,7 +508,7 @@ function buildKnobs(bands) {
     var scrollbarHelpers = `<div band="${key}" state="${value['state']}">` +
       `<div toggle-band onclick="changeBandState(${key});">` +
       `<div toggle-band-btn style="background: rgb(${params["color"]})"></div>` +
-      `<img toggle-band-img src="../eq-plugin/img/icons/figma-icons/${params['filter_name']}.svg"/>` +
+      `<img toggle-band-img src="./src/img/icons/figma-icons/${params['filter_name']}.svg"/>` +
       "</div>" + `<div class="sliderContainer">${escapedEmail}${sitesusers}${siteName}</div>` + "</div>";
   
     $('[bands]').append(scrollbarHelpers);
@@ -999,11 +1185,13 @@ function loadEqPlugin() {
 
 // Add new band of given type
 function SelectBand(bandName, source) {
-  $(".selected", "#bandsAdd").children().attr("src",`../eq-plugin/img/icons/figma-icons/${currentlySelectedBand}.svg`);
+  console.log("in SelectBand")
+  $(".selected", "#bandsAdd").children().attr("src",`./src/img/icons/figma-icons/${currentlySelectedBand}.svg`);
   $(".selected", "#bandsAdd").removeClass("selected");
 
-  $(source).addClass("selected")
-  $(source).children().attr("src",`../eq-plugin/img/icons/figma-icons/${bandName}-active.svg`);
+  source.addClass("selected")
+  console.log($(this))
+  source.children().attr("src",`./src/img/icons/figma-icons/${bandName}-active.svg`);
 
   currentlySelectedBand = bandName
 }
@@ -1028,7 +1216,6 @@ function addEqBand() {
 
   // We can have few peaking bands
   var fullBandName = bandName == 'peaking' ? 'peaking' + peakingLength : bandName;
-  var data = bands_definitions[bandName];
 
   // GET BANDS DEFINITIONS, FOR EXAMPLE:
   // var bands_definitions = {
@@ -1080,4 +1267,19 @@ function addEqBand() {
   updateEQ();
 }
 
-export {loadEqPlugin, SelectBand, addEqBand, AudioStart, AudioStop};
+// export {loadEqPlugin, SelectBand, addEqBand, AudioStart, AudioStop};
+
+$('#lowpass').click(function(){ SelectBand('lowpass', $(this)) })
+$('#higpass').click(function(){ SelectBand('highpass', $(this)) })
+$('#lowshelf').click(function(){ SelectBand('lowshelf', $(this)) })
+$('#highshelf').click(function(){ SelectBand('highshelf', $(this)) })
+$('#peaking').click(function(){ SelectBand('peaking', $(this)) })
+
+$('#add-band-button').click(addEqBand)
+$(window).load(loadEqPlugin)
+
+$('#play-button').click(AudioStart)
+$('#stop-button').click(AudioStop)
+
+
+export {loadEqPlugin};

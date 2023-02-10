@@ -4,8 +4,6 @@ const path = require('path')
 module.exports = {
   entry: [
     './src/eq.js',
-    './src/knobs.js',
-    './src/css/eq.css'
   ],
   output: {
     path: path.resolve(__dirname, './dist'),
