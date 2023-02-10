@@ -1,4 +1,5 @@
-import * as noUiSlider from '../node_modules/nouislider/dist/nouislider.min.js';
+import {noSliderUi} from 'nouislider';
+import $ from "jquery";
 
 var gridLinesColor = "#85694b";
 var gridLineWidth = 0.75;
@@ -1276,10 +1277,7 @@ $('#highshelf').click(function(){ SelectBand('highshelf', $(this)) })
 $('#peaking').click(function(){ SelectBand('peaking', $(this)) })
 
 $('#add-band-button').click(addEqBand)
-$(window).load(loadEqPlugin)
+$(window).on('load', loadEqPlugin)
 
 $('#play-button').click(AudioStart)
 $('#stop-button').click(AudioStop)
-
-
-export {loadEqPlugin};
