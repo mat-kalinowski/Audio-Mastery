@@ -315,7 +315,7 @@ function knobBase(ele) {
     }
 }
 
-function knobActivate(ele, e) {
+function knobActivate(ele) {
     if ($(ele).attr('state') != 'disabled') {
         mouseKnob = ele;
         allowMouseMoveOnExternalElements = false;
@@ -495,26 +495,31 @@ function buildKnobs(bands) {
 
   $.each(bands, function(key, value) {
     var params = bands_definitions[value["band_id"]];
-    var escapedEmail = "";
-    var sitesusers = '<div class="empty-knob-panel"></div>';
-    var siteName = '<div class="empty-knob-panel"></div>';
-    escapedEmail = '<div class="knob-panel" knob="freq" state="inactive" sensitivity="' + params["sensitivity_freq"] + '" y="0" min="20" max="19100" base="' + params['freq'] + '" start="' + params["freq"] + '>" value="' + params['freq'] + '" ondblclick="knobBase(this);" onMouseDown="knobActivate(this, event);">' + '<div class="knob-controller" style="transform: rotate(' + params["angle_freq"] + 'deg)"><i class="fa fa-circle"></i></div>' + '<div class="knob-value" contentEditable="true" onBlur="knobValueBlur(this);" onFocus="knobValueFocus(this);" onKeyDown="knobKeydown(this, event);">' + params['freq'] + "</div>" + '<div class="knob-label">FREQ</div>' + "</div>";
+    var freqKnob = "";
+    var gainKob = '<div class="empty-knob-panel"></div>';
+    var qKnob = '<div class="empty-knob-panel"></div>';
+    freqKnob = `<div id="freq-knob-${currBand}" class="knob-panel" knob="freq" state="inactive" sensitivity="` + params["sensitivity_freq"] + '" y="0" min="20" max="19100" base="' + params['freq'] + '" start="' + params["freq"] + '>" value="' + params['freq'] + '" ondblclick="knobBase(this);">' + '<div class="knob-controller" style="transform: rotate(' + params["angle_freq"] + 'deg)"><i class="fa fa-circle"></i></div>' + '<div class="knob-value" contentEditable="true" onBlur="knobValueBlur(this);" onFocus="knobValueFocus(this);" onKeyDown="knobKeydown(this, event);">' + params['freq'] + "</div>" + '<div class="knob-label">FREQ</div>' + "</div>";
 
     if (params['knobs']['includes']('gain')) {
-      sitesusers = '<div class="knob-panel" knob="gain" state="inactive" sensitivity="0.05" y="0" min="-18" max="18" base="' + params['gain'] + '" start="' + params['gain'] + '" value="' + params['gain'] + '"ondblclick="knobBase(this);"onMouseDown="knobActivate(this, event);">' + '<div class="knob-controller" style="transform: rotate(' + params['angle_gain'] + 'deg)"><i class="fa fa-circle"></i></div>' + '<div class="knob-value" contentEditable="true" onBlur="knobValueBlur(this);" onFocus="knobValueFocus(this);" onKeyDown="knobKeydown(this, event);">' + params['gain'] + '</div>' + '<div class="knob-label">GAIN</div>' + '</div>';
+      gainKob = `<div id="gain-knob-${currBand}" class="knob-panel" knob="gain" state="inactive" sensitivity="0.05" y="0" min="-18" max="18" base="` + params['gain'] + '" start="' + params['gain'] + '" value="' + params['gain'] + '"ondblclick="knobBase(this);">' + '<div class="knob-controller" style="transform: rotate(' + params['angle_gain'] + 'deg)"><i class="fa fa-circle"></i></div>' + '<div class="knob-value" contentEditable="true" onBlur="knobValueBlur(this);" onFocus="knobValueFocus(this);" onKeyDown="knobKeydown(this, event);">' + params['gain'] + '</div>' + '<div class="knob-label">GAIN</div>' + '</div>';
     }
 
     if (params['knobs']['includes']("q")) {
-      siteName = '<div class="knob-panel" knob="q" state="inactive" sensitivity="0.2" y="0" min="0.5" max="3" base="' + params["q"] + '" start="' + params["q"] + '" value="' + params["q"] + '" ondblclick="knobBase(this);" onMouseDown="knobActivate(this, event);">' + '<div class="knob-controller" style="transform: rotate(' + params["angle_q"] + 'deg)"><i class="fa fa-circle"></i></div>' + '<div class="knob-value" contentEditable="true" onBlur="knobValueBlur(this);" onFocus="knobValueFocus(this);" onKeyDown="knobKeydown(this, event);">' + params["q"] + '</div>' + '<div class="knob-label">Q</div>' + '</div>';
+      qKnob = `<div id="q-knob-${currBand}" class="knob-panel" knob="q" state="inactive" sensitivity="0.2" y="0" min="0.5" max="3" base="` + params["q"] + '" start="' + params["q"] + '" value="' + params["q"] + '" ondblclick="knobBase(this);">' + '<div class="knob-controller" style="transform: rotate(' + params["angle_q"] + 'deg)"><i class="fa fa-circle"></i></div>' + '<div class="knob-value" contentEditable="true" onBlur="knobValueBlur(this);" onFocus="knobValueFocus(this);" onKeyDown="knobKeydown(this, event);">' + params["q"] + '</div>' + '<div class="knob-label">Q</div>' + '</div>';
     }
     var scrollbarHelpers = `<div band="${key}" state="${value['state']}">` +
-      `<div id="${currBand}" toggle-band>` +
+      `<div id="switch-${currBand}" toggle-band>` +
       `<div toggle-band-btn style="background: rgb(${params["color"]})"></div>` +
       `<img toggle-band-img src="./src/img/icons/figma-icons/${params['filter_name']}.svg"/>` +
-      "</div>" + `<div class="sliderContainer">${escapedEmail}${sitesusers}${siteName}</div>` + "</div>";
+      "</div>" + `<div class="sliderContainer">${freqKnob}${gainKob}${qKnob}</div>` + "</div>";
   
     $('[bands]').append(scrollbarHelpers);
-    $(`#${currBand}`).on('click', function() { changeBandState(key); })
+    $(`#switch-${currBand}`).on('click', function() { changeBandState(key); })
+
+    $(`#freq-knob-${currBand}`).on('mousedown', function() { knobActivate($(this)); })
+    $(`#gain-knob-${currBand}`).on('mousedown', function() { knobActivate($(this)); })
+    $(`#q-knob-${currBand}`).on('mousedown', function() { knobActivate($(this)); })
+    
     currBand++;
   });
 }
