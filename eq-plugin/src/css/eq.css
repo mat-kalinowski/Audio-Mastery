@@ -102,7 +102,7 @@
 .bandsContainer [bands] [band] .knob-panel:last-of-type:hover {
     border-radius: 0 0 10px 10px; }
 
-.bandsContainer [bands] [band] .knob-panel .knob-controller, .bandsContainer [bands] [band] [toggle-band] .knob-controller {
+.bandsContainer [bands] [band] .knob-panel .knobWheel, .bandsContainer [bands] [band] [toggle-band] .knobWheel {
     position: absolute;
     top: 8px;
     left: 5px;
@@ -115,10 +115,10 @@
     text-align: center;
     border-radius: 100%; }
 
-.bandsContainer [bands] [band] .knob-panel .knob-controller[reach-limit="on"], .bandsContainer [bands] [band] [toggle-band] .knob-controller[reach-limit="on"] {
+.bandsContainer [bands] [band] .knob-panel .knobWheel[reach-limit="on"], .bandsContainer [bands] [band] [toggle-band] .knobWheel[reach-limit="on"] {
     animation: reachLimit 0.3s 1; }
 
-.bandsContainer [bands] [band] .knob-panel .knob-value, .bandsContainer [bands] [band] [toggle-band] .knob-value {
+.bandsContainer [bands] [band] .knob-panel .knobValue, .bandsContainer [bands] [band] [toggle-band] .knobValue {
     position: absolute;
     width: 42px;
     top: 3px;
@@ -133,13 +133,13 @@
     user-select: none;
     outline: none !important; }
 
-.bandsContainer [bands] [band] .knob-panel .knob-value::-webkit-selection, .bandsContainer [bands] [band] [toggle-band] .knob-value::-webkit-selection {
+.bandsContainer [bands] [band] .knob-panel .knobValue::-webkit-selection, .bandsContainer [bands] [band] [toggle-band] .knobValue::-webkit-selection {
     background: transparent; }
-.bandsContainer [bands] [band] .knob-panel .knob-value::-moz-selection, .bandsContainer [bands] [band] [toggle-band] .knob-value::-moz-selection {
+.bandsContainer [bands] [band] .knob-panel .knobValue::-moz-selection, .bandsContainer [bands] [band] [toggle-band] .knobValue::-moz-selection {
     background: transparent; }
-.bandsContainer [bands] [band] .knob-panel .knob-value::selection, .bandsContainer [bands] [band] [toggle-band] .knob-value::selection {
+.bandsContainer [bands] [band] .knob-panel .knobValue::selection, .bandsContainer [bands] [band] [toggle-band] .knobValue::selection {
     background: transparent; }
-.bandsContainer [bands] [band] .knob-panel .knob-value[reach-limit="on"], .bandsContainer [bands] [band] [toggle-band] .knob-value[reach-limit="on"] {
+.bandsContainer [bands] [band] .knob-panel .knobValue[reach-limit="on"], .bandsContainer [bands] [band] [toggle-band] .knobValue[reach-limit="on"] {
     animation: reachLimit 0.3s 1; }
 .bandsContainer [bands] [band] .knob-panel .knob-label, .bandsContainer [bands] [band] [toggle-band] .knob-label {
     position: absolute;

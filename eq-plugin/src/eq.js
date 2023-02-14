@@ -31,9 +31,8 @@ var eq = {
     bandsArray : [],
     drawValues : [],
     PI2 : Math["PI"] * 2,
-    pointerRadius : 12,
+    pointerRadius : 10,
     pointerDrag : -1,
-    touchTwoFingerStartValue : -1,
     qMin : 0.5,
     qMax : 3,
     gainMin : -12,
@@ -68,8 +67,8 @@ var bands_definitions = {
   highpass : {
     id : 0,
     state : "off",
-    color : '211,47,47',
-    border : '244,129,129',
+    fillColor : '190, 187, 65',
+    border : '',
     filter_name : "highpass",
     filter_id : 1,
     freq : 30,
@@ -86,8 +85,8 @@ var bands_definitions = {
   lowshelf : {
     id : 1,
     state : 'off',
-    color : '194,24,91',
-    border : '247,111,163',
+    fillColor : '157, 238, 171',
+    border : '',
     filter_name : "lowshelf",
     filter_id : 5,
     freq : 140,
@@ -104,8 +103,8 @@ var bands_definitions = {
   peaking1 : {
     id : 2,
     state : 'off',
-    color : '123,31,162',
-    border : '199,117,234',
+    fillColor : '236, 143, 144',
+    border : '',
     filter_name : "peaking",
     filter_id : 3,
     freq : 440,
@@ -122,8 +121,8 @@ var bands_definitions = {
   peaking2 : {
     id : 3,
     state : 'off',
-    color : "25,118,210",
-    border : '98,178,252',
+    fillColor : "116, 183, 173",
+    border : '',
     filter_name : 'peaking',
     filter_id : 3,
     freq : 1000,
@@ -140,8 +139,8 @@ var bands_definitions = {
   peaking3 : {
     id : 4,
     state : 'off',
-    color : '0,151,167',
-    border : "32,215,232",
+    fillColor : '188, 124, 213',
+    border : "",
     filter_name : 'peaking',
     filter_id : 3,
     freq : 3500,
@@ -158,8 +157,8 @@ var bands_definitions = {
   highshelf : {
     id : 5,
     state : 'off',
-    color : '95,160,38',
-    border : '156,221,99',
+    fillColor : '213, 174, 110',
+    border : '',
     filter_name : 'highshelf',
     filter_id : 6,
     freq : 9000,
@@ -176,8 +175,8 @@ var bands_definitions = {
   lowpass : {
     id : 6,
     state : 'off',
-    color : '247,140,69',
-    border : '255,184,137',
+    fillColor : '190, 187, 65',
+    border : '',
     filter_name : 'lowpass',
     filter_id : 0,
     freq : 16000,
@@ -286,7 +285,7 @@ function initKnobs() {
             }
             if (Math.abs($(mouseKnob).attr('y') - mouseY) > 160) {
                 $(mouseKnob).attr('start', $(mouseKnob).attr('value'));
-                $(mouseKnob).find('.knob-value').attr('reach-limit', 'off');
+                $(mouseKnob).find('.knobValue').attr('reach-limit', 'off');
                 mouseKnob = null;
                 allowMouseMoveOnExternalElements = true;
                 $('.inaction').removeClass('inaction');
@@ -298,7 +297,7 @@ function initKnobs() {
         .mouseup(function () {
             if (mouseKnob != null) {
                 $(mouseKnob).attr('start', $(mouseKnob).attr('value'));
-                $(mouseKnob).find('.knob-value').attr('reach-limit', 'off');
+                $(mouseKnob).find('.knobValue').attr('reach-limit', 'off');
             }
             mouseKnob = null;
             allowMouseMoveOnExternalElements = true;
@@ -332,8 +331,8 @@ function knobUpdate(ele, device) {
         start = parseFloat($(ele).attr('start')),
         min = parseFloat($(ele).attr('min')),
         max = parseFloat($(ele).attr('max')),
-        knobValue = $(ele).find('.knob-value'),
-        knobController = $(ele).find('.knob-controller');
+        knobValue = $(ele).find('.knobValue'),
+        knobController = $(ele).find('.knobWheel');
 
     knobValue.attr('reach-limit', 'off');
     knobController.attr('reach-limit', 'off');
@@ -358,7 +357,7 @@ function knobUpdate(ele, device) {
         percent = 100 - (max - value) / (max - min) * 100,
         deg = percent * angleRange / 100 - 140;
 
-    $(ele).find('.knob-controller').css('transform', "rotate(" + deg + "deg)");
+    $(ele).find('.knobWheel').css('transform', "rotate(" + deg + "deg)");
     $(ele).attr('value', value);
     updateKnobValue(ele, percent);
 }
@@ -414,7 +413,7 @@ function updateKnobs() {
         start : variable,
         value : variable
       });
-      $(this)["find"](".knob-value").html(artistTrack);
+      $(this)["find"](".knobValue").html(artistTrack);
     });
   }
   
@@ -498,18 +497,19 @@ function buildKnobs(bands) {
     var freqKnob = "";
     var gainKob = '<div class="empty-knob-panel"></div>';
     var qKnob = '<div class="empty-knob-panel"></div>';
-    freqKnob = `<div id="freq-knob-${currBand}" class="knob-panel" knob="freq" state="inactive" sensitivity="` + params["sensitivity_freq"] + '" y="0" min="20" max="19100" base="' + params['freq'] + '" start="' + params["freq"] + '>" value="' + params['freq'] + '" ondblclick="knobBase(this);">' + '<div class="knob-controller" style="transform: rotate(' + params["angle_freq"] + 'deg)"><i class="fa fa-circle"></i></div>' + '<div class="knob-value" contentEditable="true" onBlur="knobValueBlur(this);" onFocus="knobValueFocus(this);" onKeyDown="knobKeydown(this, event);">' + params['freq'] + "</div>" + '<div class="knob-label">FREQ</div>' + "</div>";
+    freqKnob = `<div id="freq-knob-${currBand}" class="knob-panel" knob="freq" state="inactive" sensitivity="` + params["sensitivity_freq"] + '" y="0" min="20" max="19100" base="' + params['freq'] + '" start="' + params["freq"] + '>" value="' + params['freq'] + '" ondblclick="knobBase(this);">' + '<div class="knobWheel" style="transform: rotate(' + params["angle_freq"] + 'deg)"><i class="fa fa-circle"></i></div>' + '<div class="knobValue" contentEditable="true" onBlur="knobValueBlur(this);" onFocus="knobValueFocus(this);" onKeyDown="knobKeydown(this, event);">' + params['freq'] + "</div>" + '<div class="knob-label">FREQ</div>' + "</div>";
 
     if (params['knobs']['includes']('gain')) {
-      gainKob = `<div id="gain-knob-${currBand}" class="knob-panel" knob="gain" state="inactive" sensitivity="0.05" y="0" min="-18" max="18" base="` + params['gain'] + '" start="' + params['gain'] + '" value="' + params['gain'] + '"ondblclick="knobBase(this);">' + '<div class="knob-controller" style="transform: rotate(' + params['angle_gain'] + 'deg)"><i class="fa fa-circle"></i></div>' + '<div class="knob-value" contentEditable="true" onBlur="knobValueBlur(this);" onFocus="knobValueFocus(this);" onKeyDown="knobKeydown(this, event);">' + params['gain'] + '</div>' + '<div class="knob-label">GAIN</div>' + '</div>';
+      gainKob = `<div id="gain-knob-${currBand}" class="knob-panel" knob="gain" state="inactive" sensitivity="0.05" y="0" min="-18" max="18" base="` + params['gain'] + '" start="' + params['gain'] + '" value="' + params['gain'] + '"ondblclick="knobBase(this);">' + '<div class="knobWheel" style="transform: rotate(' + params['angle_gain'] + 'deg)"><i class="fa fa-circle"></i></div>' + '<div class="knobValue" contentEditable="true" onBlur="knobValueBlur(this);" onFocus="knobValueFocus(this);" onKeyDown="knobKeydown(this, event);">' + params['gain'] + '</div>' + '<div class="knob-label">GAIN</div>' + '</div>';
     }
 
     if (params['knobs']['includes']("q")) {
-      qKnob = `<div id="q-knob-${currBand}" class="knob-panel" knob="q" state="inactive" sensitivity="0.2" y="0" min="0.5" max="3" base="` + params["q"] + '" start="' + params["q"] + '" value="' + params["q"] + '" ondblclick="knobBase(this);">' + '<div class="knob-controller" style="transform: rotate(' + params["angle_q"] + 'deg)"><i class="fa fa-circle"></i></div>' + '<div class="knob-value" contentEditable="true" onBlur="knobValueBlur(this);" onFocus="knobValueFocus(this);" onKeyDown="knobKeydown(this, event);">' + params["q"] + '</div>' + '<div class="knob-label">Q</div>' + '</div>';
+      qKnob = `<div id="q-knob-${currBand}" class="knob-panel" knob="q" state="inactive" sensitivity="0.2" y="0" min="0.5" max="3" base="` + params["q"] + '" start="' + params["q"] + '" value="' + params["q"] + '" ondblclick="knobBase(this);">' + '<div class="knobWheel" style="transform: rotate(' + params["angle_q"] + 'deg)"><i class="fa fa-circle"></i></div>' + '<div class="knobValue" contentEditable="true" onBlur="knobValueBlur(this);" onFocus="knobValueFocus(this);" onKeyDown="knobKeydown(this, event);">' + params["q"] + '</div>' + '<div class="knob-label">Q</div>' + '</div>';
+      // qSlider = `<div id="q-slider-${currBand}"></div>`
     }
     var scrollbarHelpers = `<div band="${key}" state="${value['state']}">` +
       `<div id="switch-${currBand}" toggle-band>` +
-      `<div toggle-band-btn style="background: rgb(${params["color"]})"></div>` +
+      `<div toggle-band-btn style="background: rgb(${params["fillColor"]})"></div>` +
       `<img toggle-band-img src="./src/img/icons/figma-icons/${params['filter_name']}.svg"/>` +
       "</div>" + `<div class="sliderContainer">${freqKnob}${gainKob}${qKnob}</div>` + "</div>";
   
@@ -710,23 +710,8 @@ function createFilterFuncs(bands, bandIndex) {;
 }
 
 function drawFilterCurve(bands, bandId, paramName) {
-  var strokeColors = {
-    color : 'rgba(' + bands[bandId]['border'] + ',.6)',
-    wrong : 'rgba(237,61,61,.3)',
-    correct : 'rgba(55,132,55,.3)',
-    perfect : 'rgba(105,175,115,.5)',
-    gray : "rgba(200,200,200,.6)",
-    transparent : 'rgba(0,0,0,0)'
-  };
-
-  var fillColors = {
-    color : 'rgba(' + bands[bandId]['color'] + ',.6)',
-    wrong : "rgba(252,83,83,.3)",
-    correct : "rgba(85,168,85,.3)",
-    perfect : 'rgba(105,175,115,.5)',
-    gray : 'rgba(150,150,150,.3)',
-    transparent : 'rgba(0,0,0,0)'
-  };
+  var fillColor = 'rgba(' + bands[bandId]['fillColor'] + ',.4)';
+  var strokeColor = 'rgba(' + bands[bandId]['border'] + ',.6)';
 
   var bandChart = bands[bandId]['chart'];
   var lastXPoint = xOnCanvas(eq["lastHz"]);
@@ -736,14 +721,13 @@ function drawFilterCurve(bands, bandId, paramName) {
 
   bandChart["draw"] = function() {
     bandChart['canvas_ctx'].beginPath();
-    bandChart['canvas_ctx']['lineWidth'] = 0.5;
+    bandChart['canvas_ctx']['lineWidth'] = 1;
     bandChart['canvas_ctx'].setLineDash([]);
-    bandChart['canvas_ctx']["strokeStyle"] = strokeColors[paramName];
-    bandChart['canvas_ctx']['fillStyle'] = fillColors[paramName];
+    bandChart['canvas_ctx']["strokeStyle"] = strokeColor;
+    bandChart['canvas_ctx']['fillStyle'] = fillColor;
     bandChart["canvas_ctx"].moveTo(0, yOnCanvas(0));
-    var currSample = 1;
-
-    for (; currSample <= eq["samples"]; currSample++) {
+    
+    for (var currSample = 1; currSample <= eq["samples"]; currSample++) {
       var sampleRate = currSample / eq["samples"];
       var hzFrequency = positionToHz(sampleRate);
       var yCurve = bands[bandId]["filter"]["log_result"](hzFrequency);
@@ -770,7 +754,7 @@ function eqSetup(bands, paramName) {
   //   id : PK,
   //   band_id : peaking,
   //   state : "on",
-  //   color : data['color'],
+  //   fillColor : data['fillColor'],
   //   border : data["border"],
   //   filter_name : name,
   //   filter_id : data["filter_id"],
@@ -779,7 +763,6 @@ function eqSetup(bands, paramName) {
   //   q : data["q"],
   //   chart : {},
   //   filter : {},
-  //   hint : ![]
   // });
   $.each(bands, function(key, value) {
     if (value["state"] == "on") {
@@ -962,31 +945,6 @@ function drawGrid() {
     handleMouseDown(e, e['originalEvent']['touches'][0]["clientX"], e['originalEvent']['touches'][0]['clientY']);
   });
 
-  $(canvas)["on"]('touchmove', function(event) {
-    if (event['originalEvent']['touches']['length'] == 2) {
-    
-      var value = event['originalEvent']['touches'][1]['clientX'] - event['originalEvent']['touches'][0]["clientX"];
-      if (eq["touchTwoFingerStartValue"] == -1) {
-      
-        eq['touchTwoFingerStartValue'] = value;
-      } else {
-        if (value <= eq['touchTwoFingerStartValue']) {
-          handleQ("up", 0.05);
-        } else {
-          handleQ("down", 0.05);
-        }
-      }
-    } else {
-      handleMouseMove(event, event['originalEvent']['touches'][0]['clientX'], event["originalEvent"]['touches'][0]["clientY"]);
-    }
-  });
-
-  $(canvas)["on"]('touchend', function(event) {
-  
-    eq["touchTwoFingerStartValue"] = -1;
-    handleMouseUp(event);
-  });
-
   drawYGrid();
   drawXGrid();
 
@@ -1019,7 +977,7 @@ function updateBand(name, s) {
       }
     }
   }
-  $(name).find('.knob-value').html(knobHTML);
+  $(name).find('.knobValue').html(knobHTML);
   updateEQ();
 }
 
@@ -1064,7 +1022,7 @@ function setupEqPlugin() {
   //   id : PK,
   //   band_id : peaking,
   //   state : "on",
-  //   color : data['color'],
+  //   fillColor : data['fillColor'],
   //   border : data["border"],
   //   filter_name : name,
   //   filter_id : data["filter_id"],
@@ -1073,11 +1031,11 @@ function setupEqPlugin() {
   //   q : data["q"],
   //   chart : {},
   //   filter : {},
-  //   hint : ![]
   // });
-  eqSetup(eq['bandsArray'], 'transparent');
+
 }
 
+// Draw parameters as text next to eq handle
 function drawBandValues(elems) {
   $.each(elems, function(key, params) {
     if (params['state'] == "on") {
@@ -1108,18 +1066,21 @@ function drawEqHandles(elems) {;
     // Handles are transparent by default
     var fillColor = 'rgba(0,0,0,0)';
     var strokeColor = 'rgba(0,0,0,0)';
+    var outerStroke = 'rgba(0,0,0,0)';
 
     // Add color if they are not bypassed
     if (values["state"] == "on") {
-      fillColor = 'rgba(' + values['color'] + ',1)';
-      strokeColor = 'rgba(' + values['border'] + ',1)';
+      strokeColor = 'rgba(' + values['border'] + ', 1)';
+      fillColor = 'rgba(' + values['fillColor'] + ', 0.9)';
+      outerStroke = 'white'
     }
 
+    ctx.beginPath();
+    // values['freq'] - X POINT, yOnCanvas(values['gain']) - Y POINT, 
     values["x"] = xOnCanvas(values['freq']);
     values["y"] = yOnCanvas(values['gain']);
 
-    ctx.beginPath();
-    ctx.arc(xOnCanvas(values['freq']), yOnCanvas(values['gain']), eq["pointerRadius"], 0, eq['PI2']);
+    ctx.arc(values["x"], values["y"], eq["pointerRadius"], 0, eq['PI2']);
     ctx.closePath();
 
     ctx["fillStyle"] = fillColor;
@@ -1127,6 +1088,10 @@ function drawEqHandles(elems) {;
 
     ctx['lineWidth'] = eqHandleLineWidth;
     ctx['strokeStyle'] = strokeColor;
+    ctx.stroke();
+
+    ctx['lineWidth'] = 2;
+    ctx['strokeStyle'] = outerStroke;
     ctx.stroke();
   });
 }
@@ -1140,7 +1105,7 @@ function updateEQ() {
 
   updateAllBands();
   redrawGrid();
-  eqSetup(eq['bandsArray'], 'color');
+  eqSetup(eq['bandsArray'], 'fillColor');
 
   // Draw draggable EQ pointers
   drawEqHandles(eq['bandsArray']);
@@ -1207,8 +1172,7 @@ function SelectBand(bandName, source) {
 
 
 // Pass filterCode - short code LC, HS etc...
-function addEqBand() { 
-  var bandName =  currentlySelectedBand;
+function addEqBand(bandName) { 
 
   // iterate over prototypes scenario array, for example:
   // "LC-N-N" : {
@@ -1231,7 +1195,7 @@ function addEqBand() {
   //   highpass : {
   //     id : 0,
   //     state : "off",
-  //     color : '211,47,47',
+  //     fillColor : '211,47,47',
   //     border : '244,129,129',
   //     filter_name : "highpass",
   //     filter_id : 1,
@@ -1253,7 +1217,7 @@ function addEqBand() {
     id: data['id'],
     band_id : fullBandName,
     state : "on",
-    color : data['color'],
+    fillColor : data['fillColor'],
     border : data["border"],
     filter_name : bandName,
     filter_id : data["filter_id"],
@@ -1262,7 +1226,6 @@ function addEqBand() {
     q : data["q"],
     chart : {},
     filter : {},
-    hint : ![]
   });
 
   if (bandName == "peaking") {
@@ -1284,8 +1247,10 @@ $('#lowshelf').click(function(){ SelectBand('lowshelf', $(this)) })
 $('#highshelf').click(function(){ SelectBand('highshelf', $(this)) })
 $('#peaking').click(function(){ SelectBand('peaking', $(this)) })
 
-$('#add-band-button').click(addEqBand)
+$('#add-band-button').click(function(){ addEqBand(currentlySelectedBand) })
 $(window).on('load', loadEqPlugin)
 
 $('#play-button').click(AudioStart)
 $('#stop-button').click(AudioStop)
+
+SelectBand('lowpass', $(this));
