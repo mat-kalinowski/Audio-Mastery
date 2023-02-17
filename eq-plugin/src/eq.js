@@ -1017,22 +1017,9 @@ function setupEqPlugin() {
 
   drawGrid();
   updateEQ();
- 
-  // eq['bandsArray']["push"]({
-  //   id : PK,
-  //   band_id : peaking,
-  //   state : "on",
-  //   fillColor : data['fillColor'],
-  //   border : data["border"],
-  //   filter_name : name,
-  //   filter_id : data["filter_id"],
-  //   freq : data["freq"],
-  //   gain : data['gain'],
-  //   q : data["q"],
-  //   chart : {},
-  //   filter : {},
-  // });
 
+  addEqBand('lowshelf', -4);
+  $(".selected", "#bandsAdd").children().attr("src",`./src/img/icons/figma-icons/${currentlySelectedBand}-active.svg`);
 }
 
 // Draw parameters as text next to eq handle
@@ -1170,9 +1157,8 @@ function SelectBand(bandName, source) {
   currentlySelectedBand = bandName
 }
 
-
 // Pass filterCode - short code LC, HS etc...
-function addEqBand(bandName) { 
+function addEqBand(bandName, initialGain) { 
 
   // iterate over prototypes scenario array, for example:
   // "LC-N-N" : {
@@ -1211,7 +1197,8 @@ function addEqBand(bandName) {
   //     filter : {}
   //   },
   var data = bands_definitions[fullBandName];
-
+  var bandGain = typeof initialGain !== "undefined" ?  initialGain : data['gain'];
+  
   // Clear bands for user to modify
   eq['bandsArray']["push"]({
     id: data['id'],
@@ -1222,7 +1209,7 @@ function addEqBand(bandName) {
     filter_name : bandName,
     filter_id : data["filter_id"],
     freq : data["freq"],
-    gain : data['gain'],
+    gain : bandGain,
     q : data["q"],
     chart : {},
     filter : {},
@@ -1253,4 +1240,3 @@ $(window).on('load', loadEqPlugin)
 $('#play-button').click(AudioStart)
 $('#stop-button').click(AudioStop)
 
-SelectBand('lowpass', $(this));
