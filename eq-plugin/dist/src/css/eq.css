@@ -76,7 +76,7 @@
     -ms-user-select: none;
     user-select: none;
     outline: none !important;
-    color: #888; }
+    color: rgb(210, 210, 210);}
 
 .bandsContainer [bands] [band] [toggle-band]:first-of-type {
     padding-top: 5px;
@@ -105,8 +105,8 @@
 .bandsContainer [bands] [band] .knob-panel .knobWheel, .bandsContainer [bands] [band] [toggle-band] .knobWheel {
     position: absolute;
     top: 8px;
-    left: 5px;
-    border: 2px solid #888;
+    left: 10px;
+    border: 2px solid rgb(210, 210, 210);
     display: inline-block;
     width: 22px;
     height: 22px;
@@ -122,7 +122,7 @@
     position: absolute;
     width: 42px;
     top: 3px;
-    right: 5px;
+    right: 10px;
     text-align: center;
     font-size: 13px;
     -webkit-touch-callout: none;
@@ -145,10 +145,10 @@
     position: absolute;
     width: 42px;
     bottom: 3px;
-    right: 0;
+    right: 10px;
     text-align: center;
     font-size: 10px;
-    color: #555; }
+    color: rgb(170, 170, 170); }
 
 .bandsContainer [bands] [band] .empty-knob-panel {
     width: 100%;

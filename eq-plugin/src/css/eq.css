@@ -106,7 +106,8 @@
     position: absolute;
     top: 8px;
     left: 5px;
-    border: 2px solid #888;
+    border: 2px solid rgb(210, 210, 210) !important;
+    color: rgb(210, 210, 210);
     display: inline-block;
     width: 22px;
     height: 22px;
@@ -148,7 +149,7 @@
     right: 0;
     text-align: center;
     font-size: 10px;
-    color: #555; }
+    color: rgb(210, 210, 210); }
 
 .bandsContainer [bands] [band] .empty-knob-panel {
     width: 100%;
