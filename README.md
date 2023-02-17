@@ -2,7 +2,6 @@
 
 https://user-images.githubusercontent.com/26624599/219685925-b7e5d68c-87bb-4302-b674-92931912e975.mov
 
-<br/><br/>
 ### Test web app
 Project currently deployed on [https://www.audio-mastery.com](https://www.audio-mastery.com).
 
@@ -13,7 +12,7 @@ Project currently deployed on [https://www.audio-mastery.com](https://www.audio-
 
 ### Current work
 
-Apllying eq with reference song and comparing both songs on similarity in django backend. Initial functionality implemented in ```audio-compare``` directory
+Applying EQ with reference song and comparing both songs on similarity in django backend. Initial functionality implemented in ```audio-compare``` directory
 
 ### Stack used
 * npm and webpack
